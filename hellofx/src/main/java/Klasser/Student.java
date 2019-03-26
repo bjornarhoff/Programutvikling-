@@ -1,4 +1,4 @@
 package Klasser;
 
-public class Student {
+public class Student extends Person {
 }
