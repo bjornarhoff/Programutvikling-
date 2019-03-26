@@ -11,8 +11,8 @@ public class FXMLController {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("Steroids!");
-        label.setText("Hello BoleCato!");
+        System.out.println("You clicked me!");
+        label.setText("Hello World!");
     }
 
     public void initialize() {
