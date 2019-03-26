@@ -23,3 +23,5 @@
 hs_err_pid*
 
 hellofx/\.idea/workspace\.xml
+
+hellofx/target/maven-archiver/pom\.properties
