@@ -1,6 +1,6 @@
 package Klasser;
 
-public class Person {
+public abstract class Person {
 
     private String persnr;
     private String name;
