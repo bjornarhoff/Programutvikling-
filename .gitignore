@@ -25,3 +25,17 @@ hs_err_pid*
 hellofx/\.idea/workspace\.xml
 
 hellofx/target/maven-archiver/pom\.properties
+
+\.idea/encodings\.xml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/Programutvikling-\.iml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml
+
+hellofx/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles\.lst
