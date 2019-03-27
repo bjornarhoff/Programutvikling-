@@ -41,3 +41,5 @@ hellofx/target/maven-archiver/pom\.properties
 hellofx/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles\.lst
 
 hellofx/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles\.lst
+
+\.DS_Store
