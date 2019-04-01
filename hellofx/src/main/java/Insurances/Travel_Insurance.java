@@ -24,27 +24,27 @@ public class Travel_Insurance extends Data_for_overall_Insurances {
     }
 
     public void setInsuranceArea(String insuranceArea) {
-        InsuranceArea = insuranceArea;
+        this.InsuranceArea = insuranceArea;
     }
 
     public String getInsuranceArea() {
-        return InsuranceArea;
+        return this.InsuranceArea;
     }
 
 
     public void setInsuranceSum(int insuranceSum) {
-        InsuranceSum = insuranceSum;
+        this.InsuranceSum = insuranceSum;
     }
 
     public int getInsuranceSum() {
-        return InsuranceSum;
+        return this.InsuranceSum;
     }
 
     public Customer getCustomer() {
-        return Customer;
+        return this.Customer;
     }
 
     public void setCustomer(Customer customer) {
-        Customer = customer;
+        this.Customer = customer;
     }
 }

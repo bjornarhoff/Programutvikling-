@@ -37,74 +37,74 @@ public class House_Household_Insurance extends Data_for_overall_Insurances {
     }
 
     public void setPropertyOwner(String propertyOwner) {
-        PropertyOwner = propertyOwner;
+        this.PropertyOwner = propertyOwner;
     }
 
     public String getPropertyOwner() {
-        return PropertyOwner;
+        return this.PropertyOwner;
     }
 
 
     public void setYearOfConstruction(int yearOfConstruction) {
-        YearOfConstruction = yearOfConstruction;
+        this.YearOfConstruction = yearOfConstruction;
     }
 
     public int getYearOfConstruction() {
-        return YearOfConstruction;
+        return this.YearOfConstruction;
     }
 
 
     public void setResidentialType(String residentialType) {
-        ResidentialType = residentialType;
+        this.ResidentialType = residentialType;
     }
 
     public String getResidentialType() {
-        return ResidentialType;
+        return this.ResidentialType;
     }
 
 
     public void setConstructionMaterial(String constructionMaterial) {
-        ConstructionMaterial = constructionMaterial;
+        this.ConstructionMaterial = constructionMaterial;
     }
 
     public String getConstructionMaterial() {
-        return ConstructionMaterial;
+        return this.ConstructionMaterial;
     }
 
 
     public void setCondition(String condition) {
-        Condition = condition;
+        this.Condition = condition;
     }
 
     public String getCondition() {
-        return Condition;
+        return this.Condition;
     }
 
 
     public void setNumberOfSquareMeters(double numberOfSquareMeters) {
-        NumberOfSquareMeters = numberOfSquareMeters;
+        this.NumberOfSquareMeters = numberOfSquareMeters;
     }
 
     public double getNumberOfSquareMeters() {
-        return NumberOfSquareMeters;
+        return this.NumberOfSquareMeters;
     }
 
 
     public void setInsuranceAmountForConstruction(int insuranceAmountForConstruction) {
-        InsuranceAmountForConstruction = insuranceAmountForConstruction;
+        this.InsuranceAmountForConstruction = insuranceAmountForConstruction;
     }
 
     public int getInsuranceAmountForConstruction() {
-        return InsuranceAmountForConstruction;
+        return this.InsuranceAmountForConstruction;
     }
 
 
     public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
-        InsuranceAmountForHousehold = insuranceAmountForHousehold;
+        this.InsuranceAmountForHousehold = insuranceAmountForHousehold;
     }
 
     public int getInsuranceAmountForHousehold() {
-        return InsuranceAmountForHousehold;
+        return this.InsuranceAmountForHousehold;
     }
 
     public Customer getCustomer() {

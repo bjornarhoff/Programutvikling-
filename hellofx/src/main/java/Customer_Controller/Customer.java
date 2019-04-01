@@ -42,113 +42,108 @@ public class Customer {
 
     }
 
-
-
     public void setPersonalID(long PersonalID) {
-        PersonalID = PersonalID;
+        this.PersonalID = PersonalID;
     }
 
     public Number getPersonalID() {
-        return PersonalID;
+        return this.PersonalID;
     }
 
     public void setDate(java.util.Date date) {
-        Date = date;
+        this.Date = date;
     }
 
     public java.util.Date getDate() {
-        return Date;
+        return this.Date;
     }
 
 
     public void setName(String name) {
-        Name = name;
+        this.Name = name;
     }
 
     public String getName() {
-        return Name;
+        return this.Name;
     }
 
 
     public void setBillingAddress(String billingAddress) {
-        BillingAddress = billingAddress;
+        this.BillingAddress = billingAddress;
     }
 
     public String getBillingAddress() {
-        return BillingAddress;
+        return this.BillingAddress;
     }
 
 
     public void setInsuranceNr(int insuranceNr) {
-        InsuranceNr = insuranceNr;
+        this.InsuranceNr = insuranceNr;
     }
 
     public int getInsuranceNr() {
-        return InsuranceNr;
+        return this.InsuranceNr;
     }
 
 
     public void setAllCustomerInsurance(String allCustomerInsurance) {
-        AllCustomerInsurance = allCustomerInsurance;
+        this.AllCustomerInsurance = allCustomerInsurance;
     }
 
     public String getAllCustomerInsurance() {
-        return AllCustomerInsurance;
+        return this.AllCustomerInsurance;
     }
 
-
     public void setInjuryReport(String injuryReport) {
-        InjuryReport = injuryReport;
+        this.InjuryReport = injuryReport;
     }
 
     public String getInjuryReport() {
-        return InjuryReport;
+        return this.InjuryReport;
     }
 
 
     public void setUnpaidReplacements(double unpaidReplacements) {
-        UnpaidReplacements = unpaidReplacements;
+        this.UnpaidReplacements = unpaidReplacements;
     }
 
     public double getUnpaidReplacements() {
-        return UnpaidReplacements;
+        return this.UnpaidReplacements;
     }
-
-
 
     public void setHHI(House_Household_Insurance HHI) {
         this.HHI = HHI;
     }
 
     public House_Household_Insurance getHHI() {
-        return HHI;
+        return this.HHI;
     }
 
 
     public void setLeiI(Leisure_Insurance leiI) {
-        LeiI = leiI;
+        this.LeiI = leiI;
     }
 
     public Leisure_Insurance getLeiI() {
-        return LeiI;
+        return this.LeiI;
     }
 
 
     public void setTraI(Travel_Insurance traI) {
-        TraI = traI;
+        this.TraI = traI;
     }
 
     public Travel_Insurance getTraI() {
-        return TraI;
+        return this.TraI;
     }
 
 
     public void setBoaI(Boat_Insurance boaI) {
-        BoaI = boaI;
+        this.BoaI = boaI;
     }
 
     public Boat_Insurance getBoaI() {
-        return BoaI;
+        return this.BoaI;
     }
 
 }

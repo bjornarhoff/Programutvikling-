@@ -32,63 +32,63 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
     }
 
     public void setOwner(String owner) {
-        Owner = owner;
+        this.Owner = owner;
     }
 
     public String getOwner() {
-        return Owner;
+        return this.Owner;
     }
 
 
     public void setRegisterNr(int registerNr) {
-        RegisterNr = registerNr;
+        this.RegisterNr = registerNr;
     }
 
     public int getRegisterNr() {
-        return RegisterNr;
+        return this.RegisterNr;
     }
 
 
     public void setBoatTypeAndMOdel(String boatTypeAndMOdel) {
-        BoatTypeAndMOdel = boatTypeAndMOdel;
+        this.BoatTypeAndMOdel = boatTypeAndMOdel;
     }
 
     public String getBoatTypeAndMOdel() {
-        return BoatTypeAndMOdel;
+        return this.BoatTypeAndMOdel;
     }
 
 
     public void setLengthInFoot(double lengthInFoot) {
-        LengthInFoot = lengthInFoot;
+        this.LengthInFoot = lengthInFoot;
     }
 
     public double getLengthInFoot() {
-        return LengthInFoot;
+        return this.LengthInFoot;
     }
 
 
     public void setYear(int year) {
-        Year = year;
+        this.Year = year;
     }
 
     public int getYear() {
-        return Year;
+        return this.Year;
     }
 
 
     public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
-        MotorTypeAndMotorPower = motorTypeAndMotorPower;
+        this.MotorTypeAndMotorPower = motorTypeAndMotorPower;
     }
 
     public String getMotorTypeAndMotorPower() {
-        return MotorTypeAndMotorPower;
+        return this.MotorTypeAndMotorPower;
     }
 
     public Customer getCustomer() {
-        return Customer;
+        return this.Customer;
     }
 
     public void setCustomer(Customer customer) {
-        Customer = customer;
+        this.Customer = customer;
     }
 }

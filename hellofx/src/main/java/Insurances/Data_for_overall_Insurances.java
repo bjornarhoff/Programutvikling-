@@ -22,38 +22,38 @@ public abstract class Data_for_overall_Insurances {
 
 
     public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
-        YearlyInsurancePremium = yearlyInsurancePremium;
+        this.YearlyInsurancePremium = yearlyInsurancePremium;
     }
 
     public String getYearlyInsurancePremium() {
-        return YearlyInsurancePremium;
+        return this.YearlyInsurancePremium;
     }
 
 
     public void setDateOfCreatedInsurance(Date dateOfCreatedInsurance) {
-        DateOfCreatedInsurance = dateOfCreatedInsurance;
+        this.DateOfCreatedInsurance = dateOfCreatedInsurance;
     }
 
     public Date getDateOfCreatedInsurance() {
-        return DateOfCreatedInsurance;
+        return this.DateOfCreatedInsurance;
     }
 
 
     public void setInsuranceAmount(int insuranceAmount) {
-        InsuranceAmount = insuranceAmount;
+        this.InsuranceAmount = insuranceAmount;
     }
 
     public int getInsuranceAmount() {
-        return InsuranceAmount;
+        return this.InsuranceAmount;
     }
 
 
     public void setInsuranceConditions(String insuranceConditions) {
-        InsuranceConditions = insuranceConditions;
+        this.InsuranceConditions = insuranceConditions;
     }
 
     public String getInsuranceConditions() {
-        return InsuranceConditions;
+        return this.InsuranceConditions;
     }
 
 

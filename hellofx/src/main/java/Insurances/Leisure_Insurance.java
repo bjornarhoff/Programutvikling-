@@ -37,81 +37,80 @@ public class Leisure_Insurance extends Data_for_overall_Insurances {
     }
 
     public void setAddress_Not_Billing(String address_Not_Billing) {
-        Address_Not_Billing = address_Not_Billing;
+        this.Address_Not_Billing = address_Not_Billing;
     }
 
     public String getAddress_Not_Billing() {
-        return Address_Not_Billing;
+        return this.Address_Not_Billing;
     }
 
 
     public void setConstructionYear(int constructionYear) {
-        ConstructionYear = constructionYear;
+        this.ConstructionYear = constructionYear;
     }
 
     public int getConstructionYear() {
-        return ConstructionYear;
+        return this.ConstructionYear;
     }
 
 
     public void setResidentalType(String residentalType) {
-        ResidentalType = residentalType;
+        this.ResidentalType = residentalType;
     }
 
     public String getResidentalType() {
-        return ResidentalType;
+        return this.ResidentalType;
     }
 
 
     public void setConstructionMaterial(String constructionMaterial) {
-        ConstructionMaterial = constructionMaterial;
+        this.ConstructionMaterial = constructionMaterial;
     }
 
     public String getConstructionMaterial() {
-        return ConstructionMaterial;
+        return this.ConstructionMaterial;
     }
 
 
     public void setCondition(String condition) {
-        Condition = condition;
+        this.Condition = condition;
     }
 
     public String getCondition() {
-        return Condition;
+        return this.Condition;
     }
 
 
     public void setAmountSquareMeters(double amountSquareMeters) {
-        AmountSquareMeters = amountSquareMeters;
+        this.AmountSquareMeters = amountSquareMeters;
     }
 
     public double getAmountSquareMeters() {
-        return AmountSquareMeters;
+        return this.AmountSquareMeters;
     }
 
-
     public void setAmountforConstruction(int amountforConstruction) {
-        AmountforConstruction = amountforConstruction;
+        this.AmountforConstruction = amountforConstruction;
     }
 
     public int getAmountforConstruction() {
-        return AmountforConstruction;
+        return this.AmountforConstruction;
     }
 
 
     public void setAmountForHousehold(int amountForHousehold) {
-        AmountForHousehold = amountForHousehold;
+        this.AmountForHousehold = amountForHousehold;
     }
 
     public int getAmountForHousehold() {
-        return AmountForHousehold;
+        return this.AmountForHousehold;
     }
 
     public Customer getCustomer() {
-        return Customer;
+        return this.Customer;
     }
 
     public void setCustomer(Customer customer) {
-        Customer = customer;
+        this.Customer = customer;
     }
 }
