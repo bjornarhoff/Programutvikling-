@@ -8,7 +8,7 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
 
 
     private String Owner;
-    private int RegisterNr;
+    private String RegisterNr;
     private String BoatTypeAndMOdel;
     private double LengthInFoot;
     private int Year;
@@ -17,7 +17,7 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
 
 
     public Boat_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
-                          String insuranceConditions, String owner, int registerNr, String boatTypeAndMOdel,
+                          String insuranceConditions, String owner, String registerNr, String boatTypeAndMOdel,
                           double lengthInFoot, int year, String motorTypeAndMotorPower,
                           Customer_Controller.Customer customer) {
 
@@ -31,6 +31,19 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
         this.Customer = customer;
     }
 
+    @Override
+    public String toString() {
+        return "\nBoat_Insurance{" +
+                "Owner='" + Owner + '\'' +
+                ", RegisterNr=" + RegisterNr +
+                ", BoatTypeAndMOdel='" + BoatTypeAndMOdel + '\'' +
+                ", LengthInFoot=" + LengthInFoot +
+                ", Year=" + Year +
+                ", MotorTypeAndMotorPower='" + MotorTypeAndMotorPower + '\'' +
+                ", Customer=" + Customer +
+                "} " + super.toString();
+    }
+
     public void setOwner(String owner) {
         this.Owner = owner;
     }
@@ -40,11 +53,11 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
     }
 
 
-    public void setRegisterNr(int registerNr) {
+    public void setRegisterNr(String registerNr) {
         this.RegisterNr = registerNr;
     }
 
-    public int getRegisterNr() {
+    public String getRegisterNr() {
         return this.RegisterNr;
     }
 

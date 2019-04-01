@@ -12,7 +12,7 @@ public class Customer {
 
 
 
-    private long PersonalID;
+    private String PersonalID;
     private int InsuranceNr;
     private String Name;
     private Date Date;
@@ -28,7 +28,7 @@ public class Customer {
 
 
     // Default Constructor for Customer
-    public Customer(long PersonalID, int InsuranceNr, String Name, Date Date, String BillingAddress,
+    public Customer(String PersonalID, int InsuranceNr, String Name, Date Date, String BillingAddress,
                     String AllCustomerInsurance, String InjuryReport, double UnpaidReplacements){
 
         this.PersonalID = PersonalID;
@@ -42,11 +42,29 @@ public class Customer {
 
     }
 
-    public void setPersonalID(long PersonalID) {
+    @Override
+    public String toString() {
+        return "\nCustomer{" +
+                "PersonalID=" + PersonalID +
+                ", InsuranceNr=" + InsuranceNr +
+                ", Name='" + Name + '\'' +
+                ", Date=" + Date +
+                ", BillingAddress='" + BillingAddress + '\'' +
+                ", AllCustomerInsurance='" + AllCustomerInsurance + '\'' +
+                ", InjuryReport='" + InjuryReport + '\'' +
+                ", UnpaidReplacements=" + UnpaidReplacements +
+                ", HHI=" + HHI +
+                ", LeiI=" + LeiI +
+                ", TraI=" + TraI +
+                ", BoaI=" + BoaI +
+                '}';
+    }
+
+    public void setPersonalID(String PersonalID) {
         this.PersonalID = PersonalID;
     }
 
-    public Number getPersonalID() {
+    public String getPersonalID() {
         return this.PersonalID;
     }
 

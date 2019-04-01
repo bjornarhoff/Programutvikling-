@@ -20,6 +20,15 @@ public abstract class Data_for_overall_Insurances {
         this.InsuranceConditions = insuranceConditions;
     }
 
+    @Override
+    public String toString() {
+        return "\nData_for_overall_Insurances{" +
+                "YearlyInsurancePremium='" + YearlyInsurancePremium + '\'' +
+                ", DateOfCreatedInsurance=" + DateOfCreatedInsurance +
+                ", InsuranceAmount=" + InsuranceAmount +
+                ", InsuranceConditions='" + InsuranceConditions + '\'' +
+                '}';
+    }
 
     public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
         this.YearlyInsurancePremium = yearlyInsurancePremium;
