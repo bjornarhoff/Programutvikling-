@@ -20,10 +20,7 @@ public class Customer {
     private String AllCustomerInsurance;
     private String InjuryReport;
     private double UnpaidReplacements;
-    private House_Household_Insurance HHI;
-    private Leisure_Insurance LeiI;
-    private Travel_Insurance TraI;
-    private Boat_Insurance BoaI;
+
 
 
 
@@ -45,7 +42,7 @@ public class Customer {
     @Override
     public String toString() {
         return "\nCustomer{" +
-                "PersonalID=" + PersonalID +
+                "PersonalID='" + PersonalID + '\'' +
                 ", InsuranceNr=" + InsuranceNr +
                 ", Name='" + Name + '\'' +
                 ", Date=" + Date +
@@ -53,10 +50,6 @@ public class Customer {
                 ", AllCustomerInsurance='" + AllCustomerInsurance + '\'' +
                 ", InjuryReport='" + InjuryReport + '\'' +
                 ", UnpaidReplacements=" + UnpaidReplacements +
-                ", HHI=" + HHI +
-                ", LeiI=" + LeiI +
-                ", TraI=" + TraI +
-                ", BoaI=" + BoaI +
                 '}';
     }
 
@@ -127,41 +120,6 @@ public class Customer {
 
     public double getUnpaidReplacements() {
         return this.UnpaidReplacements;
-    }
-
-    public void setHHI(House_Household_Insurance HHI) {
-        this.HHI = HHI;
-    }
-
-    public House_Household_Insurance getHHI() {
-        return this.HHI;
-    }
-
-
-    public void setLeiI(Leisure_Insurance leiI) {
-        this.LeiI = leiI;
-    }
-
-    public Leisure_Insurance getLeiI() {
-        return this.LeiI;
-    }
-
-
-    public void setTraI(Travel_Insurance traI) {
-        this.TraI = traI;
-    }
-
-    public Travel_Insurance getTraI() {
-        return this.TraI;
-    }
-
-
-    public void setBoaI(Boat_Insurance boaI) {
-        this.BoaI = boaI;
-    }
-
-    public Boat_Insurance getBoaI() {
-        return this.BoaI;
     }
 
 }
