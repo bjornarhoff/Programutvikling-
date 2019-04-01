@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="291.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="newCustomer" prefHeight="291.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
     <children>
       <Button fx:id="create" layoutX="115.0" layoutY="237.0" mnemonicParsing="false" onAction="#createCustomer" prefHeight="27.0" prefWidth="96.0" text="Opprett" />
       <Label layoutX="129.0" layoutY="20.0" text="Opprett ny kunde " textFill="#f4a641">
@@ -18,10 +18,10 @@
         <Label fx:id="kunde" layoutX="120.0" layoutY="270.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="87.0" />
       <Pane prefHeight="292.0" prefWidth="87.0" style="-fx-background-color: #f4a641#f4a641;" />
       <TextField layoutX="101.0" layoutY="66.0" prefHeight="27.0" prefWidth="124.0" promptText="Fornavn " />
-      <TextField layoutX="101.0" layoutY="186.0" prefHeight="27.0" prefWidth="124.0" promptText="Adresse " />
       <TextField layoutX="101.0" layoutY="108.0" prefHeight="27.0" prefWidth="124.0" promptText="Etternavn" />
       <TextField layoutX="101.0" layoutY="147.0" prefHeight="27.0" prefWidth="124.0" promptText="Email" />
-      <Button fx:id="generateF" layoutX="259.0" layoutY="66.0" mnemonicParsing="false" onAction="#createInsuranceNr" text="Lag forsikringsnummer" />
-      <Label fx:id="forsikringsNr" layoutX="267.0" layoutY="108.0" prefHeight="17.0" prefWidth="139.0" />
+      <TextField layoutX="101.0" layoutY="186.0" prefHeight="27.0" prefWidth="124.0" promptText="Adresse " />
+      <Button fx:id="generateF" layoutX="260.0" layoutY="59.0" mnemonicParsing="false" onAction="#createInsuranceNr" text="Lag forsikringsnummer" />
+      <Label fx:id="forsikringsNr" layoutX="270.0" layoutY="85.0" prefHeight="17.0" prefWidth="139.0" />
     </children>
 </AnchorPane>
