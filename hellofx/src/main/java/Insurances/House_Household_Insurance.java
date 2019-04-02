@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class House_Household_Insurance extends Data_for_overall_Insurances {
 
-    private String PropertyOwner;
-    private int YearOfConstruction;
-    private String ResidentialType;
-    private String ConstructionMaterial;
-    private String Condition;
-    private double NumberOfSquareMeters;
-    private int InsuranceAmountForConstruction;
-    private int InsuranceAmountForHousehold;
-    private Customer Customer;
+    private String propertyOwner;
+    private int yearOfConstruction;
+    private String residentialType;
+    private String constructionMaterial;
+    private String condition;
+    private double numberOfSquareMeters;
+    private int insuranceAmountForConstruction;
+    private int insuranceAmountForHousehold;
+    private Customer customer;
 
 
 
@@ -25,93 +25,107 @@ public class House_Household_Insurance extends Data_for_overall_Insurances {
                                      int insuranceAmountForHousehold, Customer_Controller.Customer customer) {
 
         super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
-        this.PropertyOwner = propertyOwner;
-        this.YearOfConstruction = yearOfConstruction;
-        this.ResidentialType = residentialType;
-        this.ConstructionMaterial = constructionMaterial;
-        this.Condition = condition;
-        this.NumberOfSquareMeters = numberOfSquareMeters;
-        this.InsuranceAmountForConstruction = insuranceAmountForConstruction;
-        this.InsuranceAmountForHousehold = insuranceAmountForHousehold;
-        this.Customer = customer;
+        this.propertyOwner = propertyOwner;
+        this.yearOfConstruction = yearOfConstruction;
+        this.residentialType = residentialType;
+        this.constructionMaterial = constructionMaterial;
+        this.condition = condition;
+        this.numberOfSquareMeters = numberOfSquareMeters;
+        this.insuranceAmountForConstruction = insuranceAmountForConstruction;
+        this.insuranceAmountForHousehold = insuranceAmountForHousehold;
+        this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return  "\nHOUSEHOLD INSURANCE" +
+                "\nPropertyOwner: " + propertyOwner +
+                "\nYearOfConstruction: " + yearOfConstruction +
+                "\nResidentialType: " + residentialType +
+                "\nConstructionMaterial: " + constructionMaterial +
+                "\nCondition: " + condition +
+                "\nNumberOfSquareMeters: " + numberOfSquareMeters +
+                "\nInsuranceAmountForConstruction: " + insuranceAmountForConstruction +
+                "\nInsuranceAmountForHousehold: " + insuranceAmountForHousehold +
+                "\n\nOverall for Household Insurance " + super.toString();
     }
 
     public void setPropertyOwner(String propertyOwner) {
-        this.PropertyOwner = propertyOwner;
+        this.propertyOwner = propertyOwner;
     }
 
     public String getPropertyOwner() {
-        return this.PropertyOwner;
+        return this.propertyOwner;
     }
 
 
     public void setYearOfConstruction(int yearOfConstruction) {
-        this.YearOfConstruction = yearOfConstruction;
+        this.yearOfConstruction = yearOfConstruction;
     }
 
     public int getYearOfConstruction() {
-        return this.YearOfConstruction;
+        return this.yearOfConstruction;
     }
 
 
     public void setResidentialType(String residentialType) {
-        this.ResidentialType = residentialType;
+        this.residentialType = residentialType;
     }
 
     public String getResidentialType() {
-        return this.ResidentialType;
+        return this.residentialType;
     }
 
 
     public void setConstructionMaterial(String constructionMaterial) {
-        this.ConstructionMaterial = constructionMaterial;
+        this.constructionMaterial = constructionMaterial;
     }
 
     public String getConstructionMaterial() {
-        return this.ConstructionMaterial;
+        return this.constructionMaterial;
     }
 
 
     public void setCondition(String condition) {
-        this.Condition = condition;
+        this.condition = condition;
     }
 
     public String getCondition() {
-        return this.Condition;
+        return this.condition;
     }
 
 
     public void setNumberOfSquareMeters(double numberOfSquareMeters) {
-        this.NumberOfSquareMeters = numberOfSquareMeters;
+        this.numberOfSquareMeters = numberOfSquareMeters;
     }
 
     public double getNumberOfSquareMeters() {
-        return this.NumberOfSquareMeters;
+        return this.numberOfSquareMeters;
     }
 
 
     public void setInsuranceAmountForConstruction(int insuranceAmountForConstruction) {
-        this.InsuranceAmountForConstruction = insuranceAmountForConstruction;
+        this.insuranceAmountForConstruction = insuranceAmountForConstruction;
     }
 
     public int getInsuranceAmountForConstruction() {
-        return this.InsuranceAmountForConstruction;
+        return this.insuranceAmountForConstruction;
     }
 
 
     public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
-        this.InsuranceAmountForHousehold = insuranceAmountForHousehold;
+        this.insuranceAmountForHousehold = insuranceAmountForHousehold;
     }
 
     public int getInsuranceAmountForHousehold() {
-        return this.InsuranceAmountForHousehold;
+        return this.insuranceAmountForHousehold;
     }
 
     public Customer getCustomer() {
-        return this.Customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
-        this.Customer = customer;
+        this.customer = customer;
     }
 }

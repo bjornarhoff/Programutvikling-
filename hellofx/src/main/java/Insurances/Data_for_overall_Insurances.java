@@ -4,65 +4,62 @@ import java.util.Date;
 
 public abstract class Data_for_overall_Insurances {
 
-    private String YearlyInsurancePremium;
-    private Date DateOfCreatedInsurance;
-    private int InsuranceAmount;
-    private String InsuranceConditions;
+    private String yearlyInsurancePremium;
+    private Date dateOfCreatedInsurance;
+    private int insuranceAmount;
+    private String insuranceConditions;
 
 
     // Default Constructor for Overall Insurances
     public Data_for_overall_Insurances(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
                                        String insuranceConditions) {
-
-        this.YearlyInsurancePremium = yearlyInsurancePremium;
-        this.DateOfCreatedInsurance = dateOfCreatedInsurance;
-        this.InsuranceAmount = insuranceAmount;
-        this.InsuranceConditions = insuranceConditions;
+        this.yearlyInsurancePremium = yearlyInsurancePremium;
+        this.dateOfCreatedInsurance = dateOfCreatedInsurance;
+        this.insuranceAmount = insuranceAmount;
+        this.insuranceConditions = insuranceConditions;
     }
 
     @Override
     public String toString() {
-        return "\nData_for_overall_Insurances{" +
-                "YearlyInsurancePremium='" + YearlyInsurancePremium + '\'' +
-                ", DateOfCreatedInsurance=" + DateOfCreatedInsurance +
-                ", InsuranceAmount=" + InsuranceAmount +
-                ", InsuranceConditions='" + InsuranceConditions + '\'' +
-                '}';
+        return  "\nYearlyInsurancePremium: " + yearlyInsurancePremium +
+                "\nDateOfCreatedInsurance: " + dateOfCreatedInsurance +
+                "\nInsuranceAmount: " + insuranceAmount +
+                "\nInsuranceConditions: " + insuranceConditions;
     }
 
     public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
-        this.YearlyInsurancePremium = yearlyInsurancePremium;
+        this.yearlyInsurancePremium = yearlyInsurancePremium;
     }
 
     public String getYearlyInsurancePremium() {
-        return this.YearlyInsurancePremium;
+        return this.yearlyInsurancePremium;
     }
 
 
     public void setDateOfCreatedInsurance(Date dateOfCreatedInsurance) {
-        this.DateOfCreatedInsurance = dateOfCreatedInsurance;
+        this.dateOfCreatedInsurance = dateOfCreatedInsurance;
     }
 
     public Date getDateOfCreatedInsurance() {
-        return this.DateOfCreatedInsurance;
+        return this.dateOfCreatedInsurance;
     }
 
 
     public void setInsuranceAmount(int insuranceAmount) {
-        this.InsuranceAmount = insuranceAmount;
+        this.insuranceAmount = insuranceAmount;
     }
 
     public int getInsuranceAmount() {
-        return this.InsuranceAmount;
+        return this.insuranceAmount;
     }
 
 
     public void setInsuranceConditions(String insuranceConditions) {
-        this.InsuranceConditions = insuranceConditions;
+        this.insuranceConditions = insuranceConditions;
     }
 
     public String getInsuranceConditions() {
-        return this.InsuranceConditions;
+        return this.insuranceConditions;
     }
 
 

@@ -7,13 +7,13 @@ import java.util.Date;
 public class Boat_Insurance extends Data_for_overall_Insurances {
 
 
-    private String Owner;
-    private String RegisterNr;
-    private String BoatTypeAndMOdel;
-    private double LengthInFoot;
-    private int Year;
-    private String MotorTypeAndMotorPower;
-    private Customer Customer;
+    private String owner;
+    private String registerNr;
+    private String boatTypeAndMOdel;
+    private double lengthInFoot;
+    private int year;
+    private String motorTypeAndMotorPower;
+    private Customer customer;
 
 
     public Boat_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
@@ -22,86 +22,84 @@ public class Boat_Insurance extends Data_for_overall_Insurances {
                           Customer_Controller.Customer customer) {
 
         super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
-        this.Owner = owner;
-        this.RegisterNr = registerNr;
-        this.BoatTypeAndMOdel = boatTypeAndMOdel;
-        this.LengthInFoot = lengthInFoot;
-        this.Year = year;
-        this.MotorTypeAndMotorPower = motorTypeAndMotorPower;
-        this.Customer = customer;
+        this.owner = owner;
+        this.registerNr = registerNr;
+        this.boatTypeAndMOdel = boatTypeAndMOdel;
+        this.lengthInFoot = lengthInFoot;
+        this.year = year;
+        this.motorTypeAndMotorPower = motorTypeAndMotorPower;
+        this.customer = customer;
     }
 
     @Override
     public String toString() {
-        return "\nBoat_Insurance{" +
-                "Owner='" + Owner + '\'' +
-                ", RegisterNr=" + RegisterNr +
-                ", BoatTypeAndMOdel='" + BoatTypeAndMOdel + '\'' +
-                ", LengthInFoot=" + LengthInFoot +
-                ", Year=" + Year +
-                ", MotorTypeAndMotorPower='" + MotorTypeAndMotorPower + '\'' +
-                ", Customer=" + Customer +
-                "} " + super.toString();
+        return  "\nBOAT INSURANCE" +
+                "\nOwner: " + owner +
+                "\nRegisterNr: " + registerNr +
+                "\nBoatTypeAndMOdel: " + boatTypeAndMOdel +
+                "\nLengthInFoot: " + lengthInFoot +
+                "\nYear: " + year +
+                "\nMotorTypeAndMotorPower: " + motorTypeAndMotorPower +
+                "\n\nOVERALL FOR BOAT INSURANCE" + super.toString();
     }
 
     public void setOwner(String owner) {
-        this.Owner = owner;
+        this.owner = owner;
     }
 
     public String getOwner() {
-        return this.Owner;
+        return this.owner;
     }
 
 
     public void setRegisterNr(String registerNr) {
-        this.RegisterNr = registerNr;
+        this.registerNr = registerNr;
     }
 
     public String getRegisterNr() {
-        return this.RegisterNr;
+        return this.registerNr;
     }
 
 
     public void setBoatTypeAndMOdel(String boatTypeAndMOdel) {
-        this.BoatTypeAndMOdel = boatTypeAndMOdel;
+        this.boatTypeAndMOdel = boatTypeAndMOdel;
     }
 
     public String getBoatTypeAndMOdel() {
-        return this.BoatTypeAndMOdel;
+        return this.boatTypeAndMOdel;
     }
 
 
     public void setLengthInFoot(double lengthInFoot) {
-        this.LengthInFoot = lengthInFoot;
+        this.lengthInFoot = lengthInFoot;
     }
 
     public double getLengthInFoot() {
-        return this.LengthInFoot;
+        return this.lengthInFoot;
     }
 
-
     public void setYear(int year) {
-        this.Year = year;
+        this.year = year;
     }
 
     public int getYear() {
-        return this.Year;
+        return this.year;
     }
 
 
     public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
-        this.MotorTypeAndMotorPower = motorTypeAndMotorPower;
+        this.motorTypeAndMotorPower = motorTypeAndMotorPower;
     }
 
     public String getMotorTypeAndMotorPower() {
-        return this.MotorTypeAndMotorPower;
+        return this.motorTypeAndMotorPower;
     }
 
     public Customer getCustomer() {
-        return this.Customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
-        this.Customer = customer;
+        this.customer = customer;
     }
 }

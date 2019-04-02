@@ -7,9 +7,9 @@ import java.util.Date;
 public class Travel_Insurance extends Data_for_overall_Insurances {
 
 
-    private String InsuranceArea; // where insurance is valid
-    private int InsuranceSum;
-    private Customer Customer;
+    private String insuranceArea; // where insurance is valid
+    private int insuranceSum;
+    private Customer customer;
 
 
     // Default Constructor for Travel Insurance.
@@ -18,33 +18,41 @@ public class Travel_Insurance extends Data_for_overall_Insurances {
                             Customer_Controller.Customer customer) {
 
         super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
-        this.InsuranceArea = insuranceArea;
-        this.InsuranceSum = insuranceSum;
-        this.Customer = customer;
+        this.insuranceArea = insuranceArea;
+        this.insuranceSum = insuranceSum;
+        this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return  "\nTRAVEL INSURANCE" +
+                "\nInsuranceArea: " + insuranceArea +
+                "\nInsuranceSum: " + insuranceSum +
+                "\n\nOVERALL FOR TRAVEL INSURANCE" + super.toString();
     }
 
     public void setInsuranceArea(String insuranceArea) {
-        this.InsuranceArea = insuranceArea;
+        this.insuranceArea = insuranceArea;
     }
 
     public String getInsuranceArea() {
-        return this.InsuranceArea;
+        return this.insuranceArea;
     }
 
 
     public void setInsuranceSum(int insuranceSum) {
-        this.InsuranceSum = insuranceSum;
+        this.insuranceSum = insuranceSum;
     }
 
     public int getInsuranceSum() {
-        return this.InsuranceSum;
+        return this.insuranceSum;
     }
 
     public Customer getCustomer() {
-        return this.Customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
-        this.Customer = customer;
+        this.customer = customer;
     }
 }

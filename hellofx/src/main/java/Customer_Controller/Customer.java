@@ -1,125 +1,178 @@
 package Customer_Controller;
 
-import Insurances.Boat_Insurance;
-import Insurances.House_Household_Insurance;
-import Insurances.Leisure_Insurance;
-import Insurances.Travel_Insurance;
-
 import java.util.Date;
 
 
 public class Customer {
 
+    /**
+     * Instance variables for the Customer class
+     */
+    private String personalID;
+    private int insuranceNr;
+    private String name;
+    private Date date;
+    private String billingAddress;
+    private String allCustomerInsurance;
+    private String injuryReport;
+    private double unpaidReplacements;
 
+    /**
+     * Default constructor for Customer class
+     * @param PersonalID
+     * @param InsuranceNr
+     * @param Name
+     * @param Date
+     * @param BillingAddress
+     * @param AllCustomerInsurance
+     * @param InjuryReport
+     * @param UnpaidReplacements
+     */
 
-    private String PersonalID;
-    private int InsuranceNr;
-    private String Name;
-    private Date Date;
-    private String BillingAddress;
-    private String AllCustomerInsurance;
-    private String InjuryReport;
-    private double UnpaidReplacements;
-
-
-
-
-    // Default Constructor for Customer
     public Customer(String PersonalID, int InsuranceNr, String Name, Date Date, String BillingAddress,
                     String AllCustomerInsurance, String InjuryReport, double UnpaidReplacements){
 
-        this.PersonalID = PersonalID;
-        this.InsuranceNr = InsuranceNr;
-        this.Name = Name;
-        this.Date = Date;
-        this.BillingAddress = BillingAddress;
-        this.AllCustomerInsurance = AllCustomerInsurance;
-        this.InjuryReport = InjuryReport;
-        this.UnpaidReplacements = UnpaidReplacements;
+        this.personalID = PersonalID;
+        this.insuranceNr = InsuranceNr;
+        this.name = Name;
+        this.date = Date;
+        this.billingAddress = BillingAddress;
+        this.allCustomerInsurance = AllCustomerInsurance;
+        this.injuryReport = InjuryReport;
+        this.unpaidReplacements = UnpaidReplacements;
 
     }
 
+    /**
+     * @return a string that contains all data in the instance variables for class Customer
+     */
     @Override
     public String toString() {
-        return "\nCustomer{" +
-                "PersonalID='" + PersonalID + '\'' +
-                ", InsuranceNr=" + InsuranceNr +
-                ", Name='" + Name + '\'' +
-                ", Date=" + Date +
-                ", BillingAddress='" + BillingAddress + '\'' +
-                ", AllCustomerInsurance='" + AllCustomerInsurance + '\'' +
-                ", InjuryReport='" + InjuryReport + '\'' +
-                ", UnpaidReplacements=" + UnpaidReplacements +
-                '}';
+        return  "\nCUSTOMER" +
+                "\nPersonalID: " + personalID +
+                "\nInsuranceNr: " + insuranceNr +
+                "\nName: " + name +
+                "\nDate: " + date +
+                "\nBillingAddress: " + billingAddress +
+                "\nAllCustomerInsurance: " + allCustomerInsurance +
+                "\nInjuryReport: " + injuryReport +
+                "\nUnpaidReplacements: " + unpaidReplacements;
     }
 
+    /**
+     * @param PersonalID
+     */
     public void setPersonalID(String PersonalID) {
-        this.PersonalID = PersonalID;
+        this.personalID = PersonalID;
     }
 
+    /**
+     * @return pernalID
+     */
     public String getPersonalID() {
-        return this.PersonalID;
+        return this.personalID;
     }
 
+    /**
+     * @param date
+     */
     public void setDate(java.util.Date date) {
-        this.Date = date;
+        this.date = date;
     }
 
+    /**
+     * @return date
+     */
     public java.util.Date getDate() {
-        return this.Date;
+        return this.date;
     }
 
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
+    /**
+     * @return name
+     */
     public String getName() {
-        return this.Name;
+        return this.name;
     }
 
-
+    /**
+     * @param billingAddress
+     */
     public void setBillingAddress(String billingAddress) {
-        this.BillingAddress = billingAddress;
+        this.billingAddress = billingAddress;
     }
 
+    /**
+     * @return billingAddress
+     */
     public String getBillingAddress() {
-        return this.BillingAddress;
+        return this.billingAddress;
     }
 
 
+    /**
+     * @param insuranceNr
+     */
     public void setInsuranceNr(int insuranceNr) {
-        this.InsuranceNr = insuranceNr;
+        this.insuranceNr = insuranceNr;
     }
 
+    /**
+     * @return insuranceNr
+     */
     public int getInsuranceNr() {
-        return this.InsuranceNr;
+        return this.insuranceNr;
     }
 
 
+    /**
+     * @param allCustomerInsurance
+     */
     public void setAllCustomerInsurance(String allCustomerInsurance) {
-        this.AllCustomerInsurance = allCustomerInsurance;
+        this.allCustomerInsurance = allCustomerInsurance;
     }
 
+    /**
+     * @return allCustomerInsurance
+     */
     public String getAllCustomerInsurance() {
-        return this.AllCustomerInsurance;
+        return this.allCustomerInsurance;
     }
 
+    /**
+     * @param injuryReport
+     */
     public void setInjuryReport(String injuryReport) {
-        this.InjuryReport = injuryReport;
+        this.injuryReport = injuryReport;
     }
 
+    /**
+     * @return injuryReport
+     */
     public String getInjuryReport() {
-        return this.InjuryReport;
+        return this.injuryReport;
     }
 
 
+    /**
+     * @param unpaidReplacements
+     */
     public void setUnpaidReplacements(double unpaidReplacements) {
-        this.UnpaidReplacements = unpaidReplacements;
+        this.unpaidReplacements = unpaidReplacements;
     }
 
+    /**
+     * @return unpaidReplacements
+     */
     public double getUnpaidReplacements() {
-        return this.UnpaidReplacements;
+        return this.unpaidReplacements;
     }
 
 }

@@ -6,15 +6,15 @@ import java.util.Date;
 
 public class Leisure_Insurance extends Data_for_overall_Insurances {
 
-    private String Address_Not_Billing;
-    private int ConstructionYear;
-    private String ResidentalType;
-    private String ConstructionMaterial;
-    private String Condition;
-    private double AmountSquareMeters;
-    private int AmountforConstruction;
-    private int AmountForHousehold;
-    private Customer Customer;
+    private String address_Not_Billing;
+    private int constructionYear;
+    private String residentalType;
+    private String constructionMaterial;
+    private String condition;
+    private double amountSquareMeters;
+    private int amountforConstruction;
+    private int amountForHousehold;
+    private Customer customer;
 
 
     // Default Constructor for Leisure Insurance
@@ -25,92 +25,106 @@ public class Leisure_Insurance extends Data_for_overall_Insurances {
                              Customer_Controller.Customer customer) {
 
         super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
-        this.Address_Not_Billing = address_Not_Billing;
-        this.ConstructionYear = constructionYear;
-        this.ResidentalType = residentalType;
-        this.ConstructionMaterial = constructionMaterial;
-        this.Condition = condition;
-        this.AmountSquareMeters = amountSquareMeters;
-        this.AmountforConstruction = amountforConstruction;
-        this.AmountForHousehold = amountForHousehold;
-        this.Customer = customer;
+        this.address_Not_Billing = address_Not_Billing;
+        this.constructionYear = constructionYear;
+        this.residentalType = residentalType;
+        this.constructionMaterial = constructionMaterial;
+        this.condition = condition;
+        this.amountSquareMeters = amountSquareMeters;
+        this.amountforConstruction = amountforConstruction;
+        this.amountForHousehold = amountForHousehold;
+        this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return  "\nLEISURE INSURANCE" +
+                "\nAddress_Not_Billing: " + address_Not_Billing +
+                "\nConstructionYear: " + constructionYear +
+                "\nResidentalType: " + residentalType +
+                "\nConstructionMaterial: " + constructionMaterial +
+                "\nCondition: " + condition +
+                "\nAmountSquareMeters: " + amountSquareMeters +
+                "\nAmountforConstruction: " + amountforConstruction +
+                "\nAmountForHousehold: " + amountForHousehold +
+                "\n\nOVERALL FOR LEISRUE INSURANCE" + super.toString();
     }
 
     public void setAddress_Not_Billing(String address_Not_Billing) {
-        this.Address_Not_Billing = address_Not_Billing;
+        this.address_Not_Billing = address_Not_Billing;
     }
 
     public String getAddress_Not_Billing() {
-        return this.Address_Not_Billing;
+        return this.address_Not_Billing;
     }
 
 
     public void setConstructionYear(int constructionYear) {
-        this.ConstructionYear = constructionYear;
+        this.constructionYear = constructionYear;
     }
 
     public int getConstructionYear() {
-        return this.ConstructionYear;
+        return this.constructionYear;
     }
 
 
     public void setResidentalType(String residentalType) {
-        this.ResidentalType = residentalType;
+        this.residentalType = residentalType;
     }
 
     public String getResidentalType() {
-        return this.ResidentalType;
+        return this.residentalType;
     }
 
 
     public void setConstructionMaterial(String constructionMaterial) {
-        this.ConstructionMaterial = constructionMaterial;
+        this.constructionMaterial = constructionMaterial;
     }
 
     public String getConstructionMaterial() {
-        return this.ConstructionMaterial;
+        return this.constructionMaterial;
     }
 
 
     public void setCondition(String condition) {
-        this.Condition = condition;
+        this.condition = condition;
     }
 
     public String getCondition() {
-        return this.Condition;
+        return this.condition;
     }
 
 
     public void setAmountSquareMeters(double amountSquareMeters) {
-        this.AmountSquareMeters = amountSquareMeters;
+        this.amountSquareMeters = amountSquareMeters;
     }
 
     public double getAmountSquareMeters() {
-        return this.AmountSquareMeters;
+        return this.amountSquareMeters;
     }
 
     public void setAmountforConstruction(int amountforConstruction) {
-        this.AmountforConstruction = amountforConstruction;
+        this.amountforConstruction = amountforConstruction;
     }
 
     public int getAmountforConstruction() {
-        return this.AmountforConstruction;
+        return this.amountforConstruction;
     }
 
 
     public void setAmountForHousehold(int amountForHousehold) {
-        this.AmountForHousehold = amountForHousehold;
+        this.amountForHousehold = amountForHousehold;
     }
 
     public int getAmountForHousehold() {
-        return this.AmountForHousehold;
+        return this.amountForHousehold;
     }
 
     public Customer getCustomer() {
-        return this.Customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
-        this.Customer = customer;
+        this.customer = customer;
     }
 }
