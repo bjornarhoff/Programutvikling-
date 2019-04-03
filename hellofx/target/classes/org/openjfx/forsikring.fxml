@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="584.0" prefWidth="853.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.openjfx.ForsikringFXMLController">
+  <children>
+    <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="147.0" prefWidth="825.0" text="Forsikring" textFill="BLACK">
+      <font>
+        <Font name="System Bold Italic" size="50.0" />
+      </font>
+    </Label>
+    <TextField fx:id="personalID" layoutX="73.0" layoutY="168.0" prefWidth="200.0" promptText="PersonalID" />
+    <TextField fx:id="name" layoutX="73.0" layoutY="222.0" prefWidth="200.0" promptText="Name" />
+    <TextField fx:id="billing" layoutX="73.0" layoutY="270.0" prefWidth="200.0" promptText="Billing adress" />
+    <Button fx:id="registrer" layoutX="73.0" layoutY="322.0" minHeight="10.0" mnemonicParsing="false" onAction="#registrer" prefHeight="34.0" prefWidth="200.0" text="Registrer" />
+    <TextArea fx:id="info" layoutX="427.0" layoutY="168.0" prefHeight="234.0" prefWidth="398.0" promptText="Info" wrapText="true" />
+  </children>
+</AnchorPane>

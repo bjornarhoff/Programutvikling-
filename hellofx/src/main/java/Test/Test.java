@@ -5,13 +5,19 @@ import Insurances.Boat_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Leisure_Insurance;
 import Insurances.Travel_Insurance;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.util.Date;
 
-public class Test {
+public class Test  {
 
     public static void main(String[] args) {
 
+        //Sjekker om alle klassene fungerer som forventet
         Customer customer = new Customer("07029633996", 2, "Cato Akay", new Date(),
                 "Goteborggata 26", "2", "Testing", 3900);
 
@@ -35,5 +41,18 @@ public class Test {
         System.out.println(house_household_insurance.toString());
         System.out.println(leisure_insurance.toString());
         System.out.println(travel_insurance.toString());
+
+        //JavaFX
     }
+
+//    @Override
+//    public void start(Stage primaryStage) throws Exception {
+//        Parent root = FXMLLoader.load(getClass().getResource("../GUI/forsikring.fxml"));
+//
+//        Scene scene = new Scene(root);
+//
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//
+//    }
 }
