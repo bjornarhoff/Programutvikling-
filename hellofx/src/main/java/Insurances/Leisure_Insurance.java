@@ -34,6 +34,7 @@ public class Leisure_Insurance extends Data_for_overall_Insurances {
         this.amountforConstruction = amountforConstruction;
         this.amountForHousehold = amountForHousehold;
         this.customer = customer;
+        customer.CustomerInsuranceCounter(customer);
     }
 
     @Override

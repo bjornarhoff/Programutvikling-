@@ -37,6 +37,18 @@ public class Damage_Report {
         this.unpaidReplacementAmount = unpaidReplacementAmount;
     }
 
+    @Override
+    public String toString() {
+        return  "DAMAGE REPORT" +
+                "\nDateOfDamage: " + dateOfDamage +
+                "\nDamageNr: " + damageNr +
+                "\nDamageType: " + damageType +
+                "\nDamageDescription: " + damageDescription +
+                "\nContactOfPotentialWitnesses: " + contactOfPotentialWitnesses +
+                "\nTaxationAmountOfDamage: " + taxationAmountOfDamage +
+                "\nUnpaidReplacementAmount: " + unpaidReplacementAmount;
+    }
+
     /**
      * @param dateOfDamage
      */

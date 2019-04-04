@@ -1,6 +1,7 @@
 package Test;
 
 import Customer_Controller.Customer;
+import Damages.Damage_Report;
 import Insurances.Boat_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Leisure_Insurance;
@@ -17,9 +18,17 @@ public class Test  {
 
     public static void main(String[] args) {
 
+        Damage_Report damage_report = new Damage_Report(new Date(), 3, "A crash",
+                "The window borke", "Bjornar", 3000,
+                100);
+
         //Sjekker om alle klassene fungerer som forventet
-        Customer customer = new Customer("07029633996", 2, "Cato Akay", new Date(),
-                "Goteborggata 26", "2", "Testing", 3900);
+        Customer customer = new Customer("07029633996", "Cato Aka", "12345",
+                "asljd@hotmail.com", new Date(),
+                "Goteborggata 26",  3900);
+        //Assigning a  damage report to the custoner object after it has been initilised
+        customer.setDamageReport(damage_report);
+
 
         Boat_Insurance boat_insurance = new Boat_Insurance("10%", new Date(), 4500,
                 "Husk betaling!", "Sven", "CV45784", "BMW 44",
@@ -35,6 +44,7 @@ public class Test  {
                 200, 10000, 4000, customer);
         Travel_Insurance travel_insurance = new Travel_Insurance("60%", new Date(),
                 120, "Bare betal", "EU", 350, customer);
+
 
         System.out.println(customer.toString());
         System.out.println(boat_insurance.toString());

@@ -1,6 +1,9 @@
 package Customer_Controller;
 
+import Damages.Damage_Report;
+
 import java.util.Date;
+import java.util.Random;
 
 
 public class Customer {
@@ -11,52 +14,87 @@ public class Customer {
     private String personalID;
     private int insuranceNr;
     private String name;
+    private String phoneNumber;
+    private String email;
     private Date date;
     private String billingAddress;
-    private String allCustomerInsurance;
-    private String injuryReport;
+    private int allCustomerInsurance;
+    private Damage_Report damageReport;
     private double unpaidReplacements;
 
+
+    // A constructor that dosent require a damageReport (Default constructor)
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress,
+                    double UnpaidReplacements) {
+
+        this.personalID = PersonalID;
+        this.insuranceNr = GenerateInsuranceNr(insuranceNr);
+        this.name = Name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.date = Date;
+        this.billingAddress = BillingAddress;
+        this.unpaidReplacements = UnpaidReplacements;
+
+    }
+
     /**
-     * Default constructor for Customer class
+     * Constructor for Customer class with Damage_Report
      * @param PersonalID
      * @param InsuranceNr
      * @param Name
      * @param Date
      * @param BillingAddress
      * @param AllCustomerInsurance
-     * @param InjuryReport
+     * @param damageReport
      * @param UnpaidReplacements
      */
 
-    public Customer(String PersonalID, int InsuranceNr, String Name, Date Date, String BillingAddress,
-                    String AllCustomerInsurance, String InjuryReport, double UnpaidReplacements){
-
-        this.personalID = PersonalID;
-        this.insuranceNr = InsuranceNr;
-        this.name = Name;
-        this.date = Date;
-        this.billingAddress = BillingAddress;
-        this.allCustomerInsurance = AllCustomerInsurance;
-        this.injuryReport = InjuryReport;
-        this.unpaidReplacements = UnpaidReplacements;
-
-    }
 
     /**
      * @return a string that contains all data in the instance variables for class Customer
      */
     @Override
     public String toString() {
-        return  "\nCUSTOMER" +
+        return "\nCUSTOMER" +
                 "\nPersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
+                "\nPhone: " + phoneNumber +
+                "\nEmail: " + email +
                 "\nDate: " + date +
                 "\nBillingAddress: " + billingAddress +
                 "\nAllCustomerInsurance: " + allCustomerInsurance +
-                "\nInjuryReport: " + injuryReport +
-                "\nUnpaidReplacements: " + unpaidReplacements;
+                "\nUnpaidReplacements: " + unpaidReplacements +
+                "\n\n" + damageReport;
+    }
+
+    /**
+     * @param insuranceNr
+     * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
+     * return the generated Number
+     */
+    public static int GenerateInsuranceNr(int insuranceNr) {
+        int min = 100000;
+        int max = 999999;
+
+        Random r = new Random();
+        insuranceNr = r.nextInt((max - min) + 1);
+
+        return insuranceNr;
+    }
+
+    /**
+     * We first get all the excisitng Insurances the customer has and then increase the number of Insurnaces
+     * then we set the existing number of Insurances to the customer.
+     * @param customer
+     *
+     */
+    public void CustomerInsuranceCounter(Customer customer) {
+        int existingInsurances = customer.getAllCustomerInsurance();
+        existingInsurances++;
+
+        customer.setAllCustomerInsurance(existingInsurances);
     }
 
     /**
@@ -98,8 +136,27 @@ public class Customer {
     /**
      * @return name
      */
+
+
     public String getName() {
         return this.name;
+    }
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -135,29 +192,29 @@ public class Customer {
     /**
      * @param allCustomerInsurance
      */
-    public void setAllCustomerInsurance(String allCustomerInsurance) {
+    public void setAllCustomerInsurance(int allCustomerInsurance) {
         this.allCustomerInsurance = allCustomerInsurance;
     }
 
     /**
      * @return allCustomerInsurance
      */
-    public String getAllCustomerInsurance() {
+    public int getAllCustomerInsurance() {
         return this.allCustomerInsurance;
     }
 
     /**
-     * @param injuryReport
+     * @param damageReport
      */
-    public void setInjuryReport(String injuryReport) {
-        this.injuryReport = injuryReport;
+    public void setDamageReport(Damage_Report damageReport) {
+        this.damageReport = damageReport;
     }
 
     /**
-     * @return injuryReport
+     * @return damageReport
      */
-    public String getInjuryReport() {
-        return this.injuryReport;
+    public Damage_Report getDamageReport() {
+        return this.damageReport;
     }
 
 

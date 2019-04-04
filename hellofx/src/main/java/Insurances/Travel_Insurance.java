@@ -21,6 +21,7 @@ public class Travel_Insurance extends Data_for_overall_Insurances {
         this.insuranceArea = insuranceArea;
         this.insuranceSum = insuranceSum;
         this.customer = customer;
+        customer.CustomerInsuranceCounter(customer);
     }
 
     @Override
