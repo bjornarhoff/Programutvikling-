@@ -28,7 +28,7 @@ public class Customer {
                     double UnpaidReplacements) {
 
         this.personalID = PersonalID;
-        this.insuranceNr = GenerateInsuranceNr(insuranceNr);
+        this.insuranceNr = GenerateInsuranceNr();
         this.name = Name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -74,20 +74,18 @@ public class Customer {
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
-    public static int GenerateInsuranceNr(int insuranceNr) {
+    public static int GenerateInsuranceNr() {
         int min = 100000;
         int max = 999999;
 
         Random r = new Random();
-        insuranceNr = r.nextInt((max - min) + 1);
-
-        return insuranceNr;
+        return r.nextInt((max - min) + 1);
     }
 
     /**
      * We first get all the excisitng Insurances the customer has and then increase the number of Insurnaces
      * then we set the existing number of Insurances to the customer.
-     * @param customer
+     * @param customer object
      *
      */
     public void CustomerInsuranceCounter(Customer customer) {

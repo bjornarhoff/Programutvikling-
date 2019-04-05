@@ -26,7 +26,7 @@ public class Test  {
         Customer customer = new Customer("07029633996", "Cato Aka", "12345",
                 "asljd@hotmail.com", new Date(),
                 "Goteborggata 26",  3900);
-        //Assigning a  damage report to the custoner object after it has been initilised
+        //Assigning a  damage report to the customer object after it has been initilised
         customer.setDamageReport(damage_report);
 
 
@@ -52,17 +52,5 @@ public class Test  {
         System.out.println(leisure_insurance.toString());
         System.out.println(travel_insurance.toString());
 
-        //JavaFX
     }
-
-//    @Override
-//    public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("../GUI/forsikring.fxml"));
-//
-//        Scene scene = new Scene(root);
-//
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//
-//    }
 }
