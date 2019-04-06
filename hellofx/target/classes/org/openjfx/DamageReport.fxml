@@ -23,10 +23,10 @@
                   <Insets top="15.0" />
                </padding>
             </JFXTextArea>
-            <JFXButton layoutY="87.0" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Create New Report" textFill="WHITE" />
-            <JFXButton layoutX="-1.0" layoutY="164.0" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Edit Report" textFill="WHITE" />
-            <JFXButton layoutX="-1.0" layoutY="246.0" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Show Description" textFill="WHITE" />
-            <JFXButton layoutX="-2.0" layoutY="324.0" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Delete Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_create" layoutX="-1.0" layoutY="85.0" prefHeight="45.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Create New Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_edit" layoutX="-2.0" layoutY="152.0" prefHeight="45.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Edit Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_showDescription" layoutX="-1.0" layoutY="219.0" prefHeight="45.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Show Description" textFill="WHITE" />
+            <JFXButton fx:id="btn_delete" layoutX="-2.0" layoutY="287.0" prefHeight="45.0" prefWidth="152.0" style="-fx-background-color: #50514F;" text="Delete Report" textFill="WHITE" />
             <JFXTreeTableView layoutX="151.0" layoutY="59.0" prefHeight="114.0" prefWidth="449.0">
                <columns>
                   <TreeTableColumn prefWidth="85.0" text="Damage Nr." />
@@ -35,12 +35,13 @@
                   <TreeTableColumn prefWidth="118.0" text="Tax. Amount" />
                </columns>
             </JFXTreeTableView>
-            <JFXTextArea layoutX="150.0" layoutY="188.0" prefHeight="193.0" prefWidth="449.0" promptText="Desciption of Damage Report: " style="-fx-background-color: white;" unFocusColor="WHITE">
+            <JFXTextArea fx:id="text_area" layoutX="150.0" layoutY="188.0" prefHeight="193.0" prefWidth="449.0" promptText="Desciption of Damage Report: " style="-fx-background-color: white;" unFocusColor="WHITE">
                <effect>
                   <InnerShadow />
                </effect>
             </JFXTextArea>
             <JFXTextField layoutX="257.0" layoutY="-1.0" prefHeight="58.0" prefWidth="151.0" promptText="Customer Name" />
+            <JFXButton fx:id="btn_goBack" layoutX="36.0" layoutY="355.0" prefHeight="45.0" prefWidth="77.0" style="-fx-background-color: #50514F;" text="Go Back" textFill="WHITE" />
          </children>
       </Pane>
    </children>
