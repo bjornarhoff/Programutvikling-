@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.PopUpCreateCustomer">
+   <children>
+      <Pane prefHeight="393.0" prefWidth="594.0" style="-fx-background-color: #BBE5Ed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextField fx:id="name" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="52.0" promptText="Name" unFocusColor="BLACK" />
+            <JFXTextField fx:id="personalID" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="111.0" promptText="Personal ID" />
+            <JFXTextField fx:id="email" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="229.0" promptText="Email" />
+            <JFXTextField fx:id="phone" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="170.0" promptText="Phone Number" />
+            <JFXTextField fx:id="billing" focusColor="BLACK" labelFloat="true" layoutX="297.0" layoutY="52.0" promptText="Billing Address" />
+            <JFXButton layoutX="414.0" layoutY="347.0" onAction="#Apply" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: grey;" text="Apply Changes" textFill="WHITE" />
+            <JFXButton layoutX="545.0" layoutY="347.0" prefHeight="39.0" prefWidth="41.0" style="-fx-background-color: grey;" text="OK!" textFill="WHITE" />
+            <JFXButton fx:id="goback" layoutX="33.0" layoutY="347.0" prefHeight="39.0" prefWidth="68.0" style="-fx-background-color: grey;" text="Cancel" textFill="WHITE" />
+            <JFXTextArea fx:id="info" layoutX="297.0" layoutY="99.0" prefHeight="214.0" prefWidth="282.0" style="-fx-background-color: white;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
