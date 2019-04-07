@@ -14,29 +14,29 @@
          <children>
             <Pane fx:id="pane_Customer" prefHeight="400.0" prefWidth="540.0" style="-fx-background-color: #4B3B47;">
                <children>
-                  <JFXButton layoutX="14.0" layoutY="60.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black;" text="Add Customer" textFill="WHITE" />
-                  <JFXButton layoutX="14.0" layoutY="258.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black;" text="Damage Report" textFill="WHITE" />
-                  <JFXButton layoutX="14.0" layoutY="127.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black;" text="Edit Customer" textFill="WHITE" />
-                  <JFXButton layoutX="14.0" layoutY="191.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black;" text="Delete Customer" textFill="WHITE" />
-                  <JFXTreeTableView layoutX="161.0" prefHeight="400.0" prefWidth="382.0" style="-fx-background-color: white;">
+                  <JFXButton fx:id="btn_addCustomer" layoutX="14.0" layoutY="60.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Add Customer" textFill="WHITE" />
+                  <JFXButton fx:id="btn_showDamageReport" layoutX="14.0" layoutY="255.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Damage Report" textFill="WHITE" />
+                  <JFXButton fx:id="btn_editCustomer" layoutX="14.0" layoutY="125.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Edit Customer" textFill="WHITE" />
+                  <JFXButton fx:id="btn_deleteCustomer" layoutX="14.0" layoutY="190.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Customer" textFill="WHITE" />
+                  <JFXTreeTableView fx:id="ttv_custView" layoutX="161.0" prefHeight="400.0" prefWidth="382.0" style="-fx-background-color: white;">
                      <columns>
-                        <TreeTableColumn prefWidth="84.0" text="Name" />
-                        <TreeTableColumn prefWidth="95.0" text="Personal ID" />
-                        <TreeTableColumn prefWidth="85.0" text="Insurance ID" />
-                        <TreeTableColumn prefWidth="116.0" text="Nr. of Insurances" />
+                        <TreeTableColumn fx:id="ttc_cName" prefWidth="84.0" text="Name" />
+                        <TreeTableColumn fx:id="ttc_cPersonalID" prefWidth="95.0" text="Personal ID" />
+                        <TreeTableColumn fx:id="ttc_cInsruanceID" prefWidth="85.0" text="Insurance ID" />
+                        <TreeTableColumn fx:id="ttc__cNrInsurnaces" prefWidth="116.0" text="Nr. of Insurances" />
                      </columns>
                      <effect>
                         <InnerShadow />
                      </effect>
                   </JFXTreeTableView>
-                  <JFXButton layoutX="14.0" layoutY="322.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black;" text="Show Full Info" textFill="WHITE" />
+                  <JFXButton fx:id="btn_showInfoCust" layoutX="14.0" layoutY="320.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
                </children>
             </Pane>
             <Pane fx:id="pane_Insurance" prefHeight="400.0" prefWidth="540.0" style="-fx-background-color: #8C7365;">
                <children>
-                  <JFXButton layoutX="9.0" layoutY="60.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: #40434E;" text="Create Insurance" textFill="WHITE" />
-                  <JFXButton layoutX="9.0" layoutY="125.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: #40434E;" text="Modify Insurance" textFill="WHITE" />
-                  <JFXButton layoutX="9.0" layoutY="190.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: #40434E;" text="Delete Insurance" textFill="WHITE" />
+                  <JFXButton fx:id="btn_createInsurance" layoutX="9.0" layoutY="60.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
+                  <JFXButton fx:id="btn_modfiInsurance" layoutX="9.0" layoutY="125.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
+                  <JFXButton fx:id="btn_deleteInsurance" layoutX="9.0" layoutY="190.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Insurance" textFill="WHITE" />
                   <JFXTreeTableView layoutX="167.0" prefHeight="400.0" prefWidth="375.0" style="-fx-background-color: white;">
                      <columns>
                         <TreeTableColumn prefWidth="124.0" text="Column X" />
@@ -47,7 +47,7 @@
                         <InnerShadow />
                      </effect>
                   </JFXTreeTableView>
-                  <JFXButton layoutX="9.0" layoutY="255.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: #40434E;" text="Show Full Info" textFill="WHITE" />
+                  <JFXButton fx:id="btn_showInfoIns" layoutX="9.0" layoutY="255.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
                </children>
             </Pane>
          </children>

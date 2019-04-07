@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.DamageReportController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6D6875;">
@@ -28,9 +27,9 @@
                   <InnerShadow />
                </effect>
             </JFXTextArea>
-            <JFXButton layoutX="295.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: grey;" text="Cancel" />
-            <JFXButton layoutX="456.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: grey;" text="Apply" />
-            <JFXButton layoutX="529.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: grey;" text="Ok!" />
+            <JFXButton layoutX="295.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
+            <JFXButton layoutX="456.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
+            <JFXButton layoutX="529.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Ok!" textFill="WHITE" />
          </children>
       </Pane>
    </children>
