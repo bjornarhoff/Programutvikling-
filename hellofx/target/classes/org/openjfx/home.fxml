@@ -14,7 +14,7 @@
          <children>
             <Pane fx:id="pane_Customer" prefHeight="400.0" prefWidth="540.0" style="-fx-background-color: #4B3B47;">
                <children>
-                  <JFXButton fx:id="btn_addCustomer" layoutX="14.0" layoutY="60.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Add Customer" textFill="WHITE" />
+                  <JFXButton onAction="#addCustomerPressed" fx:id="btn_addCustomer" layoutX="14.0" layoutY="60.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Add Customer" textFill="WHITE" />
                   <JFXButton onAction="#damageReportPressed" fx:id="btn_showDamageReport" layoutX="14.0" layoutY="255.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Damage Report" textFill="WHITE" />
                   <JFXButton fx:id="btn_editCustomer" layoutX="14.0" layoutY="125.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Edit Customer" textFill="WHITE" />
                   <JFXButton fx:id="btn_deleteCustomer" layoutX="14.0" layoutY="190.0" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Customer" textFill="WHITE" />
