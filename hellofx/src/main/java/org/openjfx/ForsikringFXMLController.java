@@ -35,12 +35,12 @@ public class ForsikringFXMLController implements Initializable {
 
     @FXML
     public void registrer() {
-        Damage_Report damage_report = new Damage_Report(new Date(), 3, "A crash",
+        Damage_Report damage_report = new Damage_Report(new Date(), 4, "A crash",
                 "The window borke", "Bjornar", 3000,
                 100);
 
         Customer customer = new Customer(personalID.getText(),  name.getText(), phone.getText(),
-                email.getText(), new Date(), billing.getText(),  3900);
+                email.getText(), new Date(), billing.getText(),  3300);
 
         String out = customer.toString();
         info.setText(out);
