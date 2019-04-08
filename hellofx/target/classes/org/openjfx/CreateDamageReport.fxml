@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.DamageReportController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6D6875;">
+         <children>
+            <JFXTextField layoutY="-6.0" prefHeight="44.0" prefWidth="600.0" promptText="Create new Damage Report for Customer: " style="-fx-background-color: #9D8189;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField layoutX="325.0" layoutY="-6.0" prefHeight="44.0" prefWidth="166.0" promptText="Customer Name" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutY="57.0" prefHeight="38.0" prefWidth="183.0" promptText="Date of Damage: dd/mm/yyy" unFocusColor="BLACK" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutY="123.0" prefHeight="38.0" prefWidth="183.0" promptText="Damage Type" unFocusColor="BLACK" />
+            <JFXTextArea focusColor="WHITE" labelFloat="true" layoutX="1.0" layoutY="200.0" prefHeight="90.0" prefWidth="270.0" promptText="Damage Description: " unFocusColor="BLACK" />
+            <JFXTextArea focusColor="WHITE" labelFloat="true" layoutX="-1.0" layoutY="310.0" prefHeight="84.0" prefWidth="270.0" promptText="Contact of potenial Witnesses:" unFocusColor="BLACK" />
+            <JFXTextArea layoutX="295.0" layoutY="61.0" prefHeight="276.0" prefWidth="306.0" promptText="Infromation about the Created Customer:" style="-fx-background-color: white;">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </JFXTextArea>
+            <JFXButton layoutX="295.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
+            <JFXButton layoutX="456.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
+            <JFXButton layoutX="529.0" layoutY="348.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Ok!" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

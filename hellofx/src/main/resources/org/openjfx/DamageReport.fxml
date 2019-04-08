@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.DamageReportController">
+   <children>
+      <Pane layoutX="-7.0" prefHeight="400.0" prefWidth="615.0" style="-fx-background-color: #6D6875;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextArea fx:id="Title" prefHeight="23.0" prefWidth="600.0" promptText="Damage Report of Customer: " style="-fx-background-color: #9D8189;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </JFXTextArea>
+            <JFXButton fx:id="btn_create" layoutX="8.0" layoutY="80.0" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create New Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_edit" layoutX="8.0" layoutY="145.0" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Edit Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_showDescription" layoutX="8.0" layoutY="210.0" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Description" textFill="WHITE" />
+            <JFXButton fx:id="btn_delete" layoutX="8.0" layoutY="275.0" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Report" textFill="WHITE" />
+            <JFXTreeTableView fx:id="ttv_table" layoutX="151.0" layoutY="59.0" prefHeight="114.0" prefWidth="449.0">
+               <columns>
+                  <TreeTableColumn fx:id="ttc_damageNr" prefWidth="85.0" text="Damage Nr." />
+                  <TreeTableColumn fx:id="ttc_dateDamage" prefWidth="95.0" text="Date Damage" />
+                  <TreeTableColumn fx:id="ttc_unpaid" prefWidth="150.0" text="Unpaid Replacements" />
+                  <TreeTableColumn fx:id="ttc_taxAmount" prefWidth="118.0" text="Tax. Amount" />
+               </columns>
+            </JFXTreeTableView>
+            <JFXTextArea fx:id="text_area" layoutX="152.0" layoutY="188.0" prefHeight="193.0" prefWidth="449.0" promptText="Desciption of Damage Report: " style="-fx-background-color: white;" unFocusColor="WHITE">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </JFXTextArea>
+            <JFXTextField fx:id="txt_Customername" layoutX="257.0" layoutY="-1.0" prefHeight="58.0" prefWidth="151.0" promptText="Customer Name" />
+            <JFXButton fx:id="btn_goBack" layoutX="36.0" layoutY="340.0" prefHeight="45.0" prefWidth="77.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Go Back" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
