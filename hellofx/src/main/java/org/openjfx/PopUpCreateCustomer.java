@@ -66,7 +66,7 @@ public class PopUpCreateCustomer implements Initializable{
 
 
    @FXML
-    public void cancel() {
+    public void cancelPressed() {
        try {
            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
            anchorPane.getChildren().setAll(root);
