@@ -7,19 +7,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 
 public class MainApp extends Application {
     
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("PopUpCreateCustomer.fxml"));
+    public void start(Stage stage) {
 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
 
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
+            stage.setTitle("JavaFX and Maven");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     /**
