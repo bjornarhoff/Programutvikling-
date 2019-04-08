@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -16,10 +18,13 @@ import java.io.IOException;
 public class FXMLHomeController {
 
     @FXML
-    private AnchorPane anchorPane;
+    private BorderPane entireScreen;
 
     @FXML
-    private Pane pane_Customer, pane_Insurance;
+    private GridPane pane_Insurance;
+
+    @FXML
+    private GridPane pane_Customer;
 
     @FXML
     private JFXButton button_Customer, button_Insurance, btn_addCustomer, btn_editCustomer, btn_deleteCustomer,
@@ -51,7 +56,7 @@ public class FXMLHomeController {
     private void damageReportPressed(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("damageReport.fxml"));
-            anchorPane.getChildren().setAll(root);
+            entireScreen.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,7 +67,7 @@ public class FXMLHomeController {
     private void addCustomerPressed(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("popUpCreateCustomer.fxml"));
-            anchorPane.getChildren().setAll(root);
+            entireScreen.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
