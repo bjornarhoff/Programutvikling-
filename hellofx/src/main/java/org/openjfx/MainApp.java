@@ -2,6 +2,8 @@ package org.openjfx;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +19,11 @@ public class MainApp extends Application {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+
+            stage.setOnCloseRequest(event -> {
+                Platform.exit();
+                System.exit(0);
+            });
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

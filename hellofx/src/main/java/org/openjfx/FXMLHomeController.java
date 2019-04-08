@@ -50,7 +50,7 @@ public class FXMLHomeController {
     @FXML
     private void damageReportPressed(){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("DamageReport.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("damageReport.fxml"));
             anchorPane.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
