@@ -49,6 +49,12 @@
                </rowConstraints>
                <children>
                   <AnchorPane prefHeight="575.0" prefWidth="76.0" style="-fx-background-color: #2B2D42;" />
+                  <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
+                     <children>
+                        <JFXButton layoutY="144.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Customers" />
+                        <JFXButton fx:id="button_Insurance" layoutY="199.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Insurances" />
+                     </children>
+                  </AnchorPane>
                   <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #4B3B47;" GridPane.columnIndex="2">
                      <children>
                         <JFXButton fx:id="btn_addCustomer" layoutY="143.0" onAction="#addCustomerPressed" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Add Customer" textFill="WHITE" />
@@ -56,12 +62,6 @@
                         <JFXButton fx:id="btn_deleteCustomer" layoutY="252.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Customer" textFill="WHITE" />
                         <JFXButton fx:id="btn_showDamageReport" layoutY="305.0" onAction="#damageReportPressed" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Damage Report" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoCust" layoutY="358.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
-                     <children>
-                        <JFXButton fx:id="button_Customer" layoutY="144.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Customers" />
-                        <JFXButton fx:id="button_Insurance" layoutY="199.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Insurances" />
                      </children>
                   </AnchorPane>
                   <JFXTreeTableView style="-fx-min-width: 100%;" GridPane.columnIndex="3">
@@ -89,18 +89,18 @@
                </rowConstraints>
                <children>
                   <AnchorPane prefHeight="575.0" prefWidth="76.0" style="-fx-background-color: #2B2D42;" />
+                  <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
+                     <children>
+                        <JFXButton fx:id="button_Customer" layoutY="144.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Customers" />
+                        <JFXButton layoutY="199.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Insurances" />
+                     </children>
+                  </AnchorPane>
                   <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #8C7365;" GridPane.columnIndex="2">
                      <children>
                         <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_deleteInsurance1" layoutX="3.0" layoutY="251.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoIns1" layoutX="4.0" layoutY="306.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
-                     <children>
-                        <JFXButton fx:id="button_Customer1" layoutY="144.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Customers" />
-                        <JFXButton fx:id="button_Insurance1" layoutY="199.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: grey;" text="Insurances" />
                      </children>
                   </AnchorPane>
                   <JFXTreeTableView style="-fx-min-width: 100%;" GridPane.columnIndex="3">
