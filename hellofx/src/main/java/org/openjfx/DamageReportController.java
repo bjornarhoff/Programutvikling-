@@ -5,15 +5,23 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 
 public class DamageReportController {
 
     //DamageReport
+    @FXML
+    private AnchorPane anchorPane;
+
     @FXML
     private TextArea text_area;
 
@@ -46,6 +54,17 @@ public class DamageReportController {
     @FXML
     private void handleButtonActions(ActionEvent event){
 
+
+    }
+
+    @FXML
+    private void goBackPressed(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            anchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
