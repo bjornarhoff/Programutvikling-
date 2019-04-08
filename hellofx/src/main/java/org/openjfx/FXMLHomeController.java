@@ -57,4 +57,14 @@ public class FXMLHomeController {
         }
 
     }
+
+    @FXML
+    private void addCustomerPressed(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("popUpCreateCustomer.fxml"));
+            anchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -24,6 +24,7 @@ public class MainApp extends Application {
             stage.setTitle("JavaFX and Maven");
             stage.setScene(scene);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
