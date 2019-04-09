@@ -1,5 +1,6 @@
 package org.openjfx;
 
+import Customer_Controller.Customer;
 import FileManagement.CsvWriter;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 public class MainApp extends Application {
@@ -44,10 +46,20 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        String fileName = System.getProperty("user.home")+"/customer.csv";
+        //String fileName = System.getProperty("user.home")+"/customer.csv";
 
        // Write CSV file
-        CsvWriter.writeCsv(fileName);
+        //CsvWriter.writeCsv(fileName);
+        Customer cato = new Customer("1","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
+        Customer cato1 = new Customer("2","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
+        Customer cato2 = new Customer("3","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
+
+        CsvWriter.writeObjectToCSV(cato);
+        CsvWriter.writeObjectToCSV(cato1);
+        CsvWriter.writeObjectToCSV(cato2);
+
+        //CsvWriter.createFileCSV();
+
     }
 
 

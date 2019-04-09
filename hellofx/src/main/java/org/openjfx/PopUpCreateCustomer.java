@@ -2,6 +2,7 @@ package org.openjfx;
 
 import Customer_Controller.Customer;
 import Damages.Damage_Report;
+import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,9 @@ public class PopUpCreateCustomer implements Initializable{
     public JFXButton goback;
 
     @FXML
+    public JFXButton ok;
+
+    @FXML
     private void handleButtonAction(ActionEvent event) {
 
 
@@ -78,6 +82,16 @@ public class PopUpCreateCustomer implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    @FXML
+    public void okPressed () {
+        info.getText();
+        Customer customer = new Customer(personalID.getText(),  name.getText(), phone.getText(),
+                email.getText(), new Date(), billing.getText(),  3900);
+        CsvWriter write = new CsvWriter();
+
 
     }
 

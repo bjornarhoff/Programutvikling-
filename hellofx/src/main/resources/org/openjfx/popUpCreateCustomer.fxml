@@ -17,7 +17,7 @@
             <JFXTextField fx:id="phone" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="180.0" promptText="Phone Number" unFocusColor="BLACK" />
             <JFXTextField fx:id="billing" focusColor="BLACK" labelFloat="true" layoutX="297.0" layoutY="50.0" promptText="Billing Address" unFocusColor="BLACK" />
             <JFXButton layoutX="406.0" layoutY="347.0" onAction="#Apply" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply Changes" textFill="WHITE" />
-            <JFXButton layoutX="538.0" layoutY="347.0" prefHeight="39.0" prefWidth="41.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="OK!" textFill="WHITE" />
+            <JFXButton fx:id="ok" onAction="#okPressed" layoutX="538.0" layoutY="347.0" prefHeight="39.0" prefWidth="41.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="OK!" textFill="WHITE" />
             <JFXButton onAction="#cancelPressed" fx:id="goback" layoutX="33.0" layoutY="347.0" prefHeight="39.0" prefWidth="68.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
             <JFXTextArea fx:id="info" focusColor="BLACK" labelFloat="true" layoutX="297.0" layoutY="115.0" prefHeight="214.0" prefWidth="282.0" promptText="Info About the Created Customer:" style="-fx-background-color: white;" unFocusColor="BLACK">
                <font>

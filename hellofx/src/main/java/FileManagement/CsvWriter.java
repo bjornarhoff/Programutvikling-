@@ -2,6 +2,7 @@ package FileManagement;
 
 import Customer_Controller.Customer;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,64 +16,63 @@ public class CsvWriter {
     private static final String COMMA = ",";
     private static final String HEADER = "Id,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,Unpaid";
     private static final String NEW_LINE = "\n";
+    private static ArrayList<Customer> customers = new ArrayList<>();
 
 
 
 
-    public static void writeCsv (String fileName) {
-        Customer cato = new Customer("112121","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
-        Customer cato2 = new Customer("112121","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
-        Customer cato3 = new Customer("112121","Cato Akay","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
-
-        ArrayList<Customer> customerList = new ArrayList();
-        customerList.add(cato);
-        customerList.add(cato2);
-        customerList.add(cato3);
-
-        // Creates File Writer
-        FileWriter fileWriter = null;
-
+    public static File createFileCSV(){
+        File file = new File(System.getProperty("user.home")+"/customer2.csv");
 
         try {
-            fileWriter = new FileWriter(fileName);
+            if (file.createNewFile()){
+                System.out.println("File created!");
+            } else {
+                System.out.println("File already exists");
+            }
+        }catch (IOException e){
+            System.err.println("Something wrong!!");
+        }
+        return file;
+    }
+
+    public static void writeObjectToCSV (Customer aCustomer) {
+        FileWriter fileWriter = null;
+        customers.add(aCustomer);
+
+        try {
+            fileWriter = new FileWriter(createFileCSV());
             // Write to header
-            fileWriter.append(HEADER.toString());
+            fileWriter.append(HEADER);
             // New line after header
             fileWriter.append(NEW_LINE);
 
-
-
-            for(Customer customer : customerList) {
-                fileWriter.append(customer.getPersonalID());
-                fileWriter.append(COMMA);
-                fileWriter.append(customer.getName());
-                fileWriter.append(COMMA);
-                fileWriter.append(customer.getPhoneNumber());
-                fileWriter.append(COMMA);
-                fileWriter.append(customer.getEmail());
-                fileWriter.append(COMMA);
-                fileWriter.append(String.valueOf(new Date()));
-                fileWriter.append(COMMA);
-                fileWriter.append(customer.getBillingAddress());
-                fileWriter.append(COMMA);
-                fileWriter.append(String.valueOf(customer.getUnpaidReplacements()));
-                fileWriter.append(NEW_LINE);
-
+            for (Customer customer : customers){
+            fileWriter.append(customer.getPersonalID());
+            fileWriter.append(COMMA);
+            fileWriter.append(customer.getName());
+            fileWriter.append(COMMA);
+            fileWriter.append(customer.getPhoneNumber());
+            fileWriter.append(COMMA);
+            fileWriter.append(customer.getEmail());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(new Date()));
+            fileWriter.append(COMMA);
+            fileWriter.append(customer.getBillingAddress());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(customer.getUnpaidReplacements()));
+            fileWriter.append(NEW_LINE);
             }
-
-            System.out.println("CSV files created");
-
-
         } catch (IOException e) {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
-
         finally {
 
             try {
                 fileWriter.flush();
                 fileWriter.close();
+                System.out.println(customers.toString());
             } catch (IOException e) {
                 System.out.println("Error while flushing/closing fileWriter");
                 e.printStackTrace();
