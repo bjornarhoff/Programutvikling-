@@ -7,12 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 
 public class CsvWriter {
 
-    // Used in CSV file
+    // Parameters used in CSV file
     private static final String COMMA = ",";
     private static final String HEADER = "Id,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,Unpaid";
     private static final String NEW_LINE = "\n";
@@ -21,9 +21,11 @@ public class CsvWriter {
 
 
 
+    // Method for create CSV file -> return file
     public static File createFileCSV(){
         File file = new File(System.getProperty("user.home")+"/customer2.csv");
 
+        // Checks whether the file exists or not
         try {
             if (file.createNewFile()){
                 System.out.println("File created!");
@@ -36,6 +38,7 @@ public class CsvWriter {
         return file;
     }
 
+    // Method for write customer object to CSV file
     public static void writeObjectToCSV (Customer aCustomer) {
         FileWriter fileWriter = null;
         customers.add(aCustomer);
@@ -47,6 +50,7 @@ public class CsvWriter {
             // New line after header
             fileWriter.append(NEW_LINE);
 
+            // Loops over arraylist -> Retrieving parameters
             for (Customer customer : customers){
             fileWriter.append(customer.getPersonalID());
             fileWriter.append(COMMA);
@@ -63,16 +67,23 @@ public class CsvWriter {
             fileWriter.append(String.valueOf(customer.getUnpaidReplacements()));
             fileWriter.append(NEW_LINE);
             }
+            // If something went wrong while creating file
         } catch (IOException e) {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
+        // finally code -> always executes when the try block exits
         finally {
 
             try {
-                fileWriter.flush();
-                fileWriter.close();
+                if (fileWriter != null) {
+                    // Closes the stream, flushing it first.
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+                // Prints out arraylist
                 System.out.println(customers.toString());
+
             } catch (IOException e) {
                 System.out.println("Error while flushing/closing fileWriter");
                 e.printStackTrace();
