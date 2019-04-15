@@ -8,10 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,8 +70,11 @@ public class PopUpCreateCustomer implements Initializable{
    @FXML
     public void cancel() {
        try {
+           //Lag metode for dette!!
            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-           anchorPane.getChildren().setAll(root);
+           Scene scene = new Scene(root);
+           Stage stg = (Stage) anchorPane.getParent().getScene().getWindow();
+           stg.setScene(scene);
        } catch (
                IOException e) {
            e.printStackTrace();
