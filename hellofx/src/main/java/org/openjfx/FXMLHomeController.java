@@ -1,5 +1,7 @@
 package org.openjfx;
 
+import Customer_Controller.Customer;
+import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +32,9 @@ public class FXMLHomeController {
 
     @FXML
     private TreeTableColumn ttc_cName, ttc_cPersonalID, ttc_cInsruanceID, ttc__cNrInsurnaces;
+
+    /** Variable test for reader class */
+    CsvReader reader = new CsvReader();
 
     @FXML
     private void initialize(){
@@ -63,6 +68,10 @@ public class FXMLHomeController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("popUpCreateCustomer.fxml"));
             anchorPane.getChildren().setAll(root);
+
+            /** When addCustomer pressed, read csv file --> test for reader class) */
+            reader.read();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

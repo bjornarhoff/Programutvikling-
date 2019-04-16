@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+
 public class PopUpCreateCustomer implements Initializable{
 
     @FXML
@@ -48,9 +49,11 @@ public class PopUpCreateCustomer implements Initializable{
     @FXML
     public JFXButton ok;
 
+
+    public String out;
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
-
 
     }
 
@@ -64,8 +67,10 @@ public class PopUpCreateCustomer implements Initializable{
         Customer customer = new Customer(personalID.getText(),  name.getText(), phone.getText(),
                 email.getText(), new Date(), billing.getText(),  3900);
 
-        String out = customer.toString();
+        out = customer.toString();
         info.setText(out);
+        CsvWriter.writeObjectToCSV(customer);
+        ok.setVisible(true);
     }
 
 
@@ -87,12 +92,7 @@ public class PopUpCreateCustomer implements Initializable{
 
     @FXML
     public void okPressed () {
-        info.getText();
-        Customer customer = new Customer(personalID.getText(),  name.getText(), phone.getText(),
-                email.getText(), new Date(), billing.getText(),  3900);
-        CsvWriter write = new CsvWriter();
-
-
+       cancelPressed();
     }
 
 }

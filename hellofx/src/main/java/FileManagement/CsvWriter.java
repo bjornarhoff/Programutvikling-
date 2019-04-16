@@ -14,7 +14,7 @@ public class CsvWriter {
 
     // Parameters used in CSV file
     private static final String COMMA = ",";
-    private static final String HEADER = "Id,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,Unpaid";
+    private static final String HEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
     private static final String NEW_LINE = "\n";
     private static ArrayList<Customer> customers = new ArrayList<>();
 
@@ -52,6 +52,8 @@ public class CsvWriter {
 
             // Loops over arraylist -> Retrieving parameters
             for (Customer customer : customers){
+            fileWriter.append(String.valueOf(customer.getInsuranceNr()));
+            fileWriter.append(COMMA);
             fileWriter.append(customer.getPersonalID());
             fileWriter.append(COMMA);
             fileWriter.append(customer.getName());

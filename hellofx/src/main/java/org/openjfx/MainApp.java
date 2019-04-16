@@ -54,11 +54,11 @@ public class MainApp extends Application {
         //CsvWriter.writeCsv(fileName);
         Customer cato = new Customer("1","Cato Akay1","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
         Customer cato1 = new Customer("2","Cato Akay2","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
-        Customer cato2 = new Customer("3","Cato Akay3","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
 
         CsvWriter.writeObjectToCSV(cato);
         CsvWriter.writeObjectToCSV(cato1);
-        CsvWriter.writeObjectToCSV(cato2);
+
+        CsvReader.read();
 
         //CsvReader.readFromCsv();
 
