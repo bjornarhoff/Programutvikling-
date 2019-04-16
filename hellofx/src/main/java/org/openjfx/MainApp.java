@@ -8,8 +8,10 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
@@ -32,7 +34,6 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -62,6 +63,8 @@ public class MainApp extends Application {
         //CsvReader.readFromCsv();
 
         //CsvWriter.createFileCSV();
+
+
 
     }
 
