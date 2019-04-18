@@ -12,6 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Date;
 
 public class Test  {
@@ -45,12 +48,12 @@ public class Test  {
         Travel_Insurance travel_insurance = new Travel_Insurance("60%", new Date(),
                 120, "Bare betal", "EU", 350, customer);
 
-
         System.out.println(customer.toString());
         System.out.println(boat_insurance.toString());
         System.out.println(house_household_insurance.toString());
         System.out.println(leisure_insurance.toString());
         System.out.println(travel_insurance.toString());
+
 
     }
 }

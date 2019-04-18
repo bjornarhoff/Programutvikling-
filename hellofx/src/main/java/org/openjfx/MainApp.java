@@ -1,5 +1,6 @@
 package org.openjfx;
 
+import Customer_Controller.Customer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Date;
 
 
 public class MainApp extends Application {

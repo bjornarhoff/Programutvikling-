@@ -2,12 +2,18 @@ package Customer_Controller;
 
 import Damages.Damage_Report;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
 
-public class Customer {
+public class Customer implements Serializable {
 
+
+    private static final long serialVersionUID = 1;
     /**
      * Instance variables for the Customer class
      */
@@ -70,7 +76,7 @@ public class Customer {
     }
 
     /**
-     * @param insuranceNr
+     * @param
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
@@ -93,6 +99,23 @@ public class Customer {
         existingInsurances++;
 
         customer.setAllCustomerInsurance(existingInsurances);
+    }
+
+
+    public void Serialisering(){
+        Customer sven = new Customer("123","sven", "07133003397", "svenblabla.outlook",
+                new Date(), "fuckthisadress", 3000);
+
+        String filepath = "sven.jobj";
+        try (
+                FileOutputStream fos = new FileOutputStream(filepath);
+                ObjectOutputStream out = new ObjectOutputStream(fos);
+        ) {
+            out.writeObject(sven);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
