@@ -1,8 +1,9 @@
 package Damages;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Damage_Report {
+public class Damage_Report implements Serializable {
 
     /**
      * Instance variables for the Damage_Report class

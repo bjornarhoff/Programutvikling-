@@ -1,6 +1,7 @@
 package Customer_Controller;
 
 import Damages.Damage_Report;
+import Insurances.Insurance;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,20 +14,21 @@ import java.util.Random;
 public class Customer implements Serializable {
 
 
-    private static final long serialVersionUID = 1;
+
     /**
      * Instance variables for the Customer class
      */
+    private static final long serialVersionUID = 1;
     private String personalID;
     private int insuranceNr;
     private String name;
-    private String phoneNumber;
-    private String email;
+    private transient String phoneNumber;
+    private transient String email;
     private Date date;
     private String billingAddress;
-    private int allCustomerInsurance;
+    private transient int allCustomerInsurance;
     private Damage_Report damageReport;
-    private double unpaidReplacements;
+    private transient double unpaidReplacements;
 
 
     // A constructor that dosent require a damageReport (Default constructor)
@@ -34,7 +36,7 @@ public class Customer implements Serializable {
                     double UnpaidReplacements) {
 
         this.personalID = PersonalID;
-        this.insuranceNr = GenerateInsuranceNr();
+        this.insuranceNr = generateInsuranceNr();
         this.name = Name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -80,7 +82,7 @@ public class Customer implements Serializable {
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
-    public static int GenerateInsuranceNr() {
+    public static int generateInsuranceNr() {
         int min = 100000;
         int max = 999999;
 
@@ -94,7 +96,7 @@ public class Customer implements Serializable {
      * @param customer object
      *
      */
-    public void CustomerInsuranceCounter(Customer customer) {
+    public void customerInsuranceCounter(Customer customer) {
         int existingInsurances = customer.getAllCustomerInsurance();
         existingInsurances++;
 
@@ -102,21 +104,6 @@ public class Customer implements Serializable {
     }
 
 
-    public void Serialisering(){
-        Customer sven = new Customer("123","sven", "07133003397", "svenblabla.outlook",
-                new Date(), "fuckthisadress", 3000);
-
-        String filepath = "sven.jobj";
-        try (
-                FileOutputStream fos = new FileOutputStream(filepath);
-                ObjectOutputStream out = new ObjectOutputStream(fos);
-        ) {
-            out.writeObject(sven);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * @param PersonalID
