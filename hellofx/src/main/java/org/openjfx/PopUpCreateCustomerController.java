@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class PopUpCreateCustomer implements Initializable{
+public class PopUpCreateCustomerController implements Initializable{
 
     @FXML
     private AnchorPane anchorPane;

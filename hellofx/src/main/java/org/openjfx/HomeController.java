@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class FXMLHomeController {
+public class HomeController {
 
     @FXML
     private BorderPane entireScreen;
