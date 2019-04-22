@@ -29,7 +29,7 @@ public class Test  {
         //Sjekker om alle klassene fungerer som forventet
         Customer customer = new Customer("07029633996", "Cato Aka", "12345",
                 "asljd@hotmail.com", new Date(),
-                "Goteborggata 26",  3900);
+                "Goteborggata 26");
         //Assigning a  damage report to the customer object after it has been initilised
         customer.setDamageReport(damage_report);
 

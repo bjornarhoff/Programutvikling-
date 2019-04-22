@@ -2,6 +2,7 @@ package Customer_Controller;
 
 import Damages.Damage_Report;
 import Insurances.Insurance;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,8 +31,7 @@ public class Customer implements Serializable {
 
 
     // A constructor that dosent require a damageReport (Default constructor)
-    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress,
-                    double UnpaidReplacements) {
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress){
 
         this.personalID = PersonalID;
         this.insuranceNr = generateInsuranceNr();
@@ -40,8 +40,6 @@ public class Customer implements Serializable {
         this.email = email;
         this.date = Date;
         this.billingAddress = BillingAddress;
-        this.unpaidReplacements = UnpaidReplacements;
-
     }
 
     /**
@@ -62,17 +60,14 @@ public class Customer implements Serializable {
      */
     @Override
     public String toString() {
-        return "\nCUSTOMER" +
-                "\nPersonalID: " + personalID +
+        return  "\nPersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
                 "\nBillingAddress: " + billingAddress +
-                "\nAllCustomerInsurance: " + allCustomerInsurance +
-                "\nUnpaidReplacements: " + unpaidReplacements +
-                "\n\n" + damageReport;
+                "\nAllCustomerInsurance: " + allCustomerInsurance;
     }
 
     /**

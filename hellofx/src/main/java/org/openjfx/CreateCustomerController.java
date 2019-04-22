@@ -3,17 +3,26 @@ package org.openjfx;
 import Customer_Controller.Customer;
 import Damages.Damage_Report;
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class PopUpCreateCustomer implements Initializable{
+public class CreateCustomerController implements Initializable{
+
+    HandlerFxml handlerFxml = new HandlerFxml();
+    HomeCustomerController homeCustomerController = new HomeCustomerController();
+
+    @FXML
+    private BorderPane popUpCreate;
 
     @FXML
     public TextArea info;
@@ -34,7 +43,7 @@ public class PopUpCreateCustomer implements Initializable{
     public TextField email;
 
     @FXML
-    public JFXButton goback;
+    public JFXButton cancel;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -44,17 +53,24 @@ public class PopUpCreateCustomer implements Initializable{
 
 
     @FXML
-    public void Apply() {
-        Damage_Report damage_report = new Damage_Report(new Date(), 3, "A crash",
-                "The window borke", "Bjornar", 3000,
-                100);
+    public void apply() {
 
-        Customer customer = new Customer(personalID.getText(),  name.getText(), phone.getText(),
-                email.getText(), new Date(), billing.getText(),  3900);
+        /*
+        Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
+         */
 
-        String out = customer.toString();
-        info.setText(out);
+        personalID.setText("");
+        name.setText("");
+        billing.setText("");
+        phone.setText("");
+        email.setText("");
     }
+
+
+   @FXML
+    public void cancel() {
+        handlerFxml.navigate(popUpCreate, "homeCustomer.fxml");
+   }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
