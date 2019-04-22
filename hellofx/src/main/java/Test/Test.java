@@ -6,6 +6,7 @@ import Insurances.Boat_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Leisure_Insurance;
 import Insurances.Travel_Insurance;
+import Serialisering.Serialization;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,6 +54,33 @@ public class Test  {
         System.out.println(house_household_insurance.toString());
         System.out.println(leisure_insurance.toString());
         System.out.println(travel_insurance.toString());
+
+
+
+
+        // Tester serialisering
+        Customer customer3 = new Customer("07029633996", "Cato Aka", "12345",
+                "asljd@hotmail.com", new Date(),
+                "Goteborggata 26",  3900);
+
+        Damage_Report damage_report2 = new Damage_Report(new Date(), 3, "A crash",
+                "The window borke", "Bjornar", 3000,
+                100);
+        customer.setDamageReport(damage_report);
+
+
+        Boat_Insurance boat_insurance2 = new Boat_Insurance("10%", new Date(), 4500,
+                "Husk betaling!", "Sven", "CV45784", "BMW 44",
+                2423.2, 2012, "V8 200HP", customer);
+
+        House_Household_Insurance sven =  new House_Household_Insurance("25%",
+                new Date(), 3, "Betal", "faggots", 3,
+                "Innbo", "Tre", "Bra", 25.5,
+                2500, 3000, customer);
+
+
+        Serialization.serialiseInsurance(sven);
+        Serialization.serialiseInsurance(boat_insurance2);
 
 
     }

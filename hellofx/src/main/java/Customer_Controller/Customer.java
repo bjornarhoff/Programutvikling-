@@ -13,8 +13,6 @@ import java.util.Random;
 
 public class Customer implements Serializable {
 
-
-
     /**
      * Instance variables for the Customer class
      */
