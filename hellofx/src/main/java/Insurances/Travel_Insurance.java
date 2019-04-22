@@ -4,7 +4,7 @@ import Customer_Controller.Customer;
 
 import java.util.Date;
 
-public class Travel_Insurance extends Data_for_overall_Insurances {
+public class Travel_Insurance extends Insurance {
 
 
     private String insuranceArea; // where insurance is valid
@@ -21,7 +21,7 @@ public class Travel_Insurance extends Data_for_overall_Insurances {
         this.insuranceArea = insuranceArea;
         this.insuranceSum = insuranceSum;
         this.customer = customer;
-        customer.CustomerInsuranceCounter(customer);
+        customer.customerInsuranceCounter(customer);
     }
 
     @Override

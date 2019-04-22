@@ -5,8 +5,16 @@ import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import FileManagement.ObjectWriter;
 import FileManagement.OpenFileChooser;
+import Customer_Controller.Customer;
+import Damages.Damage_Report;
+import Insurances.Boat_Insurance;
+import Insurances.House_Household_Insurance;
+import Insurances.Insurance;
+import Serialisering.Serialization;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +25,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Date;
 
 
@@ -26,7 +36,12 @@ public class MainApp extends Application {
     public void start(Stage stage) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
+
+            stage.setOnCloseRequest(event -> {
+                Platform.exit();
+                System.exit(0);
+            });
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
