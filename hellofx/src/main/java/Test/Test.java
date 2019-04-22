@@ -61,7 +61,7 @@ public class Test  {
         // Tester serialisering
         Customer customer3 = new Customer("07029633996", "Cato Aka", "12345",
                 "asljd@hotmail.com", new Date(),
-                "Goteborggata 26",  3900);
+                "Goteborggata 26");
 
         Damage_Report damage_report2 = new Damage_Report(new Date(), 3, "A crash",
                 "The window borke", "Bjornar", 3000,
@@ -85,3 +85,5 @@ public class Test  {
 
     }
 }
+
+
