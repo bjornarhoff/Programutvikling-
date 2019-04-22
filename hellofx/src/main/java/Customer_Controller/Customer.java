@@ -1,6 +1,7 @@
 package Customer_Controller;
 
 import Damages.Damage_Report;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import java.util.Date;
 import java.util.Random;
@@ -24,8 +25,7 @@ public class Customer {
 
 
     // A constructor that dosent require a damageReport (Default constructor)
-    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress,
-                    double UnpaidReplacements) {
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress){
 
         this.personalID = PersonalID;
         this.insuranceNr = GenerateInsuranceNr();
@@ -34,8 +34,6 @@ public class Customer {
         this.email = email;
         this.date = Date;
         this.billingAddress = BillingAddress;
-        this.unpaidReplacements = UnpaidReplacements;
-
     }
 
     /**
@@ -56,21 +54,18 @@ public class Customer {
      */
     @Override
     public String toString() {
-        return "\nCUSTOMER" +
-                "\nPersonalID: " + personalID +
+        return  "\nPersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
                 "\nBillingAddress: " + billingAddress +
-                "\nAllCustomerInsurance: " + allCustomerInsurance +
-                "\nUnpaidReplacements: " + unpaidReplacements +
-                "\n\n" + damageReport;
+                "\nAllCustomerInsurance: " + allCustomerInsurance;
     }
 
     /**
-     * @param insuranceNr
+     * @param
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
