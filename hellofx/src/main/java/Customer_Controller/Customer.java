@@ -1,34 +1,41 @@
 package Customer_Controller;
 
 import Damages.Damage_Report;
+import Insurances.Insurance;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import java.io.Serializable;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
 
-public class Customer {
+public class Customer implements Serializable {
 
     /**
      * Instance variables for the Customer class
      */
+    private static final long serialVersionUID = 1;
     private String personalID;
     private int insuranceNr;
     private String name;
-    private String phoneNumber;
-    private String email;
+    private transient String phoneNumber;
+    private transient String email;
     private Date date;
     private String billingAddress;
-    private int allCustomerInsurance;
+    private transient int allCustomerInsurance;
     private Damage_Report damageReport;
-    private double unpaidReplacements;
+    private transient double unpaidReplacements;
 
 
     // A constructor that dosent require a damageReport (Default constructor)
     public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress){
 
         this.personalID = PersonalID;
-        this.insuranceNr = GenerateInsuranceNr();
+        this.insuranceNr = generateInsuranceNr();
         this.name = Name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -69,7 +76,7 @@ public class Customer {
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
-    public static int GenerateInsuranceNr() {
+    public static int generateInsuranceNr() {
         int min = 100000;
         int max = 999999;
 
@@ -83,12 +90,14 @@ public class Customer {
      * @param customer object
      *
      */
-    public void CustomerInsuranceCounter(Customer customer) {
+    public void customerInsuranceCounter(Customer customer) {
         int existingInsurances = customer.getAllCustomerInsurance();
         existingInsurances++;
 
         customer.setAllCustomerInsurance(existingInsurances);
     }
+
+
 
     /**
      * @param PersonalID
