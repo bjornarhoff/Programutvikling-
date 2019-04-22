@@ -72,8 +72,8 @@ public class MainApp extends Application {
        // Write CSV file
 
         //CsvWriter.writeCsv(fileName);
-        Customer cato = new Customer("1","Cato Akay1","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
-        Customer cato1 = new Customer("2","Cato Akay2","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
+        Customer cato = new Customer("1","Cato Akay1","123455","catoboy@oslomet.no", new Date(),"Dal");
+        Customer cato1 = new Customer("2","Cato Akay2","123455","catoboy@oslomet.no", new Date(),"Dal");
 
         CsvWriter.writeObjectToCSV(cato);
         CsvWriter.writeObjectToCSV(cato1);
@@ -82,7 +82,7 @@ public class MainApp extends Application {
 
         // Write object to file
         ObjectWriter ow = new ObjectWriter();
-        Customer cato4 = new Customer("160895","Cato Akay2","123455","catoboy@oslomet.no", new Date(),"Dal",22222);
+        Customer cato4 = new Customer("160895","Cato Akay2","123455","catoboy@oslomet.no", new Date(),"Dal");
         ow.WriteObjectToFile(cato4);
 
 
