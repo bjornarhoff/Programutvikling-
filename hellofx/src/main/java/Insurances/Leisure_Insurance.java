@@ -4,7 +4,7 @@ import Customer_Controller.Customer;
 
 import java.util.Date;
 
-public class Leisure_Insurance extends Data_for_overall_Insurances {
+public class Leisure_Insurance extends Insurance {
 
     private String address_Not_Billing;
     private int constructionYear;
@@ -34,7 +34,7 @@ public class Leisure_Insurance extends Data_for_overall_Insurances {
         this.amountforConstruction = amountforConstruction;
         this.amountForHousehold = amountForHousehold;
         this.customer = customer;
-        customer.CustomerInsuranceCounter(customer);
+        customer.customerInsuranceCounter(customer);
     }
 
     @Override

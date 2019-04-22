@@ -3,7 +3,7 @@ import Customer_Controller.Customer;
 
 import java.util.Date;
 
-public class House_Household_Insurance extends Data_for_overall_Insurances {
+public class House_Household_Insurance extends Insurance {
 
     private String propertyOwner;
     private int yearOfConstruction;
@@ -34,7 +34,7 @@ public class House_Household_Insurance extends Data_for_overall_Insurances {
         this.insuranceAmountForConstruction = insuranceAmountForConstruction;
         this.insuranceAmountForHousehold = insuranceAmountForHousehold;
         this.customer = customer;
-        customer.CustomerInsuranceCounter(customer);
+        customer.customerInsuranceCounter(customer);
 
     }
 

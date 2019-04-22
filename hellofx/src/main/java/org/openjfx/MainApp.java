@@ -1,5 +1,11 @@
 package org.openjfx;
 
+import Customer_Controller.Customer;
+import Damages.Damage_Report;
+import Insurances.Boat_Insurance;
+import Insurances.House_Household_Insurance;
+import Insurances.Insurance;
+import Serialisering.Serialization;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
@@ -10,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Date;
 
 
 public class MainApp extends Application {
