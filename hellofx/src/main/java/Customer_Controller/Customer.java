@@ -4,6 +4,7 @@ import Damages.Damage_Report;
 import Insurances.Insurance;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import java.io.Serializable;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
