@@ -11,25 +11,13 @@ import java.io.IOException;
 
 public class HandlerFxml {
 
-    public void toHome(Pane a){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) a.getParent().getScene().getWindow();
-            stage.setScene(scene);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void toDamageReport(Pane a){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("damageReport.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) a.getParent().getScene().getWindow();
-            stage.setScene(scene);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+    public void navigate(Pane current, String path){
+       try{
+           Parent root = FXMLLoader.load(getClass().getResource(path));
+           Stage stg = (Stage)current.getScene().getWindow();
+           stg.setScene(new Scene(root));
+       }catch (IOException e){
+           e.printStackTrace();
+       }
     }
 }

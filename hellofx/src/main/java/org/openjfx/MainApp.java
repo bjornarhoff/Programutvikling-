@@ -18,7 +18,7 @@ public class MainApp extends Application {
     public void start(Stage stage) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
 
             stage.setOnCloseRequest(event -> {
                 Platform.exit();

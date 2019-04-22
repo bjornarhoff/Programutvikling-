@@ -5,16 +5,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
-import java.io.IOException;
 
 
 public class DamageReportController {
+
+    HandlerFxml handlerFxml = new HandlerFxml();
 
     @FXML
     private BorderPane damageReport;
@@ -37,17 +34,11 @@ public class DamageReportController {
 
     @FXML
     private void createDamageReport(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("createDamageReport.fxml"));
-            damageReport.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        handlerFxml.navigate(damageReport, "createDamageReport.fxml");
     }
 
     @FXML
     private void goBackPressed(){
-            HandlerFxml handlerFxml = new HandlerFxml();
-            handlerFxml.toHome(damageReport);
+        handlerFxml.navigate(damageReport, "homeCustomer.fxml");
     }
 }

@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 
 public class CreateDamageReportController {
 
+    HandlerFxml handlerFxml = new HandlerFxml();
+
     @FXML
     private BorderPane createDamageReport;
 
@@ -27,8 +29,7 @@ public class CreateDamageReportController {
 
     @FXML
     private void cancel(ActionEvent event){
-        HandlerFxml handlerFxml = new HandlerFxml();
-        handlerFxml.toDamageReport(createDamageReport);
+        handlerFxml.navigate(createDamageReport, "damageReport.fxml");
     }
 
 }
