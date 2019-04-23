@@ -31,6 +31,7 @@ public class SearchAndReadFromCSV {
         String billingAddress = "";
         String allCustomerInsurance = "";
         String unpaidReplacements = "";
+
         try {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");

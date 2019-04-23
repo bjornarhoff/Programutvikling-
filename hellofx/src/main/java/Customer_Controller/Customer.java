@@ -3,6 +3,9 @@ package Customer_Controller;
 import Damages.Damage_Report;
 import Insurances.Insurance;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 import java.io.FileOutputStream;
@@ -32,15 +35,15 @@ public class Customer implements Serializable {
 
 
     // A constructor that dosent require a damageReport (Default constructor)
-    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress){
+    public Customer(String personalID, String name, String phoneNumber, String email, Date Date, String billingAddress){
 
-        this.personalID = PersonalID;
+        this.personalID = personalID;
         this.insuranceNr = generateInsuranceNr();
-        this.name = Name;
+        this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.date = Date;
-        this.billingAddress = BillingAddress;
+        this.billingAddress = billingAddress;
     }
 
     /**
@@ -100,10 +103,10 @@ public class Customer implements Serializable {
 
 
     /**
-     * @param PersonalID
+     * @param personalID
      */
-    public void setPersonalID(String PersonalID) {
-        this.personalID = PersonalID;
+    public void setPersonalID(String personalID) {
+        this.personalID = personalID;
     }
 
     /**
@@ -158,7 +161,7 @@ public class Customer implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email =email;
     }
 
     /**

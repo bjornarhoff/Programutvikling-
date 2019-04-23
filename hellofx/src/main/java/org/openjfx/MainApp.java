@@ -16,6 +16,7 @@ import static javafx.application.Application.launch;
 
 import javafx.application.Platform;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -54,6 +55,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
+
     }
 
     /**
@@ -66,6 +68,11 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+
+
+
+       /*
 
         //String fileName = System.getProperty("user.home")+"/customer.csv";
 
@@ -86,7 +93,7 @@ public class MainApp extends Application {
         ow.WriteObjectToFile(cato4);
 
 
-
+*/
 
 
 
