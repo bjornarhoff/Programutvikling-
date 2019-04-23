@@ -1,13 +1,7 @@
-package Customer_Controller;
+package CustomerModell;
 
 import Damages.Damage_Report;
-import Insurances.Insurance;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import java.io.Serializable;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
@@ -24,7 +18,7 @@ public class Customer implements Serializable {
     private String name;
     private transient String phoneNumber;
     private transient String email;
-    private Date date;
+    private String date;
     private String billingAddress;
     private transient int allCustomerInsurance;
     private Damage_Report damageReport;
@@ -32,7 +26,7 @@ public class Customer implements Serializable {
 
 
     // A constructor that dosent require a damageReport (Default constructor)
-    public Customer(String PersonalID, String Name, String phoneNumber, String email, Date Date, String BillingAddress){
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
 
         this.personalID = PersonalID;
         this.insuranceNr = generateInsuranceNr();
@@ -116,14 +110,14 @@ public class Customer implements Serializable {
     /**
      * @param date
      */
-    public void setDate(java.util.Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     /**
      * @return date
      */
-    public java.util.Date getDate() {
+    public String getDate() {
         return this.date;
     }
 

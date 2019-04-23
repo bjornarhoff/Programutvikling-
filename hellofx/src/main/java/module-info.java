@@ -5,5 +5,6 @@ module hellofx {
     requires java.desktop;
 
     opens org.openjfx to javafx.fxml;
+    opens CustomerModell to javafx.base;
     exports org.openjfx;
 }

@@ -1,24 +1,21 @@
 package org.openjfx;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
+import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class HomeCustomerController {
 
-    HandlerFxml handlerFxml = new HandlerFxml();
+    private HandlerFxml handlerFxml = new HandlerFxml();
+
 
 
     @FXML
@@ -29,32 +26,47 @@ public class HomeCustomerController {
             tn_showDamageReport, btn_showInfoCust;
 
     @FXML
-    private TableView customerTable;
+    private TableView<Customer> customerTable;
 
     @FXML
-    private TableColumn personalID;
+    private TableColumn<Customer,String> personalID;
 
     @FXML
-    private TableColumn name;
+    private TableColumn<Customer,String> insuranceNr;
 
     @FXML
-    private TableColumn phone;
+    private TableColumn<Customer,String> name;
 
     @FXML
-    private TableColumn email;
+    private TableColumn<Customer,String> phone;
 
     @FXML
-    private TableColumn date;
+    private TableColumn<Customer,String> email;
 
     @FXML
-    private TableColumn billing;
+    private TableColumn<Customer,String> date;
 
     @FXML
-    private TableColumn unpaidReplacements;
+    private TableColumn<Customer,String> billing;
+
+    @FXML
+    private TableColumn<Customer,String> unpaidReplacements;
+
 
     @FXML
     private void initialize(){
+        ObservableList<Customer> customers = CsvReader.read();
+        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
+        customerTable.setItems(customers);
         entireScreenCustomer.toFront();
+
     }
 
     @FXML
