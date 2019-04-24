@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
-    FileChooser fileChooser = new FileChooser();
 
 
 
@@ -73,7 +72,6 @@ public class HomeCustomerController {
         customerTable.setItems(customers);
 
         entireScreenCustomer.toFront();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+"/customer2.csv"));
 
     }
 
