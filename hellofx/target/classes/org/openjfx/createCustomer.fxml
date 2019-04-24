@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="popUpCreate" style="-fx-background-color: #8C7365;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.CreateCustomerController">
+<BorderPane fx:id="popUpCreate" style="-fx-background-color: #8C7365;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.CreateCustomerController">
    <center>
       <AnchorPane fx:id="anchorPane" prefHeight="633.0" prefWidth="963.0" style="-fx-background-color: #8C7365;">
          <children>

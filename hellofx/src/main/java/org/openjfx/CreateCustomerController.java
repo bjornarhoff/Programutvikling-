@@ -12,11 +12,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class CreateCustomerController implements Initializable{
 
@@ -50,6 +54,7 @@ public class CreateCustomerController implements Initializable{
     @FXML
     public JFXButton apply;
 
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
 
@@ -82,14 +87,13 @@ public class CreateCustomerController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Enabling button only if all of the textfields have text
-        BooleanBinding boolBind = personalID.textProperty().isEmpty()
-                .or(name.textProperty().isEmpty())
-                .or(billing.textProperty().isEmpty())
-                        .or(phone.textProperty().isEmpty())
-                                .or(email.textProperty().isEmpty());
+        // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
+        handlerFxml.restrictionId(personalID);
+        handlerFxml.restrictionPhone(phone);
 
-        apply.disableProperty().bind(boolBind);
+        // Enabling button only if all of the textfields have text
+        handlerFxml.enableButton(apply,personalID,name,billing,phone,email);
+
 
     }
 

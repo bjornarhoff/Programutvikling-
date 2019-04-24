@@ -9,12 +9,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+    FileChooser fileChooser = new FileChooser();
+
 
 
 
@@ -65,7 +71,9 @@ public class HomeCustomerController {
         billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
         unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
         customerTable.setItems(customers);
+
         entireScreenCustomer.toFront();
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+"/customer2.csv"));
 
     }
 
@@ -74,6 +82,18 @@ public class HomeCustomerController {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
+    }
+
+    @FXML
+    private void handleSaveClicked(ActionEvent event) {
+        System.out.println("Save clicked");
+
+    }
+
+    @FXML
+    private void handleLoadClicked(ActionEvent event) {
+
+        System.out.println("Load clicked");
     }
 
     @FXML
