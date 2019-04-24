@@ -1,40 +1,32 @@
 package org.openjfx;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 import FileManagement.CsvReader;
-import FileManagement.CsvWriter;
-import FileManagement.ObjectWriter;
-import FileManagement.OpenFileChooser;
-import Customer_Controller.Customer;
-import Damages.Damage_Report;
-import Insurances.Boat_Insurance;
-import Insurances.House_Household_Insurance;
-import Insurances.Insurance;
-import Serialisering.Serialization;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
 import javafx.application.Platform;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Date;
+import java.util.ArrayList;
 
 
 public class MainApp extends Application {
     
     @Override
     public void start(Stage stage) {
+
+        ObservableList<Customer> minListe = CsvReader.read();
+        for (Customer customer : minListe){
+            System.out.println(customer);
+        }
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
@@ -69,11 +61,6 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
 
-
-
-
-       /*
-
         //String fileName = System.getProperty("user.home")+"/customer.csv";
 
        // Write CSV file
@@ -93,7 +80,7 @@ public class MainApp extends Application {
         ow.WriteObjectToFile(cato4);
 
 
-*/
+
 
 
 

@@ -1,6 +1,7 @@
 package org.openjfx;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
+import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import org.w3c.dom.Text;
@@ -26,12 +28,11 @@ import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class HomeCustomerController {
 
-    HandlerFxml handlerFxml = new HandlerFxml();
+    private HandlerFxml handlerFxml = new HandlerFxml();
+
 
 
     @FXML
@@ -48,43 +49,43 @@ public class HomeCustomerController {
     private TableView<Customer> customerTable;
 
     @FXML
-    private TableColumn<Customer, String> personalID;
+    private TableColumn<Customer,String> personalID;
 
     @FXML
-    private TableColumn<Customer, String> name;
+    private TableColumn<Customer,String> insuranceNr;
 
     @FXML
-    private TableColumn<Customer, String> phone;
+    private TableColumn<Customer,String> name;
 
     @FXML
-    private TableColumn<Customer, String> email;
+    private TableColumn<Customer,String> phone;
 
     @FXML
-    private TableColumn <Customer, Date> date;
+    private TableColumn<Customer,String> email;
 
     @FXML
-    private TableColumn<Customer, String> billing;
+    private TableColumn<Customer,String> date;
 
     @FXML
-    private TableColumn<Customer, Double> unpaidReplacements;
+    private TableColumn<Customer,String> billing;
 
     @FXML
-    public void initialize(){
+    private TableColumn<Customer,String> unpaidReplacements;
 
+
+    @FXML
+    private void initialize(){
+        ObservableList<Customer> customers = CsvReader.read();
         personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
-       // date.setCellValueFactory(new PropertyValueFactory<>(date));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
         billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
         unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
-
+        customerTable.setItems(customers);
         entireScreenCustomer.toFront();
-        customerTable.setItems(observableList);
-
-
-
-
     }
 
     ObservableList<Customer> observableList = FXCollections.observableArrayList(

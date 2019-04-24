@@ -1,16 +1,7 @@
-package Customer_Controller;
+package CustomerModell;
 
 import Damages.Damage_Report;
-import Insurances.Insurance;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 
-import java.io.Serializable;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
@@ -27,7 +18,7 @@ public class Customer implements Serializable {
     private String name;
     private transient String phoneNumber;
     private transient String email;
-    private Date date;
+    private String date;
     private String billingAddress;
     private transient int allCustomerInsurance;
     private Damage_Report damageReport;
@@ -35,15 +26,15 @@ public class Customer implements Serializable {
 
 
     // A constructor that dosent require a damageReport (Default constructor)
-    public Customer(String personalID, String name, String phoneNumber, String email, Date Date, String billingAddress){
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
 
-        this.personalID = personalID;
+        this.personalID = PersonalID;
         this.insuranceNr = generateInsuranceNr();
-        this.name = name;
+        this.name = Name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.date = Date;
-        this.billingAddress = billingAddress;
+        this.billingAddress = BillingAddress;
     }
 
     /**
@@ -103,10 +94,10 @@ public class Customer implements Serializable {
 
 
     /**
-     * @param personalID
+     * @param PersonalID
      */
-    public void setPersonalID(String personalID) {
-        this.personalID = personalID;
+    public void setPersonalID(String PersonalID) {
+        this.personalID = PersonalID;
     }
 
     /**
@@ -119,14 +110,14 @@ public class Customer implements Serializable {
     /**
      * @param date
      */
-    public void setDate(java.util.Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     /**
      * @return date
      */
-    public java.util.Date getDate() {
+    public String getDate() {
         return this.date;
     }
 
@@ -161,7 +152,7 @@ public class Customer implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email =email;
+        this.email = email;
     }
 
     /**

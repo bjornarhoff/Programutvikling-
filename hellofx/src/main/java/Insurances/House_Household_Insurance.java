@@ -1,5 +1,5 @@
 package Insurances;
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 import java.util.Date;
 
@@ -13,18 +13,17 @@ public class House_Household_Insurance extends Insurance {
     private double numberOfSquareMeters;
     private int insuranceAmountForConstruction;
     private int insuranceAmountForHousehold;
-    private Customer customer;
 
 
 
     // Default Constructor for House Hold Insurances.
-    public House_Household_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
                                      String insuranceConditions, String propertyOwner, int yearOfConstruction,
                                      String residentialType, String constructionMaterial, String condition,
                                      double numberOfSquareMeters, int insuranceAmountForConstruction,
-                                     int insuranceAmountForHousehold, Customer_Controller.Customer customer) {
+                                     int insuranceAmountForHousehold) {
 
-        super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
+        super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
         this.propertyOwner = propertyOwner;
         this.yearOfConstruction = yearOfConstruction;
         this.residentialType = residentialType;
@@ -33,7 +32,6 @@ public class House_Household_Insurance extends Insurance {
         this.numberOfSquareMeters = numberOfSquareMeters;
         this.insuranceAmountForConstruction = insuranceAmountForConstruction;
         this.insuranceAmountForHousehold = insuranceAmountForHousehold;
-        this.customer = customer;
         customer.customerInsuranceCounter(customer);
 
     }
@@ -123,11 +121,4 @@ public class House_Household_Insurance extends Insurance {
         return this.insuranceAmountForHousehold;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }

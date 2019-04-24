@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 
 public class ObjectWriter {
 
-    public void WriteObjectToFile (Object obj) {
+    public static void WriteObjectToFile (Object obj) {
 
         try {
 
