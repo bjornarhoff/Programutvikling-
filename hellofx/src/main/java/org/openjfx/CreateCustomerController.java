@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -81,18 +82,15 @@ public class CreateCustomerController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        apply.setDisable(true); // Initally text box was empty so button was disable
+        // Enabling button only if all of the textfields have text
+        BooleanBinding boolBind = personalID.textProperty().isEmpty()
+                .or(name.textProperty().isEmpty())
+                .or(billing.textProperty().isEmpty())
+                        .or(phone.textProperty().isEmpty())
+                                .or(email.textProperty().isEmpty());
 
-        personalID.textProperty().addListener(new ChangeListener<String>() {
+        apply.disableProperty().bind(boolBind);
 
-            @Override
-            public void changed(ObservableValue<? extends String> ov, String s, String s1) {
-                if(s1.equals(""))
-                    apply.setDisable(true);
-                else
-                    apply.setDisable(false);
-            }
-        });
     }
 
 }
