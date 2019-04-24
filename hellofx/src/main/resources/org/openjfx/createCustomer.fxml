@@ -20,7 +20,7 @@
                   <JFXTextField fx:id="phone" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="180.0" promptText="Phone Number" unFocusColor="BLACK" />
                   <JFXTextField fx:id="email" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="245.0" prefWidth="190.0" promptText="Email" unFocusColor="BLACK" />
                   <JFXTextField fx:id="billing" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="317.0" promptText="Billing Address" unFocusColor="BLACK" />
-                  <JFXButton layoutX="758.0" layoutY="533.0" onAction="#apply" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply Changes" textFill="WHITE" />
+                  <JFXButton fx:id="apply" layoutX="758.0" layoutY="533.0" onAction="#apply" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply Changes" textFill="WHITE" />
                   <JFXButton layoutX="893.0" layoutY="533.0" prefHeight="39.0" prefWidth="41.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="OK!" textFill="WHITE" />
                   <JFXButton fx:id="cancel" layoutX="252.0" layoutY="533.0" onAction="#cancel" prefHeight="39.0" prefWidth="68.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
                   <JFXTextArea fx:id="info" editable="false" focusColor="BLACK" labelFloat="true" layoutX="252.0" layoutY="43.0" prefHeight="481.0" prefWidth="682.0" promptText="Info About the Created Customer:" style="-fx-background-color: white;" unFocusColor="BLACK">

@@ -3,6 +3,8 @@ package org.openjfx;
 import Customer_Controller.Customer;
 import Damages.Damage_Report;
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +48,9 @@ public class CreateCustomerController implements Initializable{
     public JFXButton cancel;
 
     @FXML
+    public JFXButton apply;
+
+    @FXML
     private void handleButtonAction(ActionEvent event) {
 
 
@@ -75,6 +80,18 @@ public class CreateCustomerController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        apply.setDisable(true); // Initally text box was empty so button was disable
+
+        personalID.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> ov, String s, String s1) {
+                if(s1.equals(""))
+                    apply.setDisable(true);
+                else
+                    apply.setDisable(false);
+            }
+        });
     }
 
 }
