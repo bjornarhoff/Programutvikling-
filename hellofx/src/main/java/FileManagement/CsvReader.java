@@ -30,7 +30,6 @@ public class CsvReader {
                 }
                 String[] values = line.split(",");
                 Customer aCustomer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
-                aCustomer.setInsuranceNr(Integer.parseInt(values[1]));
                 customersFromCsv.add(aCustomer);
             }
         } catch (IOException e) {
