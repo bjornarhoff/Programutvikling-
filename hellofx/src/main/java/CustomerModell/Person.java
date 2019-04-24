@@ -2,7 +2,7 @@ package CustomerModell;
 
 import java.io.Serializable;
 
-public abstract class Person implements Serializable {
+public abstract class Person {
 
     private String personalId;
     private String name;
