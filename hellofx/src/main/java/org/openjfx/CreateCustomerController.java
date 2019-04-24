@@ -1,7 +1,7 @@
 package org.openjfx;
 
-import Customer_Controller.Customer;
-import Damages.Damage_Report;
+import CustomerModell.Customer;
+import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -59,10 +58,12 @@ public class CreateCustomerController implements Initializable{
 
     @FXML
     public void apply() {
-
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
+        Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
+        CsvWriter.writeObjectToCSV(aCustomer);
+        info.setText(aCustomer.toString());
 
         personalID.setText("");
         name.setText("");

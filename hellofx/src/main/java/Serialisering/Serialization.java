@@ -1,12 +1,11 @@
 package Serialisering;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 import Insurances.Insurance;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 public class Serialization {
 

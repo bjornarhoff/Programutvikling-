@@ -1,6 +1,6 @@
 package Insurances;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 import java.util.Date;
 
@@ -9,18 +9,15 @@ public class Travel_Insurance extends Insurance {
 
     private String insuranceArea; // where insurance is valid
     private int insuranceSum;
-    private Customer customer;
 
 
     // Default Constructor for Travel Insurance.
-    public Travel_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
-                            String insuranceConditions, String insuranceArea, int insuranceSum,
-                            Customer_Controller.Customer customer) {
+    public Travel_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+                            String insuranceConditions, String insuranceArea, int insuranceSum) {
 
-        super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
+        super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
         this.insuranceArea = insuranceArea;
         this.insuranceSum = insuranceSum;
-        this.customer = customer;
         customer.customerInsuranceCounter(customer);
     }
 
@@ -49,11 +46,6 @@ public class Travel_Insurance extends Insurance {
         return this.insuranceSum;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+
 }

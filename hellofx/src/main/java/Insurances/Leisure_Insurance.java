@@ -1,6 +1,6 @@
 package Insurances;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 import java.util.Date;
 
@@ -14,17 +14,15 @@ public class Leisure_Insurance extends Insurance {
     private double amountSquareMeters;
     private int amountforConstruction;
     private int amountForHousehold;
-    private Customer customer;
 
 
     // Default Constructor for Leisure Insurance
-    public Leisure_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Leisure_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
                              String insuranceConditions, String address_Not_Billing, int constructionYear,
                              String residentalType, String constructionMaterial, String condition,
-                             double amountSquareMeters, int amountforConstruction, int amountForHousehold,
-                             Customer_Controller.Customer customer) {
+                             double amountSquareMeters, int amountforConstruction, int amountForHousehold) {
 
-        super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
+        super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
         this.address_Not_Billing = address_Not_Billing;
         this.constructionYear = constructionYear;
         this.residentalType = residentalType;
@@ -33,7 +31,6 @@ public class Leisure_Insurance extends Insurance {
         this.amountSquareMeters = amountSquareMeters;
         this.amountforConstruction = amountforConstruction;
         this.amountForHousehold = amountForHousehold;
-        this.customer = customer;
         customer.customerInsuranceCounter(customer);
     }
 
@@ -121,11 +118,4 @@ public class Leisure_Insurance extends Insurance {
         return this.amountForHousehold;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }

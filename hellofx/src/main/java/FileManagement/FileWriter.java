@@ -1,6 +1,6 @@
 package FileManagement;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 public abstract class FileWriter {
 

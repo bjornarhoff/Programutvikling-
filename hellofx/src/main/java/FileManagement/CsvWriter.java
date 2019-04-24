@@ -1,11 +1,10 @@
 package FileManagement;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -16,9 +15,7 @@ public class CsvWriter {
     private static final String COMMA = ",";
     private static final String HEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
     private static final String NEW_LINE = "\n";
-    private static ArrayList<Customer> customers = new ArrayList<>();
-
-
+    private static boolean fileExists = false;
 
 
     // Method for create CSV file -> return file
@@ -28,8 +25,10 @@ public class CsvWriter {
         // Checks whether the file exists or not
         try {
             if (file.createNewFile()){
+                fileExists = false;
                 System.out.println("File created!");
             } else {
+                fileExists = true;
                 System.out.println("File already exists");
             }
         }catch (IOException e){
@@ -41,39 +40,38 @@ public class CsvWriter {
     // Method for write customer object to CSV file
     public static void writeObjectToCSV (Customer aCustomer) {
         FileWriter fileWriter = null;
-        customers.add(aCustomer);
 
         try {
-            fileWriter = new FileWriter(createFileCSV());
-            // Write to header
-            fileWriter.append(HEADER);
-            // New line after header
+            fileWriter = new FileWriter(createFileCSV(), true);
+            if (!fileExists){
+                // Write to header
+                fileWriter.append(HEADER);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
+
+            fileWriter.append(aCustomer.getPersonalID());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(aCustomer.getInsuranceNr()));
+            fileWriter.append(COMMA);
+            fileWriter.append(aCustomer.getName());
+            fileWriter.append(COMMA);
+            fileWriter.append(aCustomer.getPhoneNumber());
+            fileWriter.append(COMMA);
+            fileWriter.append(aCustomer.getEmail());
+            fileWriter.append(COMMA);
+            fileWriter.append(aCustomer.getDate());
+            fileWriter.append(COMMA);
+            fileWriter.append(aCustomer.getBillingAddress());
             fileWriter.append(NEW_LINE);
 
-            // Loops over arraylist -> Retrieving parameters
-            for (Customer customer : customers){
-            fileWriter.append(String.valueOf(customer.getInsuranceNr()));
-            fileWriter.append(COMMA);
-            fileWriter.append(customer.getPersonalID());
-            fileWriter.append(COMMA);
-            fileWriter.append(customer.getName());
-            fileWriter.append(COMMA);
-            fileWriter.append(customer.getPhoneNumber());
-            fileWriter.append(COMMA);
-            fileWriter.append(customer.getEmail());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(new Date()));
-            fileWriter.append(COMMA);
-            fileWriter.append(customer.getBillingAddress());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(customer.getUnpaidReplacements()));
-            fileWriter.append(NEW_LINE);
-            }
             // If something went wrong while creating file
         } catch (IOException e) {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
+
         // finally code -> always executes when the try block exits
         finally {
 
@@ -83,9 +81,6 @@ public class CsvWriter {
                     fileWriter.flush();
                     fileWriter.close();
                 }
-                // Prints out arraylist
-                System.out.println(customers.toString());
-
             } catch (IOException e) {
                 System.out.println("Error while flushing/closing fileWriter");
                 e.printStackTrace();

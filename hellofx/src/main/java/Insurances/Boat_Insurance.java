@@ -1,6 +1,6 @@
 package Insurances;
 
-import Customer_Controller.Customer;
+import CustomerModell.Customer;
 
 import java.util.Date;
 
@@ -9,26 +9,23 @@ public class Boat_Insurance extends Insurance {
 
     private String owner;
     private String registerNr;
-    private String boatTypeAndMOdel;
+    private String boatTypeAndModel;
     private double lengthInFoot;
     private int year;
     private String motorTypeAndMotorPower;
-    private Customer customer;
 
 
-    public Boat_Insurance(String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
-                          String insuranceConditions, String owner, String registerNr, String boatTypeAndMOdel,
-                          double lengthInFoot, int year, String motorTypeAndMotorPower,
-                          Customer_Controller.Customer customer) {
+    public Boat_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+                          String insuranceConditions, String owner, String registerNr, String boatTypeAndModel,
+                          double lengthInFoot, int year, String motorTypeAndMotorPower) {
 
-        super(yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
+        super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
         this.owner = owner;
         this.registerNr = registerNr;
-        this.boatTypeAndMOdel = boatTypeAndMOdel;
+        this.boatTypeAndModel = boatTypeAndModel;
         this.lengthInFoot = lengthInFoot;
         this.year = year;
         this.motorTypeAndMotorPower = motorTypeAndMotorPower;
-        this.customer = customer;
         customer.customerInsuranceCounter(customer);
     }
 
@@ -37,7 +34,7 @@ public class Boat_Insurance extends Insurance {
         return  "\nBOAT INSURANCE" +
                 "\nOwner: " + owner +
                 "\nRegisterNr: " + registerNr +
-                "\nBoatTypeAndMOdel: " + boatTypeAndMOdel +
+                "\nBoatTypeAndMOdel: " + boatTypeAndModel +
                 "\nLengthInFoot: " + lengthInFoot +
                 "\nYear: " + year +
                 "\nMotorTypeAndMotorPower: " + motorTypeAndMotorPower +
@@ -62,12 +59,12 @@ public class Boat_Insurance extends Insurance {
     }
 
 
-    public void setBoatTypeAndMOdel(String boatTypeAndMOdel) {
-        this.boatTypeAndMOdel = boatTypeAndMOdel;
+    public void setBoatTypeAndModel(String boatTypeAndModel) {
+        this.boatTypeAndModel = boatTypeAndModel;
     }
 
-    public String getBoatTypeAndMOdel() {
-        return this.boatTypeAndMOdel;
+    public String getBoatTypeAndModel() {
+        return this.boatTypeAndModel;
     }
 
 
@@ -96,11 +93,4 @@ public class Boat_Insurance extends Insurance {
         return this.motorTypeAndMotorPower;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }
