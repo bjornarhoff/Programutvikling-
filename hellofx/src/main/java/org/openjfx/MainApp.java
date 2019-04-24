@@ -27,6 +27,7 @@ public class MainApp extends Application {
         for (Customer customer : minListe){
             System.out.println(customer);
         }
+        System.out.println("Bjornar");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
