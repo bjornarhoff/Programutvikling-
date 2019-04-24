@@ -94,7 +94,7 @@ public class Customer implements Serializable {
 
     /**
      * @param PersonalID
-     */
+    */
     public void setPersonalID(String PersonalID) {
         this.personalID = PersonalID;
     }
