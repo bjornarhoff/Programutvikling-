@@ -95,6 +95,12 @@ public class HomeCustomerController {
     }
 
     @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
+
+    @FXML
     private void damageReportPressed(){
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
     }
