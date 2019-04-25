@@ -14,13 +14,14 @@ public class CsvWriter {
     // Parameters used in CSV file
     private static final String COMMA = ",";
     private static final String HEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
+
     private static final String NEW_LINE = "\n";
     private static boolean fileExists = false;
 
 
     // Method for create CSV file -> return file
-    public static File createFileCSV(){
-        File file = new File(System.getProperty("user.home")+"/customer2.csv");
+    public static File createFileCSV(String path){
+       File file = new File(path);
 
         // Checks whether the file exists or not
         try {
@@ -42,7 +43,7 @@ public class CsvWriter {
         FileWriter fileWriter = null;
 
         try {
-            fileWriter = new FileWriter(createFileCSV(), true);
+            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home")+"/customer2.csv"), true);
             if (!fileExists){
                 // Write to header
                 fileWriter.append(HEADER);

@@ -1,8 +1,9 @@
-package Threads;
+/**package Threads;
 
 public class Threading {
     public static void main(String[] args) {
 
-        Thread t1 = new Thread(new Threadexample("this"));
+        java.lang.Thread t1 = new java.lang.Thread(new Thread("this"));
     }
 }
+*/

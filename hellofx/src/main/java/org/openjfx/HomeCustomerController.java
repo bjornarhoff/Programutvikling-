@@ -2,6 +2,8 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
+import Threads.Thread;
+import Threads.Threads;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,11 +18,13 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
-
+    private Threads thread = new Threads();
 
 
 
@@ -60,8 +64,11 @@ public class HomeCustomerController {
     private TableColumn<Customer,String> unpaidReplacements;
 
 
+
     @FXML
     private void initialize(){
+        //handlerFxml.loadFileThread();
+        //thread.run();
         ObservableList<Customer> customers = CsvReader.read();
         personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
         insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
@@ -72,6 +79,7 @@ public class HomeCustomerController {
         billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
         unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
         customerTable.setItems(customers);
+
 
         entireScreenCustomer.toFront();
 
@@ -95,7 +103,7 @@ public class HomeCustomerController {
     private void handleLoadClicked(ActionEvent event) {
 
         FileChooser chooser = new FileChooser();
-        chooser.setTitle("Save file");
+        chooser.setTitle("Load file");
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
         File csvFile = new File(System.getProperty("user.home") + "/customer1.csv");
 

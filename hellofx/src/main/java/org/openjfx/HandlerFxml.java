@@ -1,16 +1,21 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.binding.BooleanBinding;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.function.UnaryOperator;
@@ -62,6 +67,26 @@ public class HandlerFxml {
 
         apply.disableProperty().bind(boolBind);
     }
+
+
+    public void loadFileThread () {
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() {
+                int max = 1000000;
+                for (int i = 1; i <= max; i = i + 10) {
+                    if (isCancelled()) {
+                        break;
+                    }
+                    updateProgress(i, max);
+                    CsvReader.read();
+                }
+                return null;
+            }
+        };
+        new Thread(task).start();
+    }
+
 
 
 }
