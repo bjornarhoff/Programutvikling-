@@ -23,7 +23,7 @@ public class HomeCustomerController {
 
     @FXML
     private JFXButton button_Customer, button_Insurance, btn_addCustomer, btn_editCustomer, btn_deleteCustomer,
-            tn_showDamageReport, btn_showInfoCust;
+            tn_showDamageReport, btn_showInfoCust, btn_refresh;
 
     @FXML
     private TableView<Customer> customerTable;
@@ -49,9 +49,6 @@ public class HomeCustomerController {
     @FXML
     private TableColumn<Customer,String> billing;
 
-    @FXML
-    private TableColumn<Customer,String> unpaidReplacements;
-
 
     @FXML
     private void initialize(){
@@ -63,10 +60,8 @@ public class HomeCustomerController {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
         customerTable.setItems(customers);
         entireScreenCustomer.toFront();
-
     }
 
     @FXML
@@ -74,6 +69,11 @@ public class HomeCustomerController {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
+    }
+
+    @FXML
+    private void refresh (ActionEvent event){
+
     }
 
     @FXML

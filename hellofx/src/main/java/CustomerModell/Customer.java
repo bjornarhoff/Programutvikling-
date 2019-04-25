@@ -54,14 +54,13 @@ public class Customer implements Serializable {
      */
     @Override
     public String toString() {
-        return  "\nPersonalID: " + personalID +
+        return  "PersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
-                "\nBillingAddress: " + billingAddress +
-                "\nAllCustomerInsurance: " + allCustomerInsurance;
+                "\nBillingAddress: " + billingAddress;
     }
 
     /**
