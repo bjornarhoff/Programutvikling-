@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="entireScreenInsurance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.HomeInsuranceController">
+<BorderPane fx:id="entireScreenInsurance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.HomeInsuranceController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -44,7 +44,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #8C7365;" GridPane.columnIndex="2">
                      <children>
-                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
+                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#addInsurancePressed" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_deleteInsurance1" layoutX="3.0" layoutY="251.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoIns1" layoutX="4.0" layoutY="306.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
@@ -53,14 +53,14 @@
                         <InnerShadow />
                      </effect>
                   </AnchorPane>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                  <TableView id="InsuranceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn prefWidth="89.0" text="PersonalID" />
+                      <TableColumn prefWidth="92.0" text="Name" />
+                        <TableColumn prefWidth="144.72161865234375" text="Insurance Amount" />
+                        <TableColumn minWidth="6.0" prefWidth="120.27838134765625" text="C2" />
+                        <TableColumn prefWidth="136.13079833984375" text="C2" />
+                        <TableColumn prefWidth="179.963623046875" text="C2" />
                     </columns>
                      <effect>
                         <InnerShadow />

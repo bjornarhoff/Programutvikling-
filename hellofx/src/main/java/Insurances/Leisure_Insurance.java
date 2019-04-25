@@ -17,7 +17,7 @@ public class Leisure_Insurance extends Insurance {
 
 
     // Default Constructor for Leisure Insurance
-    public Leisure_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Leisure_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                              String insuranceConditions, String address_Not_Billing, int constructionYear,
                              String residentalType, String constructionMaterial, String condition,
                              double amountSquareMeters, int amountforConstruction, int amountForHousehold) {

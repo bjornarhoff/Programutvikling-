@@ -2,12 +2,16 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
+import FileManagement.ObjectWriter;
+import Serialisering.SearchAndReadFromCSV;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
 import javafx.application.Platform;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MainApp extends Application {
@@ -29,6 +34,8 @@ public class MainApp extends Application {
             System.out.println(customer);
         }
         System.out.println("Bjornar");
+
+        System.out.println(CsvReader.findCustomer("652830"));
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
@@ -49,6 +56,9 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
+
+
+
     }
 
     /**
@@ -61,6 +71,9 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+
+
     }
 
 

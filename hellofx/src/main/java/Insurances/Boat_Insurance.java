@@ -15,7 +15,7 @@ public class Boat_Insurance extends Insurance {
     private String motorTypeAndMotorPower;
 
 
-    public Boat_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Boat_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                           String insuranceConditions, String owner, String registerNr, String boatTypeAndModel,
                           double lengthInFoot, int year, String motorTypeAndMotorPower) {
 

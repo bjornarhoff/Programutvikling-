@@ -1,14 +1,19 @@
 package Serialisering;
+import CustomerModell.Customer;
 import Damages.Damage_Report;
 
 import javax.swing.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.nio.Buffer;
 import java.util.Date;
 import java.util.Scanner;
 
 public class SearchAndReadFromCSV {
 
     private static Scanner x;
+    private static BufferedReader y;
 
 
    /* public static void main(String[] args) {
@@ -31,6 +36,7 @@ public class SearchAndReadFromCSV {
         String billingAddress = "";
         String allCustomerInsurance = "";
         String unpaidReplacements = "";
+
         try {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
@@ -67,4 +73,7 @@ public class SearchAndReadFromCSV {
         }
 
     }
+
+
+
 }

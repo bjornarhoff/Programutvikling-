@@ -3,7 +3,6 @@ package Insurances;
 import CustomerModell.Customer;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public abstract class Insurance implements Serializable {
 
@@ -11,14 +10,14 @@ public abstract class Insurance implements Serializable {
     private static final long serialVersionUID = 2;
     private Customer customer;
     private String yearlyInsurancePremium;
-    private Date dateOfCreatedInsurance;
+    private String dateOfCreatedInsurance;
     private int insuranceAmount;
     private String insuranceConditions;
 
 
 
     // Default Constructor for Overall Insurances
-    public Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                      String insuranceConditions) {
         this.customer = customer;
         this.yearlyInsurancePremium = yearlyInsurancePremium;
@@ -44,11 +43,11 @@ public abstract class Insurance implements Serializable {
     }
 
 
-    public void setDateOfCreatedInsurance(Date dateOfCreatedInsurance) {
+    public void setDateOfCreatedInsurance(String dateOfCreatedInsurance) {
         this.dateOfCreatedInsurance = dateOfCreatedInsurance;
     }
 
-    public Date getDateOfCreatedInsurance() {
+    public String getDateOfCreatedInsurance() {
         return this.dateOfCreatedInsurance;
     }
 
