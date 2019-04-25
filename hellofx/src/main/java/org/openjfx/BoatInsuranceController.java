@@ -56,7 +56,7 @@ public class BoatInsuranceController {
 
         Customer sven =  new Customer("1235", "sven", "234", "svenemail", "today", "hometown");
 
-        Boat_Insurance b1 = new Boat_Insurance(sven, yearlyPremium.getText(), new Date(), Integer.parseInt(InsuranceAmount.getText()),
+        Boat_Insurance b1 = new Boat_Insurance(sven, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
                 InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
                 Integer.parseInt(year.getText()), motorTypePower.getText());
 

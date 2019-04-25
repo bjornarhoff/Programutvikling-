@@ -4,6 +4,7 @@ import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import FileManagement.ObjectWriter;
+import Serialisering.SearchAndReadFromCSV;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
@@ -32,6 +33,8 @@ public class MainApp extends Application {
             System.out.println(customer);
         }
 
+        System.out.println(CsvReader.findCustomer("652830"));
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
 
@@ -50,6 +53,8 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
 
     }

@@ -58,15 +58,15 @@ public class TravelInsurnaceController {
     @FXML
     public void apply(){
 
-        /*
+
         Customer sven =  new Customer("1235", "sven", "234", "svenemail", "today", "hometown");
 
-        Travel_Insurance t1 = new Travel_Insurance(sven, YearlyInsurance.getText(), new Date(), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
+        Travel_Insurance t1 = new Travel_Insurance(sven, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
         insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
         ObjectWriter.WriteObjectToFile(t1);
         info.setText(t1.toString());
 
-         */
+
 
         insuranceArea.setText("");
         insuranceSum.setText("");
