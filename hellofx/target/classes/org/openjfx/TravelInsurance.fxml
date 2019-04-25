@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="entireScreenTravel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.TravelInsurnaceController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <GridPane fx:id="pane_Customer" layoutX="1.0" prefHeight="860.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="32.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="-Infinity" prefWidth="222.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1047.0" minWidth="998.0" prefWidth="1009.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <AnchorPane prefHeight="575.0" prefWidth="76.0" style="-fx-background-color: #2B2D42;">
+                            <effect>
+                                <InnerShadow height="41.55" radius="21.0075" width="44.48" />
+                            </effect></AnchorPane>
+                        <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
+                            <children>
+                                <JFXButton fx:id="btn_household" layoutY="140.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Household Insurnace" />
+                                <JFXButton fx:id="btn_leisure" layoutY="210.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Leisure Insurancce" />
+                                <JFXButton fx:id="btn_boat" layoutY="350.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Boat Insurance" />
+                                <JFXButton fx:id="btn_travel" layoutY="280.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: black;" text="Travel Insurance" textFill="WHITE" />
+                            </children>
+                            <effect>
+                                <InnerShadow radius="20.317500000000003" width="62.27" />
+                            </effect>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #CEBC6B;" GridPane.columnIndex="2">
+                            <children>
+                                <JFXTextField fx:id="insuranceArea" labelFloat="true" layoutX="50.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Area" />
+                                <JFXTextField fx:id="insuranceSum" labelFloat="true" layoutX="50.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Sum" />
+                                <JFXTextArea fx:id="Info" labelFloat="true" layoutX="464.0" layoutY="51.0" prefHeight="745.0" prefWidth="506.0" promptText="Info about Travel Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </JFXTextArea>
+                                <JFXButton fx:id="btn_cancel" layoutX="40.0" layoutY="748.0" onAction="#cancel" prefHeight="47.0" prefWidth="90.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="btn_apply" layoutX="240.0" layoutY="748.0" onAction="#apply" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="btn_ok" layoutX="360.0" layoutY="748.0" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Ok" textFill="WHITE">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </JFXButton>
+                        <JFXTextField fx:id="YearlyInsurance" labelFloat="true" layoutX="50.0" layoutY="207.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
+                        <JFXTextField fx:id="date" labelFloat="true" layoutX="50.0" layoutY="262.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
+                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="50.0" layoutY="325.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurnace Amount" />
+                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="50.0" layoutY="389.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </GridPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

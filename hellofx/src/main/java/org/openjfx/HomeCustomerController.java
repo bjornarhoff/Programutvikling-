@@ -28,6 +28,7 @@ import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.function.Predicate;
 
 public class HomeCustomerController {
 
@@ -43,7 +44,7 @@ public class HomeCustomerController {
 
     @FXML
     private JFXButton button_Customer, button_Insurance, btn_addCustomer, btn_editCustomer, btn_deleteCustomer,
-            tn_showDamageReport, btn_showInfoCust;
+            tn_showDamageReport, btn_showInfoCust, refresh;
 
     @FXML
     private TableView<Customer> customerTable;
@@ -73,28 +74,14 @@ public class HomeCustomerController {
     private TableColumn<Customer,String> unpaidReplacements;
 
 
+    ObservableList<Customer> customers;
     @FXML
     private void initialize(){
-        ObservableList<Customer> customers = CsvReader.read();
-        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
-        customerTable.setItems(customers);
+
         entireScreenCustomer.toFront();
+
     }
 
-    ObservableList<Customer> observableList = FXCollections.observableArrayList(
-            new Customer("123", "Cato", "11", "fda", new Date(), "fasdf"),
-            new Customer("43", "sven", "143", "asddddlf", new Date(), "fasdf"),
-            new Customer("66", "bjornar", "99", "ahjnbsdlf", new Date(), "fasdf"),
-            new Customer("88", "tree", "87", "nh", new Date(), "fasdf")
-
-    );
 
 
 /*
@@ -130,6 +117,33 @@ public class HomeCustomerController {
 
     }*/
 
+    @FXML
+    private void delete(ActionEvent event){
+       /* ObservableList<Customer> customerSelected, allCustomers;
+        allCustomers = customerTable.getItems();
+        customerSelected = customerTable.getSelectionModel().getSelectedItems();
+
+        customerSelected.forEach(allCustomers::remove); */
+
+        customers.remove(customerTable.getSelectionModel().getSelectedItem());
+
+
+    }
+
+    @FXML
+    private void refresh(ActionEvent event){
+        customers = CsvReader.read();
+        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
+        customerTable.setItems(customers);
+
+    }
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
@@ -152,22 +166,24 @@ public class HomeCustomerController {
         return this.customerTable;
     }
 
-    public void search(javafx.scene.input.KeyEvent keyEvent) {
-        FilteredList filteredData = new FilteredList(observableList, e -> true);
 
-        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
+
+    public void search(javafx.scene.input.KeyEvent keyEvent) {
+        FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
+
+        searching.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(customer -> {
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if(newValue == null || newValue.isEmpty()){
                     return true;
                 }
-                if(customer.getPersonalID().contains(newValue)){
+                if(customer.getPersonalID().contains(lowerCaseFilter)){
                     return true;
                 }
 
-                else if(customer.getName().toLowerCase().contains(newValue)){
+                else if(customer.getName().toLowerCase().contains(lowerCaseFilter)){
                     return true;
                 }
 
@@ -177,7 +193,7 @@ public class HomeCustomerController {
 
         });
 
-        SortedList sortedData = new SortedList(filteredData);
+        SortedList<Customer> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
         customerTable.setItems(sortedData);
 
