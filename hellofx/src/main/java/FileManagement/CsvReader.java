@@ -166,7 +166,7 @@ public class CsvReader {
 
     public static void upDateAllCustomerInsurance(){
        Customer customer =
-    }
+
 
 
 }
