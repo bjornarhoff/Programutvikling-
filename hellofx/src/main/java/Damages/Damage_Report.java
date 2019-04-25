@@ -1,14 +1,18 @@
 package Damages;
 
+import CustomerModell.Customer;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Damage_Report implements Serializable {
 
+
+
     /**
      * Instance variables for the Damage_Report class
      */
-
+    private Customer customer;
     private Date dateOfDamage;
     private int damageNr;
     private String damageType;
@@ -26,9 +30,11 @@ public class Damage_Report implements Serializable {
      * @param contactOfPotentialWitnesses
      * @param taxationAmountOfDamage
      * @param unpaidReplacementAmount
+     * @param customer
      */
     public Damage_Report(Date dateOfDamage, int damageNr, String damageType, String damageDescription,
-                         String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount) {
+                         String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount, Customer customer) {
+        this.customer = customer;
         this.dateOfDamage = dateOfDamage;
         this.damageNr = damageNr;
         this.damageType = damageType;
@@ -50,6 +56,13 @@ public class Damage_Report implements Serializable {
                 "\nUnpaidReplacementAmount: " + unpaidReplacementAmount;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
     /**
      * @param dateOfDamage
      */

@@ -21,7 +21,6 @@ public class Customer implements Serializable {
     private String date;
     private String billingAddress;
     private transient int allCustomerInsurance;
-    private Damage_Report damageReport;
     private transient double unpaidReplacements;
 
 
@@ -195,20 +194,6 @@ public class Customer implements Serializable {
      */
     public int getAllCustomerInsurance() {
         return this.allCustomerInsurance;
-    }
-
-    /**
-     * @param damageReport
-     */
-    public void setDamageReport(Damage_Report damageReport) {
-        this.damageReport = damageReport;
-    }
-
-    /**
-     * @return damageReport
-     */
-    public Damage_Report getDamageReport() {
-        return this.damageReport;
     }
 
 

@@ -150,10 +150,7 @@ public class HomeCustomerController {
         }
     }
 
-    @FXML
-    private void refresh (ActionEvent event){
 
-    }
 
     @FXML
     private void damageReportPressed(){

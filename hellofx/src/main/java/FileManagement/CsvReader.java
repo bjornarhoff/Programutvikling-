@@ -2,6 +2,7 @@ package FileManagement;
 
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import Insurances.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +33,6 @@ public class CsvReader {
                 }
                 String[] values = line.split(",");
                 Customer aCustomer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
-                aCustomer.setInsuranceNr(Integer.parseInt(values[1]));
                 customersFromCsv.add(aCustomer);
             }
         } catch (IOException e) {
@@ -57,8 +57,9 @@ public class CsvReader {
                String[] values = line.split(",");
 
                if(searchterm.equals(values[0])){
-                   customer = new Customer(values[0], values[1], values[2], values[3], values[4], values[5]);
-                   customer.setAllCustomerInsurance();
+                   customer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
+                  // customer.setAllCustomerInsurance(Integer.parseInt(values[7]));
+                  // customer.setUnpaidReplacements(Double.parseDouble(values[8]));
                }
 
            }
@@ -69,7 +70,7 @@ public class CsvReader {
        return customer;
     }
 
-
+    /*
 
     public static ObservableList<Insurance> readHousehold () {
 
@@ -83,7 +84,7 @@ public class CsvReader {
                     continue;
                 }
                 String[] values = line.split(",");
-                House_Household_Insurance household = new House_Household_Insurance( values[0],values[2], values[3], Integer.parseInt(values[4]), values[5], values[6],
+                House_Household_Insurance household = new House_Household_Insurance(values[0],values[2], values[3], Integer.parseInt(values[4]), values[5], values[6],
                         Integer.parseInt(values[7]), values[8], values[9], values[10], Integer.parseInt(values[11]), Integer.parseInt(values[12]), Integer.parseInt(values[13]));
                 householdFromCsv.add(household);
             }
@@ -165,6 +166,7 @@ public class CsvReader {
     public static void upDateAllCustomerInsurance(){
        Customer customer =
     }
+     */
 
 
 }
