@@ -75,70 +75,7 @@ public class HomeCustomerController {
     ObservableList<Customer> customers;
     @FXML
     private void initialize(){
-
-        entireScreenCustomer.toFront();
-
-    }
-
-
-
-/*
-    @FXML
-    private void search(KeyEvent ke){
-        FilteredList filteredData = new FilteredList(observableList, e -> true);
-
-        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-                if(customer.getPersonalID().contains(newValue)){
-                    return true;
-                }
-
-                else if(customer.getName().toLowerCase().contains(newValue)){
-                    return true;
-                }
-
-                return false;
-
-            });
-
-        });
-
-        SortedList sortedData = new SortedList(filteredData);
-        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
-        customerTable.setItems(sortedData);
-
-    }*/
-
-    @FXML
-    private void delete(ActionEvent event){
-       /* ObservableList<Customer> customerSelected, allCustomers;
-        allCustomers = customerTable.getItems();
-        customerSelected = customerTable.getSelectionModel().getSelectedItems();
-
-        customerSelected.forEach(allCustomers::remove); */
-
-        customers.remove(customerTable.getSelectionModel().getSelectedItem());
-
-
-    }
-
-    @FXML
-    private void refresh(ActionEvent event){
-        customers = CsvReader.read();
-        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        customerTable.setItems(customers);
+        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         entireScreenCustomer.toFront();
 
     }

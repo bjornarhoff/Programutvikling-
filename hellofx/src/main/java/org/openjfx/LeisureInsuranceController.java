@@ -35,7 +35,7 @@ public class LeisureInsuranceController {
     @FXML
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == btn_household){
-            handlerFxml.navigate(entireScreenLeisure,"HouseholdInsurance.fxml");
+            handlerFxml.navigate(entireScreenLeisure,"householdInsurance.fxml");
         }
         if(event.getSource() == btn_leisure){
             handlerFxml.navigate(entireScreenLeisure,"LeisureInsurance.fxml");

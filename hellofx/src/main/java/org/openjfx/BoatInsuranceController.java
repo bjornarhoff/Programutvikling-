@@ -33,7 +33,7 @@ public class BoatInsuranceController {
     private void handleButtonActions(ActionEvent event) {
 
         if(event.getSource() == btn_Household){
-            handlerFxml.navigate(entireScreenBoat,"HouseholdInsurance.fxml");
+            handlerFxml.navigate(entireScreenBoat,"householdInsurance.fxml");
         }
         else if(event.getSource() == btn_Leisure){
             handlerFxml.navigate(entireScreenBoat,"LeisureInsurance.fxml");

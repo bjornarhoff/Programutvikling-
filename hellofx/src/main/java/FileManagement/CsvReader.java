@@ -6,6 +6,7 @@ import Damages.Damage_Report;
 import Insurances.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.openjfx.HomeInsuranceController;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -149,9 +150,10 @@ public class CsvReader {
                     continue;
                 }
                 String[] values = line.split(",");
-                Customer customer = CsvReader.findCustomer(getGuiVerdsi);
+                Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected()));
                 Leisure_Insurance leisure = new Leisure_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]), values[7], values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]), Integer.parseInt(values[12]));
-                int all = customer.getAllCustomerInsurance();
+                int allCustomerInsurance = customer.getAllCustomerInsurance();
+                updateAllInsurances(allCustomerInsurance);
 
 
                 LeisureFromCsv.add(leisure);
@@ -163,10 +165,6 @@ public class CsvReader {
     }
 
 
-    public static void upDateAllCustomerInsurance(){
-       Customer customer =
-    }
+
      */
-
-
 }

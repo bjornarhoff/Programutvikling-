@@ -9,9 +9,8 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
 import java.util.Date;
 
 public class HouseholdInsurnaceController {
@@ -20,6 +19,9 @@ public class HouseholdInsurnaceController {
 
     @FXML
     private Pane entireScreenHousehold;
+
+    @FXML
+    private Label customerLabel;
 
     @FXML
     private JFXButton btn_household, btn_leisure, btn_boat, btn_travel, btn_cancel, btn_apply, btn_ok;
@@ -31,12 +33,17 @@ public class HouseholdInsurnaceController {
     @FXML
     private JFXTextArea info;
 
+    @FXML
+    private void initialize(){
+        customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+    }
+
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
         if(event.getSource() == btn_household){
-            handlerFxml.navigate(entireScreenHousehold,"HouseholdInsurance.fxml");
+            handlerFxml.navigate(entireScreenHousehold,"householdInsurance.fxml");
         }
         else if(event.getSource() == btn_leisure){
             handlerFxml.navigate(entireScreenHousehold,"LeisureInsurance.fxml");
