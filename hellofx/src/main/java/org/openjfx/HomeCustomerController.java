@@ -52,15 +52,7 @@ public class HomeCustomerController {
 
     @FXML
     private void initialize(){
-        ObservableList<Customer> customers = CsvReader.read();
-        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        customerTable.setItems(customers);
+        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         entireScreenCustomer.toFront();
     }
 

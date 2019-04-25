@@ -53,19 +53,17 @@
                         <InnerShadow />
                      </effect>
                   </AnchorPane>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </TableView>
+                   <TableView fx:id="insuranceTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                       <columns>
+                           <TableColumn fx:id="personalID" prefWidth="142.0" text="PersonalID" />
+                           <TableColumn fx:id="insuranceNr" prefWidth="120.0" text="InsuranceNr" />
+                           <TableColumn fx:id="name" minWidth="6.0" prefWidth="106.0" text="Name" />
+                           <TableColumn fx:id="phone" prefWidth="98.0" text="Phone" />
+                           <TableColumn fx:id="email" prefWidth="127.0" text="Email" />
+                           <TableColumn fx:id="date" prefWidth="148.0" text="Date" />
+                           <TableColumn fx:id="billing" prefWidth="191.0" text="Billing Adress" />
+                       </columns>
+                   </TableView>
                </children>
                <effect>
                   <InnerShadow />
