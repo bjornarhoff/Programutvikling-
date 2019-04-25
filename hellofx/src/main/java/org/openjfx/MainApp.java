@@ -25,6 +25,7 @@ public class MainApp extends Application {
 
         ObservableList<Customer> minListe = CsvReader.read();
         for (Customer customer : minListe){
+            System.out.println(customer.getDamageReport());
             System.out.println(customer);
         }
         System.out.println("Bjornar");

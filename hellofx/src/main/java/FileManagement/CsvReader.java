@@ -2,6 +2,7 @@ package FileManagement;
 
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -31,6 +32,7 @@ public class CsvReader {
                 String[] values = line.split(",");
                 Customer aCustomer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
                 aCustomer.setInsuranceNr(Integer.parseInt(values[1]));
+                aCustomer.setDamageReport(new Damage_Report(new Date(), 3333, "jejejeje", "jfjfjfjfjjf", "jfjfjfjfjfjfjfj", 4444, 3333));
                 customersFromCsv.add(aCustomer);
             }
         } catch (IOException e) {

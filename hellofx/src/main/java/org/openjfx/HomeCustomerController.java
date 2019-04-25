@@ -14,11 +14,13 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+
 
 
 
@@ -84,14 +86,27 @@ public class HomeCustomerController {
 
     @FXML
     private void handleSaveClicked(ActionEvent event) {
-        System.out.println("Save clicked");
+
+
 
     }
 
     @FXML
     private void handleLoadClicked(ActionEvent event) {
 
-        System.out.println("Load clicked");
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save file");
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
+        File csvFile = new File(System.getProperty("user.home") + "/customer1.csv");
+
+        if (!csvFile.exists()) {
+            System.out.println("File exist");
+        }
+
+        chooser.setInitialDirectory(csvFile);
+
+        File selectedFile = chooser.showOpenDialog(entireScreenCustomer.getScene().getWindow());
+
     }
 
     @FXML
