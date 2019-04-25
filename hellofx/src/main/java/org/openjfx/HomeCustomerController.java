@@ -70,8 +70,6 @@ public class HomeCustomerController {
     @FXML
     private TableColumn<Customer,String> billing;
 
-    @FXML
-    private TableColumn<Customer,String> unpaidReplacements;
 
 
     ObservableList<Customer> customers;
@@ -140,8 +138,8 @@ public class HomeCustomerController {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
         customerTable.setItems(customers);
+        entireScreenCustomer.toFront();
 
     }
 
@@ -150,6 +148,11 @@ public class HomeCustomerController {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
+    }
+
+    @FXML
+    private void refresh (ActionEvent event){
+
     }
 
     @FXML

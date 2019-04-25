@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 public class CreateCustomerController implements Initializable{
 
     HandlerFxml handlerFxml = new HandlerFxml();
-    HomeCustomerController homeCustomerController = new HomeCustomerController();
 
     @FXML
     private BorderPane popUpCreate;
@@ -70,6 +69,7 @@ public class CreateCustomerController implements Initializable{
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
         Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
+        aCustomer.generateInsuranceNr();
         CsvWriter.writeObjectToCSV(aCustomer);
         info.setText(aCustomer.toString());
 

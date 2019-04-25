@@ -13,7 +13,7 @@ public class CsvWriter {
 
     // Parameters used in CSV file
     private static final String COMMA = ",";
-    private static final String HEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
+    private static final String HEADER = "PersonalId,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,AllCustomerInsurance,DamageReport,UnpaidReplacements";
     private static final String NEW_LINE = "\n";
     private static boolean fileExists = false;
 
@@ -64,6 +64,12 @@ public class CsvWriter {
             fileWriter.append(aCustomer.getDate());
             fileWriter.append(COMMA);
             fileWriter.append(aCustomer.getBillingAddress());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(aCustomer.getAllCustomerInsurance()));
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(aCustomer.getDamageReport()));
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(aCustomer.getUnpaidReplacements()));
             fileWriter.append(NEW_LINE);
 
             // If something went wrong while creating file

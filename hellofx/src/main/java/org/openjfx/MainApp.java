@@ -32,6 +32,7 @@ public class MainApp extends Application {
         for (Customer customer : minListe){
             System.out.println(customer);
         }
+        System.out.println("Bjornar");
 
         System.out.println(CsvReader.findCustomer("652830"));
 

@@ -29,7 +29,6 @@ public class Customer implements Serializable {
     public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
 
         this.personalID = PersonalID;
-        this.insuranceNr = generateInsuranceNr();
         this.name = Name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -55,14 +54,13 @@ public class Customer implements Serializable {
      */
     @Override
     public String toString() {
-        return  "\nPersonalID: " + personalID +
+        return  "PersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
-                "\nBillingAddress: " + billingAddress +
-                "\nAllCustomerInsurance: " + allCustomerInsurance;
+                "\nBillingAddress: " + billingAddress;
     }
 
     /**
@@ -70,12 +68,12 @@ public class Customer implements Serializable {
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then
      * return the generated Number
      */
-    public static int generateInsuranceNr() {
+    public void generateInsuranceNr() {
         int min = 100000;
         int max = 999999;
 
         Random r = new Random();
-        return r.nextInt((max - min) + 1);
+        this.insuranceNr = r.nextInt((max - min) + 1);
     }
 
     /**
