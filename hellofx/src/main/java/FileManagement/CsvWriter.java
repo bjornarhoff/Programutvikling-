@@ -1,10 +1,7 @@
 package FileManagement;
 
 import CustomerModell.Customer;
-import Insurances.Boat_Insurance;
-import Insurances.House_Household_Insurance;
-import Insurances.Insurance;
-import Insurances.Leisure_Insurance;
+import Insurances.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -199,6 +196,47 @@ public class CsvWriter {
             fileWriter.append(COMMA);
             fileWriter.append(String.valueOf(houseInsurance.getInsuranceAmountForHousehold()));
             fileWriter.append(NEW_LINE);
+
+            // If something went wrong while creating file
+        } catch (IOException e) {
+            System.out.println("csv file create error");
+            e.printStackTrace();
+        }
+
+
+        finallyBlock(fileWriter);
+    }
+
+
+    public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
+            if (!fileExists) {
+                // Write to header
+                fileWriter.append(houseInsuranceHeader);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
+
+            fileWriter.append(String.valueOf(travelInsurance.getCustomer()));
+            fileWriter.append(COMMA);
+            fileWriter.append(travelInsurance.getYearlyInsurancePremium());
+            fileWriter.append(COMMA);
+            fileWriter.append(travelInsurance.getDateOfCreatedInsurance());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(travelInsurance.getInsuranceAmount()));
+            fileWriter.append(COMMA);
+            fileWriter.append(travelInsurance.getInsuranceConditions());
+
+            fileWriter.append(travelInsurance.getInsuranceArea());
+            fileWriter.append(COMMA);
+            fileWriter.append(String.valueOf(travelInsurance.getInsuranceSum()));
+            fileWriter.append(COMMA);
+            fileWriter.append(NEW_LINE);
+
+
 
             // If something went wrong while creating file
         } catch (IOException e) {

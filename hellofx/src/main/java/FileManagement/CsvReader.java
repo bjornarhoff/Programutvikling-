@@ -71,7 +71,7 @@ public class CsvReader {
        return customer;
     }
 
-    /*
+
 
     public static ObservableList<Insurance> readHousehold () {
 
@@ -85,7 +85,8 @@ public class CsvReader {
                     continue;
                 }
                 String[] values = line.split(",");
-                House_Household_Insurance household = new House_Household_Insurance(values[0],values[2], values[3], Integer.parseInt(values[4]), values[5], values[6],
+                Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected()));
+                House_Household_Insurance household = new House_Household_Insurance(customer,values[2], values[3], Integer.parseInt(values[4]), values[5], values[6],
                         Integer.parseInt(values[7]), values[8], values[9], values[10], Integer.parseInt(values[11]), Integer.parseInt(values[12]), Integer.parseInt(values[13]));
                 householdFromCsv.add(household);
             }
@@ -107,7 +108,8 @@ public class CsvReader {
                     continue;
                 }
                 String[] values = line.split(",");
-                Travel_Insurance travel = new Travel_Insurance(values[0],values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]));
+                Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected()));
+                Travel_Insurance travel = new Travel_Insurance(customer,values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]));
                 travelFromCsv.add(travel);
             }
         } catch (IOException e) {
@@ -128,7 +130,8 @@ public class CsvReader {
                     continue;
                 }
                 String[] values = line.split(",");
-                Boat_Insurance boat = new Boat_Insurance(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], values[6], values[7], Double.parseDouble(values[8]), Integer.parseInt(values[9]), values[10]);
+                Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected()));
+                Boat_Insurance boat = new Boat_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], values[6], values[7], Double.parseDouble(values[8]), Integer.parseInt(values[9]), values[10]);
                 boatFromCsv.add(boat);
             }
         } catch (IOException e) {
@@ -153,7 +156,7 @@ public class CsvReader {
                 Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected()));
                 Leisure_Insurance leisure = new Leisure_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]), values[7], values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]), Integer.parseInt(values[12]));
                 int allCustomerInsurance = customer.getAllCustomerInsurance();
-                updateAllInsurances(allCustomerInsurance);
+                //updateAllInsurances(allCustomerInsurance);
 
 
                 LeisureFromCsv.add(leisure);
@@ -166,5 +169,5 @@ public class CsvReader {
 
 
 
-     */
+
 }

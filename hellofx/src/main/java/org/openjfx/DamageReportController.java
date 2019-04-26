@@ -17,7 +17,7 @@ public class DamageReportController {
     private BorderPane damageReport;
 
     @FXML
-    private Label customerName;
+    private Label customerLabel;
 
     @FXML
     private JFXButton btn_create, btn_edit, btn_showDescription, btn_delete, btn_goBack;
@@ -31,6 +31,12 @@ public class DamageReportController {
     @FXML
     private TextArea desciption;
 
+
+
+    @FXML
+    private void initialize(){
+        customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+    }
 
     @FXML
     private void createDamageReport(ActionEvent event){

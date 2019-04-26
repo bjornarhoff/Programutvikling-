@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="damageReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1025.0" style="-fx-background-color: #8C7365;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.DamageReportController">
+<BorderPane fx:id="damageReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1025.0" style="-fx-background-color: #8C7365;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.DamageReportController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="486.0" text="Damage report of customer: ">
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="522.0" text="Damage report of customer: ">
                <font>
                   <Font size="37.0" />
                </font>
             </Label>
-            <Label fx:id="customerName" layoutX="526.0" layoutY="14.0" prefHeight="100.0" prefWidth="455.0">
+            <Label fx:id="customerLabel" layoutX="526.0" layoutY="14.0" prefHeight="139.0" prefWidth="455.0">
                <font>
-                  <Font size="37.0" />
+                  <Font size="11.0" />
                </font>
             </Label>
             <JFXButton fx:id="btn_create" layoutX="37.0" layoutY="146.0" onAction="#createDamageReport" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create New Report" textFill="WHITE" />

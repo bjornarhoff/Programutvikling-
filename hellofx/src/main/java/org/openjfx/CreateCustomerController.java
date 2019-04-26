@@ -73,6 +73,7 @@ public class CreateCustomerController implements Initializable{
         CsvWriter.writeObjectToCSV(aCustomer);
         info.setText(aCustomer.toString());
 
+
         personalID.setText("");
         name.setText("");
         billing.setText("");

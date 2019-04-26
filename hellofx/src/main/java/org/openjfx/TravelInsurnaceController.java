@@ -1,6 +1,8 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
 import FileManagement.ObjectWriter;
 import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
@@ -9,6 +11,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
@@ -29,6 +32,17 @@ public class TravelInsurnaceController {
 
     @FXML
     private JFXButton btn_household, btn_leisure, btn_boat, btn_travel, btn_cancel, btn_apply, btn_ok;
+
+    @FXML
+    private Label customerLabel;
+
+
+    @FXML
+    private void initialize(){
+        customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+    }
+
+
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
@@ -58,15 +72,16 @@ public class TravelInsurnaceController {
     @FXML
     public void apply(){
 
+        Customer customer = HomeInsuranceController.getCustomerSelected();
 
-        Customer sven =  new Customer("1235", "sven", "234", "svenemail", "today", "hometown");
-
-        Travel_Insurance t1 = new Travel_Insurance(sven, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
+        Travel_Insurance t1 = new Travel_Insurance(customer, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
         insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
-        ObjectWriter.WriteObjectToFile(t1);
-        info.setText(t1.toString());
+        //CsvWriter.writeTravelInsjurance(t1);
+        //info.setText(t1.toString());
 
+        String trying = t1.toString();
 
+        System.out.println(trying);
 
         insuranceArea.setText("");
         insuranceSum.setText("");

@@ -3,7 +3,6 @@ package Damages;
 import CustomerModell.Customer;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Damage_Report implements Serializable {
 
@@ -13,7 +12,7 @@ public class Damage_Report implements Serializable {
      * Instance variables for the Damage_Report class
      */
     private Customer customer;
-    private Date dateOfDamage;
+    private String dateOfDamage;
     private int damageNr;
     private String damageType;
     private String damageDescription;
@@ -32,7 +31,7 @@ public class Damage_Report implements Serializable {
      * @param unpaidReplacementAmount
      * @param customer
      */
-    public Damage_Report(Date dateOfDamage, int damageNr, String damageType, String damageDescription,
+    public Damage_Report(String dateOfDamage, int damageNr, String damageType, String damageDescription,
                          String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount, Customer customer) {
         this.customer = customer;
         this.dateOfDamage = dateOfDamage;
@@ -66,14 +65,14 @@ public class Damage_Report implements Serializable {
     /**
      * @param dateOfDamage
      */
-    public void setDateOfDamage(Date dateOfDamage) {
+    public void setDateOfDamage(String dateOfDamage) {
         this.dateOfDamage = dateOfDamage;
     }
 
     /**
      * @return dateOfDamage
      */
-    public Date getDateOfDamage() {
+    public String getDateOfDamage() {
         return dateOfDamage;
     }
 

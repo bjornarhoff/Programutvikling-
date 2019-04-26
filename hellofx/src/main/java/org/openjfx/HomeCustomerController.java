@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.function.Predicate;
 
+import static org.openjfx.HomeInsuranceController.customerSelected;
+
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
@@ -87,11 +89,21 @@ public class HomeCustomerController {
         }
     }
 
+    public static Customer getCustomerSelected() {
+        return customerSelected;
+    }
+
+
 
 
     @FXML
     private void damageReportPressed(){
+
+        customerTable.getItems();
+        customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
+        System.out.println(customerSelected.getPersonalID());
+
     }
 
     @FXML

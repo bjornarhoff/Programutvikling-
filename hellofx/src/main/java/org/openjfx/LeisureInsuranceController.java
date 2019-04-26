@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
@@ -31,6 +32,14 @@ public class LeisureInsuranceController {
     @FXML
     public JFXTextArea info;
 
+    @FXML
+    private Label customerLabel;
+
+    @FXML
+    private void initialize(){
+        customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+    }
+
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
@@ -47,6 +56,8 @@ public class LeisureInsuranceController {
             handlerFxml.navigate(entireScreenLeisure,"BoatInsurance.fxml");
         }
     }
+
+
 
     @FXML
     public void cancel() {

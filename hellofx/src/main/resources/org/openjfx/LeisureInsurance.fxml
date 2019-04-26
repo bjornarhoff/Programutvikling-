@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -75,6 +76,16 @@
                         <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="50.0" layoutY="695.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
                         <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="50.0" layoutY="593.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
                         <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="53.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
+                        <Label layoutX="52.0" layoutY="34.0" prefHeight="35.0" prefWidth="301.0" text="Create Insurnace for Customer: ">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="customerLabel" layoutX="353.0" layoutY="34.0" prefHeight="34.0" prefWidth="85.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </children>
