@@ -19,9 +19,9 @@
                   <Font size="37.0" />
                </font>
             </Label>
-            <Label fx:id="customerLabel" layoutX="526.0" layoutY="14.0" prefHeight="139.0" prefWidth="455.0">
+            <Label fx:id="customerLabel" layoutX="522.0" layoutY="30.0" prefHeight="68.0" prefWidth="340.0">
                <font>
-                  <Font size="11.0" />
+                  <Font size="19.0" />
                </font>
             </Label>
             <JFXButton fx:id="btn_create" layoutX="37.0" layoutY="146.0" onAction="#createDamageReport" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create New Report" textFill="WHITE" />

@@ -17,13 +17,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import org.w3c.dom.Text;
 
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
@@ -116,12 +116,11 @@ public class HomeCustomerController {
     }
 
 
-
-    public void search(javafx.scene.input.KeyEvent keyEvent) {
+    public void search(KeyEvent keyEvent) {
         FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 
         searching.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(customer -> {
+            filteredData.setPredicate((Predicate<? super Customer>) customer -> {
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
@@ -145,6 +144,5 @@ public class HomeCustomerController {
         SortedList<Customer> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
         customerTable.setItems(sortedData);
-
     }
 }

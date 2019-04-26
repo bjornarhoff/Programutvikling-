@@ -7,6 +7,9 @@ import Insurances.House_Household_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -36,6 +39,22 @@ public class HouseholdInsurnaceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+
+        NumberValidator numvalidator = new NumberValidator();
+
+        amountForConstruction.getValidators().add(numvalidator);
+        yearConstruction.getValidators().add(numvalidator);
+        nrSquareMeters.getValidators().add(numvalidator);
+        amountForHousehold.getValidators().add(numvalidator);
+        yearlyPremium.getValidators().add(numvalidator);
+        InsuranceAmount.getValidators().add(numvalidator);
+
+
+        numvalidator.setMessage("Only numbers are supported!");
+
+        setInputValidaiton();
+
+
     }
 
 
@@ -68,13 +87,72 @@ public class HouseholdInsurnaceController {
 
         House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
          InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
-          conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(InsuranceConditions.getText()));
+          conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
 
         CsvWriter.writeHouseInsuranceToCSV(h1);
         info.setText(h1.toString());
+        clearInput();
 
 
+    }
 
+    public void setInputValidaiton(){
+        amountForConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    amountForConstruction.validate();
+                }
+            }
+        });
+
+        yearConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    yearConstruction.validate();
+                }
+            }
+        });
+
+        nrSquareMeters.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    nrSquareMeters.validate();
+                }
+            }
+        });
+
+        amountForHousehold.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    amountForHousehold.validate();
+                }
+            }
+        });
+
+        yearlyPremium.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    yearlyPremium.validate();
+                }
+            }
+        });
+
+        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    InsuranceAmount.validate();
+                }
+            }
+        });
+    }
+
+    public void clearInput(){
         propertyOwner.setText("");
         yearConstruction.setText("");
         constMaterial.setText("");

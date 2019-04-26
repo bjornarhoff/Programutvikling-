@@ -44,15 +44,29 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #3AAA99;" GridPane.columnIndex="2">
                             <children>
+                        <Label layoutX="52.0" layoutY="34.0" prefHeight="35.0" prefWidth="301.0" text="Create Insurnace for Customer: ">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="customerLabel" layoutX="353.0" layoutY="34.0" prefHeight="34.0" prefWidth="85.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
                                 <JFXTextField fx:id="address" labelFloat="true" layoutX="50.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Address (not Billing)" />
                                 <JFXTextField fx:id="yearConstruction" labelFloat="true" layoutX="50.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Year of Construction" />
-                                <JFXTextField fx:id="constructionMaterial" labelFloat="true" layoutX="50.0" layoutY="290.0" onAction="#apply" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" />
                                 <JFXTextField fx:id="residentialType" labelFloat="true" layoutX="50.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Residential Type" />
-                                <JFXTextField fx:id="amountConstruction" labelFloat="true" layoutX="50.0" layoutY="476.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" />
-                                <JFXTextField fx:id="nrSquareMeters" labelFloat="true" layoutX="50.0" layoutY="410.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" />
+                                <JFXTextField fx:id="constructionMaterial" labelFloat="true" layoutX="50.0" layoutY="290.0" onAction="#apply" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" />
                                 <JFXTextField fx:id="condition" labelFloat="true" layoutX="50.0" layoutY="348.0" prefHeight="27.0" prefWidth="340.0" promptText="Condition" />
-                                <JFXTextField fx:id="amountHousehold" labelFloat="true" layoutX="50.0" layoutY="536.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" />
-                                <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="124.0" prefHeight="672.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
+                                <JFXTextField fx:id="nrSquareMeters" labelFloat="true" layoutX="50.0" layoutY="410.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" />
+                                <JFXTextField fx:id="amountConstruction" labelFloat="true" layoutX="50.0" layoutY="487.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" />
+                                <JFXTextField fx:id="amountHousehold" labelFloat="true" layoutX="50.0" layoutY="562.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" />
+                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="49.0" layoutY="634.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
+                        <JFXTextField fx:id="date" labelFloat="true" layoutX="464.0" layoutY="79.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
+                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="464.0" layoutY="152.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
+                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
+                                <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="296.0" prefHeight="518.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
                                     <font>
                                         <Font size="17.0" />
                                     </font>
@@ -72,20 +86,6 @@
                                         <Font size="19.0" />
                                     </font>
                                 </JFXButton>
-                        <JFXTextField fx:id="date" labelFloat="true" layoutX="50.0" layoutY="644.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
-                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="50.0" layoutY="695.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
-                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="50.0" layoutY="593.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
-                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="53.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
-                        <Label layoutX="52.0" layoutY="34.0" prefHeight="35.0" prefWidth="301.0" text="Create Insurnace for Customer: ">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="customerLabel" layoutX="353.0" layoutY="34.0" prefHeight="34.0" prefWidth="85.0">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
                             </children>
                         </AnchorPane>
                     </children>

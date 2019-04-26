@@ -9,6 +9,9 @@ import Insurances.Travel_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -40,7 +43,22 @@ public class TravelInsurnaceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
-    }
+
+        NumberValidator numvalidator = new NumberValidator();
+
+        insuranceSum.getValidators().add(numvalidator);
+        YearlyInsurance.getValidators().add(numvalidator);
+        InsuranceAmount.getValidators().add(numvalidator);
+
+
+
+        numvalidator.setMessage("Only numbers are supported!");
+
+        setInputValidation();
+
+
+
+}
 
 
 
@@ -76,20 +94,49 @@ public class TravelInsurnaceController {
 
         Travel_Insurance t1 = new Travel_Insurance(customer, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
         insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
-        //CsvWriter.writeTravelInsjurance(t1);
-        //info.setText(t1.toString());
+        CsvWriter.writeTravelInsjurance(t1);
+        info.setText(t1.toString());
 
-        String trying = t1.toString();
+        clearInput();
 
-        System.out.println(trying);
+    }
 
+    public void clearInput(){
         insuranceArea.setText("");
         insuranceSum.setText("");
         YearlyInsurance.setText("");
         date.setText("");
         InsuranceAmount.setText("");
         InsuranceConditions.setText("");
+    }
 
+    public void setInputValidation(){
+        insuranceSum.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    insuranceSum.validate();
+                }
+            }
+        });
+
+        YearlyInsurance.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    YearlyInsurance.validate();
+                }
+            }
+        });
+
+        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    InsuranceAmount.validate();
+                }
+            }
+        });
     }
 
 }

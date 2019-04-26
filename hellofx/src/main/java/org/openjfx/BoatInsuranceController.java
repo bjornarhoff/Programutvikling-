@@ -5,6 +5,9 @@ import Insurances.Boat_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -37,8 +40,21 @@ public class BoatInsuranceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
-    }
 
+        NumberValidator numvalidator = new NumberValidator();
+
+        registerNr.getValidators().add(numvalidator);
+        length.getValidators().add(numvalidator);
+        year.getValidators().add(numvalidator);
+        yearlyPremium.getValidators().add(numvalidator);
+        InsuranceAmount.getValidators().add(numvalidator);
+
+
+        numvalidator.setMessage("Only numbers are supported!");
+
+        setInputValidation();
+
+    }
 
 
     @FXML
@@ -66,12 +82,20 @@ public class BoatInsuranceController {
     @FXML
     public void apply(){
 
-        Customer sven =  new Customer("1235", "sven", "234", "svenemail", "today", "hometown");
+        Customer customer = HomeInsuranceController.getCustomerSelected();
 
-        Boat_Insurance b1 = new Boat_Insurance(sven, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
+
+        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
                 InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
                 Integer.parseInt(year.getText()), motorTypePower.getText());
 
+        info.setText(b1.toString());
+
+        clearInput();
+
+    }
+
+    public void clearInput(){
         Owner.setText("");
         registerNr.setText("");
         length.setText("");
@@ -82,8 +106,53 @@ public class BoatInsuranceController {
         date.setText("");
         InsuranceAmount.setText("");
         InsuranceConditions.setText("");
+    }
 
-        //info.setText((b1.toString()));
 
+    public void setInputValidation(){
+        registerNr.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    registerNr.validate();
+                }
+            }
+        });
+
+        length.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    length.validate();
+                }
+            }
+        });
+
+        year.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    year.validate();
+                }
+            }
+        });
+
+        yearlyPremium.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    yearlyPremium.validate();
+                }
+            }
+        });
+
+        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    InsuranceAmount.validate();
+                }
+            }
+        });
     }
 }
