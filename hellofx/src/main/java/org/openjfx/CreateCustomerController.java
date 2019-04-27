@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,25 +36,11 @@ public class CreateCustomerController implements Initializable{
     public TextArea info;
 
     @FXML
-    public TextField personalID;
+    public JFXTextField personalID, name,billing,phone,email;
 
     @FXML
-    public TextField name;
+    public JFXButton cancel,apply;
 
-    @FXML
-    public TextField billing;
-
-    @FXML
-    public TextField phone;
-
-    @FXML
-    public TextField email;
-
-    @FXML
-    public JFXButton cancel;
-
-    @FXML
-    public JFXButton apply;
 
 
     @FXML
@@ -67,8 +54,6 @@ public class CreateCustomerController implements Initializable{
         catch (IOException e){
             System.out.println("error while loading");
         }
-
-
 
     }
 
@@ -86,11 +71,7 @@ public class CreateCustomerController implements Initializable{
         info.setText(aCustomer.toString());
 
 
-        personalID.setText("");
-        name.setText("");
-        billing.setText("");
-        phone.setText("");
-        email.setText("");
+        handlerFxml.clearInput(personalID, name,billing,phone,email);
     }
 
 

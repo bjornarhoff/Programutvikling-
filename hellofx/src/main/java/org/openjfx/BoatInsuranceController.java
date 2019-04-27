@@ -6,15 +6,11 @@ import Insurances.Boat_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
 import java.util.Date;
 
 public class BoatInsuranceController {
@@ -28,7 +24,7 @@ public class BoatInsuranceController {
     private JFXButton btn_Household, btn_Leisure, btn_Boat, btn_Travel, btn_cancel, btn_apply, btn_ok;
 
     @FXML
-    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, InsuranceAmount, InsuranceConditions;
+    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions;
 
     @FXML
     private JFXTextArea info;
@@ -42,18 +38,36 @@ public class BoatInsuranceController {
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-        NumberValidator numvalidator = new NumberValidator();
+        /*NumberValidator numvalidator = new NumberValidator();
 
         registerNr.getValidators().add(numvalidator);
         length.getValidators().add(numvalidator);
         year.getValidators().add(numvalidator);
         yearlyPremium.getValidators().add(numvalidator);
-        InsuranceAmount.getValidators().add(numvalidator);
+        insuranceAmount.getValidators().add(numvalidator);
 
 
-        numvalidator.setMessage("Only numbers are supported!");
+        numvalidator.setMessage("Only numbers are supported!");*/
 
-        setInputValidation();
+        handlerFxml.getValidators(registerNr);
+        handlerFxml.getValidators(length);
+        handlerFxml.getValidators(year);
+        handlerFxml.getValidators(yearlyPremium);
+        handlerFxml.getValidators(insuranceAmount);
+
+        handlerFxml.setInputValidation(registerNr);
+        handlerFxml.setInputValidation(length);
+        handlerFxml.setInputValidation(year);
+        handlerFxml.setInputValidation(yearlyPremium);
+        handlerFxml.setInputValidation(insuranceAmount);
+
+        handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
+
+
+
+
+
+        //setInputValidation();
 
     }
 
@@ -86,7 +100,7 @@ public class BoatInsuranceController {
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
 
-        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
+        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
                 InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
                 Integer.parseInt(year.getText()), motorTypePower.getText());
 
@@ -94,11 +108,11 @@ public class BoatInsuranceController {
 
         info.setText(b1.toString());
 
-        clearInput();
+        handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
     }
 
-    public void clearInput(){
+   /* public void clearInput(){
         Owner.setText("");
         registerNr.setText("");
         length.setText("");
@@ -107,7 +121,7 @@ public class BoatInsuranceController {
         year.setText("");
         yearlyPremium.setText("");
         date.setText("");
-        InsuranceAmount.setText("");
+        insuranceAmount.setText("");
         InsuranceConditions.setText("");
     }
 
@@ -149,13 +163,13 @@ public class BoatInsuranceController {
             }
         });
 
-        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        insuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue){
-                    InsuranceAmount.validate();
+                    insuranceAmount.validate();
                 }
             }
         });
-    }
+    } */
 }

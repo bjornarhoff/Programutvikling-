@@ -2,6 +2,10 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
@@ -58,7 +62,6 @@ public class HandlerFxml {
 
 
      public void restrictionId (TextField textField) {
-         /** Funker, men ikke tatt fra hodet */
          // Sets pattern to texfield, 0 - 8 characters allowed
          Pattern pattern = Pattern.compile(".{0,11}");
          TextFormatter formatter = new TextFormatter
@@ -69,7 +72,6 @@ public class HandlerFxml {
      }
 
     public void restrictionPhone (TextField textField) {
-        /** Funker, men ikke tatt fra hodet */
         // Sets pattern to texfield, 0 - 8 characters allowed
         Pattern pattern = Pattern.compile(".{0,8}");
         TextFormatter formatter = new TextFormatter
@@ -79,8 +81,8 @@ public class HandlerFxml {
         textField.setTextFormatter(formatter);
     }
 
+    // Enabling button only if all of the textfields have text
     public void enableButton (JFXButton apply, TextField personalID, TextField name, TextField billing, TextField phone, TextField email) {
-        // Enabling button only if all of the textfields have text
         BooleanBinding boolBind = personalID.textProperty().isEmpty()
                 .or(name.textProperty().isEmpty())
                 .or(billing.textProperty().isEmpty())
@@ -89,6 +91,19 @@ public class HandlerFxml {
 
         apply.disableProperty().bind(boolBind);
     }
+
+
+  /** FUNKER IKKE
+   *  // Enabling button only if all of the textfields have text
+    public void enable(JFXButton apply, JFXTextField ... textFields) {
+        BooleanBinding boolBind;
+        for (JFXTextField field : textFields) {
+            boolBind = field.textProperty().isEmpty();
+            apply.disableProperty().bind(boolBind);
+            
+        }
+
+    } **/
 
 
     public void loadFileThread () {
@@ -109,6 +124,35 @@ public class HandlerFxml {
         new Thread(task).start();
     }
 
+
+
+
+    public void clearInput(JFXTextField... fields) {
+
+        for (JFXTextField field : fields) {
+            field.setText("");
+        }
+    }
+
+
+    public void setInputValidation(JFXTextField textField) {
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (!newValue) {
+                    textField.validate();
+                }
+            }
+        });
+    }
+
+
+    public void getValidators (JFXTextField textField) {
+        NumberValidator numvalidator = new NumberValidator();
+
+        textField.getValidators().add(numvalidator);
+        numvalidator.setMessage("Only numbers are supported!");
+    }
 
 
 }

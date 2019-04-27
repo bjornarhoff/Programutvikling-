@@ -30,7 +30,7 @@ public abstract class Insurance implements Serializable {
     public String toString() {
         return  "\nYearlyInsurancePremium: " + yearlyInsurancePremium +
                 "\nDateOfCreatedInsurance: " + dateOfCreatedInsurance +
-                "\nInsuranceAmount: " + insuranceAmount +
+                "\ninsuranceAmount: " + insuranceAmount +
                 "\nInsuranceConditions: " + insuranceConditions;
     }
 

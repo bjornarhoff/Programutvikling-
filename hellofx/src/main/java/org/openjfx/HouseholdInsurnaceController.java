@@ -2,7 +2,6 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
-import FileManagement.ObjectWriter;
 import Insurances.House_Household_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -14,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class HouseholdInsurnaceController {
@@ -31,29 +32,42 @@ public class HouseholdInsurnaceController {
 
     @FXML
     private JFXTextField propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
-                        conditions, amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions;
+            conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions;
 
     @FXML
     private JFXTextArea info;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-        NumberValidator numvalidator = new NumberValidator();
+       /* NumberValidator numvalidator = new NumberValidator();
 
         amountForConstruction.getValidators().add(numvalidator);
         yearConstruction.getValidators().add(numvalidator);
         nrSquareMeters.getValidators().add(numvalidator);
         amountForHousehold.getValidators().add(numvalidator);
         yearlyPremium.getValidators().add(numvalidator);
-        InsuranceAmount.getValidators().add(numvalidator);
+        insuranceAmount.getValidators().add(numvalidator);
 
 
-        numvalidator.setMessage("Only numbers are supported!");
+        numvalidator.setMessage("Only numbers are supported!"); */
 
-        setInputValidaiton();
+       handlerFxml.getValidators(amountForConstruction);
+       handlerFxml.getValidators(yearConstruction);
+       handlerFxml.getValidators(nrSquareMeters);
+       handlerFxml.getValidators(amountForHousehold);
+       handlerFxml.getValidators(yearlyPremium);
+       handlerFxml.getValidators(insuranceAmount);
 
+        //setInputValidaiton();
+        handlerFxml.setInputValidation(amountForConstruction);
+        handlerFxml.setInputValidation(yearConstruction);
+        handlerFxml.setInputValidation(nrSquareMeters);
+        handlerFxml.setInputValidation(amountForHousehold);
+        handlerFxml.setInputValidation(yearlyPremium);
+        handlerFxml.setInputValidation(amountForConstruction);
+        handlerFxml.setInputValidation(insuranceAmount);
 
     }
 
@@ -61,17 +75,14 @@ public class HouseholdInsurnaceController {
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
-        if(event.getSource() == btn_household){
-            handlerFxml.navigate(entireScreenHousehold,"householdInsurance.fxml");
-        }
-        else if(event.getSource() == btn_leisure){
-            handlerFxml.navigate(entireScreenHousehold,"LeisureInsurance.fxml");
-        }
-        else if(event.getSource() == btn_travel){
-            handlerFxml.navigate(entireScreenHousehold,"TravelInsurance.fxml");
-        }
-        else if(event.getSource() == btn_boat){
-            handlerFxml.navigate(entireScreenHousehold,"BoatInsurance.fxml");
+        if (event.getSource() == btn_household) {
+            handlerFxml.navigate(entireScreenHousehold, "householdInsurance.fxml");
+        } else if (event.getSource() == btn_leisure) {
+            handlerFxml.navigate(entireScreenHousehold, "LeisureInsurance.fxml");
+        } else if (event.getSource() == btn_travel) {
+            handlerFxml.navigate(entireScreenHousehold, "TravelInsurance.fxml");
+        } else if (event.getSource() == btn_boat) {
+            handlerFxml.navigate(entireScreenHousehold, "BoatInsurance.fxml");
         }
     }
 
@@ -81,22 +92,24 @@ public class HouseholdInsurnaceController {
     }
 
     @FXML
-    public void apply(){
+    public void apply() {
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
-        House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
-         InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
-          conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
+        House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
+                insuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
+                conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
 
         CsvWriter.writeHouseInsuranceToCSV(h1);
         info.setText(h1.toString());
-        clearInput();
 
+        // Clear input
+        handlerFxml.clearInput(propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
+        conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions);
 
     }
 
-    public void setInputValidaiton(){
+    /*public void setInputValidaiton(){
         amountForConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -142,28 +155,32 @@ public class HouseholdInsurnaceController {
             }
         });
 
-        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        insuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue){
-                    InsuranceAmount.validate();
+                    insuranceAmount.validate();
                 }
             }
         });
     }
 
-    public void clearInput(){
-        propertyOwner.setText("");
-        yearConstruction.setText("");
-        constMaterial.setText("");
-        residentialType.setText("");
-        amountForConstruction.setText("");
-        nrSquareMeters.setText("");
-        conditions.setText("");
-        amountForHousehold.setText("");
-        yearlyPremium.setText("");
-        date.setText("");
-        InsuranceAmount.setText("");
-        InsuranceConditions.setText("");
+    public void clearInput(JFXTextField ... fields) {
+
+        for (JFXTextField field : fields) {
+            field.setText("");
+        }
     }
+
+
+    public void setInputValidation(JFXTextField textField) {
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (!newValue) {
+                    textField.validate();
+                }
+            }
+        });
+    } */
 }

@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class HomeInsuranceController {
 
@@ -60,13 +61,11 @@ public class HomeInsuranceController {
 
         @FXML
         private void handleButtonActions(ActionEvent event) {
-            if(event.getSource() == button_Customer){
-                handlerFxml.navigate(entireScreenInsurance,"homeCustomer.fxml");
+            if (event.getSource() == button_Customer) {
+                handlerFxml.navigate(entireScreenInsurance, "homeCustomer.fxml");
             }
 
-            if(event.getSource() == btn_createInsurance1){
-
-
+            if (event.getSource() == btn_createInsurance1) {
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
                 handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
