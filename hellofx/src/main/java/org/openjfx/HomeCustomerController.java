@@ -93,15 +93,14 @@ public class HomeCustomerController {
         entireScreenCustomer.toFront();
 
     }
-
-    @FXML
+    /*
     @FXML
     private void delete(ActionEvent event){
        /* ObservableList<Customer> customerSelected, allCustomers;
         allCustomers = customerTable.getItems();
         customerSelected = customerTable.getSelectionModel().getSelectedItems();
 
-        customerSelected.forEach(allCustomers::remove); */
+        customerSelected.forEach(allCustomers::remove);
 
         customers.remove(customerTable.getSelectionModel().getSelectedItem());
     }
@@ -137,6 +136,7 @@ public class HomeCustomerController {
     }*/
 
 
+    @FXML
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");

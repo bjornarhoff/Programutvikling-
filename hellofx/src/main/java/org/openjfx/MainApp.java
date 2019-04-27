@@ -24,12 +24,9 @@ public class MainApp extends Application {
 
         ObservableList<Customer> minListe = CsvReader.read();
         for (Customer customer : minListe){
-            System.out.println(customer.getDamageReport());
             System.out.println(customer);
         }
-        System.out.println("Bjornar");
 
-        System.out.println(CsvReader.findCustomer("652830"));
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
@@ -65,8 +62,6 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-
-        SearchAndReadFromCSV.deleteRecordFromCsv("sven", "trying.txt");
 
 
     }
