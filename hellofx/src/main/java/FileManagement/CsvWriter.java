@@ -63,7 +63,7 @@ public class CsvWriter {
     }
 
     // Method for write customer object to CSV file
-    public static void writeObjectToCSV(Customer aCustomer) {
+    public static void writeCustomerToCSV(Customer aCustomer) {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/customer2.csv"), true);
@@ -87,18 +87,21 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
+    public static void updateAllInsurances(Customer customer, Insurance insurance){
+        customer = insurance.getCustomer();
+        String personID = customer.getPersonalID();
+        int allCustomerInsurance = customer.getAllCustomerInsurance();
+
+        Customer existing = CsvReader.findCustomer(personID);
+        existing.setAllCustomerInsurance(allCustomerInsurance);
+        //CsvWriter.delete(existing);
+        CsvWriter.writeCustomerToCSV(existing);
+    }
+
 
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
-        Customer aCustomer = boatInsurance.getCustomer();
-        String personID = aCustomer.getPersonalID();
-        int totalt = aCustomer.getAllCustomerInsurance();
-
-        Customer registrert = CsvReader.findCustomer(personID);
-        registrert.setAllCustomerInsurance(totalt);
-
-        //CsvWriter.delete(registrert);
-        CsvWriter.writeObjectToCSV(registrert);
+        updateAllInsurances(boatInsurance.getCustomer(), boatInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
@@ -126,15 +129,8 @@ public class CsvWriter {
 
 
     public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
-        Customer aCustomer = houseInsurance.getCustomer();
-        String personID = aCustomer.getPersonalID();
-        int totalt = aCustomer.getAllCustomerInsurance();
 
-        Customer registrert = CsvReader.findCustomer(personID);
-        registrert.setAllCustomerInsurance(totalt);
-
-        //CsvWriter.delete(registrert);
-        CsvWriter.writeObjectToCSV(registrert);
+        updateAllInsurances(houseInsurance.getCustomer(), houseInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
@@ -160,15 +156,7 @@ public class CsvWriter {
 
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
 
-        Customer aCustomer = travelInsurance.getCustomer();
-        String personID = aCustomer.getPersonalID();
-        int totalt = aCustomer.getAllCustomerInsurance();
-
-        Customer registrert = CsvReader.findCustomer(personID);
-        registrert.setAllCustomerInsurance(totalt);
-
-        //CsvWriter.delete(registrert);
-        CsvWriter.writeObjectToCSV(registrert);
+        updateAllInsurances(travelInsurance.getCustomer(), travelInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
@@ -195,16 +183,10 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
-    public static void writeLeisureInsurance(Leisure_Insurance LeisureInsurnace) {
-        Customer aCustomer = LeisureInsurnace.getCustomer();
-        String personID = aCustomer.getPersonalID();
-        int totalt = aCustomer.getAllCustomerInsurance();
+    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace) {
 
-        Customer registrert = CsvReader.findCustomer(personID);
-        registrert.setAllCustomerInsurance(totalt);
+        updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
 
-        //CsvWriter.delete(registrert);
-        CsvWriter.writeObjectToCSV(registrert);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);
@@ -216,7 +198,7 @@ public class CsvWriter {
                 fileWriter.append(NEW_LINE);
             }
 
-            fileWriter.append(LeisureInsurnace.toCSVStringLeisure());
+            fileWriter.append(leisureInsurnace.toCSVStringLeisure());
             fileWriter.append(NEW_LINE);
 
 

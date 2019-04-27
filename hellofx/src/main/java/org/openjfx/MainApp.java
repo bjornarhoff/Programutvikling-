@@ -21,15 +21,6 @@ public class MainApp extends Application {
     
     @Override
     public void start(Stage stage) {
-
-        ObservableList<Customer> minListe = CsvReader.read();
-        for (Customer customer : minListe){
-            System.out.println(customer);
-        }
-        System.out.println("Bjornar");
-
-        System.out.println(CsvReader.findCustomer("652830"));
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("homeCustomer.fxml"));
 
