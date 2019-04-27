@@ -34,6 +34,9 @@ public class CsvReader {
                 }
                 String[] values = line.split(",");
                 Customer aCustomer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
+                aCustomer.setInsuranceNr(Integer.parseInt(values[1]));
+                aCustomer.setUnpaidReplacements(Double.parseDouble(values[7]));
+                aCustomer.setAllCustomerInsurance(Integer.parseInt(values[8]));
                 customersFromCsv.add(aCustomer);
             }
         } catch (IOException e) {
@@ -45,7 +48,7 @@ public class CsvReader {
     public static Customer findCustomer(String searchterm) {
        Customer customer = null;
        String line;
-       ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
+       //ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
        int iteration = 0;
 
        try(BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home")+ "/customer2.csv"))){
@@ -59,8 +62,10 @@ public class CsvReader {
 
                if(searchterm.equals(values[0])){
                    customer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
-                  // customer.setAllCustomerInsurance(Integer.parseInt(values[7]));
-                  // customer.setUnpaidReplacements(Double.parseDouble(values[8]));
+                   customer.setInsuranceNr(Integer.parseInt(values[1]));
+                   customer.setUnpaidReplacements(Double.parseDouble(values[7]));
+                   customer.setAllCustomerInsurance(Integer.parseInt(values[8]));
+
                }
 
            }

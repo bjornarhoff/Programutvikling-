@@ -11,8 +11,7 @@ import java.io.IOException;
 public class CsvWriter {
 
     // Parameters used in CSV file
-    private static final String COMMA = ",";
-    private static final String CUSTOMERHEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
+    private static final String CUSTOMERHEADER = "PersonalId,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,Unpaid,Total";
     private static final String BOATINSURNACEHEADER = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insurnaceConditions,Owner,Register Nr,Boat type,Boat Length,Year,Motortype";
     private static final String HOUSEINSURANCEHEADER = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insurnaceConditions,Owner,Year,ResidentialType,ConstructionMaterial,Condition,NumberOfSquareMeters,AmountForConstruction,AmountForHousehold";
     private static final String LEISUREINSURANCE = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,address_Not_Billing,constructionYear,residentalType,constructionMaterial,condition,amountSquareMeters,amountforConstruction,amountForHousehold";
@@ -32,10 +31,10 @@ public class CsvWriter {
 
         // finally code -> always executes when the try block exits
         try {
-            if (fileWriter != null) {
+            if (fw != null) {
                 // Closes the stream, flushing it first.
-                fileWriter.flush();
-                fileWriter.close();
+                fw.flush();
+                fw.close();
             }
         } catch (IOException e) {
             System.out.println("Error while flushing/closing fileWriter");
@@ -91,6 +90,16 @@ public class CsvWriter {
 
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
+        Customer aCustomer = boatInsurance.getCustomer();
+        String personID = aCustomer.getPersonalID();
+        int totalt = aCustomer.getAllCustomerInsurance();
+
+        Customer registrert = CsvReader.findCustomer(personID);
+        registrert.setAllCustomerInsurance(totalt);
+
+        //CsvWriter.delete(registrert);
+        CsvWriter.writeObjectToCSV(registrert);
+
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
             if (!fileExists) {
@@ -117,6 +126,16 @@ public class CsvWriter {
 
 
     public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
+        Customer aCustomer = houseInsurance.getCustomer();
+        String personID = aCustomer.getPersonalID();
+        int totalt = aCustomer.getAllCustomerInsurance();
+
+        Customer registrert = CsvReader.findCustomer(personID);
+        registrert.setAllCustomerInsurance(totalt);
+
+        //CsvWriter.delete(registrert);
+        CsvWriter.writeObjectToCSV(registrert);
+
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
             if (!fileExists) {
@@ -135,13 +154,22 @@ public class CsvWriter {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
-
-
         finallyBlock(fileWriter);
     }
 
 
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
+
+        Customer aCustomer = travelInsurance.getCustomer();
+        String personID = aCustomer.getPersonalID();
+        int totalt = aCustomer.getAllCustomerInsurance();
+
+        Customer registrert = CsvReader.findCustomer(personID);
+        registrert.setAllCustomerInsurance(totalt);
+
+        //CsvWriter.delete(registrert);
+        CsvWriter.writeObjectToCSV(registrert);
+
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
             if (!fileExists) {
@@ -168,6 +196,16 @@ public class CsvWriter {
     }
 
     public static void writeLeisureInsurance(Leisure_Insurance LeisureInsurnace) {
+        Customer aCustomer = LeisureInsurnace.getCustomer();
+        String personID = aCustomer.getPersonalID();
+        int totalt = aCustomer.getAllCustomerInsurance();
+
+        Customer registrert = CsvReader.findCustomer(personID);
+        registrert.setAllCustomerInsurance(totalt);
+
+        //CsvWriter.delete(registrert);
+        CsvWriter.writeObjectToCSV(registrert);
+
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);
             if (!fileExists) {

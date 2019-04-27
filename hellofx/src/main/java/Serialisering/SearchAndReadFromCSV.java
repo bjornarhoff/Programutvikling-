@@ -74,8 +74,6 @@ public class SearchAndReadFromCSV {
 
     public static void deleteRecordFromCsv(String searchterm, String filepath){
 
-
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
@@ -83,7 +81,8 @@ public class SearchAndReadFromCSV {
         boolean found = false;
         String personalID = "";
         String name = "";
-        String age = "";
+
+        /*String age = "";
         String phoneNumber = "";
          String email = "";
         String date = "";
@@ -91,6 +90,7 @@ public class SearchAndReadFromCSV {
         String allCustomerInsurance = "";
         String unpaidReplacements = "";
 
+         */
         try{
             FileWriter fw = new FileWriter(tempfile,true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -102,13 +102,14 @@ public class SearchAndReadFromCSV {
             while(x.hasNext()){
                 personalID = x.next();
                 name = x.next();
-                age = x.next();
+               /* age = x.next();
                 phoneNumber = x.next();
                 email = x.next();
                 date = x.next();
                 billingAddress = x.next();
                 allCustomerInsurance = x.next();
                 unpaidReplacements = x.next();
+                */
 
                 if(!personalID.equals(searchterm)) {
                     pw.println(personalID + ", " + name);

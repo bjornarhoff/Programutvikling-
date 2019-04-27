@@ -59,11 +59,20 @@ public class Customer implements Serializable {
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
-                "\nBillingAddress: " + billingAddress;
+                "\nBillingAddress: " + billingAddress +
+                "\nAll Insurance " + allCustomerInsurance;
     }
 
     public String toCSVString(){
-        return getPersonalID() + "," + String.valueOf(getInsuranceNr()) + "," + getName() + "," + getPhoneNumber() +"," + getEmail() + ","  + getDate() + "," + getBillingAddress();
+        return personalID + "," +
+                String.valueOf(insuranceNr) + "," +
+                name + "," +
+                phoneNumber +"," +
+                email + ","  +
+                date + "," +
+                billingAddress + "," +
+                String.valueOf(unpaidReplacements) + "," +
+                String.valueOf(allCustomerInsurance);
     }
 
     /**

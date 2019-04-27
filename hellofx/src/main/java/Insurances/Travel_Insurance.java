@@ -30,7 +30,7 @@ public class Travel_Insurance extends Insurance {
     }
 
     public String toCSVStringTravel() {
-        return super.toCSVStringInsurnce() +
+        return super.toCSVStringInsurnce() + "," +
                 insuranceArea + "," +
                 String.valueOf(insuranceSum);
     }
