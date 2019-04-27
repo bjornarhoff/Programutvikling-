@@ -95,6 +95,7 @@ public class LeisureInsuranceController {
           condition.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountConstruction.getText()), Integer.parseInt(amountHousehold.getText()));
 
 
+        CsvWriter.writeLeisureInsurance(l1);
         info.setText(l1.toString());
 
         setText();

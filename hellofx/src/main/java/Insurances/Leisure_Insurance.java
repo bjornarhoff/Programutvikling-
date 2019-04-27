@@ -48,6 +48,18 @@ public class Leisure_Insurance extends Insurance {
                 "\n\nOVERALL FOR LEISRUE INSURANCE" + super.toString();
     }
 
+    public String toCSVStringLeisure() {
+        return super.toCSVStringInsurnce() + "," +
+                address_Not_Billing + "," +
+                String.valueOf(constructionYear) + "," +
+                residentalType + "," +
+                constructionMaterial + "," +
+                condition + "," +
+                String.valueOf(amountSquareMeters) + "," +
+                String.valueOf(amountforConstruction) +  "," +
+                String.valueOf(amountForHousehold);
+    }
+
     public void setAddress_Not_Billing(String address_Not_Billing) {
         this.address_Not_Billing = address_Not_Billing;
     }

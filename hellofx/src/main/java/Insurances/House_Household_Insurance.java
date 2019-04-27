@@ -50,6 +50,18 @@ public class House_Household_Insurance extends Insurance {
                 "\n\nOverall for Household Insurance " + super.toString();
     }
 
+    public String toCSVStringHousehold(){
+        return super.toCSVStringInsurnce() + "," +
+                propertyOwner + "," +
+                String.valueOf(yearOfConstruction) + "," +
+                residentialType + "," +
+                constructionMaterial + "," +
+                condition + "," +
+                String.valueOf(numberOfSquareMeters) + "," +
+                String.valueOf(insuranceAmountForConstruction) + "," +
+                String.valueOf(insuranceAmountForHousehold);
+    }
+
     public void setPropertyOwner(String propertyOwner) {
         this.propertyOwner = propertyOwner;
     }

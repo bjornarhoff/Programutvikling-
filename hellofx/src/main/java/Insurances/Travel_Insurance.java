@@ -29,6 +29,12 @@ public class Travel_Insurance extends Insurance {
                 "\n\nOVERALL FOR TRAVEL INSURANCE" + super.toString();
     }
 
+    public String toCSVStringTravel() {
+        return super.toCSVStringInsurnce() +
+                insuranceArea + "," +
+                String.valueOf(insuranceSum);
+    }
+
     public void setInsuranceArea(String insuranceArea) {
         this.insuranceArea = insuranceArea;
     }

@@ -62,6 +62,10 @@ public class Customer implements Serializable {
                 "\nBillingAddress: " + billingAddress;
     }
 
+    public String toCSVString(){
+        return getPersonalID() + "," + String.valueOf(getInsuranceNr()) + "," + getName() + "," + getPhoneNumber() +"," + getEmail() + ","  + getDate() + "," + getBillingAddress();
+    }
+
     /**
      * @param
      * @return insuranceNr we define a range for our InsuranceNr and then generate a random Number between our range and then

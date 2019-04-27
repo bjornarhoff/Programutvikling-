@@ -6,27 +6,30 @@ import Insurances.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
-
 
 
 public class CsvWriter {
 
     // Parameters used in CSV file
     private static final String COMMA = ",";
-    private static final String HEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
-    private static final String insuranceHeader = "Customer,Insurance Premium ,Date,Amount,Condition";
-    private static final String boatInsuranceHeader = "Owner,Register Nr,Boat type,Boat Length,Year,Motortype";
-    private static final String houseInsuranceHeader = "Owner,Year,ResidentialType,ConstructionMaterial,Condition,NumberOfSquareMeters,AmountForConstruction, AmountForHousehold";
+    private static final String CUSTOMERHEADER = "InsuranceNumber,PersonalId,Name,Phonenumber,Email,Date,Adress,Unpaid";
+    private static final String BOATINSURNACEHEADER = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insurnaceConditions,Owner,Register Nr,Boat type,Boat Length,Year,Motortype";
+    private static final String HOUSEINSURANCEHEADER = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insurnaceConditions,Owner,Year,ResidentialType,ConstructionMaterial,Condition,NumberOfSquareMeters,AmountForConstruction,AmountForHousehold";
+    private static final String LEISUREINSURANCE = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,address_Not_Billing,constructionYear,residentalType,constructionMaterial,condition,amountSquareMeters,amountforConstruction,amountForHousehold";
+    private static final String TRAVELINSURANCE = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,insuranceArea,insurnaceSum";
 
 
     private static final String NEW_LINE = "\n";
     private static boolean fileExists = false;
 
 
+    public static FileWriter fileWriter = null;
+
+
+
     // Method for finally block
     public static void finallyBlock(FileWriter fw) {
-        FileWriter fileWriter = null;
+
         // finally code -> always executes when the try block exits
         try {
             if (fileWriter != null) {
@@ -63,30 +66,17 @@ public class CsvWriter {
     // Method for write customer object to CSV file
     public static void writeObjectToCSV(Customer aCustomer) {
 
-        FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/customer2.csv"), true);
             if (!fileExists) {
                 // Write to header
-                fileWriter.append(HEADER);
+                fileWriter.append(CUSTOMERHEADER);
 
                 // New line after header
                 fileWriter.append(NEW_LINE);
             }
 
-            fileWriter.append(aCustomer.getPersonalID());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(aCustomer.getInsuranceNr()));
-            fileWriter.append(COMMA);
-            fileWriter.append(aCustomer.getName());
-            fileWriter.append(COMMA);
-            fileWriter.append(aCustomer.getPhoneNumber());
-            fileWriter.append(COMMA);
-            fileWriter.append(aCustomer.getEmail());
-            fileWriter.append(COMMA);
-            fileWriter.append(aCustomer.getDate());
-            fileWriter.append(COMMA);
-            fileWriter.append(aCustomer.getBillingAddress());
+            fileWriter.append(aCustomer.toCSVString());
             fileWriter.append(NEW_LINE);
 
             // If something went wrong while creating file
@@ -95,66 +85,23 @@ public class CsvWriter {
             e.printStackTrace();
         }
 
-
-        finallyBlock(fileWriter);
-    }
-
-
-    public static void writeInsuranceToCSV(Insurance insurance) {
-
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/insurance.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(insuranceHeader);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
-            fileWriter.append(String.valueOf(insurance.getCustomer()));
-            fileWriter.append(COMMA);
-            fileWriter.append(insurance.getYearlyInsurancePremium());
-            fileWriter.append(COMMA);
-            fileWriter.append(insurance.getDateOfCreatedInsurance());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(insurance.getInsuranceAmount()));
-            fileWriter.append(COMMA);
-            fileWriter.append(insurance.getInsuranceConditions());
-            fileWriter.append(NEW_LINE);
-
-
-            // If something went wrong while creating file
-        } catch (IOException e) {
-            System.out.println("csv file create error");
-            e.printStackTrace();
-        }
         finallyBlock(fileWriter);
     }
 
 
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
-        FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
             if (!fileExists) {
                 // Write to header
-                fileWriter.append(boatInsuranceHeader);
+                fileWriter.append(BOATINSURNACEHEADER);
 
                 // New line after header
                 fileWriter.append(NEW_LINE);
             }
-            fileWriter.append(boatInsurance.getOwner());
-            fileWriter.append(COMMA);
-            fileWriter.append(boatInsurance.getRegisterNr());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(boatInsurance.getLengthInFoot()));
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(boatInsurance.getYear()));
-            fileWriter.append(COMMA);
-            fileWriter.append(boatInsurance.getMotorTypeAndMotorPower());
+
+            fileWriter.append(boatInsurance.toCSVStringBoat());
             fileWriter.append(NEW_LINE);
 
             // If something went wrong while creating file
@@ -170,31 +117,17 @@ public class CsvWriter {
 
 
     public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
-        FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
             if (!fileExists) {
                 // Write to header
-                fileWriter.append(houseInsuranceHeader);
+                fileWriter.append(HOUSEINSURANCEHEADER);
 
                 // New line after header
                 fileWriter.append(NEW_LINE);
             }
-            fileWriter.append(houseInsurance.getPropertyOwner());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(houseInsurance.getYearOfConstruction()));
-            fileWriter.append(COMMA);
-            fileWriter.append(houseInsurance.getResidentialType());
-            fileWriter.append(COMMA);
-            fileWriter.append(houseInsurance.getConstructionMaterial());
-            fileWriter.append(COMMA);
-            fileWriter.append(houseInsurance.getCondition());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(houseInsurance.getNumberOfSquareMeters()));
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(houseInsurance.getInsuranceAmountForConstruction()));
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(houseInsurance.getInsuranceAmountForHousehold()));
+
+            fileWriter.append(houseInsurance.toCSVStringHousehold());
             fileWriter.append(NEW_LINE);
 
             // If something went wrong while creating file
@@ -209,31 +142,43 @@ public class CsvWriter {
 
 
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
+            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
             if (!fileExists) {
                 // Write to header
-                fileWriter.append(houseInsuranceHeader);
+                fileWriter.append(TRAVELINSURANCE);
 
                 // New line after header
                 fileWriter.append(NEW_LINE);
             }
 
-            fileWriter.append(String.valueOf(travelInsurance.getCustomer()));
-            fileWriter.append(COMMA);
-            fileWriter.append(travelInsurance.getYearlyInsurancePremium());
-            fileWriter.append(COMMA);
-            fileWriter.append(travelInsurance.getDateOfCreatedInsurance());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(travelInsurance.getInsuranceAmount()));
-            fileWriter.append(COMMA);
-            fileWriter.append(travelInsurance.getInsuranceConditions());
+            fileWriter.append(travelInsurance.toCSVStringTravel());
+            fileWriter.append(NEW_LINE);
 
-            fileWriter.append(travelInsurance.getInsuranceArea());
-            fileWriter.append(COMMA);
-            fileWriter.append(String.valueOf(travelInsurance.getInsuranceSum()));
-            fileWriter.append(COMMA);
+
+
+            // If something went wrong while creating file
+        } catch (IOException e) {
+            System.out.println("csv file create error");
+            e.printStackTrace();
+        }
+
+
+        finallyBlock(fileWriter);
+    }
+
+    public static void writeLeisureInsurance(Leisure_Insurance LeisureInsurnace) {
+        try {
+            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);
+            if (!fileExists) {
+                // Write to header
+                fileWriter.append(LEISUREINSURANCE);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
+
+            fileWriter.append(LeisureInsurnace.toCSVStringLeisure());
             fileWriter.append(NEW_LINE);
 
 
