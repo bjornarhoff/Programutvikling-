@@ -1,5 +1,7 @@
 package Threads;
 
+import FileManagement.CsvReader;
+
 import java.util.Random;
 
 public class Threadexample implements Runnable {
@@ -17,9 +19,7 @@ public class Threadexample implements Runnable {
 
     public void run(){
         try {
-            System.out.printf("%s is sleeping for %d\n", name, time);
-            java.lang.Thread.sleep(40);
-            System.out.printf("%s is done\n", name);
+            CsvReader.read();
 
         }
         catch(Exception e){

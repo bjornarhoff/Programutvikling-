@@ -1,15 +1,18 @@
 package Damages;
 
+import CustomerModell.Customer;
+
 import java.io.Serializable;
-import java.util.Date;
 
 public class Damage_Report implements Serializable {
+
+
 
     /**
      * Instance variables for the Damage_Report class
      */
-
-    private Date dateOfDamage;
+    private Customer customer;
+    private String dateOfDamage;
     private int damageNr;
     private String damageType;
     private String damageDescription;
@@ -26,9 +29,11 @@ public class Damage_Report implements Serializable {
      * @param contactOfPotentialWitnesses
      * @param taxationAmountOfDamage
      * @param unpaidReplacementAmount
+     * @param customer
      */
-    public Damage_Report(Date dateOfDamage, int damageNr, String damageType, String damageDescription,
-                         String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount) {
+    public Damage_Report(String dateOfDamage, int damageNr, String damageType, String damageDescription,
+                         String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount, Customer customer) {
+        this.customer = customer;
         this.dateOfDamage = dateOfDamage;
         this.damageNr = damageNr;
         this.damageType = damageType;
@@ -50,17 +55,24 @@ public class Damage_Report implements Serializable {
                 "\nUnpaidReplacementAmount: " + unpaidReplacementAmount;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
     /**
      * @param dateOfDamage
      */
-    public void setDateOfDamage(Date dateOfDamage) {
+    public void setDateOfDamage(String dateOfDamage) {
         this.dateOfDamage = dateOfDamage;
     }
 
     /**
      * @return dateOfDamage
      */
-    public Date getDateOfDamage() {
+    public String getDateOfDamage() {
         return dateOfDamage;
     }
 

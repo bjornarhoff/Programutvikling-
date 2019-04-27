@@ -12,7 +12,7 @@ public class Travel_Insurance extends Insurance {
 
 
     // Default Constructor for Travel Insurance.
-    public Travel_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Travel_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                             String insuranceConditions, String insuranceArea, int insuranceSum) {
 
         super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
@@ -27,6 +27,12 @@ public class Travel_Insurance extends Insurance {
                 "\nInsuranceArea: " + insuranceArea +
                 "\nInsuranceSum: " + insuranceSum +
                 "\n\nOVERALL FOR TRAVEL INSURANCE" + super.toString();
+    }
+
+    public String toCSVStringTravel() {
+        return super.toCSVStringInsurnce() + "," +
+                insuranceArea + "," +
+                String.valueOf(insuranceSum);
     }
 
     public void setInsuranceArea(String insuranceArea) {

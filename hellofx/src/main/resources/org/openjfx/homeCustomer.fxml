@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="entireScreenCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.HomeCustomerController">
+<BorderPane fx:id="entireScreenCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.HomeCustomerController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -70,7 +71,8 @@
                         <JFXButton fx:id="btn_deleteCustomer" layoutY="252.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Customer" textFill="WHITE" />
                         <JFXButton fx:id="btn_showDamageReport" layoutY="305.0" onAction="#damageReportPressed" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Damage Report" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoCust" layoutY="358.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
-                        <JFXButton fx:id="brn_refresh" layoutY="773.0" onAction="#refresh" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Refresh" textFill="WHITE" />
+                        <TextField id="search" fx:id="searching" layoutX="14.0" layoutY="63.0" onKeyPressed="#search" prefHeight="27.0" prefWidth="127.0" promptText="search" />
+                        <JFXButton fx:id="refresh" layoutY="576.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Refresh Table" textFill="WHITE" />
                      </children>
                      <effect>
                         <InnerShadow />

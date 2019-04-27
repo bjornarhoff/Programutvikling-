@@ -17,7 +17,7 @@ public class Leisure_Insurance extends Insurance {
 
 
     // Default Constructor for Leisure Insurance
-    public Leisure_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public Leisure_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                              String insuranceConditions, String address_Not_Billing, int constructionYear,
                              String residentalType, String constructionMaterial, String condition,
                              double amountSquareMeters, int amountforConstruction, int amountForHousehold) {
@@ -46,6 +46,18 @@ public class Leisure_Insurance extends Insurance {
                 "\nAmountforConstruction: " + amountforConstruction +
                 "\nAmountForHousehold: " + amountForHousehold +
                 "\n\nOVERALL FOR LEISRUE INSURANCE" + super.toString();
+    }
+
+    public String toCSVStringLeisure() {
+        return super.toCSVStringInsurnce() + "," +
+                address_Not_Billing + "," +
+                String.valueOf(constructionYear) + "," +
+                residentalType + "," +
+                constructionMaterial + "," +
+                condition + "," +
+                String.valueOf(amountSquareMeters) + "," +
+                String.valueOf(amountforConstruction) +  "," +
+                String.valueOf(amountForHousehold);
     }
 
     public void setAddress_Not_Billing(String address_Not_Billing) {

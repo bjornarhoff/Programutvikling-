@@ -17,7 +17,7 @@ public class House_Household_Insurance extends Insurance {
 
 
     // Default Constructor for House Hold Insurances.
-    public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, Date dateOfCreatedInsurance, int insuranceAmount,
+    public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                                      String insuranceConditions, String propertyOwner, int yearOfConstruction,
                                      String residentialType, String constructionMaterial, String condition,
                                      double numberOfSquareMeters, int insuranceAmountForConstruction,
@@ -48,6 +48,18 @@ public class House_Household_Insurance extends Insurance {
                 "\nInsuranceAmountForConstruction: " + insuranceAmountForConstruction +
                 "\nInsuranceAmountForHousehold: " + insuranceAmountForHousehold +
                 "\n\nOverall for Household Insurance " + super.toString();
+    }
+
+    public String toCSVStringHousehold(){
+        return super.toCSVStringInsurnce() + "," +
+                propertyOwner + "," +
+                String.valueOf(yearOfConstruction) + "," +
+                residentialType + "," +
+                constructionMaterial + "," +
+                condition + "," +
+                String.valueOf(numberOfSquareMeters) + "," +
+                String.valueOf(insuranceAmountForConstruction) + "," +
+                String.valueOf(insuranceAmountForHousehold);
     }
 
     public void setPropertyOwner(String propertyOwner) {
