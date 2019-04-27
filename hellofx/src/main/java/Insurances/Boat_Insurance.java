@@ -41,6 +41,17 @@ public class Boat_Insurance extends Insurance {
                 "\n\nOVERALL FOR BOAT INSURANCE" + super.toString();
     }
 
+    public String toCSVStringBoat(){
+        return super.toCSVStringInsurnce() + "," +
+                owner + "," +
+                String.valueOf(registerNr) + "," +
+                boatTypeAndModel + "," +
+                lengthInFoot + "," +
+                String.valueOf(year) + "," +
+                motorTypeAndMotorPower;
+
+    }
+
     public void setOwner(String owner) {
         this.owner = owner;
     }

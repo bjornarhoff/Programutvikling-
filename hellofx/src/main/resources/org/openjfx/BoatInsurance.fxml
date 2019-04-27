@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -43,12 +44,26 @@
                         </AnchorPane>
                         <AnchorPane style="-fx-background-color: #18C4E4;" GridPane.columnIndex="2">
                             <children>
+                        <Label layoutX="50.0" layoutY="34.0" prefHeight="36.0" prefWidth="277.0" text="Create Insurnace for customer: ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="customerLabel" layoutX="308.0" layoutY="35.0" prefHeight="34.0" prefWidth="127.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
                                 <JFXTextField fx:id="Owner" labelFloat="true" layoutX="50.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Owner" />
                                 <JFXTextField fx:id="registerNr" labelFloat="true" layoutX="50.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Register Number" />
-                                <JFXTextField fx:id="length" labelFloat="true" layoutX="50.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Length (in Foot)" />
                                 <JFXTextField fx:id="boatTypeModel" labelFloat="true" layoutX="50.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Boat type and Model" />
-                                <JFXTextField fx:id="motorTypePower" labelFloat="true" layoutX="50.0" layoutY="430.0" prefHeight="27.0" prefWidth="340.0" promptText="Motor type and Motor Power" />
-                                <JFXTextField fx:id="year" labelFloat="true" layoutX="50.0" layoutY="360.0" prefHeight="27.0" prefWidth="340.0" promptText="Year" />
+                                <JFXTextField fx:id="length" labelFloat="true" layoutX="50.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Length (in Foot)" />
+                                <JFXTextField fx:id="year" labelFloat="true" layoutX="50.0" layoutY="358.0" prefHeight="27.0" prefWidth="340.0" promptText="Year" />
+                                <JFXTextField fx:id="motorTypePower" labelFloat="true" layoutX="50.0" layoutY="423.0" prefHeight="27.0" prefWidth="340.0" promptText="Motor type and Motor Power" />
+                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="50.0" layoutY="482.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
+                        <JFXTextField fx:id="date" labelFloat="true" layoutX="50.0" layoutY="551.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
+                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="50.0" layoutY="620.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
+                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="50.0" layoutY="696.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
                                 <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="51.0" prefHeight="745.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
                                     <font>
                                         <Font size="17.0" />
@@ -69,10 +84,6 @@
                                         <Font size="19.0" />
                                     </font>
                                 </JFXButton>
-                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="50.0" layoutY="482.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
-                        <JFXTextField fx:id="date" labelFloat="true" layoutX="50.0" layoutY="540.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
-                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="50.0" layoutY="597.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
-                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="50.0" layoutY="649.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
                             </children>
                         </AnchorPane>
                     </children>

@@ -1,13 +1,18 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import FileManagement.CsvWriter;
 import FileManagement.ObjectWriter;
 import Insurances.Leisure_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
@@ -31,11 +36,35 @@ public class LeisureInsuranceController {
     @FXML
     public JFXTextArea info;
 
+    @FXML
+    private Label customerLabel;
+
+    @FXML
+    private void initialize(){
+        customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+
+        NumberValidator numvalidator = new NumberValidator();
+
+        yearConstruction.getValidators().add(numvalidator);
+        amountConstruction.getValidators().add(numvalidator);
+        nrSquareMeters.getValidators().add(numvalidator);
+        amountHousehold.getValidators().add(numvalidator);
+        yearlyPremium.getValidators().add(numvalidator);
+        InsuranceAmount.getValidators().add(numvalidator);
+
+
+        numvalidator.setMessage("Only numbers are supported!");
+
+        setValidationInput();
+    }
+
+
+
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == btn_household){
-            handlerFxml.navigate(entireScreenLeisure,"HouseholdInsurance.fxml");
+            handlerFxml.navigate(entireScreenLeisure,"householdInsurance.fxml");
         }
         if(event.getSource() == btn_leisure){
             handlerFxml.navigate(entireScreenLeisure,"LeisureInsurance.fxml");
@@ -48,6 +77,8 @@ public class LeisureInsuranceController {
         }
     }
 
+
+
     @FXML
     public void cancel() {
         handlerFxml.navigate(entireScreenLeisure, "homeInsurance.fxml");
@@ -55,19 +86,25 @@ public class LeisureInsuranceController {
 
     @FXML
     public void apply(){
-        /*
-        Customer sven =  new Customer("1235", "sven", "234", "svenemail", "today", "hometown");
 
-        Leisure_Insurance l1 = new Leisure_Insurance(sven, yearlyPremium.getText(), new Date(), Integer.parseInt(InsuranceAmount.getText()),
+
+        Customer customer = HomeInsuranceController.getCustomerSelected();
+
+        Leisure_Insurance l1 = new Leisure_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
          InsuranceConditions.getText(), address.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constructionMaterial.getText(),
           condition.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountConstruction.getText()), Integer.parseInt(amountHousehold.getText()));
 
-        ObjectWriter.WriteObjectToFile(l1);
+
+        CsvWriter.writeLeisureInsurance(l1);
         info.setText(l1.toString());
 
-         */
+        setText();
+
+    }
 
 
+
+    public void setText(){
         address.setText("");
         yearConstruction.setText("");
         constructionMaterial.setText("");
@@ -80,5 +117,62 @@ public class LeisureInsuranceController {
         InsuranceConditions.setText("");
         yearlyPremium.setText("");
         InsuranceAmount.setText("");
+    }
+
+    public void setValidationInput(){
+        yearConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    yearConstruction.validate();
+                }
+            }
+        });
+
+        amountConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    amountConstruction.validate();
+                }
+            }
+        });
+
+        nrSquareMeters.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    nrSquareMeters.validate();
+                }
+            }
+        });
+
+        amountHousehold.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    amountHousehold.validate();
+                }
+            }
+        });
+
+        yearlyPremium.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    yearlyPremium.validate();
+                }
+            }
+        });
+
+        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    InsuranceAmount.validate();
+                }
+            }
+        });
+
     }
 }

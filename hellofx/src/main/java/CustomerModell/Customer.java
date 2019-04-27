@@ -23,7 +23,6 @@ public class Customer implements Serializable {
     private String date;
     private String billingAddress;
     private transient int allCustomerInsurance;
-    private Damage_Report damageReport;
     private transient double unpaidReplacements;
 
 
@@ -56,14 +55,26 @@ public class Customer implements Serializable {
      */
     @Override
     public String toString() {
-        return  "\nPersonalID: " + personalID +
+        return  "PersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
                 "\nEmail: " + email +
                 "\nDate: " + date +
                 "\nBillingAddress: " + billingAddress +
-                "\nAllCustomerInsurance: " + allCustomerInsurance;
+                "\nAll Insurance " + allCustomerInsurance;
+    }
+
+    public String toCSVString(){
+        return personalID + "," +
+                String.valueOf(insuranceNr) + "," +
+                name + "," +
+                phoneNumber +"," +
+                email + ","  +
+                date + "," +
+                billingAddress + "," +
+                String.valueOf(unpaidReplacements) + "," +
+                String.valueOf(allCustomerInsurance);
     }
 
     /**
@@ -199,20 +210,6 @@ public class Customer implements Serializable {
      */
     public int getAllCustomerInsurance() {
         return this.allCustomerInsurance;
-    }
-
-    /**
-     * @param damageReport
-     */
-    public void setDamageReport(Damage_Report damageReport) {
-        this.damageReport = damageReport;
-    }
-
-    /**
-     * @return damageReport
-     */
-    public Damage_Report getDamageReport() {
-        return this.damageReport;
     }
 
 

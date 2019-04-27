@@ -34,6 +34,14 @@ public abstract class Insurance implements Serializable {
                 "\nInsuranceConditions: " + insuranceConditions;
     }
 
+    public String toCSVStringInsurnce() {
+        return customer.getPersonalID() + "," +
+                yearlyInsurancePremium + "," +
+                dateOfCreatedInsurance + "," +
+                String.valueOf(insuranceAmount) + "," +
+                insuranceConditions;
+    }
+
     public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
         this.yearlyInsurancePremium = yearlyInsurancePremium;
     }

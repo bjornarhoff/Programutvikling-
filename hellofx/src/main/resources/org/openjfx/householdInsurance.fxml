@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -26,7 +27,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane prefHeight="575.0" prefWidth="76.0" style="-fx-background-color: #2B2D42;">
+                        <AnchorPane prefHeight="575.0" prefWidth="0.0" style="-fx-background-color: #2B2D42;">
                             <effect>
                                 <InnerShadow height="41.55" radius="21.0075" width="44.48" />
                             </effect></AnchorPane>
@@ -43,15 +44,29 @@
                         </AnchorPane>
                   <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #92AFD7;" GridPane.columnIndex="2">
                      <children>
-                        <JFXTextField fx:id="propertyOwner" labelFloat="true" layoutX="50.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Property Owner" />
-                        <JFXTextField fx:id="yearConstruction" labelFloat="true" layoutX="50.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Year of Construction" />
-                        <JFXTextField fx:id="constMaterial" labelFloat="true" layoutX="50.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" />
-                        <JFXTextField fx:id="residentialType" labelFloat="true" layoutX="50.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Residential Type" />
-                        <JFXTextField fx:id="amountForConstruction" labelFloat="true" layoutX="50.0" layoutY="500.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" />
-                        <JFXTextField fx:id="nrSquareMeters" labelFloat="true" layoutX="50.0" layoutY="430.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" />
-                        <JFXTextField fx:id="conditions" labelFloat="true" layoutX="50.0" layoutY="360.0" prefHeight="27.0" prefWidth="340.0" promptText="Condition" />
-                        <JFXTextField fx:id="amountForHousehold" labelFloat="true" layoutX="50.0" layoutY="570.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" />
-                        <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="171.0" prefHeight="625.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #C5D1EB;">
+                         <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="323.0" text="Create insurance for customer:">
+                             <font>
+                                 <Font size="20.0" />
+                             </font>
+                         </Label>
+                         <Label fx:id="customerLabel" layoutX="338.0" layoutY="13.0" prefHeight="65.0" prefWidth="323.0">
+                             <font>
+                                 <Font size="20.0" />
+                             </font>
+                         </Label>
+                        <JFXTextField fx:id="propertyOwner" labelFloat="true" layoutX="37.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Property Owner" />
+                        <JFXTextField fx:id="yearConstruction" labelFloat="true" layoutX="37.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Year of Construction" />
+                        <JFXTextField fx:id="residentialType" labelFloat="true" layoutX="37.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Residential Type" />
+                        <JFXTextField fx:id="constMaterial" labelFloat="true" layoutX="37.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" />
+                        <JFXTextField fx:id="conditions" labelFloat="true" layoutX="37.0" layoutY="360.0" prefHeight="27.0" prefWidth="340.0" promptText="Condition" />
+                        <JFXTextField fx:id="nrSquareMeters" labelFloat="true" layoutX="37.0" layoutY="430.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" />
+                        <JFXTextField fx:id="amountForConstruction" labelFloat="true" layoutX="37.0" layoutY="521.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" />
+                        <JFXTextField fx:id="amountForHousehold" labelFloat="true" layoutX="37.0" layoutY="600.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" />
+                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="37.0" layoutY="672.0" prefHeight="27.0" prefWidth="340.0" promptText="yearlyPremium" />
+                        <JFXTextField fx:id="date" labelFloat="true" layoutX="464.0" layoutY="81.0" prefHeight="27.0" prefWidth="340.0" promptText="date" />
+                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="142.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" />
+                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="464.0" layoutY="213.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" />
+                        <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="283.0" prefHeight="511.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #C5D1EB;">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -71,10 +86,6 @@
                               <Font size="19.0" />
                            </font>
                         </JFXButton>
-                        <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="50.0" layoutY="623.0" prefHeight="27.0" prefWidth="340.0" promptText="yearlyPremium" />
-                        <JFXTextField fx:id="date" labelFloat="true" layoutX="50.0" layoutY="675.0" prefHeight="27.0" prefWidth="340.0" promptText="date" />
-                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" />
-                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="464.0" layoutY="123.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" />
                      </children>
                   </AnchorPane>
                     </children>

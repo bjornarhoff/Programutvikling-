@@ -44,7 +44,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #8C7365;" GridPane.columnIndex="2">
                      <children>
-                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#addInsurancePressed" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
+                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_deleteInsurance1" layoutX="3.0" layoutY="251.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoIns1" layoutX="4.0" layoutY="306.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
@@ -53,19 +53,17 @@
                         <InnerShadow />
                      </effect>
                   </AnchorPane>
-                  <TableView id="InsuranceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-                    <columns>
-                      <TableColumn prefWidth="89.0" text="PersonalID" />
-                      <TableColumn prefWidth="92.0" text="Name" />
-                        <TableColumn prefWidth="144.72161865234375" text="Insurance Amount" />
-                        <TableColumn minWidth="6.0" prefWidth="120.27838134765625" text="C2" />
-                        <TableColumn prefWidth="136.13079833984375" text="C2" />
-                        <TableColumn prefWidth="179.963623046875" text="C2" />
-                    </columns>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </TableView>
+                   <TableView fx:id="insuranceTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                       <columns>
+                           <TableColumn fx:id="personalID" prefWidth="142.0" text="PersonalID" />
+                           <TableColumn fx:id="insuranceNr" prefWidth="120.0" text="InsuranceNr" />
+                           <TableColumn fx:id="name" minWidth="6.0" prefWidth="106.0" text="Name" />
+                           <TableColumn fx:id="phone" prefWidth="98.0" text="Phone" />
+                           <TableColumn fx:id="email" prefWidth="127.0" text="Email" />
+                           <TableColumn fx:id="date" prefWidth="148.0" text="Date" />
+                           <TableColumn fx:id="billing" prefWidth="191.0" text="Billing Adress" />
+                       </columns>
+                   </TableView>
                </children>
                <effect>
                   <InnerShadow />

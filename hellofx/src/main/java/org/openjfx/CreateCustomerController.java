@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 public class CreateCustomerController implements Initializable{
 
     HandlerFxml handlerFxml = new HandlerFxml();
-    HomeCustomerController homeCustomerController = new HomeCustomerController();
 
     @FXML
     private BorderPane popUpCreate;
@@ -85,6 +84,7 @@ public class CreateCustomerController implements Initializable{
         aCustomer.generateInsuranceNr();
         CsvWriter.writeObjectToCSV(aCustomer);
         info.setText(aCustomer.toString());
+
 
         personalID.setText("");
         name.setText("");

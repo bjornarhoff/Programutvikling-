@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -30,7 +31,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,6 +38,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.Date;
 import java.util.function.Predicate;
+
+import static org.openjfx.HomeInsuranceController.customerSelected;
 
 public class HomeCustomerController {
 
@@ -81,57 +83,18 @@ public class HomeCustomerController {
     @FXML
     private TableColumn<Customer,String> billing;
 
-    @FXML
-    private TableColumn<Customer,String> unpaidReplacements;
 
 
     ObservableList<Customer> customers;
 
     @FXML
     private void initialize(){
-        //handlerFxml.loadFileThread();
-        //thread.run();
-        ObservableList<Customer> customers = CsvReader.read();
-
+        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         entireScreenCustomer.toFront();
 
     }
 
-
-
-/*
     @FXML
-    private void search(KeyEvent ke){
-        FilteredList filteredData = new FilteredList(observableList, e -> true);
-
-        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-                if(customer.getPersonalID().contains(newValue)){
-                    return true;
-                }
-
-                else if(customer.getName().toLowerCase().contains(newValue)){
-                    return true;
-                }
-
-                return false;
-
-            });
-
-        });
-
-        SortedList sortedData = new SortedList(filteredData);
-        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
-        customerTable.setItems(sortedData);
-
-    }*/
-
     @FXML
     private void delete(ActionEvent event){
        /* ObservableList<Customer> customerSelected, allCustomers;
@@ -141,34 +104,51 @@ public class HomeCustomerController {
         customerSelected.forEach(allCustomers::remove); */
 
         customers.remove(customerTable.getSelectionModel().getSelectedItem());
-
-
     }
 
-    @FXML
-    private void refresh(ActionEvent event){
-        customers = CsvReader.read();
-        personalID.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        insuranceNr.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        billing.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        unpaidReplacements.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacements"));
-        customerTable.setItems(customers);
+    private void search(KeyEvent ke){
+        FilteredList filteredData = new FilteredList(observableList, e -> true);
+
+        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(newValue == null || newValue.isEmpty()){
+                }
+                    return true;
+                if(customer.getPersonalID().contains(newValue)){
+                    return true;
+                }
+
+                else if(customer.getName().toLowerCase().contains(newValue)){
+                    return true;
+
+                }
+                return false;
 
 
-        entireScreenCustomer.toFront();
+            });
+        });
 
-    }
+        SortedList sortedData = new SortedList(filteredData);
+        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
+        customerTable.setItems(sortedData);
+    }*/
 
-    @FXML
+
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
     }
+
+    public static Customer getCustomerSelected() {
+        return customerSelected;
+    }
+
+
+
 
     @FXML
     private void handleSaveClicked(ActionEvent event) {
@@ -203,7 +183,12 @@ public class HomeCustomerController {
 
     @FXML
     private void damageReportPressed(){
+
+        customerTable.getItems();
+        customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
+        System.out.println(customerSelected.getPersonalID());
+
     }
 
     @FXML
@@ -216,12 +201,11 @@ public class HomeCustomerController {
     }
 
 
-
-    public void search(javafx.scene.input.KeyEvent keyEvent) {
+    public void search(KeyEvent keyEvent) {
         FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 
         searching.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(customer -> {
+            filteredData.setPredicate((Predicate<? super Customer>) customer -> {
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
@@ -245,6 +229,5 @@ public class HomeCustomerController {
         SortedList<Customer> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
         customerTable.setItems(sortedData);
-
     }
 }
