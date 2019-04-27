@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,6 +57,8 @@ public class HomeInsuranceController {
         private void initialize(){
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
             entireScreenInsurance.toFront();
+
+
         }
 
         @FXML
@@ -70,7 +73,9 @@ public class HomeInsuranceController {
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
                 handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
-                System.out.println(customerSelected.getPersonalID());
+               // System.out.println(customerSelected.getPersonalID());
+
+
             }
         }
 

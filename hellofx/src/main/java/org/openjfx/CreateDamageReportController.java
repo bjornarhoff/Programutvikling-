@@ -2,6 +2,7 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import Damages.Damage_Report;
+import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.validation.NumberValidator;
 import javafx.event.ActionEvent;
@@ -33,9 +34,6 @@ public class CreateDamageReportController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
-
-
-
     }
 
     @FXML
@@ -51,7 +49,8 @@ public class CreateDamageReportController {
         Damage_Report damage_report = new Damage_Report(txt_date.getText(), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
                 Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
 
-         txta_info.setText(damage_report.toString());
+        CsvWriter.writeDamageReport(damage_report);
+        txta_info.setText(damage_report.toString());
 
         clearInput();
 

@@ -6,5 +6,6 @@ module hellofx {
 
     opens org.openjfx to javafx.fxml;
     opens CustomerModell to javafx.base;
+    opens Damages to javafx.base;
     exports org.openjfx;
 }

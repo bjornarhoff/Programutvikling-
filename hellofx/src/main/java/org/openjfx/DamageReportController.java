@@ -1,6 +1,7 @@
 package org.openjfx;
 
 
+import Damages.Damage_Report;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +24,10 @@ public class DamageReportController {
     private JFXButton btn_create, btn_edit, btn_showDescription, btn_delete, btn_goBack;
 
     @FXML
-    private TreeTableView ttv_table;
+    private TableView<Damage_Report> damageTableView;
 
     @FXML
-    private TreeTableColumn ttc_damageNr,ttc_dateDamage, ttc_unpaid, ttc_taxAmount;
+    private TableColumn<Damage_Report, String> dmgType,dmgNr, dmgDate, tax, unpaid;
 
     @FXML
     private TextArea desciption;
@@ -36,6 +37,8 @@ public class DamageReportController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+        handlerFxml.setCellValueDamageReport(dmgType, dmgNr, dmgDate, tax, unpaid,damageTableView);
+
     }
 
     @FXML

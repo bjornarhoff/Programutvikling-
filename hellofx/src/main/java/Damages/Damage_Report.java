@@ -1,6 +1,7 @@
 package Damages;
 
 import CustomerModell.Customer;
+import org.openjfx.HomeCustomerController;
 
 import java.io.Serializable;
 
@@ -53,6 +54,18 @@ public class Damage_Report implements Serializable {
                 "\nContactOfPotentialWitnesses: " + contactOfPotentialWitnesses +
                 "\nTaxationAmountOfDamage: " + taxationAmountOfDamage +
                 "\nUnpaidReplacementAmount: " + unpaidReplacementAmount;
+    }
+
+    public String toCSVStringDamageReport(){
+        return
+                customer.getPersonalID() + "," +
+                dateOfDamage + "," +
+                String.valueOf(damageNr) + "," +
+                damageType + "," +
+                damageDescription + "," +
+                contactOfPotentialWitnesses + "," +
+                String.valueOf(taxationAmountOfDamage) + "," +
+                String.valueOf(unpaidReplacementAmount);
     }
 
     public Customer getCustomer() {

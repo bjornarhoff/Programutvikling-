@@ -1,6 +1,7 @@
 package FileManagement;
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import Insurances.*;
 
 import java.io.File;
@@ -16,6 +17,7 @@ public class CsvWriter {
     private static final String HOUSEINSURANCEHEADER = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insurnaceConditions,Owner,Year,ResidentialType,ConstructionMaterial,Condition,NumberOfSquareMeters,AmountForConstruction,AmountForHousehold";
     private static final String LEISUREINSURANCE = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,address_Not_Billing,constructionYear,residentalType,constructionMaterial,condition,amountSquareMeters,amountforConstruction,amountForHousehold";
     private static final String TRAVELINSURANCE = "PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,insuranceArea,insurnaceSum";
+    private static final String DAMAGEREPORT = "PersonalID,DateofDamage,DamageNr,DamageType,DamageDescription,ContactOfWitnesses,TaxOfDamage,UnpaidReplacements";
 
 
     private static final String NEW_LINE = "\n";
@@ -217,6 +219,42 @@ public class CsvWriter {
             }
 
             fileWriter.append(LeisureInsurnace.toCSVStringLeisure());
+            fileWriter.append(NEW_LINE);
+
+
+
+            // If something went wrong while creating file
+        } catch (IOException e) {
+            System.out.println("csv file create error");
+            e.printStackTrace();
+        }
+
+
+        finallyBlock(fileWriter);
+    }
+
+
+    public static void writeDamageReport(Damage_Report damage_report) {
+
+        Customer aCustomer = damage_report.getCustomer();
+        String personID = aCustomer.getPersonalID();
+        int totalt = aCustomer.getAllCustomerInsurance();
+
+        Customer registrert = CsvReader.findCustomer(personID);
+
+        //CsvWriter.delete(registrert);
+
+        try {
+            fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/damageReport.csv"), true);
+            if (!fileExists) {
+                // Write to header
+                fileWriter.append(DAMAGEREPORT);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
+
+            fileWriter.append(damage_report.toCSVStringDamageReport());
             fileWriter.append(NEW_LINE);
 
 

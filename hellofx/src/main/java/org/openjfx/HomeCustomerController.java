@@ -102,7 +102,8 @@ public class HomeCustomerController {
         customerTable.getItems();
         customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
-        System.out.println(customerSelected.getPersonalID());
+       // System.out.println(customerSelected.getPersonalID());
+
 
     }
 
