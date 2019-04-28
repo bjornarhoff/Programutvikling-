@@ -4,6 +4,7 @@ import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -92,6 +93,12 @@ public class HandlerFxml {
         apply.disableProperty().bind(boolBind);
     }
 
+    // Enabling a disabled button when TableView row selected
+    public void enableWhenMarked (TableView tableView, JFXButton ... button) {
+        for (JFXButton buttons : button) {
+            buttons.disableProperty().bind(Bindings.isEmpty(tableView.getSelectionModel().getSelectedItems()));
+        }
+    }
 
   /** FUNKER IKKE
    *  // Enabling button only if all of the textfields have text

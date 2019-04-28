@@ -2,6 +2,7 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +57,10 @@ public class HomeInsuranceController {
         @FXML
         private void initialize(){
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1,btn_deleteInsurance1,btn_showInfoIns1);
             entireScreenInsurance.toFront();
+
+
         }
 
         @FXML
