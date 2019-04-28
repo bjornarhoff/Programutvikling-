@@ -100,17 +100,17 @@ public class HandlerFxml {
         }
     }
 
-  /** FUNKER IKKE
-   *  // Enabling button only if all of the textfields have text
+
+     // Enabling button only if all of the textfields have text
     public void enable(JFXButton apply, JFXTextField ... textFields) {
         BooleanBinding boolBind;
         for (JFXTextField field : textFields) {
             boolBind = field.textProperty().isEmpty();
+            if (textFields.length != 0)
             apply.disableProperty().bind(boolBind);
-            
         }
 
-    } **/
+    }
 
 
     public void loadFileThread () {

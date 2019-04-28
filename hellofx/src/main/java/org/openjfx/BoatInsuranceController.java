@@ -61,7 +61,8 @@ public class BoatInsuranceController {
         handlerFxml.setInputValidation(yearlyPremium);
         handlerFxml.setInputValidation(insuranceAmount);
 
-        handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
+      //  handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
+        handlerFxml.enable(btn_apply,Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
 
 

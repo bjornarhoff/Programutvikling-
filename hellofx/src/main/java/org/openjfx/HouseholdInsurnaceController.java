@@ -69,6 +69,9 @@ public class HouseholdInsurnaceController {
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(insuranceAmount);
 
+        handlerFxml.enable(btn_apply,propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
+                conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions);
+
     }
 
 
