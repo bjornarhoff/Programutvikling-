@@ -90,6 +90,7 @@ public class HomeCustomerController {
     @FXML
     private void initialize(){
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust);
         entireScreenCustomer.toFront();
 
     }
