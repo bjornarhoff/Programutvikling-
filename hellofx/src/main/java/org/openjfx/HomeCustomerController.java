@@ -4,6 +4,7 @@ import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import Threads.Thread;
 import Threads.Threads;
+import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -142,10 +143,29 @@ public class HomeCustomerController {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
+
+        if (event.getSource() == btn_deleteCustomer) {
+            String customerSelected = customerTable.getSelectionModel().getSelectedItem().getPersonalID();
+            SearchAndReadFromCSV.deleteCustomerFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteTravelFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteHouseholdFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
+
+            handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+
+
+        }
     }
 
     public static Customer getCustomerSelected() {
         return customerSelected;
+    }
+
+
+    @FXML
+    public void delete(ActionEvent event) {
+
     }
 
 
@@ -188,7 +208,8 @@ public class HomeCustomerController {
         customerTable.getItems();
         customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
-        System.out.println(customerSelected.getPersonalID());
+       // System.out.println(customerSelected.getPersonalID());
+
 
     }
 

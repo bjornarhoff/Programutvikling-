@@ -55,7 +55,7 @@ public class CreateCustomerController {
          */
         Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
         aCustomer.generateInsuranceNr();
-        CsvWriter.writeObjectToCSV(aCustomer);
+        CsvWriter.writeCustomerToCSV(aCustomer);
         info.setText(aCustomer.toString());
 
 

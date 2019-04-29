@@ -21,11 +21,13 @@ public class MainApp extends Application {
     
     @Override
     public void start(Stage stage) {
-
+/*
         ObservableList<Customer> minListe = CsvReader.read();
         for (Customer customer : minListe){
             System.out.println(customer);
         }
+ */
+
 
 
         try {
@@ -62,6 +64,8 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+
 
 
     }
