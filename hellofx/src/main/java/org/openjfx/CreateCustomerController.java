@@ -4,29 +4,17 @@ import CustomerModell.Customer;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 
-public class CreateCustomerController implements Initializable{
-
+public class CreateCustomerController {
     HandlerFxml handlerFxml = new HandlerFxml();
 
     @FXML
@@ -80,17 +68,23 @@ public class CreateCustomerController implements Initializable{
         handlerFxml.navigate(popUpCreate, "homeCustomer.fxml");
    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
-        handlerFxml.restrictionId(personalID);
-        handlerFxml.restrictionPhone(phone);
-
-        // Enabling button only if all of the textfields have text
-        handlerFxml.enableButton(apply,personalID,name,billing,phone,email);
-
+    @FXML
+    public void initialize() {
+        // Enabling button only if all of the textfields have text, using animationTimer
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(apply, name,personalID,phone,email,billing);
+                if (allFilled){
+                    apply.setDisable(false);
+                }else{
+                    apply.setDisable(true);
+                }
+                // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
+                handlerFxml.restrictionId(personalID);
+                handlerFxml.restrictionPhone(phone);
+            }
+        }.start();
 
     }
-
 }

@@ -6,15 +6,11 @@ import Insurances.House_Household_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class HouseholdInsurnaceController {
@@ -69,7 +65,7 @@ public class HouseholdInsurnaceController {
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(insuranceAmount);
 
-        handlerFxml.enableButton(btn_apply,propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
+        handlerFxml.enableButton(btn_apply, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
                 conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions);
 
     }
