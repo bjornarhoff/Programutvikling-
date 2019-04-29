@@ -5,6 +5,7 @@ import FileManagement.CsvReader;
 import Serialisering.SearchAndReadFromCSV;
 import Threads.Thread;
 import Threads.Threads;
+import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -147,6 +148,10 @@ public class HomeCustomerController {
         if (event.getSource() == btn_deleteCustomer) {
             String customerSelected = customerTable.getSelectionModel().getSelectedItem().getPersonalID();
             SearchAndReadFromCSV.deleteCustomerFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteTravelFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteHouseholdFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
 
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
 
@@ -168,27 +173,44 @@ public class HomeCustomerController {
 
 
     @FXML
-    private void handleSaveClicked(ActionEvent event) {
+    private void handleImportClicked(ActionEvent event) {
+
 
 
 
     }
 
     @FXML
-    private void handleLoadClicked(ActionEvent event) {
+    private void handleExportClicked(ActionEvent event) {
 
         FileChooser chooser = new FileChooser();
-        chooser.setTitle("Load file");
-        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
-        File csvFile = new File(System.getProperty("user.home") + "/customer1.csv");
+        chooser.setTitle("Import file");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv"));
+        new FileChooser.ExtensionFilter("J Object file (*.jobj", "*.jobj");
+        String directory = System.getProperty("user.home");
+        File userDirectory = new File(directory);
 
-        if (!csvFile.exists()) {
-            System.out.println("File exist");
+        if(!userDirectory.canRead()) {
+            userDirectory = new File("c:/");
+        }
+        chooser.setInitialDirectory(userDirectory);
+
+        // Choose file
+        File file = chooser.showOpenDialog(null);
+
+        //Make sure a file was selected, if not return default
+        String path;
+        if(file != null) {
+            path = file.getPath();
+        } else {
+            //default return value
+            path = null;
         }
 
-        chooser.setInitialDirectory(csvFile);
 
-        File selectedFile = chooser.showOpenDialog(entireScreenCustomer.getScene().getWindow());
+        //CsvReader.read()
+
 
     }
 

@@ -9,11 +9,7 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import CustomerModell.Customer;
-import FileManagement.CsvReader;
-import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.binding.BooleanBinding;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,16 +17,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -113,18 +105,36 @@ public class HandlerFxml {
         }
     }
 
-
      // Enabling button only if all of the textfields have text
-    public void enableButton(JFXButton apply, JFXTextField ... textFields) {
-        BooleanBinding boolBind;
+    public boolean enableButton(JFXButton apply, JFXTextField... textFields) {
+        /*BooleanBinding boolBind;
         for (JFXTextField field : textFields) {
             boolBind = field.textProperty().isEmpty();
-            if (textFields.length != 0)
-            apply.disableProperty().bind(boolBind);
+            if (boolBind.getValue()) {
+                apply.disableProperty().bind(boolBind);
+            }
+            System.out.println(boolBind);
+
+        }*/
+
+        boolean filled = true;
+        for (JFXTextField field : textFields) {
+            if (field.textProperty().isEmpty().get()){
+                filled = false;
+            }
         }
+        return filled;
 
     }
-
+/**
+    // Loop over textfield, find empty fields
+    public boolean fieldsEmpty (JFXTextField ... textFields) {
+        for (JFXTextField field : textFields) {
+            if(!field.getText().isEmpty()) {
+                return false;
+            }
+        } return true;
+    } */
 
     public void loadFileThread () {
         Task task = new Task<Void>() {

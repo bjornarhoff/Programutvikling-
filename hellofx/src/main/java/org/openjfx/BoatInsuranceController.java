@@ -6,6 +6,7 @@ import Insurances.Boat_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -61,8 +62,20 @@ public class BoatInsuranceController {
         handlerFxml.setInputValidation(yearlyPremium);
         handlerFxml.setInputValidation(insuranceAmount);
 
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
       //  handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
-        handlerFxml.enableButton(btn_apply,Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+       //handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
 
 
