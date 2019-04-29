@@ -56,7 +56,7 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        SearchAndReadFromCSV.deleteRecordFromCsv("sven", "trying.txt");
+
 
 
     }

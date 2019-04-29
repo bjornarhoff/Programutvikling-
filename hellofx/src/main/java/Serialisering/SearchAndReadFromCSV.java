@@ -8,6 +8,8 @@ import java.nio.Buffer;
 import java.util.Date;
 import java.util.Scanner;
 
+import static FileManagement.CsvWriter.createFileCSV;
+
 public class SearchAndReadFromCSV {
 
     private static Scanner x;
@@ -72,25 +74,30 @@ public class SearchAndReadFromCSV {
 
     }
 
-    public static void deleteRecordFromCsv(String searchterm, String filepath){
+    public static void deleteCustomerFromCsv(String searchterm){
+
+
+        String filepath = System.getProperty("user.home") + "/customer2.csv";
 
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
 
         boolean found = false;
-        String personalID = "";
-        String name = "";
 
-        /*String age = "";
+        String personalID = "";
+        String insuranceNr = "";
+        String name = "";
         String phoneNumber = "";
-         String email = "";
+
+        String email = "";
         String date = "";
         String billingAddress = "";
+        String unpaid = "";
         String allCustomerInsurance = "";
-        String unpaidReplacements = "";
 
-         */
+
+
         try{
             FileWriter fw = new FileWriter(tempfile,true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -101,18 +108,19 @@ public class SearchAndReadFromCSV {
 
             while(x.hasNext()){
                 personalID = x.next();
+                insuranceNr = x.next();
                 name = x.next();
-               /* age = x.next();
                 phoneNumber = x.next();
                 email = x.next();
                 date = x.next();
                 billingAddress = x.next();
+                unpaid = x.next();
                 allCustomerInsurance = x.next();
-                unpaidReplacements = x.next();
-                */
+
 
                 if(!personalID.equals(searchterm)) {
-                    pw.println(personalID + ", " + name);
+                    pw.println(personalID + "," + insuranceNr + "," + name + "," + phoneNumber + "," + email + "," + date + "," +
+                            billingAddress + "," + unpaid + "," + allCustomerInsurance);
                 }
 
             }
@@ -123,7 +131,6 @@ public class SearchAndReadFromCSV {
             File dump = new File(filepath);
             newfile.renameTo(dump);
 
-
         }
         catch(Exception e ){
 
@@ -132,6 +139,66 @@ public class SearchAndReadFromCSV {
 
     }
 
+    public static void deleteDamageReportFromCsv(String searchterm){
 
 
+        String filepath = System.getProperty("user.home") + "/damageReport.csv";
+
+        String tempfile = "temp.txt";
+        File oldFile = new File(filepath);
+        File newfile = new File(tempfile);
+
+        boolean found = false;
+
+        String personalID = "";
+        String DateofDamage = "";
+        String DamageNr = "";
+        String DamageType = "";
+
+        String DamageDescription = "";
+        String ContactOfWitnesses = "";
+        String TaxOfDamage = "";
+        String unpaid = "";
+
+
+
+        try{
+            FileWriter fw = new FileWriter(tempfile,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            x = new Scanner(new File(filepath));
+            x.useDelimiter("[,\n]");
+
+            while(x.hasNext()){
+                personalID = x.next();
+                DateofDamage = x.next();
+                DamageNr = x.next();
+                DamageType = x.next();
+                DamageDescription = x.next();
+                ContactOfWitnesses = x.next();
+                TaxOfDamage = x.next();
+                unpaid = x.next();
+
+
+                if(!DateofDamage.equals(searchterm)) {
+                    pw.println(personalID + "," + DateofDamage + "," + DamageNr + "," + DamageType + "," + DamageDescription + "," + ContactOfWitnesses + "," +
+                            TaxOfDamage + "," + unpaid);
+                }
+
+            }
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            File dump = new File(filepath);
+            newfile.renameTo(dump);
+
+        }
+        catch(Exception e ){
+
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+
+    }
 }

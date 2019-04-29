@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import FileManagement.CsvReader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -40,5 +41,17 @@ public class HandlerFxml {
         t6.setCellValueFactory(new PropertyValueFactory<>("date"));
         t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
         table.setItems(customers);
+    }
+
+    public void setCellValueDamageReport(TableColumn<Damage_Report,String> t1, TableColumn<Damage_Report,String> t2,
+                                         TableColumn<Damage_Report,String> t3, TableColumn<Damage_Report,String> t4,
+                                         TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table){
+        ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
+        t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
+        t2.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
+        t3.setCellValueFactory(new PropertyValueFactory<>("dateOfDamage"));
+        t4.setCellValueFactory(new PropertyValueFactory<>("taxationAmountOfDamage"));
+        t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
+        table.setItems(damageReport);
     }
 }
