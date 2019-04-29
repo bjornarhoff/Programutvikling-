@@ -120,26 +120,15 @@ public class SearchAndReadFromCSV {
             PrintWriter pw = new PrintWriter(bw);
 
             x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
 
-            while(x.hasNext()){
-                personalID = x.next();
-                insuranceNr = x.next();
-                name = x.next();
-                phoneNumber = x.next();
-                email = x.next();
-                date = x.next();
-                billingAddress = x.next();
-                unpaid = x.next();
-                allCustomerInsurance = x.next();
-
-
-                if(!personalID.equals(searchterm)) {
-                    pw.println(personalID + "," + insuranceNr + "," + name + "," + phoneNumber + "," + email + "," + date + "," +
-                            billingAddress + "," + unpaid + "," + allCustomerInsurance);
+            while (x.hasNextLine()) {
+                String[] customer = x.nextLine().split(",");
+                if (!customer[0].equals(searchterm)) {
+                    pw.println(customer[0] + "," + customer[1] + "," + customer[2] + "," + customer[3] + "," + customer[4] + "," + customer[5] + "," +
+                            customer[6] + "," + customer[7] + "," + customer[8]);
                 }
-
             }
+
             x.close();
             pw.flush();
             pw.close();
