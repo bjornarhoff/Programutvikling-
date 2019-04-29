@@ -3,6 +3,7 @@ package FileManagement;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Insurances.*;
+import Serialisering.SearchAndReadFromCSV;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -96,7 +97,7 @@ public class CsvWriter {
 
         Customer existing = CsvReader.findCustomer(personID);
         existing.setAllCustomerInsurance(allCustomerInsurance);
-        //CsvWriter.delete(existing);
+        SearchAndReadFromCSV.deleteCustomerFromCsv(existing.getPersonalID());
         CsvWriter.writeCustomerToCSV(existing);
     }
 

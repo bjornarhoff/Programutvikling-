@@ -8,9 +8,42 @@ import java.nio.Buffer;
 import java.util.Date;
 import java.util.Scanner;
 
-import static FileManagement.CsvWriter.createFileCSV;
+
 
 public class SearchAndReadFromCSV {
+
+    // Customer
+    static String personalID = "";
+    static String insuranceNr = "";
+
+    static String name = "";
+    static String age = "";
+    static String phoneNumber = "";
+    static String email = "";
+    static String date = "";
+    static String billingAddress = "";
+    static String allCustomerInsurance = "";
+    static String unpaidReplacements = "";
+
+
+    // DamageReport
+    static String DateofDamage = "";
+    static String DamageNr = "";
+    static String DamageType = "";
+
+    static String DamageDescription = "";
+    static String ContactOfWitnesses = "";
+    static String TaxOfDamage = "";
+    static String unpaid = "";
+
+
+    // Travel Insurance
+
+    // Household Insurance
+
+    // Boat Insurnace
+
+    // Leisure Insurance
 
     private static Scanner x;
     private static BufferedReader y;
@@ -27,15 +60,7 @@ public class SearchAndReadFromCSV {
     public static void readRecordCustomer(String searchTerm, String filepath){
 
         boolean found = false;
-        String personalID = "";
-        String name = "";
-        String age = "";
-        String phoneNumber = "";
-        String email = "";
-        String date = "";
-        String billingAddress = "";
-        String allCustomerInsurance = "";
-        String unpaidReplacements = "";
+
 
         try {
             x = new Scanner(new File(filepath));
@@ -85,16 +110,7 @@ public class SearchAndReadFromCSV {
 
         boolean found = false;
 
-        String personalID = "";
-        String insuranceNr = "";
-        String name = "";
-        String phoneNumber = "";
 
-        String email = "";
-        String date = "";
-        String billingAddress = "";
-        String unpaid = "";
-        String allCustomerInsurance = "";
 
 
 
@@ -149,17 +165,6 @@ public class SearchAndReadFromCSV {
         File newfile = new File(tempfile);
 
         boolean found = false;
-
-        String personalID = "";
-        String DateofDamage = "";
-        String DamageNr = "";
-        String DamageType = "";
-
-        String DamageDescription = "";
-        String ContactOfWitnesses = "";
-        String TaxOfDamage = "";
-        String unpaid = "";
-
 
 
         try{
