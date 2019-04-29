@@ -4,6 +4,7 @@ import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class CreateDamageReportController {
     private Label customerLabel;
 
     @FXML
-    private TextField txt_date, txt_damageType, damageNr, taxAmount, unpaidReplacements;
+    private JFXTextField txt_date, txt_damageType, damageNr, taxAmount, unpaidReplacements;
 
     @FXML
     private TextArea txta_DaDescription, txta_potWitnesses, txta_info;
@@ -52,18 +53,9 @@ public class CreateDamageReportController {
         CsvWriter.writeDamageReport(damage_report);
         txta_info.setText(damage_report.toString());
 
-        clearInput();
+        handlerFxml.clearInput();
 
     }
 
-    public void clearInput(){
-        txt_date.setText("");
-        txt_damageType.setText("");
-        damageNr.setText("");
-        taxAmount.setText("");
-        unpaidReplacements.setText("");
-        txta_DaDescription.setText("");
-        txta_potWitnesses.setText("");
-    }
 
 }

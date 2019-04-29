@@ -52,7 +52,6 @@ public class LeisureInsuranceController {
         yearlyPremium.getValidators().add(numvalidator);
         InsuranceAmount.getValidators().add(numvalidator);
 
-
         numvalidator.setMessage("Only numbers are supported!");
 
         setValidationInput();

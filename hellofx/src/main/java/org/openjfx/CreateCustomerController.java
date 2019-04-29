@@ -3,18 +3,27 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class CreateCustomerController implements Initializable{
 
@@ -27,22 +36,12 @@ public class CreateCustomerController implements Initializable{
     public TextArea info;
 
     @FXML
-    public TextField personalID;
+    public JFXTextField personalID, name,billing,phone,email;
 
     @FXML
-    public TextField name;
+    public JFXButton cancel,apply;
 
-    @FXML
-    public TextField billing;
 
-    @FXML
-    public TextField phone;
-
-    @FXML
-    public TextField email;
-
-    @FXML
-    public JFXButton cancel;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -55,8 +54,6 @@ public class CreateCustomerController implements Initializable{
         catch (IOException e){
             System.out.println("error while loading");
         }
-
-
 
     }
 
@@ -74,11 +71,7 @@ public class CreateCustomerController implements Initializable{
         info.setText(aCustomer.toString());
 
 
-        personalID.setText("");
-        name.setText("");
-        billing.setText("");
-        phone.setText("");
-        email.setText("");
+        handlerFxml.clearInput(personalID, name,billing,phone,email);
     }
 
 
@@ -89,6 +82,14 @@ public class CreateCustomerController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
+        handlerFxml.restrictionId(personalID);
+        handlerFxml.restrictionPhone(phone);
+
+        // Enabling button only if all of the textfields have text
+        handlerFxml.enableButton(apply,personalID,name,billing,phone,email);
+
 
     }
 

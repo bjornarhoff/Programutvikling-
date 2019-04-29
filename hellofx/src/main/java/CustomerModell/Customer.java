@@ -1,9 +1,11 @@
 package CustomerModell;
 
 import Damages.Damage_Report;
+import Insurances.Insurance;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -87,6 +89,7 @@ public class Customer implements Serializable {
         Random r = new Random();
         this.insuranceNr = r.nextInt((max - min) + 1);
     }
+    
 
     /**
      * We first get all the excisitng Insurances the customer has and then increase the number of Insurnaces
@@ -105,7 +108,7 @@ public class Customer implements Serializable {
 
     /**
      * @param PersonalID
-     */
+    */
     public void setPersonalID(String PersonalID) {
         this.personalID = PersonalID;
     }

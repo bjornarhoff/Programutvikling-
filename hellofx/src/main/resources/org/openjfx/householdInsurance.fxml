@@ -64,8 +64,8 @@
                         <JFXTextField fx:id="amountForHousehold" labelFloat="true" layoutX="37.0" layoutY="600.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" />
                         <JFXTextField fx:id="yearlyPremium" labelFloat="true" layoutX="37.0" layoutY="672.0" prefHeight="27.0" prefWidth="340.0" promptText="yearlyPremium" />
                         <JFXTextField fx:id="date" labelFloat="true" layoutX="464.0" layoutY="81.0" prefHeight="27.0" prefWidth="340.0" promptText="date" />
-                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="142.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" />
-                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="464.0" layoutY="213.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" />
+                        <JFXTextField fx:id="insuranceAmount" labelFloat="true" layoutX="464.0" layoutY="142.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" />
+                        <JFXTextField fx:id="insuranceConditions" labelFloat="true" layoutX="464.0" layoutY="213.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" />
                         <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="283.0" prefHeight="511.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #C5D1EB;">
                            <font>
                               <Font size="17.0" />

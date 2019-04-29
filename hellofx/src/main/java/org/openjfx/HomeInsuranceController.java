@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class HomeInsuranceController {
 
@@ -58,6 +60,7 @@ public class HomeInsuranceController {
         @FXML
         private void initialize(){
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1,btn_deleteInsurance1,btn_showInfoIns1);
             entireScreenInsurance.toFront();
 
 
@@ -65,13 +68,11 @@ public class HomeInsuranceController {
 
         @FXML
         private void handleButtonActions(ActionEvent event) {
-            if(event.getSource() == button_Customer){
-                handlerFxml.navigate(entireScreenInsurance,"homeCustomer.fxml");
+            if (event.getSource() == button_Customer) {
+                handlerFxml.navigate(entireScreenInsurance, "homeCustomer.fxml");
             }
 
-            if(event.getSource() == btn_createInsurance1){
-
-
+            if (event.getSource() == btn_createInsurance1) {
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
                 handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");

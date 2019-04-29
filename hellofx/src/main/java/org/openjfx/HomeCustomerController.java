@@ -3,6 +3,8 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import Serialisering.SearchAndReadFromCSV;
+import Threads.Thread;
+import Threads.Threads;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -20,14 +22,21 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.scene.layout.GridPane;
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.*;
 import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.Date;
 import java.util.function.Predicate;
 
@@ -36,6 +45,8 @@ import static org.openjfx.HomeInsuranceController.customerSelected;
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+    private Threads thread = new Threads();
+
 
 
 
@@ -76,12 +87,56 @@ public class HomeCustomerController {
 
 
     ObservableList<Customer> customers;
+
     @FXML
     private void initialize(){
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust);
         entireScreenCustomer.toFront();
 
     }
+    /*
+    @FXML
+    private void delete(ActionEvent event){
+       /* ObservableList<Customer> customerSelected, allCustomers;
+        allCustomers = customerTable.getItems();
+        customerSelected = customerTable.getSelectionModel().getSelectedItems();
+
+        customerSelected.forEach(allCustomers::remove);
+
+        customers.remove(customerTable.getSelectionModel().getSelectedItem());
+    }
+
+    private void search(KeyEvent ke){
+        FilteredList filteredData = new FilteredList(observableList, e -> true);
+
+        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(newValue == null || newValue.isEmpty()){
+                }
+                    return true;
+                if(customer.getPersonalID().contains(newValue)){
+                    return true;
+                }
+
+                else if(customer.getName().toLowerCase().contains(newValue)){
+                    return true;
+
+                }
+                return false;
+
+
+            });
+        });
+
+        SortedList sortedData = new SortedList(filteredData);
+        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
+        customerTable.setItems(sortedData);
+    }*/
+
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
@@ -111,6 +166,37 @@ public class HomeCustomerController {
 
 
 
+
+    @FXML
+    private void handleSaveClicked(ActionEvent event) {
+
+
+
+    }
+
+    @FXML
+    private void handleLoadClicked(ActionEvent event) {
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Load file");
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
+        File csvFile = new File(System.getProperty("user.home") + "/customer1.csv");
+
+        if (!csvFile.exists()) {
+            System.out.println("File exist");
+        }
+
+        chooser.setInitialDirectory(csvFile);
+
+        File selectedFile = chooser.showOpenDialog(entireScreenCustomer.getScene().getWindow());
+
+    }
+
+    @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
 
     @FXML
     private void damageReportPressed(){
