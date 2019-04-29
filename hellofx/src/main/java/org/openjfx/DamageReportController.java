@@ -1,7 +1,9 @@
 package org.openjfx;
 
 
+import CustomerModell.Customer;
 import Damages.Damage_Report;
+import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,10 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
+import static org.openjfx.HomeInsuranceController.customerSelected;
+
 
 public class DamageReportController {
 
     HandlerFxml handlerFxml = new HandlerFxml();
+
+    static Damage_Report damageReportSelected;
 
     @FXML
     private BorderPane damageReport;
@@ -49,5 +55,29 @@ public class DamageReportController {
     @FXML
     private void goBackPressed(){
         handlerFxml.navigate(damageReport, "homeCustomer.fxml");
+    }
+
+    @FXML
+    private void delete(ActionEvent event){
+        if (event.getSource() == btn_delete){
+            String customerSelected = damageTableView.getSelectionModel().getSelectedItem().getDateOfDamage();
+            SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
+
+            handlerFxml.setCellValueDamageReport(dmgType, dmgNr, dmgDate, tax, unpaid,damageTableView);
+
+        }
+    }
+
+    @FXML
+    private void show(ActionEvent event){
+        if(event.getSource() == btn_showDescription){
+            String damageReport = damageTableView.getSelectionModel().getSelectedItem().toString();
+
+            desciption.setText(damageReport);
+        }
+    }
+
+    public static Damage_Report getDamageReport() {
+        return damageReportSelected;
     }
 }

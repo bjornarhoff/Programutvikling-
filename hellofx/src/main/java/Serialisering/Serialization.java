@@ -13,7 +13,7 @@ public class Serialization {
     public static void serialiseCustomer(Customer customer){
 
 
-        String filepath = "Customers.jobj";
+        String filepath = "Customers.ser";
         try (
                 FileOutputStream fos = new FileOutputStream(filepath);
                 ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -28,7 +28,7 @@ public class Serialization {
     public static void serialiseInsurance(Insurance insurance){
 
 
-        String filepath = "Insurances.jobj";
+        String filepath = "Insurances.ser";
         try (
                 FileOutputStream fos = new FileOutputStream(filepath);
                 ObjectOutputStream out = new ObjectOutputStream(fos);
