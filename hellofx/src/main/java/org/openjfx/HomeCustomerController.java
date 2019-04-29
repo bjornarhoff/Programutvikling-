@@ -92,6 +92,10 @@ public class HomeCustomerController {
         if (event.getSource() == btn_deleteCustomer) {
             String customerSelected = customerTable.getSelectionModel().getSelectedItem().getPersonalID();
             SearchAndReadFromCSV.deleteCustomerFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteTravelFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteHouseholdFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
 
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
 
