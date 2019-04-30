@@ -5,12 +5,10 @@ import Damages.Damage_Report;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 public class CreateDamageReportController {
@@ -32,16 +30,27 @@ public class CreateDamageReportController {
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;
 
+    /**
+     * Initialize Method that gets Customer selected PersonalID
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
     }
 
+    /**
+     * Method that returns to the Damage Report page
+     * @param event
+     */
     @FXML
     private void cancel(ActionEvent event){
         handlerFxml.navigate(createDamageReport, "damageReport.fxml");
     }
 
+    /**
+     * Method where a Damage Report is created for the selected Customer and text fields are reset
+     * @param event
+     */
     @FXML
     private void apply(ActionEvent event){
 

@@ -90,70 +90,106 @@ public class Leisure_Insurance extends Insurance {
 
     /**
 
-     * @return
+     * @return address_Not_Billing
      */
     public String getAddress_Not_Billing() {
         return this.address_Not_Billing;
     }
 
-
+    /**
+     * @param constructionYear
+     */
     public void setConstructionYear(int constructionYear) {
         this.constructionYear = constructionYear;
     }
 
+    /**
+     * @return constructionYear
+     */
     public int getConstructionYear() {
         return this.constructionYear;
     }
 
-
+    /**
+     * @param residentalType
+     */
     public void setResidentalType(String residentalType) {
         this.residentalType = residentalType;
     }
 
+    /**
+     * @return residentalType
+     */
     public String getResidentalType() {
         return this.residentalType;
     }
 
-
+    /**
+     * @param constructionMaterial
+     */
     public void setConstructionMaterial(String constructionMaterial) {
         this.constructionMaterial = constructionMaterial;
     }
 
+    /**
+     * @return constructionMaterial
+     */
     public String getConstructionMaterial() {
         return this.constructionMaterial;
     }
 
-
+    /**
+     * @param condition
+     */
     public void setCondition(String condition) {
         this.condition = condition;
     }
 
+    /**
+     * @return condition
+     */
     public String getCondition() {
         return this.condition;
     }
 
-
+    /**
+     * @param amountSquareMeters
+     */
     public void setAmountSquareMeters(double amountSquareMeters) {
         this.amountSquareMeters = amountSquareMeters;
     }
 
+    /**
+     * @return amountSquareMeters
+     */
     public double getAmountSquareMeters() {
         return this.amountSquareMeters;
     }
 
+    /**
+     * @param amountforConstruction
+     */
     public void setAmountforConstruction(int amountforConstruction) {
         this.amountforConstruction = amountforConstruction;
     }
 
+    /**
+     * @return amountforConstruction
+     */
     public int getAmountforConstruction() {
         return this.amountforConstruction;
     }
 
-
+    /**
+     * @param amountForHousehold
+     */
     public void setAmountForHousehold(int amountForHousehold) {
         this.amountForHousehold = amountForHousehold;
     }
 
+    /**
+     * @return amountForHousehold
+     */
     public int getAmountForHousehold() {
         return this.amountForHousehold;
     }

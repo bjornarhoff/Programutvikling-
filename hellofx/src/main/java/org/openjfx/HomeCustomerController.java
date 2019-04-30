@@ -158,23 +158,12 @@ public class HomeCustomerController {
             SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
 
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
-
-
         }
     }
 
     public static Customer getCustomerSelected() {
         return customerSelected;
     }
-
-
-    @FXML
-    public void delete(ActionEvent event) {
-
-    }
-
-
-
 
     @FXML
     private void handleImportClicked(ActionEvent event) {
@@ -251,13 +240,9 @@ public class HomeCustomerController {
 
     @FXML
     private void damageReportPressed(){
-
         customerTable.getItems();
         customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
-       // System.out.println(customerSelected.getPersonalID());
-
-
     }
 
     @FXML
@@ -269,7 +254,10 @@ public class HomeCustomerController {
         return this.customerTable;
     }
 
-
+    /**
+     * Search Method that filters through Customer Table view and matches search input
+     * @param keyEvent
+     */
     public void search(KeyEvent keyEvent) {
         FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 

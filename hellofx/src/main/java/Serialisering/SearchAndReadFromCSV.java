@@ -1,14 +1,7 @@
 package Serialisering;
-import CustomerModell.Customer;
-import Damages.Damage_Report;
-
 import javax.swing.*;
 import java.io.*;
-import java.nio.Buffer;
-import java.util.Date;
 import java.util.Scanner;
-
-
 
 public class SearchAndReadFromCSV {
 
@@ -79,16 +72,7 @@ public class SearchAndReadFromCSV {
     private static BufferedReader y;
 
 
-   /* public static void main(String[] args) {
-        String filepath = "trying.txt";
-        String searchTerm = "4444";
-
-        readRecord(searchTerm, filepath);
-    }*/
-
-
-
-
+    /*
     public static void readRecordCustomer(String searchTerm, String filepath) {
 
         boolean found = false;
@@ -128,7 +112,13 @@ public class SearchAndReadFromCSV {
         }
 
     }
+    
+     */
 
+    /**
+     * Method that deletes a Customer object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteCustomerFromCsv(String searchterm) {
 
 
@@ -170,6 +160,10 @@ public class SearchAndReadFromCSV {
 
     }
 
+    /**
+     * Method that deletes the Damage Report from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteDamageReportFromCsv(String searchterm) {
 
 
@@ -221,7 +215,10 @@ public class SearchAndReadFromCSV {
 
     }
 
-
+    /**
+     * Method that deltes the Leisure object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteLeisureFromCsv(String searchterm) {
 
 
@@ -279,6 +276,10 @@ public class SearchAndReadFromCSV {
 
     }
 
+    /**
+     * Method that deletes the Boat object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteBoatFromCsv(String searchterm) {
 
 
@@ -333,6 +334,10 @@ public class SearchAndReadFromCSV {
 
     }
 
+    /**
+     * Method that deletes the Travel object from the csv with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteTravelFromCsv(String searchterm) {
 
 
@@ -384,6 +389,10 @@ public class SearchAndReadFromCSV {
     }
 
 
+    /**
+     * Method that deletes a Household object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteHouseholdFromCsv(String searchterm) {
 
 

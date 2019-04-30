@@ -78,15 +78,15 @@ public class BoatInsuranceController {
       //  handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
        //handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
-
-
-
-
         //setInputValidation();
 
     }
 
 
+    /**
+     * Handles our button interactions
+     * @param event
+     */
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
@@ -104,11 +104,17 @@ public class BoatInsuranceController {
         }
     }
 
+    /**
+     * go back to Insurance page
+     */
     @FXML
     public void cancel() {
         handlerFxml.navigate(entireScreenBoat, "homeInsurance.fxml");
     }
 
+    /**
+     * Adds Boat object to selected Customer and clears text fields
+     */
     @FXML
     public void apply(){
 
@@ -126,65 +132,4 @@ public class BoatInsuranceController {
         handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
     }
-
-   /* public void clearInput(){
-        Owner.setText("");
-        registerNr.setText("");
-        length.setText("");
-        boatTypeModel.setText("");
-        motorTypePower.setText("");
-        year.setText("");
-        yearlyPremium.setText("");
-        date.setText("");
-        insuranceAmount.setText("");
-        InsuranceConditions.setText("");
-    }
-
-
-    public void setInputValidation(){
-        registerNr.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    registerNr.validate();
-                }
-            }
-        });
-
-        length.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    length.validate();
-                }
-            }
-        });
-
-        year.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    year.validate();
-                }
-            }
-        });
-
-        yearlyPremium.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    yearlyPremium.validate();
-                }
-            }
-        });
-
-        insuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    insuranceAmount.validate();
-                }
-            }
-        });
-    } */
 }

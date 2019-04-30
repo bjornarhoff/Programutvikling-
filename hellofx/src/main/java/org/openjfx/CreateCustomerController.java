@@ -1,8 +1,6 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
-import Exceptions.CustomerExceptions;
-import Exceptions.CustomerWrongNumberFromat;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -12,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
 public class CreateCustomerController {
@@ -49,8 +45,9 @@ public class CreateCustomerController {
     }
 
 
-
-
+    /**
+     * Method for creating a Customer and clearing text fields
+     */
     @FXML
     public void apply() /*throws CustomerExceptions*/ {
         /*
@@ -70,11 +67,17 @@ public class CreateCustomerController {
     }
 
 
+    /**
+     * method to get back to home Customer page
+     */
    @FXML
     public void cancel() {
         handlerFxml.navigate(popUpCreate, "homeCustomer.fxml");
    }
 
+    /**
+     * Method were everything for the page is being initialize
+     */
     @FXML
     public void initialize() {
         // Enabling button only if all of the textfields have text, using animationTimer
