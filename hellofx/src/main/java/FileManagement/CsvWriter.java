@@ -96,9 +96,10 @@ public class CsvWriter {
         int allCustomerInsurance = customer.getAllCustomerInsurance();
 
         Customer existing = CsvReader.findCustomer(personID);
-        existing.setAllCustomerInsurance(allCustomerInsurance);
         SearchAndReadFromCSV.deleteCustomerFromCsv(existing.getPersonalID());
-        CsvWriter.writeCustomerToCSV(existing);
+
+        existing.setAllCustomerInsurance(allCustomerInsurance);
+         CsvWriter.writeCustomerToCSV(existing);
     }
 
 
