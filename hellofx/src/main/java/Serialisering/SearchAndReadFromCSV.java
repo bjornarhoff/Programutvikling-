@@ -258,7 +258,7 @@ public class SearchAndReadFromCSV {
                 amountForHousehold = x.next();
 
 
-                if (!personalID.equals(searchterm)) {
+                if (!address_Not_Billing.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + address_Not_Billing + "," +
                             constructionYear + "," + residentialType + "," + constructionMaterial + "," + condition + "," + amountSquareMeters + "," + amountforConstruction
                             + "," + amountForHousehold);
@@ -313,7 +313,7 @@ public class SearchAndReadFromCSV {
                 motorTypeAndMotorPower = x.next();
 
 
-                if (!personalID.equals(searchterm)) {
+                if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + owner + "," +
                             registerNr + "," + boatTypeAndModel + "," + lengthInFoot + "," + year + "," + motorTypeAndMotorPower);
                 }
@@ -364,7 +364,7 @@ public class SearchAndReadFromCSV {
 
 
 
-                if (!personalID.equals(searchterm)) {
+                if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + insurnaceArea + "," +
                             insurnceSum);
                 }
@@ -421,7 +421,7 @@ public class SearchAndReadFromCSV {
                 insurnaceAmountForHousehold = x.next();
 
 
-                if (!personalID.equals(searchterm)) {
+                if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + propertyOwner + "," +
                             yearOfConstruction + "," + residentialType + "," + constructionMaterial + "," + condition + "," + numberOfSquareMeters + "," + insurnceAmountForConstruction + "," + insurnaceAmountForHousehold);
                 }

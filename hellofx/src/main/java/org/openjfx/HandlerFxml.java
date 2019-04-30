@@ -22,6 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import Insurances.Leisure_Insurance;
+import Insurances.House_Household_Insurance;
+import Insurances.Travel_Insurance;
+import Insurances.Boat_Insurance;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +77,7 @@ public class HandlerFxml {
 
     public void setCellValueDamageReport(TableColumn<Damage_Report,String> t1, TableColumn<Damage_Report,String> t2,
                                          TableColumn<Damage_Report,String> t3, TableColumn<Damage_Report,String> t4,
-                                         TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table){
+                                         TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table) {
         ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
         t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
         t2.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
@@ -202,4 +206,63 @@ public class HandlerFxml {
     }
 
 
+
+        public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,String> t2,
+                                         TableColumn<House_Household_Insurance,String> t3, TableColumn<House_Household_Insurance,String> t4,
+                                         TableColumn<House_Household_Insurance,String> t5, TableColumn<House_Household_Insurance,String> t6, TableView<House_Household_Insurance> table) {
+            ObservableList<House_Household_Insurance> householdInsurnace = CsvReader.readHousehold();
+            t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("propertyOwner"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("residentialType"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("constructionMaterial"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("numberOfSquareMeters"));
+            table.setItems(householdInsurnace);
+
+        }
+        public void setCellValueTravel(TableColumn<Travel_Insurance,String> t1, TableColumn<Travel_Insurance,String> t2,
+                                         TableColumn<Travel_Insurance,String> t3, TableColumn<Travel_Insurance,String> t4,
+                                         TableColumn<Travel_Insurance,String> t5, TableView<Travel_Insurance> table){
+        ObservableList<Travel_Insurance> travelInsurnce = CsvReader.readTravel();
+        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+        t3.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
+        t4.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
+        t5.setCellValueFactory(new PropertyValueFactory<>("insuranceArea"));
+        table.setItems(travelInsurnce);
+
+
+    }
+
+    public void setCellValueLeisure(TableColumn<Leisure_Insurance,String> t1, TableColumn<Leisure_Insurance,String> t2,
+                                         TableColumn<Leisure_Insurance,String> t3, TableColumn<Leisure_Insurance,String> t4,
+                                         TableColumn<Leisure_Insurance,String> t5, TableColumn<Leisure_Insurance,String> t6, TableView<Leisure_Insurance> table){
+        ObservableList<Leisure_Insurance> leisureInsurnace = CsvReader.readLeisure();
+        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+        t3.setCellValueFactory(new PropertyValueFactory<>("constructionYear"));
+        t4.setCellValueFactory(new PropertyValueFactory<>("residentalType"));
+        t5.setCellValueFactory(new PropertyValueFactory<>("constructionMaterial"));
+        t6.setCellValueFactory(new PropertyValueFactory<>("amountSquareMeters"));
+
+        table.setItems(leisureInsurnace);
+
+
+    }
+
+    public void setCellValueBoat(TableColumn<Boat_Insurance,String> t1, TableColumn<Boat_Insurance,String> t2,
+                                         TableColumn<Boat_Insurance,String> t3, TableColumn<Boat_Insurance,String> t4,
+                                         TableColumn<Boat_Insurance,String> t5, TableColumn<Boat_Insurance,String> t6,TableView<Boat_Insurance> table){
+        ObservableList<Boat_Insurance> boatInsurance = CsvReader.readBoat();
+        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+        t3.setCellValueFactory(new PropertyValueFactory<>("owner"));
+        t4.setCellValueFactory(new PropertyValueFactory<>("registerNr"));
+        t5.setCellValueFactory(new PropertyValueFactory<>("boatTypeAndModel"));
+        t6.setCellValueFactory(new PropertyValueFactory<>("lengthInFoot"));
+
+        table.setItems(boatInsurance);
+
+
+    }
 }
