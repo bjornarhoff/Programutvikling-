@@ -30,16 +30,27 @@ public class CreateDamageReportController {
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;
 
+    /**
+     * Initialize Method that gets Customer selected PersonalID
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
     }
 
+    /**
+     * Method that returns to the Damage Report page
+     * @param event
+     */
     @FXML
     private void cancel(ActionEvent event){
         handlerFxml.navigate(createDamageReport, "damageReport.fxml");
     }
 
+    /**
+     * Method where a Damage Report is created for the selected Customer and text fields are reset
+     * @param event
+     */
     @FXML
     private void apply(ActionEvent event){
 

@@ -15,8 +15,22 @@ public class House_Household_Insurance extends Insurance {
     private int insuranceAmountForHousehold;
 
 
-
-    // Default Constructor for House Hold ALLInsurancesController.
+    /**
+     * Default Constructor for Household Object
+     * @param customer
+     * @param yearlyInsurancePremium
+     * @param dateOfCreatedInsurance
+     * @param insuranceAmount
+     * @param insuranceConditions
+     * @param propertyOwner
+     * @param yearOfConstruction
+     * @param residentialType
+     * @param constructionMaterial
+     * @param condition
+     * @param numberOfSquareMeters
+     * @param insuranceAmountForConstruction
+     * @param insuranceAmountForHousehold
+     */
     public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                                      String insuranceConditions, String propertyOwner, int yearOfConstruction,
                                      String residentialType, String constructionMaterial, String condition,
@@ -36,6 +50,9 @@ public class House_Household_Insurance extends Insurance {
 
     }
 
+    /**
+     * @return Household object in String format
+     */
     @Override
     public String toString() {
         return  "\nHOUSEHOLD INSURANCE" +
@@ -50,6 +67,9 @@ public class House_Household_Insurance extends Insurance {
                 "\n\nOverall for Household Insurance " + super.toString();
     }
 
+    /**
+     * @return Household object in csv String format
+     */
     public String toCSVStringHousehold(){
         return super.toCSVStringInsurnce() + "," +
                 propertyOwner + "," +
@@ -62,73 +82,114 @@ public class House_Household_Insurance extends Insurance {
                 String.valueOf(insuranceAmountForHousehold);
     }
 
+    /**
+     * @param propertyOwner
+     */
     public void setPropertyOwner(String propertyOwner) {
         this.propertyOwner = propertyOwner;
     }
 
+    /**
+     * @return propertyOwner
+     */
     public String getPropertyOwner() {
         return this.propertyOwner;
     }
 
-
+    /**
+     * @param yearOfConstruction
+     */
     public void setYearOfConstruction(int yearOfConstruction) {
         this.yearOfConstruction = yearOfConstruction;
     }
 
+    /**
+     * @return yearOfConstruction
+     */
     public int getYearOfConstruction() {
         return this.yearOfConstruction;
     }
 
-
+    /**
+     * @param residentialType
+     */
     public void setResidentialType(String residentialType) {
         this.residentialType = residentialType;
     }
 
+    /**
+     * @return residentialType
+     */
     public String getResidentialType() {
         return this.residentialType;
     }
 
-
+    /**
+     * @param constructionMaterial
+     */
     public void setConstructionMaterial(String constructionMaterial) {
         this.constructionMaterial = constructionMaterial;
     }
 
+    /**
+     * @return constructionMaterial
+     */
     public String getConstructionMaterial() {
         return this.constructionMaterial;
     }
 
-
+    /**
+     * @param condition
+     */
     public void setCondition(String condition) {
         this.condition = condition;
     }
 
+    /**
+     * @return condition
+     */
     public String getCondition() {
         return this.condition;
     }
 
-
+    /**
+     * @param numberOfSquareMeters
+     */
     public void setNumberOfSquareMeters(double numberOfSquareMeters) {
         this.numberOfSquareMeters = numberOfSquareMeters;
     }
 
+    /**
+     * @return numberOfSquareMeters
+     */
     public double getNumberOfSquareMeters() {
         return this.numberOfSquareMeters;
     }
 
-
+    /**
+     * @param insuranceAmountForConstruction
+     */
     public void setInsuranceAmountForConstruction(int insuranceAmountForConstruction) {
         this.insuranceAmountForConstruction = insuranceAmountForConstruction;
     }
 
+    /**
+     * @return insuranceAmountForConstruction
+     */
     public int getInsuranceAmountForConstruction() {
         return this.insuranceAmountForConstruction;
     }
 
-
+    /**
+     * @param insuranceAmountForHousehold
+     */
     public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
         this.insuranceAmountForHousehold = insuranceAmountForHousehold;
     }
 
+    /**
+     * @return insuranceAmountForHousehold
+     */
     public int getInsuranceAmountForHousehold() {
         return this.insuranceAmountForHousehold;
     }
