@@ -52,7 +52,7 @@ public class CreateCustomerController {
 
 
     @FXML
-    public void apply() /*throws CustomerExceptions*/ {
+    public void apply(){
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
@@ -63,10 +63,6 @@ public class CreateCustomerController {
 
 
         handlerFxml.clearInput(personalID, name,billing,phone,email);
-
-        /*if (personalID.getText().length() != 11){
-            throw new CustomerWrongNumberFromat("Personal ID must be 11 digits");
-        }*/
     }
 
 
@@ -77,6 +73,10 @@ public class CreateCustomerController {
 
     @FXML
     public void initialize() {
+        handlerFxml.restrictionId(personalID);
+        handlerFxml.setInputValidation(personalID);
+
+        handlerFxml.restrictionPhone(phone);
         // Enabling button only if all of the textfields have text, using animationTimer
         new AnimationTimer() {
             @Override
@@ -88,8 +88,6 @@ public class CreateCustomerController {
                     apply.setDisable(true);
                 }
                 // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
-                handlerFxml.restrictionId(personalID);
-                handlerFxml.restrictionPhone(phone);
             }
         }.start();
 

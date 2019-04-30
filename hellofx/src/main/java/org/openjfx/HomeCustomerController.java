@@ -2,45 +2,20 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
-import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
-import Threads.Thread;
 import Threads.Threads;
-import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.scene.layout.GridPane;
-import org.w3c.dom.Text;
-
 import java.io.File;
-import java.io.IOException;
-
-import javax.swing.*;
-import java.awt.event.KeyListener;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.Date;
 import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
@@ -100,48 +75,6 @@ public class HomeCustomerController {
         entireScreenCustomer.toFront();
 
     }
-    /*
-    @FXML
-    private void delete(ActionEvent event){
-       /* ObservableList<Customer> customerSelected, allCustomers;
-        allCustomers = customerTable.getItems();
-        customerSelected = customerTable.getSelectionModel().getSelectedItems();
-
-        customerSelected.forEach(allCustomers::remove);
-
-        customers.remove(customerTable.getSelectionModel().getSelectedItem());
-    }
-
-    private void search(KeyEvent ke){
-        FilteredList filteredData = new FilteredList(observableList, e -> true);
-
-        searching.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Customer >) (Customer customer)->{
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if(newValue == null || newValue.isEmpty()){
-                }
-                    return true;
-                if(customer.getPersonalID().contains(newValue)){
-                    return true;
-                }
-
-                else if(customer.getName().toLowerCase().contains(newValue)){
-                    return true;
-
-                }
-                return false;
-
-
-            });
-        });
-
-        SortedList sortedData = new SortedList(filteredData);
-        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
-        customerTable.setItems(sortedData);
-    }*/
-
 
     @FXML
     private void handleButtonActions(ActionEvent event) {

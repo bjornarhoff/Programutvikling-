@@ -40,22 +40,6 @@ public class BoatInsuranceController {
         CsvWriter.createFileCSV((System.getProperty("user.home") + "/boatInsurance.csv"));
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-        /*NumberValidator numvalidator = new NumberValidator();
-
-        registerNr.getValidators().add(numvalidator);
-        length.getValidators().add(numvalidator);
-        year.getValidators().add(numvalidator);
-        yearlyPremium.getValidators().add(numvalidator);
-        insuranceAmount.getValidators().add(numvalidator);
-
-
-        numvalidator.setMessage("Only numbers are supported!");*/
-
-        handlerFxml.getValidators(registerNr);
-        handlerFxml.getValidators(length);
-        handlerFxml.getValidators(year);
-        handlerFxml.getValidators(yearlyPremium);
-        handlerFxml.getValidators(insuranceAmount);
 
         handlerFxml.setInputValidation(registerNr);
         handlerFxml.setInputValidation(length);
@@ -75,15 +59,6 @@ public class BoatInsuranceController {
                 }
             }
         }.start();
-      //  handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
-       //handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
-
-
-
-
-
-        //setInputValidation();
-
     }
 
 

@@ -1,17 +1,12 @@
 package org.openjfx;
 
-
-import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-
-import static org.openjfx.HomeInsuranceController.customerSelected;
 
 
 public class DamageReportController {

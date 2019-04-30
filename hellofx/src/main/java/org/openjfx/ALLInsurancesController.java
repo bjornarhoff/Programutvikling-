@@ -15,7 +15,7 @@ import javafx.scene.layout.BorderPane;
 
 
 
-public class Insurances {
+public class ALLInsurancesController {
 
     HandlerFxml handlerFxml = new HandlerFxml();
 

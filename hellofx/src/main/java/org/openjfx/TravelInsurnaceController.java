@@ -1,10 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
-import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
-import FileManagement.ObjectWriter;
-import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -16,8 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
 import java.util.Date;
 
 public class TravelInsurnaceController {
@@ -55,12 +50,7 @@ public class TravelInsurnaceController {
         numvalidator.setMessage("Only numbers are supported!");
 
         setInputValidation();
-
-
-
-}
-
-
+    }
 
     @FXML
     private void handleButtonActions(ActionEvent event) {
@@ -76,8 +66,6 @@ public class TravelInsurnaceController {
         else if(event.getSource() == btn_travel){
             handlerFxml.navigate(entireScreenTravel,"TravelInsurance.fxml");
         }
-
-
     }
 
 

@@ -37,26 +37,6 @@ public class HouseholdInsurnaceController {
     private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-       /* NumberValidator numvalidator = new NumberValidator();
-
-        amountForConstruction.getValidators().add(numvalidator);
-        yearConstruction.getValidators().add(numvalidator);
-        nrSquareMeters.getValidators().add(numvalidator);
-        amountForHousehold.getValidators().add(numvalidator);
-        yearlyPremium.getValidators().add(numvalidator);
-        insuranceAmount.getValidators().add(numvalidator);
-
-
-        numvalidator.setMessage("Only numbers are supported!"); */
-
-       handlerFxml.getValidators(amountForConstruction);
-       handlerFxml.getValidators(yearConstruction);
-       handlerFxml.getValidators(nrSquareMeters);
-       handlerFxml.getValidators(amountForHousehold);
-       handlerFxml.getValidators(yearlyPremium);
-       handlerFxml.getValidators(insuranceAmount);
-
-        //setInputValidaiton();
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(yearConstruction);
         handlerFxml.setInputValidation(nrSquareMeters);

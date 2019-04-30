@@ -16,7 +16,7 @@ public abstract class Insurance implements Serializable {
 
 
 
-    // Default Constructor for Overall Insurances
+    // Default Constructor for Overall ALLInsurancesController
     public Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                      String insuranceConditions) {
         this.customer = customer;

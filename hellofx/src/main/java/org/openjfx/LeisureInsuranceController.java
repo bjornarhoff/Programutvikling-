@@ -2,7 +2,6 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
-import FileManagement.ObjectWriter;
 import Insurances.Leisure_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -14,8 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
 import java.util.Date;
 
 public class LeisureInsuranceController {
@@ -58,8 +55,6 @@ public class LeisureInsuranceController {
     }
 
 
-
-
     @FXML
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == btn_household){
@@ -75,8 +70,6 @@ public class LeisureInsuranceController {
             handlerFxml.navigate(entireScreenLeisure,"BoatInsurance.fxml");
         }
     }
-
-
 
     @FXML
     public void cancel() {

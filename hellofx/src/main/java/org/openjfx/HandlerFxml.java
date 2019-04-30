@@ -3,7 +3,6 @@ package org.openjfx;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvReader;
-import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import javafx.beans.binding.Bindings;
@@ -26,10 +25,7 @@ import Insurances.Leisure_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
-
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -195,6 +191,7 @@ public class HandlerFxml {
                 }
             }
         });
+        getValidators(textField);
     }
 
 

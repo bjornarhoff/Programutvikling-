@@ -16,7 +16,7 @@ public class House_Household_Insurance extends Insurance {
 
 
 
-    // Default Constructor for House Hold Insurances.
+    // Default Constructor for House Hold ALLInsurancesController.
     public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                                      String insuranceConditions, String propertyOwner, int yearOfConstruction,
                                      String residentialType, String constructionMaterial, String condition,
