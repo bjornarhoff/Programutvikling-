@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import javafx.beans.binding.Bindings;
@@ -22,7 +23,9 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -43,14 +46,28 @@ public class HandlerFxml {
                              TableColumn<Customer,String> t3, TableColumn<Customer,String> t4,
                              TableColumn<Customer,String> t5, TableColumn<Customer,String> t6,
                              TableColumn<Customer,String> t7, TableView<Customer> table){
-        ObservableList<Customer> customers = CsvReader.read();
-        t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("name"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("email"));
-        t6.setCellValueFactory(new PropertyValueFactory<>("date"));
-        t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+            ObservableList<Customer> customers = CsvReader.read();
+            t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("name"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("email"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("date"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+            table.setItems(customers);
+
+    }
+
+    public void setCellValue( TableView<Customer> table,
+                              ObservableList<Customer> customers,
+                              ObservableList<TableColumn<Customer,?>> columns){
+        columns.get(0).setCellValueFactory(new PropertyValueFactory<>("personalID"));
+        columns.get(1).setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+        columns.get(2).setCellValueFactory(new PropertyValueFactory<>("name"));
+        columns.get(3).setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        columns.get(4).setCellValueFactory(new PropertyValueFactory<>("email"));
+        columns.get(5).setCellValueFactory(new PropertyValueFactory<>("date"));
+        columns.get(6).setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
         table.setItems(customers);
     }
 
