@@ -165,7 +165,7 @@ public class HomeCustomerController {
     public void filter(KeyEvent keyEvent) {
 
 
-        ObservableList<Customer> data =  customerTable.getItems();
+        ObservableList<Customer> data =  CsvReader.read();
         searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (oldValue != null && (newValue.length() < oldValue.length())) {
                 customerTable.setItems(data);
@@ -186,7 +186,6 @@ public class HomeCustomerController {
                 }
             }
             customerTable.setItems(subentries);
-            System.out.println("\n" + subentries);
         });
 
          /*
