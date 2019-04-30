@@ -46,7 +46,11 @@ public class CsvWriter {
     }
 
 
-    // Method for create CSV file -> return file
+    /**
+     * method for creating a CSV file
+     * @param path
+     * @return a file
+     */
     public static File createFileCSV(String path) {
         File file = new File(path);
 
@@ -65,7 +69,10 @@ public class CsvWriter {
         return file;
     }
 
-    // Method for write customer object to CSV file
+    /**
+     * method for writing customer object to CSV file
+     * @param aCustomer
+     */
     public static void writeCustomerToCSV(Customer aCustomer) {
 
         try {
@@ -90,6 +97,10 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
+    /**
+     * a method which updates and sets all the customer Insurances
+     * @param insurance
+     */
     public static void updateAllInsurances(Insurance insurance){
         Customer customer = insurance.getCustomer();
         String personID = customer.getPersonalID();
@@ -103,6 +114,10 @@ public class CsvWriter {
     }
 
 
+    /**
+     * a method which writes a boat object object to a csv file
+     * @param boatInsurance
+     */
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
         updateAllInsurances(boatInsurance);
@@ -131,7 +146,10 @@ public class CsvWriter {
     }
 
 
-
+    /**
+     * a method which writes a House object to a csv file
+     * @param houseInsurance
+     */
     public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
 
         updateAllInsurances(houseInsurance);
@@ -158,6 +176,10 @@ public class CsvWriter {
     }
 
 
+    /**
+     * a method which writes a Travel object to a csv file
+     * @param travelInsurance
+     */
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
 
         updateAllInsurances(travelInsurance);
@@ -187,6 +209,10 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
+    /**
+     * a method which writes a Leisure object to a csv file
+     * @param leisureInsurnace
+     */
     public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace) {
 
         updateAllInsurances(leisureInsurnace);
@@ -218,6 +244,10 @@ public class CsvWriter {
     }
 
 
+    /**
+     * e method which write a damage report to a csv file
+     * @param damage_report
+     */
     public static void writeDamageReport(Damage_Report damage_report) {
 
         Customer aCustomer = damage_report.getCustomer();

@@ -26,7 +26,15 @@ public class Customer implements Serializable {
     private transient double unpaidReplacements;
 
 
-    // A constructor that dosent require a damageReport (Default constructor)
+    /**
+     * Default Constructor for Customer object
+     * @param PersonalID
+     * @param Name
+     * @param phoneNumber
+     * @param email
+     * @param Date
+     * @param BillingAddress
+     */
     public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
 
         this.personalID = PersonalID;

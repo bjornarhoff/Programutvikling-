@@ -23,14 +23,8 @@ public class Damage_Report implements Serializable {
 
     /**
      * Default constructor for Damage_report class
-     * @param dateOfDamage
-     * @param damageNr
-     * @param damageType
-     * @param damageDescription
-     * @param contactOfPotentialWitnesses
-     * @param taxationAmountOfDamage
-     * @param unpaidReplacementAmount
-     * @param customer
+     *
+     * @param variables which are used for the constructor
      */
     public Damage_Report(String dateOfDamage, int damageNr, String damageType, String damageDescription,
                          String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount, Customer customer) {

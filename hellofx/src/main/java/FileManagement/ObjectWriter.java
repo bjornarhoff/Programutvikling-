@@ -5,6 +5,10 @@ import java.io.ObjectOutputStream;
 
 public class ObjectWriter extends FileWriter {
 
+    /**
+     * a method which writes an object to file
+     * @param obj
+     */
     public void writeToFile (Object obj) {
 
         try {

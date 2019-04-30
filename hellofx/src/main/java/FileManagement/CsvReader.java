@@ -16,6 +16,10 @@ import java.io.*;
 public class CsvReader {
 
 
+    /**
+     * a method which reads the customer csv file
+     * @return an ObservableList containing all the customers in the csv file
+     */
     public static ObservableList<Customer> read () {
 
         String line;
@@ -40,6 +44,11 @@ public class CsvReader {
         return customersFromCsv;
     }
 
+    /**
+     *
+     * @param searchterm to specify what to search for in Customer csv file in this case PersonalId
+     * @return the specific searched customer
+     */
     public static Customer findCustomer(String searchterm) {
        Customer customer = null;
        String line;
@@ -71,6 +80,11 @@ public class CsvReader {
        return customer;
     }
 
+    /**
+     *
+     * @param searchterm to specify what to search for in the Customer csv file in this case PersonalId
+     * @return an ObservableList which contains all the items which matched the searchtearm
+     */
     public static ObservableList<Damage_Report> findDamageReport(String searchterm) {
        Customer customer = null;
        Damage_Report damageReport = null;
@@ -106,6 +120,10 @@ public class CsvReader {
     }
 
 
+    /**
+     * a method which reads a damageReport csv file
+     * @return an ObservableList which contains Damage Report
+     */
     public static ObservableList<Damage_Report> readDamageReport () {
 
         String line;
@@ -136,6 +154,11 @@ public class CsvReader {
         return damageReports;
     }
 
+    /**
+     *
+     * @param file
+     * @return
+     */
     public static ObservableList<Customer> read (File file) {
 
         String line;
@@ -159,6 +182,12 @@ public class CsvReader {
         }
         return customersFromCsv;
     }
+
+    /**
+     *
+     * @param searchterm to specify what to search for in the Customer csv file in this case PersonalID
+     * @return an ObservableList with all the matching House Insurances
+     */
 
         public static ObservableList<House_Household_Insurance> findHouseInsurnace (String searchterm){
             Customer customer = null;
@@ -192,7 +221,11 @@ public class CsvReader {
             return households;
         }
 
-        public static ObservableList<House_Household_Insurance> readHousehold () {
+    /**
+     * a method which reads a Household Insurance csv file
+     * @return an ObservableList which the found Household Insurances
+     */
+    public static ObservableList<House_Household_Insurance> readHousehold () {
 
             String line;
             ObservableList<House_Household_Insurance> household = null;
@@ -224,7 +257,12 @@ public class CsvReader {
             return household;
         }
 
-        public static ObservableList<Travel_Insurance> findTravelInsurnace (String searchterm){
+    /**
+     *
+     * @param searchterm to specify what to search for in the Customer csv file in this case PersonalID
+     * @return an ObservableList with all the matching Travel Insurances
+     */
+    public static ObservableList<Travel_Insurance> findTravelInsurnace (String searchterm){
             Customer customer = null;
             ObservableList<Travel_Insurance> travelInsurnaces = FXCollections.observableArrayList();
             Travel_Insurance travelInsurance = null;
@@ -257,7 +295,11 @@ public class CsvReader {
         }
 
 
-        public static ObservableList<Travel_Insurance> readTravel () {
+    /**
+     * a method which reads through an Travel Insurance csv file
+     * @return an ObservableList with the found Travel Insurances
+     */
+    public static ObservableList<Travel_Insurance> readTravel () {
 
             String line;
             ObservableList<Travel_Insurance> travelInsurnces = null;
@@ -285,7 +327,12 @@ public class CsvReader {
             return travelInsurnces;
         }
 
-        public static ObservableList<Boat_Insurance> findBoatInsurnace (String searchterm){
+    /**
+     *
+     * @param searchterm to specify what to search for in Boat csv file
+     * @return a ObservableList with all the found Boat Insurances to the search
+     */
+    public static ObservableList<Boat_Insurance> findBoatInsurnace (String searchterm){
             Customer customer = null;
             Boat_Insurance boatInsurnace = null;
             ObservableList<Boat_Insurance> boatInsurnaces = FXCollections.observableArrayList();
@@ -317,7 +364,11 @@ public class CsvReader {
             return boatInsurnaces;
         }
 
-        public static ObservableList<Boat_Insurance> readBoat () {
+    /**
+     * method to read the boat csv file
+     * @return a ObservableList containing the boat Insurances
+     */
+    public static ObservableList<Boat_Insurance> readBoat () {
 
             String line;
             ObservableList<Boat_Insurance> boatInsurnace = null;
@@ -346,7 +397,12 @@ public class CsvReader {
         }
 
 
-        public static ObservableList<Leisure_Insurance> findLeisureInsurnace (String searchterm){
+    /**
+     *
+     * @param searchterm to specify what to search for in leisure csv file
+     * @return a ObservableList with all the found Leisure Insurances to the search
+     */
+    public static ObservableList<Leisure_Insurance> findLeisureInsurnace (String searchterm){
             Customer customer = null;
             Leisure_Insurance leisureInsurnace = null;
             ObservableList<Leisure_Insurance> leisureInsurnaces = FXCollections.observableArrayList();
@@ -377,7 +433,11 @@ public class CsvReader {
             return leisureInsurnaces;
         }
 
-        public static ObservableList<Leisure_Insurance> readLeisure () {
+    /**
+     *
+     * @return
+     */
+    public static ObservableList<Leisure_Insurance> readLeisure () {
 
             String line;
             ObservableList<Leisure_Insurance> leisureInsurnces = null;
