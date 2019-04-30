@@ -31,25 +31,7 @@ public class HomeInsuranceController {
         private TableView<Customer> insuranceTable;
 
         @FXML
-        private TableColumn<Customer,String> personalID;
-
-        @FXML
-        private TableColumn<Customer,String> insuranceNr;
-
-        @FXML
-        private TableColumn<Customer,String> name;
-
-        @FXML
-        private TableColumn<Customer,String> phone;
-
-        @FXML
-        private TableColumn<Customer,String> email;
-
-        @FXML
-        private TableColumn<Customer,String> date;
-
-        @FXML
-        private TableColumn<Customer,String> billing;
+        private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
 
         @FXML
         private GridPane pane_Insurance;

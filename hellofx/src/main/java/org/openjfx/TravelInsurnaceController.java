@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -43,6 +44,18 @@ public class TravelInsurnaceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply,insuranceArea, insuranceSum, YearlyInsurance, date, InsuranceAmount, InsuranceConditions);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
 
         NumberValidator numvalidator = new NumberValidator();
 

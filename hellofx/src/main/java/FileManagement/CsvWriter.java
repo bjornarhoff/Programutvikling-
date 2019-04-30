@@ -65,6 +65,9 @@ public class CsvWriter {
         return file;
     }
 
+
+
+
     // Method for write customer object to CSV file
     public static void writeCustomerToCSV(Customer aCustomer) {
 

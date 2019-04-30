@@ -37,19 +37,19 @@ public class BoatInsuranceController {
 
     @FXML
     private void initialize(){
-        CsvWriter.createFileCSV((System.getProperty("user.home") + "/boatInsurance.csv"));
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-        /*NumberValidator numvalidator = new NumberValidator();
-
-        registerNr.getValidators().add(numvalidator);
-        length.getValidators().add(numvalidator);
-        year.getValidators().add(numvalidator);
-        yearlyPremium.getValidators().add(numvalidator);
-        insuranceAmount.getValidators().add(numvalidator);
-
-
-        numvalidator.setMessage("Only numbers are supported!");*/
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
 
         handlerFxml.getValidators(registerNr);
         handlerFxml.getValidators(length);
@@ -64,17 +64,7 @@ public class BoatInsuranceController {
         handlerFxml.setInputValidation(insuranceAmount);
 
 
-        new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
-                if (allFilled){
-                    btn_apply.setDisable(false);
-                }else{
-                    btn_apply.setDisable(true);
-                }
-            }
-        }.start();
+
       //  handlerFxml.enableButton(btn_apply, Owner,registerNr,boatTypeModel,motorTypePower,year);
        //handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 

@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
+import FileManagement.OpenFileChooser;
 import Serialisering.SearchAndReadFromCSV;
 import Threads.Thread;
 import Threads.Threads;
@@ -48,6 +49,8 @@ import static org.openjfx.HomeInsuranceController.customerSelected;
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+    private OpenFileChooser openFileChooser = new OpenFileChooser();
+    private FileChooser fc = new FileChooser();
     private Threads thread = new Threads();
 
 
@@ -213,34 +216,7 @@ public class HomeCustomerController {
 
     @FXML
     private void handleExportClicked(ActionEvent event) {
-
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Export file");
-        chooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSV files", "*.csv"),
-                new FileChooser.ExtensionFilter("jObj file ", "*.ser"));
-
-        String directory = System.getProperty("user.home");
-        File userDirectory = new File(directory);
-
-        if(!userDirectory.canRead()) {
-            userDirectory = new File("c:/");
-        }
-        chooser.setInitialDirectory(userDirectory);
-
-        Stage stage = new Stage();
-
-        File selectedFile = chooser.showSaveDialog(stage);
-
-        if (selectedFile != null) {
-            try {
-               selectedFile.createNewFile();
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        openFileChooser.configuringFC(fc,"Export file", "user.home");
     }
 
     @FXML
