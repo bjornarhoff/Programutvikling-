@@ -2,6 +2,7 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import Threads.Thread;
 import Threads.Threads;
@@ -36,6 +37,7 @@ import javax.swing.*;
 import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.Date;
@@ -59,7 +61,7 @@ public class HomeCustomerController {
 
     @FXML
     private JFXButton button_Customer, button_Insurance, btn_addCustomer, btn_editCustomer, btn_deleteCustomer,
-            tn_showDamageReport, btn_showInfoCust, refresh;
+            btn_showDamageReport, btn_showInfoCust, refresh;
 
     @FXML
     private TableView<Customer> customerTable;
@@ -91,8 +93,10 @@ public class HomeCustomerController {
 
     @FXML
     private void initialize(){
+        // Sets cell value to tableview
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
-        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust);
+        // Enables buttons when marked one customer
+        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust,btn_showDamageReport);
         entireScreenCustomer.toFront();
 
     }
@@ -175,19 +179,11 @@ public class HomeCustomerController {
     @FXML
     private void handleImportClicked(ActionEvent event) {
 
-
-
-
-    }
-
-    @FXML
-    private void handleExportClicked(ActionEvent event) {
-
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Import file");
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv"));
-        new FileChooser.ExtensionFilter("J Object file (*.jobj", "*.jobj");
+                new FileChooser.ExtensionFilter("J Object file (*.jobj", "*.jobj");
         String directory = System.getProperty("user.home");
         File userDirectory = new File(directory);
 
@@ -203,15 +199,48 @@ public class HomeCustomerController {
         String path;
         if(file != null) {
             path = file.getPath();
+            ObservableList<Customer> list = CsvReader.read(file);
+            handlerFxml.setCellValue(customerTable, list, customerTable.getColumns());
+
         } else {
             //default return value
             path = null;
         }
 
 
-        //CsvReader.read()
+
+    }
+
+    @FXML
+    private void handleExportClicked(ActionEvent event) {
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Export file");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV files", "*.csv"),
+                new FileChooser.ExtensionFilter("jObj file ", "*.ser"));
+
+        String directory = System.getProperty("user.home");
+        File userDirectory = new File(directory);
+
+        if(!userDirectory.canRead()) {
+            userDirectory = new File("c:/");
+        }
+        chooser.setInitialDirectory(userDirectory);
+
+        Stage stage = new Stage();
+
+        File selectedFile = chooser.showSaveDialog(stage);
+
+        if (selectedFile != null) {
+            try {
+               selectedFile.createNewFile();
 
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

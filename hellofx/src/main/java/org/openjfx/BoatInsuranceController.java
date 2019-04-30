@@ -37,6 +37,7 @@ public class BoatInsuranceController {
 
     @FXML
     private void initialize(){
+        CsvWriter.createFileCSV((System.getProperty("user.home") + "/boatInsurance.csv"));
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
         /*NumberValidator numvalidator = new NumberValidator();

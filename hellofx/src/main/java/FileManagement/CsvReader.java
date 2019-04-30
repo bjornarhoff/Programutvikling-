@@ -10,16 +10,10 @@ import javafx.collections.ObservableList;
 import org.openjfx.HomeCustomerController;
 import org.openjfx.HomeInsuranceController;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 
 public class CsvReader {
-
-
-
-
 
     public static Customer findCustomer(String searchterm) {
        Customer customer = null;
@@ -53,12 +47,37 @@ public class CsvReader {
        return customer;
     }
 
+
     public static ObservableList<Customer> read () {
 
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
         int iteration = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home")+"/customer2.csv"))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0){
+                    iteration ++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                Customer aCustomer = new Customer(values[0], values[2], values[3], values[4], values[5], values[6]);
+                aCustomer.setInsuranceNr(Integer.parseInt(values[1]));
+                aCustomer.setUnpaidReplacements(Double.parseDouble(values[7]));
+                aCustomer.setAllCustomerInsurance(Integer.parseInt(values[8]));
+                customersFromCsv.add(aCustomer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return customersFromCsv;
+    }
+
+    public static ObservableList<Customer> read (File file) {
+
+        String line;
+        ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             while ((line = br.readLine()) != null) {
                 if (iteration == 0){
                     iteration ++;
