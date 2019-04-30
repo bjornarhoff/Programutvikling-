@@ -45,7 +45,7 @@
                   <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #8C7365;" GridPane.columnIndex="2">
                      <children>
                         <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
-                        <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
+                        <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_deleteInsurance1" layoutX="3.0" layoutY="251.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Insurance" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoIns1" layoutX="4.0" layoutY="306.0" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
                      </children>

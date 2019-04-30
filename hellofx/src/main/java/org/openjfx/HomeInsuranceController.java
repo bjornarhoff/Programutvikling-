@@ -77,9 +77,11 @@ public class HomeInsuranceController {
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
                 handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
-               // System.out.println(customerSelected.getPersonalID());
-
-
+            }
+            if(event.getSource() == btn_modfiInsurance1){
+                insuranceTable.getItems();
+                customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
+                handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
             }
         }
 

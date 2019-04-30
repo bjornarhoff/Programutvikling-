@@ -90,21 +90,22 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
-    public static void updateAllInsurances(Customer customer, Insurance insurance){
-        customer = insurance.getCustomer();
+    public static void updateAllInsurances(Insurance insurance){
+        Customer customer = insurance.getCustomer();
         String personID = customer.getPersonalID();
         int allCustomerInsurance = customer.getAllCustomerInsurance();
 
         Customer existing = CsvReader.findCustomer(personID);
-        existing.setAllCustomerInsurance(allCustomerInsurance);
         SearchAndReadFromCSV.deleteCustomerFromCsv(existing.getPersonalID());
+
+        existing.setAllCustomerInsurance(allCustomerInsurance);
         CsvWriter.writeCustomerToCSV(existing);
     }
 
 
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
-        updateAllInsurances(boatInsurance.getCustomer(), boatInsurance);
+        updateAllInsurances(boatInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
@@ -133,7 +134,7 @@ public class CsvWriter {
 
     public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
 
-        updateAllInsurances(houseInsurance.getCustomer(), houseInsurance);
+        updateAllInsurances(houseInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
@@ -159,7 +160,7 @@ public class CsvWriter {
 
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
 
-        updateAllInsurances(travelInsurance.getCustomer(), travelInsurance);
+        updateAllInsurances(travelInsurance);
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
@@ -188,7 +189,7 @@ public class CsvWriter {
 
     public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace) {
 
-        updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
+        updateAllInsurances(leisureInsurnace);
 
 
         try {
