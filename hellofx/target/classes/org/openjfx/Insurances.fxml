@@ -115,7 +115,7 @@
                   <JFXButton fx:id="showTravel" layoutX="10.0" layoutY="336.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Travel info" textFill="WHITE" />
                   <JFXButton fx:id="showLeisure" layoutX="10.0" layoutY="517.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Leisure Info" textFill="WHITE" />
                   <JFXButton fx:id="showBoat" layoutX="10.0" layoutY="695.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Boat Info" textFill="WHITE" />
-                  <JFXTextArea fx:id="info" focusColor="WHITE" labelFloat="true" layoutX="947.0" layoutY="57.0" prefHeight="684.0" prefWidth="376.0" promptText="Info about the Selected Insurance" style="-fx-background-color: white;">
+                  <JFXTextArea fx:id="info" focusColor="WHITE" labelFloat="true" layoutX="947.0" layoutY="57.0" prefHeight="684.0" prefWidth="376.0" promptText="Info about the Selected Insurance" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

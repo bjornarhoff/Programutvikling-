@@ -216,7 +216,7 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
@@ -274,7 +274,7 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
@@ -328,7 +328,7 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
@@ -378,8 +378,7 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
@@ -436,7 +435,7 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }

@@ -52,7 +52,7 @@ public class CreateCustomerController {
 
 
     @FXML
-    public void apply() throws CustomerExceptions {
+    public void apply() /*throws CustomerExceptions*/ {
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
@@ -64,9 +64,9 @@ public class CreateCustomerController {
 
         handlerFxml.clearInput(personalID, name,billing,phone,email);
 
-        if (personalID.getText().length() != 11){
+        /*if (personalID.getText().length() != 11){
             throw new CustomerWrongNumberFromat("Personal ID must be 11 digits");
-        }
+        }*/
     }
 
 
