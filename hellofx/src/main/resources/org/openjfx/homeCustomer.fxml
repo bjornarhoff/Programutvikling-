@@ -71,14 +71,14 @@
                         <JFXButton fx:id="btn_deleteCustomer" layoutY="252.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Customer" textFill="WHITE" />
                         <JFXButton fx:id="btn_showDamageReport" layoutY="305.0" onAction="#damageReportPressed" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Damage Report" textFill="WHITE" />
                         <JFXButton fx:id="btn_showInfoCust" layoutY="358.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Full Info" textFill="WHITE" />
-                        <TextField id="search" fx:id="searching" layoutX="14.0" layoutY="63.0" onKeyPressed="#search" prefHeight="27.0" prefWidth="127.0" promptText="search" />
+                        <TextField id="search" fx:id="searching" layoutX="14.0" layoutY="63.0" onKeyReleased="#filter" prefHeight="27.0" prefWidth="127.0" promptText="search" />
                         <JFXButton fx:id="refresh" layoutY="576.0" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Refresh Table" textFill="WHITE" />
                      </children>
                      <effect>
                         <InnerShadow />
                      </effect>
                   </AnchorPane>
-                  <TableView fx:id="customerTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                  <TableView fx:id="customerTable" onKeyReleased="#filter" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                     <columns>
                       <TableColumn fx:id="personalID" prefWidth="142.0" text="PersonalID" />
                         <TableColumn fx:id="insuranceNr" prefWidth="120.0" text="InsuranceNr" />

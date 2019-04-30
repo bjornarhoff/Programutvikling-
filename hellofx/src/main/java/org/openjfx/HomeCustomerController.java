@@ -4,31 +4,20 @@ import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import org.w3c.dom.Text;
 
 
-import javax.swing.*;
-import java.awt.event.KeyListener;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
@@ -76,8 +65,11 @@ public class HomeCustomerController {
 
 
     ObservableList<Customer> customers;
+
+
     @FXML
     private void initialize(){
+        customers = CsvReader.read();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         entireScreenCustomer.toFront();
 
@@ -136,8 +128,9 @@ public class HomeCustomerController {
         return this.customerTable;
     }
 
+    /*
 
-    public void search(KeyEvent keyEvent) {
+    public void filter(KeyEvent keyEvent) {
         FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 
         searching.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -166,4 +159,72 @@ public class HomeCustomerController {
         sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
         customerTable.setItems(sortedData);
     }
+
+     */
+
+    public void filter(KeyEvent keyEvent) {
+
+
+        ObservableList<Customer> data =  customerTable.getItems();
+        searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (oldValue != null && (newValue.length() < oldValue.length())) {
+                customerTable.setItems(data);
+            }
+            String value = newValue.toLowerCase();
+            ObservableList<Customer> subentries = FXCollections.observableArrayList();
+
+            long count = customerTable.getColumns().stream().count();
+
+            for (int i = 0; i < customerTable.getItems().size(); i++) {
+                for (int j = 0; j < count; j++) {
+                    String entry = "" + customerTable.getColumns().get(j).getCellData(i);
+                    if (entry.toLowerCase().contains(value)) {
+                        subentries.add(customerTable.getItems().get(i));
+                        break;
+                    }
+                    
+                }
+            }
+            customerTable.setItems(subentries);
+            System.out.println("\n" + subentries);
+        });
+
+         /*
+
+        ObservableList<Customer> data =  customerTable.getItems();
+
+        searching.textProperty().addListener(new InvalidationListener() {
+
+            @Override
+            public void invalidated(Observable observable) {
+                if(searching.textProperty().get().isEmpty()) {
+                    customerTable.setItems(data);
+                    return;
+                }
+                ObservableList<Customer> tableItems = FXCollections.observableArrayList();
+                ObservableList<TableColumn<Customer, ?>> cols = customerTable.getColumns();
+                for(int i=0; i<data.size(); i++) {
+
+                    for(int j=0; j<cols.size(); j++) {
+                        TableColumn col = cols.get(j);
+                        String cellValue = col.getCellData(data.get(i)).toString();
+                        cellValue = cellValue.toLowerCase();
+                        if(cellValue.contains(searching.textProperty().get().toLowerCase())) {
+                            tableItems.add(data.get(i));
+                            break;
+                        }
+                    }
+                }
+                customerTable.setItems(tableItems);
+
+            }
+        });
+
+         */
+
+
+
+    }
+
+
 }
