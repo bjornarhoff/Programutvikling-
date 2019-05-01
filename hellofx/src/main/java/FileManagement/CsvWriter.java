@@ -73,8 +73,16 @@ public class CsvWriter {
 
         try {
             fileWriter = new FileWriter(createFileCSV(path), true);
+            if (!fileExists) {
+                // Write to header
+                fileWriter.append(CUSTOMERHEADER);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
             fileWriter.append(customer.toCSVString());
             fileWriter.append(NEW_LINE);
+
 
             // If something went wrong while creating file
         } catch (IOException e) {

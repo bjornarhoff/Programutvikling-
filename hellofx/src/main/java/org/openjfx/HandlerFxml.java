@@ -105,17 +105,6 @@ public class HandlerFxml {
         textField.setTextFormatter(formatter);
     }
 
-    // Enabling button only if all of the textfields have text
-    /**public void enableButton (JFXButton apply, TextField personalID, TextField name, TextField billing, TextField phone, TextField email) {
-        BooleanBinding boolBind = personalID.textProperty().isEmpty()
-                .or(name.textProperty().isEmpty())
-                .or(billing.textProperty().isEmpty())
-                .or(phone.textProperty().isEmpty())
-                .or(email.textProperty().isEmpty());
-
-        apply.disableProperty().bind(boolBind);
-    } */
-
     // Enabling a disabled button when TableView row selected
     public void enableWhenMarked (TableView tableView, JFXButton ... button) {
         for (JFXButton buttons : button) {
@@ -135,15 +124,6 @@ public class HandlerFxml {
         return filled;
 
     }
-/**
-    // Loop over textfield, find empty fields
-    public boolean fieldsEmpty (JFXTextField ... textFields) {
-        for (JFXTextField field : textFields) {
-            if(!field.getText().isEmpty()) {
-                return false;
-            }
-        } return true;
-    } */
 
     public void loadFileThread () {
         Task task = new Task<Void>() {
@@ -162,8 +142,6 @@ public class HandlerFxml {
         };
         new Thread(task).start();
     }
-
-
 
 
     public void clearInput(JFXTextField... fields) {
