@@ -66,7 +66,7 @@
                         <JFXTextField fx:id="date" labelFloat="true" layoutX="464.0" layoutY="79.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
                         <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="464.0" layoutY="152.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
                         <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="464.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount" />
-                                <JFXTextArea fx:id="info" labelFloat="true" layoutX="464.0" layoutY="296.0" prefHeight="518.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
+                                <JFXTextArea fx:id="info" editable="false" focusColor="WHITE" labelFloat="true" layoutX="464.0" layoutY="296.0" prefHeight="518.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
                                     <font>
                                         <Font size="17.0" />
                                     </font>

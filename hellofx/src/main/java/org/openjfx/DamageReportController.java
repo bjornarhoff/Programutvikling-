@@ -44,7 +44,7 @@ public class DamageReportController {
     @FXML
     private TextArea desciption;
 
-    private static StringConverter<Integer> converter = new StringConverter<Integer>() {
+    private static StringConverter<Integer> converter = new StringConverter<>() {
         @Override
         public String toString(Integer object) {
             return Integer.toString(object);
@@ -61,15 +61,6 @@ public class DamageReportController {
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
         handlerFxml.setCellValueDamageReport(dmgType, dmgDescription, dmgNr, potentialWitnesses, unpaid,damageTableView);
-        damageTableView.setEditable(true);
-        dmgType.setCellFactory(TextFieldTableCell.forTableColumn());
-        dmgDescription.setCellFactory(TextFieldTableCell.forTableColumn());
-        dmgNr.setCellFactory(TextFieldTableCell.forTableColumn(converter));
-        potentialWitnesses.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
-
-
 
     }
 
@@ -108,12 +99,16 @@ public class DamageReportController {
     }
 
 
+
+
     public void onEditDamageType(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setDamageType(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
+        damageTableView.setEditable(false);
+
     }
 
     public void onEditDamageDesc(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
@@ -122,6 +117,7 @@ public class DamageReportController {
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setDamageDescription(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
+        damageTableView.setEditable(false);
     }
 
     public void onEditDamageNr(TableColumn.CellEditEvent<Damage_Report, Integer> damage_reportStringCellEditEvent) {
@@ -130,8 +126,7 @@ public class DamageReportController {
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setDamageNr(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
-
-
+        damageTableView.setEditable(false);
     }
 
     public void onEditWitnesses(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
@@ -140,6 +135,14 @@ public class DamageReportController {
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setContactOfPotentialWitnesses(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
+        damageTableView.setEditable(false);
     }
 
+    public void editReport(ActionEvent event) {
+        damageTableView.setEditable(true);
+        dmgType.setCellFactory(TextFieldTableCell.forTableColumn());
+        dmgDescription.setCellFactory(TextFieldTableCell.forTableColumn());
+        dmgNr.setCellFactory(TextFieldTableCell.forTableColumn(converter));
+        potentialWitnesses.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
 }
