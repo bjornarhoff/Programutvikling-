@@ -3,24 +3,35 @@ package org.openjfx;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvReader;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXButton;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import Insurances.Leisure_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
-
+import java.io.File;
 import java.io.IOException;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class HandlerFxml {
+
 
     public void navigate(Pane current, String path){
        try{
@@ -72,6 +83,97 @@ public class HandlerFxml {
     }
 
         public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,Integer> t2,
+
+     public void restrictionId (TextField textField) {
+         // Sets pattern to texfield, 0 - 8 characters allowed
+         Pattern pattern = Pattern.compile(".{0,11}");
+         TextFormatter formatter = new TextFormatter
+                 ((UnaryOperator<TextFormatter.Change>) change -> {
+                     return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+                 });
+         textField.setTextFormatter(formatter);
+     }
+
+    public void restrictionPhone (TextField textField) {
+        // Sets pattern to texfield, 0 - 8 characters allowed
+        Pattern pattern = Pattern.compile(".{0,8}");
+        TextFormatter formatter = new TextFormatter
+                ((UnaryOperator<TextFormatter.Change>) change -> {
+                    return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+                });
+        textField.setTextFormatter(formatter);
+    }
+
+    // Enabling a disabled button when TableView row selected
+    public void enableWhenMarked (TableView tableView, JFXButton ... button) {
+        for (JFXButton buttons : button) {
+            buttons.disableProperty().bind(Bindings.isEmpty(tableView.getSelectionModel().getSelectedItems()));
+        }
+    }
+
+     // Enabling button only if all of the textfields have text
+    public boolean enableButton(JFXButton apply, JFXTextField... textFields) {
+
+        boolean filled = true;
+        for (JFXTextField field : textFields) {
+            if (field.textProperty().isEmpty().get()){
+                filled = false;
+            }
+        }
+        return filled;
+
+    }
+
+    public void loadFileThread () {
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() {
+                int max = 1000000;
+                for (int i = 1; i <= max; i = i + 10) {
+                    if (isCancelled()) {
+                        break;
+                    }
+                    updateProgress(i, max);
+                    CsvReader.read();
+                }
+                return null;
+            }
+        };
+        new Thread(task).start();
+    }
+
+
+    public void clearInput(JFXTextField... fields) {
+
+        for (JFXTextField field : fields) {
+            field.setText("");
+        }
+    }
+
+
+    public void setInputValidation(JFXTextField textField) {
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (!newValue) {
+                    textField.validate();
+                }
+            }
+        });
+        getValidators(textField);
+    }
+
+
+    public void getValidators (JFXTextField textField) {
+        NumberValidator numvalidator = new NumberValidator();
+
+        textField.getValidators().add(numvalidator);
+        numvalidator.setMessage("Only numbers are supported!");
+    }
+
+
+
+        public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,String> t2,
                                          TableColumn<House_Household_Insurance,String> t3, TableColumn<House_Household_Insurance,String> t4,
                                          TableColumn<House_Household_Insurance,String> t5, TableColumn<House_Household_Insurance,String> t6,
                                           TableColumn<House_Household_Insurance,Integer> t7, TableView<House_Household_Insurance> table) {

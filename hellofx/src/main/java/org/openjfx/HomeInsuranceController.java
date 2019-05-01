@@ -1,7 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
-import FileManagement.CsvReader;
+import FileManagement.OpenFileChooser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
@@ -16,12 +16,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-import java.awt.event.MouseEvent;
-
 public class HomeInsuranceController {
 
         HandlerFxml handlerFxml = new HandlerFxml();
         static Customer customerSelected;
+        private OpenFileChooser openFileChooser = new OpenFileChooser();
 
         @FXML
         private BorderPane entireScreenInsurance;
@@ -30,25 +29,7 @@ public class HomeInsuranceController {
         private TableView<Customer> insuranceTable;
 
         @FXML
-        private TableColumn<Customer,String> personalID;
-
-        @FXML
-        private TableColumn<Customer,String> insuranceNr;
-
-        @FXML
-        private TableColumn<Customer,String> name;
-
-        @FXML
-        private TableColumn<Customer,String> phone;
-
-        @FXML
-        private TableColumn<Customer,String> email;
-
-        @FXML
-        private TableColumn<Customer,String> date;
-
-        @FXML
-        private TableColumn<Customer,String> billing;
+        private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
 
         @FXML
         private GridPane pane_Insurance;
@@ -63,6 +44,7 @@ public class HomeInsuranceController {
         @FXML
         private void initialize(){
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1,btn_deleteInsurance1,btn_showInfoIns1);
             entireScreenInsurance.toFront();
 
 
@@ -70,12 +52,11 @@ public class HomeInsuranceController {
 
         @FXML
         private void handleButtonActions(ActionEvent event) {
-            if(event.getSource() == button_Customer){
-                handlerFxml.navigate(entireScreenInsurance,"homeCustomer.fxml");
+            if (event.getSource() == button_Customer) {
+                handlerFxml.navigate(entireScreenInsurance, "homeCustomer.fxml");
             }
 
-            if(event.getSource() == btn_createInsurance1){
-
+            if (event.getSource() == btn_createInsurance1) {
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
                 handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
@@ -83,9 +64,33 @@ public class HomeInsuranceController {
             if(event.getSource() == btn_modfiInsurance1){
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
-                handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
+                handlerFxml.navigate(entireScreenInsurance, "ALLInsurancesController.fxml");
             }
         }
+
+    @FXML
+    private void handleImportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserImport(entireScreenInsurance);
+
+
+
+    }
+
+    @FXML
+    private void handleExportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserExport(entireScreenInsurance);
+
+
+    }
+
+    @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
+
 
         public static Customer getCustomerSelected() {
             return customerSelected;

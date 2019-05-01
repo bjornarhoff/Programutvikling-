@@ -1,20 +1,15 @@
 package org.openjfx;
 
-
-import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
-
-import static org.openjfx.HomeInsuranceController.customerSelected;
 
 
 public class DamageReportController {
@@ -57,6 +52,9 @@ public class DamageReportController {
     };
 
 
+    /**
+     * Initialize Method where we set Table View values and get Customer selected PersonalID
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
@@ -64,16 +62,27 @@ public class DamageReportController {
 
     }
 
+    /**
+     * Method for switching to Create Damage Report page
+     * @param event
+     */
     @FXML
     private void createDamageReport(ActionEvent event){
         handlerFxml.navigate(damageReport, "createDamageReport.fxml");
     }
 
+    /**
+     * Method for getting back to the Customer home page
+     */
     @FXML
     private void goBackPressed(){
         handlerFxml.navigate(damageReport, "homeCustomer.fxml");
     }
 
+    /**
+     * Method for deleting selected Damage Report
+     * @param event
+     */
     @FXML
     private void delete(ActionEvent event){
         if (event.getSource() == btn_delete){
@@ -85,6 +94,10 @@ public class DamageReportController {
         }
     }
 
+    /**
+     * Method for showing full info about a Damage Report object
+     * @param event
+     */
     @FXML
     private void show(ActionEvent event){
         if(event.getSource() == btn_showDescription){
@@ -93,6 +106,7 @@ public class DamageReportController {
             desciption.setText(damageReport);
         }
     }
+
 
     public static Damage_Report getDamageReport() {
         return damageReportSelected;

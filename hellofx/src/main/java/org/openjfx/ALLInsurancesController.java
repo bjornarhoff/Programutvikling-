@@ -18,7 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
 
 
-public class Insurances {
+public class ALLInsurancesController {
 
     HandlerFxml handlerFxml = new HandlerFxml();
 

@@ -15,6 +15,20 @@ public class Boat_Insurance extends Insurance {
     private String motorTypeAndMotorPower;
 
 
+    /**
+     * Default Constructor for Boat Object
+     * @param customer
+     * @param yearlyInsurancePremium
+     * @param dateOfCreatedInsurance
+     * @param insuranceAmount
+     * @param insuranceConditions
+     * @param owner
+     * @param registerNr
+     * @param boatTypeAndModel
+     * @param lengthInFoot
+     * @param year
+     * @param motorTypeAndMotorPower
+     */
     public Boat_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                           String insuranceConditions, String owner, String registerNr, String boatTypeAndModel,
                           double lengthInFoot, int year, String motorTypeAndMotorPower) {
@@ -29,6 +43,9 @@ public class Boat_Insurance extends Insurance {
         customer.customerInsuranceCounter(customer);
     }
 
+    /**
+     * @return Boat object in String
+     */
     @Override
     public String toString() {
         return  "\nBOAT INSURANCE" +
@@ -41,6 +58,10 @@ public class Boat_Insurance extends Insurance {
                 "\n\nOVERALL FOR BOAT INSURANCE" + super.toString();
     }
 
+    /**
+     * toString method for csv file
+     * @return Boat object
+     */
     public String toCSVStringBoat(){
         return super.toCSVStringInsurnce() + "," +
                 owner + "," +
@@ -52,54 +73,87 @@ public class Boat_Insurance extends Insurance {
 
     }
 
+    /**
+     * @param owner
+     */
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
+    /**
+     *
+     * @return owner
+     */
     public String getOwner() {
         return this.owner;
     }
 
-
+    /**
+     * @param registerNr
+     */
     public void setRegisterNr(String registerNr) {
         this.registerNr = registerNr;
     }
 
+    /**
+     * @return registerNr
+     */
     public String getRegisterNr() {
         return this.registerNr;
     }
 
-
+    /**
+     * @param boatTypeAndModel
+     */
     public void setBoatTypeAndModel(String boatTypeAndModel) {
         this.boatTypeAndModel = boatTypeAndModel;
     }
 
+    /**
+     * @return boatTypeAndModel
+     */
     public String getBoatTypeAndModel() {
         return this.boatTypeAndModel;
     }
 
-
+    /**
+     * @param lengthInFoot
+     */
     public void setLengthInFoot(double lengthInFoot) {
         this.lengthInFoot = lengthInFoot;
     }
 
+    /**
+     * @return lengthInFoot
+     */
     public double getLengthInFoot() {
         return this.lengthInFoot;
     }
 
+    /**
+     * @param year
+     */
     public void setYear(int year) {
         this.year = year;
     }
 
+    /**
+     * @return year
+     */
     public int getYear() {
         return this.year;
     }
 
-
+    /**
+     * @param motorTypeAndMotorPower
+     */
     public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
         this.motorTypeAndMotorPower = motorTypeAndMotorPower;
     }
 
+    /**
+     * @return motorTypeAndPower
+     */
     public String getMotorTypeAndMotorPower() {
         return this.motorTypeAndMotorPower;
     }

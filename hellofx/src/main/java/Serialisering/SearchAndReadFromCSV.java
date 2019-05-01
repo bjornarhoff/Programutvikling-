@@ -1,11 +1,6 @@
 package Serialisering;
-import CustomerModell.Customer;
-import Damages.Damage_Report;
-
 import javax.swing.*;
 import java.io.*;
-import java.nio.Buffer;
-import java.util.Date;
 import java.util.Scanner;
 
 public class SearchAndReadFromCSV {
@@ -141,6 +136,8 @@ public class SearchAndReadFromCSV {
    }
 
 
+    }
+
     public static void deleteCustomerFromCsv(String searchterm) {
 
 
@@ -159,26 +156,15 @@ public class SearchAndReadFromCSV {
             PrintWriter pw = new PrintWriter(bw);
 
             x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
-                personalID = x.next();
-                insuranceNr = x.next();
-                name = x.next();
-                phoneNumber = x.next();
-                email = x.next();
-                date = x.next();
-                billingAddress = x.next();
-                unpaid = x.next();
-                allCustomerInsurance = x.next();
-
-
-                if (!personalID.equals(searchterm)) {
-                    pw.println(personalID + "," + insuranceNr + "," + name + "," + phoneNumber + "," + email + "," + date + "," +
-                            billingAddress + "," + unpaid + "," + allCustomerInsurance);
+            while (x.hasNextLine()) {
+                String[] customer = x.nextLine().split(",");
+                if (!customer[0].equals(searchterm)) {
+                    pw.println(customer[0] + "," + customer[1] + "," + customer[2] + "," + customer[3] + "," + customer[4] + "," + customer[5] + "," +
+                            customer[6] + "," + customer[7] + "," + customer[8]);
                 }
-
             }
+
             x.close();
             pw.flush();
             pw.close();
@@ -193,6 +179,10 @@ public class SearchAndReadFromCSV {
 
     }
 
+    /**
+     * Method that deletes the Damage Report from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteDamageReportFromCsv(String searchterm) {
 
 
@@ -239,11 +229,15 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
 
+    /**
+     * Method that deltes the Leisure object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteLeisureFromCsv(String searchterm) {
 
 
@@ -296,11 +290,15 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
 
+    /**
+     * Method that deletes the Boat object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteBoatFromCsv(String searchterm) {
 
 
@@ -350,11 +348,15 @@ public class SearchAndReadFromCSV {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
 
+    /**
+     * Method that deletes the Travel object from the csv with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteTravelFromCsv(String searchterm) {
 
 
@@ -400,13 +402,16 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Error");
+            System.err.println("customer without insurance ");
         }
 
     }
 
 
+    /**
+     * Method that deletes a Household object from the csv file with the matching searchterm
+     * @param searchterm
+     */
     public static void deleteHouseholdFromCsv(String searchterm) {
         String filepath = System.getProperty("user.home") + "/houseInsurance.csv";
         String tempfile = "temp.txt";
@@ -448,7 +453,8 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
+
+            System.err.println("customer without insurance ");
         }
 
     }

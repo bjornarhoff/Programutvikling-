@@ -3,7 +3,9 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
+import FileManagement.OpenFileChooser;
 import Serialisering.SearchAndReadFromCSV;
+import Threads.Threads;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -18,8 +20,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-
-
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import java.io.File;
 import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
@@ -27,6 +30,12 @@ import static org.openjfx.HomeInsuranceController.customerSelected;
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+    FileChooser chooser = new FileChooser();
+
+    private OpenFileChooser openFileChooser = new OpenFileChooser();
+    private FileChooser fc = new FileChooser();
+    private Threads thread = new Threads();
+
 
 
 
@@ -38,7 +47,7 @@ public class HomeCustomerController {
 
     @FXML
     private JFXButton button_Customer, button_Insurance, btn_addCustomer, btn_editCustomer, btn_deleteCustomer,
-            tn_showDamageReport, btn_showInfoCust, refresh;
+            btn_showDamageReport, btn_showInfoCust, refresh;
 
     @FXML
     private TableView<Customer> customerTable;
@@ -82,16 +91,14 @@ public class HomeCustomerController {
     private void initialize(){
         customers = CsvReader.read();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+        // Enables buttons when marked one customer
+        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust,btn_showDamageReport);
         entireScreenCustomer.toFront();
         customerTable.setEditable(true);
         name.setCellFactory(TextFieldTableCell.forTableColumn());
         phone.setCellFactory(TextFieldTableCell.forTableColumn());
         email.setCellFactory(TextFieldTableCell.forTableColumn());
         billing.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
-
-
 
     }
 
@@ -110,8 +117,6 @@ public class HomeCustomerController {
             SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
 
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
-
-
         }
     }
 
@@ -119,24 +124,34 @@ public class HomeCustomerController {
         return customerSelected;
     }
 
-
     @FXML
-    public void delete(ActionEvent event) {
+    private void handleImportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserImport(entireScreenCustomer);
+
+
 
     }
 
+    @FXML
+    private void handleExportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserExport(entireScreenCustomer);
 
 
+    }
+
+    @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
 
     @FXML
     private void damageReportPressed(){
-
         customerTable.getItems();
         customerSelected = customerTable.getSelectionModel().getSelectedItem();
         handlerFxml.navigate(entireScreenCustomer, "damageReport.fxml");
-       // System.out.println(customerSelected.getPersonalID());
-
-
     }
 
     @FXML
@@ -148,9 +163,10 @@ public class HomeCustomerController {
         return this.customerTable;
     }
 
-    /*
-
-    public void filter(KeyEvent keyEvent) {
+    /**
+     * Search Method that filters through Customer Table view and matches search input
+     */
+     * @param keyEvent
         FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 
         searching.textProperty().addListener((observable, oldValue, newValue) -> {

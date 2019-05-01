@@ -1,9 +1,6 @@
 package CustomerModell;
 
-import Damages.Damage_Report;
-
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Random;
 
 
@@ -24,7 +21,15 @@ public class Customer implements Serializable {
     private transient double unpaidReplacements;
 
 
-    // A constructor that dosent require a damageReport (Default constructor)
+    /**
+     * Default Constructor for Customer object
+     * @param PersonalID
+     * @param Name
+     * @param phoneNumber
+     * @param email
+     * @param Date
+     * @param BillingAddress
+     */
     public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
 
         this.personalID = PersonalID;
@@ -34,18 +39,6 @@ public class Customer implements Serializable {
         this.date = Date;
         this.billingAddress = BillingAddress;
     }
-
-    /**
-     * Constructor for Customer class with Damage_Report
-     * @param PersonalID
-     * @param InsuranceNr
-     * @param Name
-     * @param Date
-     * @param BillingAddress
-     * @param AllCustomerInsurance
-     * @param damageReport
-     * @param UnpaidReplacements
-     */
 
 
     /**
@@ -87,10 +80,11 @@ public class Customer implements Serializable {
         Random r = new Random();
         this.insuranceNr = r.nextInt((max - min) + 1);
     }
+    
 
     /**
-     * We first get all the excisitng Insurances the customer has and then increase the number of Insurnaces
-     * then we set the existing number of Insurances to the customer.
+     * We first get all the excisitng ALLInsurancesController the customer has and then increase the number of Insurnaces
+     * then we set the existing number of ALLInsurancesController to the customer.
      * @param customer object
      *
      */
@@ -105,7 +99,7 @@ public class Customer implements Serializable {
 
     /**
      * @param PersonalID
-     */
+    */
     public void setPersonalID(String PersonalID) {
         this.personalID = PersonalID;
     }

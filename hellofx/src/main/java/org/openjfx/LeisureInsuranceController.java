@@ -2,20 +2,18 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
-import FileManagement.ObjectWriter;
 import Insurances.Leisure_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
 import java.util.Date;
 
 public class LeisureInsuranceController {
@@ -43,6 +41,19 @@ public class LeisureInsuranceController {
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply,address, yearConstruction, constructionMaterial, residentialType, amountConstruction, nrSquareMeters,
+                        condition, amountHousehold, date, InsuranceConditions, yearlyPremium, InsuranceAmount);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
+
         NumberValidator numvalidator = new NumberValidator();
 
         yearConstruction.getValidators().add(numvalidator);
@@ -52,13 +63,10 @@ public class LeisureInsuranceController {
         yearlyPremium.getValidators().add(numvalidator);
         InsuranceAmount.getValidators().add(numvalidator);
 
-
         numvalidator.setMessage("Only numbers are supported!");
 
         setValidationInput();
     }
-
-
 
 
     @FXML
@@ -76,8 +84,6 @@ public class LeisureInsuranceController {
             handlerFxml.navigate(entireScreenLeisure,"BoatInsurance.fxml");
         }
     }
-
-
 
     @FXML
     public void cancel() {

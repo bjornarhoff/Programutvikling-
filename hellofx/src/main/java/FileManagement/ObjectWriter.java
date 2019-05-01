@@ -3,9 +3,13 @@ package FileManagement;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-public class ObjectWriter {
+public class ObjectWriter extends FileWriter {
 
-    public static void WriteObjectToFile (Object obj) {
+    /**
+     * a method which writes an object to file
+     * @param obj
+     */
+    public void writeToFile (Object obj) {
 
         try {
 
@@ -13,6 +17,7 @@ public class ObjectWriter {
             ObjectOutputStream oos = new ObjectOutputStream(fous);
             oos.writeObject(obj);
             oos.close();
+            fous.close();
             System.out.println("Succesfully done! Write object to file!");
 
         } catch (Exception e) {

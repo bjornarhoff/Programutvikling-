@@ -4,12 +4,11 @@ import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 public class CreateDamageReportController {
@@ -23,7 +22,7 @@ public class CreateDamageReportController {
     private Label customerLabel;
 
     @FXML
-    private TextField txt_date, txt_damageType, damageNr, taxAmount, unpaidReplacements;
+    private JFXTextField txt_date, txt_damageType, damageNr, taxAmount, unpaidReplacements;
 
     @FXML
     private TextArea txta_DaDescription, txta_potWitnesses, txta_info;
@@ -31,16 +30,27 @@ public class CreateDamageReportController {
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;
 
+    /**
+     * Initialize Method that gets Customer selected PersonalID
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
     }
 
+    /**
+     * Method that returns to the Damage Report page
+     * @param event
+     */
     @FXML
     private void cancel(ActionEvent event){
         handlerFxml.navigate(createDamageReport, "damageReport.fxml");
     }
 
+    /**
+     * Method where a Damage Report is created for the selected Customer and text fields are reset
+     * @param event
+     */
     @FXML
     private void apply(ActionEvent event){
 
@@ -52,18 +62,9 @@ public class CreateDamageReportController {
         CsvWriter.writeDamageReport(damage_report);
         txta_info.setText(damage_report.toString());
 
-        clearInput();
+        handlerFxml.clearInput();
 
     }
 
-    public void clearInput(){
-        txt_date.setText("");
-        txt_damageType.setText("");
-        damageNr.setText("");
-        taxAmount.setText("");
-        unpaidReplacements.setText("");
-        txta_DaDescription.setText("");
-        txta_potWitnesses.setText("");
-    }
 
 }

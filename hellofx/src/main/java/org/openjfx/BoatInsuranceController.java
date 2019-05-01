@@ -6,15 +6,12 @@ import Insurances.Boat_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
 import java.util.Date;
 
 public class BoatInsuranceController {
@@ -28,7 +25,7 @@ public class BoatInsuranceController {
     private JFXButton btn_Household, btn_Leisure, btn_Boat, btn_Travel, btn_cancel, btn_apply, btn_ok;
 
     @FXML
-    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, InsuranceAmount, InsuranceConditions;
+    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions;
 
     @FXML
     private JFXTextArea info;
@@ -42,22 +39,32 @@ public class BoatInsuranceController {
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-        NumberValidator numvalidator = new NumberValidator();
 
-        registerNr.getValidators().add(numvalidator);
-        length.getValidators().add(numvalidator);
-        year.getValidators().add(numvalidator);
-        yearlyPremium.getValidators().add(numvalidator);
-        InsuranceAmount.getValidators().add(numvalidator);
+        handlerFxml.setInputValidation(registerNr);
+        handlerFxml.setInputValidation(length);
+        handlerFxml.setInputValidation(year);
+        handlerFxml.setInputValidation(yearlyPremium);
+        handlerFxml.setInputValidation(insuranceAmount);
 
 
-        numvalidator.setMessage("Only numbers are supported!");
-
-        setInputValidation();
-
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
     }
 
 
+    /**
+     * Handles our button interactions
+     * @param event
+     */
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
@@ -75,18 +82,24 @@ public class BoatInsuranceController {
         }
     }
 
+    /**
+     * go back to Insurance page
+     */
     @FXML
     public void cancel() {
         handlerFxml.navigate(entireScreenBoat, "homeInsurance.fxml");
     }
 
+    /**
+     * Adds Boat object to selected Customer and clears text fields
+     */
     @FXML
     public void apply(){
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
 
-        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
+        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
                 InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
                 Integer.parseInt(year.getText()), motorTypePower.getText());
 
@@ -94,68 +107,7 @@ public class BoatInsuranceController {
 
         info.setText(b1.toString());
 
-        clearInput();
+        handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
 
-    }
-
-    public void clearInput(){
-        Owner.setText("");
-        registerNr.setText("");
-        length.setText("");
-        boatTypeModel.setText("");
-        motorTypePower.setText("");
-        year.setText("");
-        yearlyPremium.setText("");
-        date.setText("");
-        InsuranceAmount.setText("");
-        InsuranceConditions.setText("");
-    }
-
-
-    public void setInputValidation(){
-        registerNr.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    registerNr.validate();
-                }
-            }
-        });
-
-        length.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    length.validate();
-                }
-            }
-        });
-
-        year.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    year.validate();
-                }
-            }
-        });
-
-        yearlyPremium.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    yearlyPremium.validate();
-                }
-            }
-        });
-
-        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    InsuranceAmount.validate();
-                }
-            }
-        });
     }
 }

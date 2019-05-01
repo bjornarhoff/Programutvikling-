@@ -1,8 +1,5 @@
 package Insurances;
-
 import CustomerModell.Customer;
-
-import java.util.Date;
 
 public class Travel_Insurance extends Insurance {
 
@@ -11,7 +8,16 @@ public class Travel_Insurance extends Insurance {
     private int insuranceSum;
 
 
-    // Default Constructor for Travel Insurance.
+    /**
+     * Default Constructor for Travel object
+     * @param customer
+     * @param yearlyInsurancePremium
+     * @param dateOfCreatedInsurance
+     * @param insuranceAmount
+     * @param insuranceConditions
+     * @param insuranceArea
+     * @param insuranceSum
+     */
     public Travel_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
                             String insuranceConditions, String insuranceArea, int insuranceSum) {
 
@@ -21,6 +27,9 @@ public class Travel_Insurance extends Insurance {
         customer.customerInsuranceCounter(customer);
     }
 
+    /**
+     * @return Travel object in String format
+     */
     @Override
     public String toString() {
         return  "\nTRAVEL INSURANCE" +
@@ -29,29 +38,40 @@ public class Travel_Insurance extends Insurance {
                 "\n\nOVERALL FOR TRAVEL INSURANCE" + super.toString();
     }
 
+    /**
+     * @return Travel object in csv String format
+     */
     public String   toCSVStringTravel() {
         return super.toCSVStringInsurnce() + "," +
                 insuranceArea + "," +
                 String.valueOf(insuranceSum);
     }
 
+    /**
+     * @param insuranceArea
+     */
     public void setInsuranceArea(String insuranceArea) {
         this.insuranceArea = insuranceArea;
     }
 
+    /**
+     * @return insuranceArea
+     */
     public String getInsuranceArea() {
         return this.insuranceArea;
     }
 
-
+    /**
+     * @param insuranceSum
+     */
     public void setInsuranceSum(int insuranceSum) {
         this.insuranceSum = insuranceSum;
     }
 
+    /**
+     * @return insuranceSum
+     */
     public int getInsuranceSum() {
         return this.insuranceSum;
     }
-
-
-
 }

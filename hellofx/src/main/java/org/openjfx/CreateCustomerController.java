@@ -3,22 +3,19 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.Date;
-import java.util.ResourceBundle;
 
-public class CreateCustomerController implements Initializable{
-
+public class CreateCustomerController {
     HandlerFxml handlerFxml = new HandlerFxml();
+    HomeCustomerController homeCustomerController = new HomeCustomerController();
 
     @FXML
     private BorderPane popUpCreate;
@@ -27,22 +24,12 @@ public class CreateCustomerController implements Initializable{
     public TextArea info;
 
     @FXML
-    public TextField personalID;
+    public JFXTextField personalID, name,billing,phone,email;
 
     @FXML
-    public TextField name;
+    public JFXButton cancel,apply;
 
-    @FXML
-    public TextField billing;
 
-    @FXML
-    public TextField phone;
-
-    @FXML
-    public TextField email;
-
-    @FXML
-    public JFXButton cancel;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -56,15 +43,14 @@ public class CreateCustomerController implements Initializable{
             System.out.println("error while loading");
         }
 
-
-
     }
 
 
-
-
+    /**
+     * Method for creating a Customer and clearing text fields
+     */
     @FXML
-    public void apply() {
+    public void apply(){
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
@@ -74,22 +60,40 @@ public class CreateCustomerController implements Initializable{
         info.setText(aCustomer.toString());
 
 
-        personalID.setText("");
-        name.setText("");
-        billing.setText("");
-        phone.setText("");
-        email.setText("");
+        handlerFxml.clearInput(personalID, name,billing,phone,email);
     }
 
 
+    /**
+     * method to get back to home Customer page
+     */
    @FXML
     public void cancel() {
         handlerFxml.navigate(popUpCreate, "homeCustomer.fxml");
    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    /**
+     * Method were everything for the page is being initialize
+     */
+    @FXML
+    public void initialize() {
+        handlerFxml.restrictionId(personalID);
+        handlerFxml.setInputValidation(personalID);
+
+        handlerFxml.restrictionPhone(phone);
+        // Enabling button only if all of the textfields have text, using animationTimer
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(apply, name,personalID,phone,email,billing);
+                if (allFilled){
+                    apply.setDisable(false);
+                }else{
+                    apply.setDisable(true);
+                }
+                // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
+            }
+        }.start();
 
     }
-
 }

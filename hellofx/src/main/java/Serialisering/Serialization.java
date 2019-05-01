@@ -2,18 +2,17 @@ package Serialisering;
 
 import CustomerModell.Customer;
 import Insurances.Insurance;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class Serialization {
 
 
-    public static void serialiseCustomer(Customer customer){
+    public static void serialiseCustomer(Customer customer, String filepath){
 
 
-        String filepath = "Customers.ser";
         try (
                 FileOutputStream fos = new FileOutputStream(filepath);
                 ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -25,13 +24,11 @@ public class Serialization {
         }
     }
 
-    public static void serialiseInsurance(Insurance insurance){
+    public static void serialiseInsurance(Insurance insurance, String filepath){
 
-
-        String filepath = "Insurances.ser";
         try (
                 FileOutputStream fos = new FileOutputStream(filepath);
-                ObjectOutputStream out = new ObjectOutputStream(fos);
+                ObjectOutputStream out = new ObjectOutputStream(fos)
         ) {
             out.writeObject(insurance);
         }
