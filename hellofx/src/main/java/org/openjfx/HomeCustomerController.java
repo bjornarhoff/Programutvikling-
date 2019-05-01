@@ -2,6 +2,7 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.InvalidationListener;
@@ -14,6 +15,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -41,6 +43,7 @@ public class HomeCustomerController {
     @FXML
     private TableView<Customer> customerTable;
 
+
     @FXML
     private TableColumn<Customer,String> personalID;
 
@@ -64,14 +67,31 @@ public class HomeCustomerController {
 
 
 
+
+
     ObservableList<Customer> customers;
 
+
+    private void setEditable(TableColumn ... tablecolum){
+        for (TableColumn colum : tablecolum) {
+            colum.setCellFactory(TextFieldTableCell.forTableColumn());
+        }
+    }
 
     @FXML
     private void initialize(){
         customers = CsvReader.read();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         entireScreenCustomer.toFront();
+        customerTable.setEditable(true);
+        name.setCellFactory(TextFieldTableCell.forTableColumn());
+        phone.setCellFactory(TextFieldTableCell.forTableColumn());
+        email.setCellFactory(TextFieldTableCell.forTableColumn());
+        billing.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+
+
 
     }
 
@@ -226,4 +246,46 @@ public class HomeCustomerController {
     }
 
 
+
+    public void onEdit(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
+        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+
+
+        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        customerModifiable.setName(customerStringCellEditEvent.getNewValue());
+        CsvWriter.writeCustomerToCSV(customerModifiable);
+    }
+
+    public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
+        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+
+        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        customerModifiable.setPhoneNumber(customerStringCellEditEvent.getNewValue());
+        CsvWriter.writeCustomerToCSV(customerModifiable);
+    }
+
+    public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
+        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+
+        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        customerModifiable.setEmail(customerStringCellEditEvent.getNewValue());
+        CsvWriter.writeCustomerToCSV(customerModifiable);
+    }
+
+    public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
+        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+
+        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        customerModifiable.setBillingAddress(customerStringCellEditEvent.getNewValue());
+        CsvWriter.writeCustomerToCSV(customerModifiable);
+    }
+
+    /*
+    public void setTerm(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent ){
+        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customer.getPersonalID()));
+        customer.(customerStringCellEditEvent.getNewValue());
+        CsvWriter.writeCustomerToCSV(customer);
+    }
+
+     */
 }

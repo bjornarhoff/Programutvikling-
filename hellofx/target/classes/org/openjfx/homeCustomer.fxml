@@ -82,11 +82,11 @@
                     <columns>
                       <TableColumn fx:id="personalID" prefWidth="142.0" text="PersonalID" />
                         <TableColumn fx:id="insuranceNr" prefWidth="120.0" text="InsuranceNr" />
-                      <TableColumn fx:id="name" minWidth="6.0" prefWidth="106.0" text="Name" />
-                        <TableColumn fx:id="phone" prefWidth="98.0" text="Phone" />
-                        <TableColumn fx:id="email" prefWidth="127.0" text="Email" />
+                      <TableColumn fx:id="name" minWidth="6.0" onEditCommit="#onEdit" prefWidth="106.0" text="Name" />
+                        <TableColumn fx:id="phone" onEditCommit="#onEditPhone" prefWidth="98.0" text="Phone" />
+                        <TableColumn fx:id="email" onEditCommit="#onEditEmail" prefWidth="127.0" text="Email" />
                         <TableColumn fx:id="date" prefWidth="148.0" text="Date" />
-                        <TableColumn fx:id="billing" prefWidth="191.0" text="Billing Adress" />
+                        <TableColumn fx:id="billing" onEditCommit="#onEditBilling" prefWidth="191.0" text="Billing Adress" />
                     </columns>
                   </TableView>
                </children>
