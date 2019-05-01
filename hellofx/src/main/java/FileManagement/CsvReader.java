@@ -151,6 +151,7 @@ public class CsvReader {
                 aCustomer.setUnpaidReplacements(Double.parseDouble(values[7]));
                 aCustomer.setAllCustomerInsurance(Integer.parseInt(values[8]));
                 customersFromCsv.add(aCustomer);
+                CsvWriter.writeCustomerToCSV(aCustomer);
             }
         } catch (IOException e) {
             e.printStackTrace();

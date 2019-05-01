@@ -69,10 +69,43 @@ public class CsvWriter {
         return file;
     }
 
-    /**
-     * method for writing customer object to CSV file
-     * @param aCustomer
-     */
+    public static void writeFileToCsvCustomer(String path, Customer customer){
+
+        try {
+            fileWriter = new FileWriter(createFileCSV(path), true);
+            fileWriter.append(customer.toCSVString());
+            fileWriter.append(NEW_LINE);
+
+            // If something went wrong while creating file
+        } catch (IOException e) {
+            System.out.println("csv file create error");
+            e.printStackTrace();
+        }
+
+        finallyBlock(fileWriter);
+    }
+
+    public static void writeFileToCsvInsurance(String path, Insurance insurance){
+
+        try {
+            fileWriter = new FileWriter(createFileCSV(path), true);
+            if (insurance.getClass() == Boat_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == House_Household_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == Leisure_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == Travel_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        finallyBlock(fileWriter);
+    }
+
+
+    // Method for write customer object to CSV file
     public static void writeCustomerToCSV(Customer aCustomer) {
 
         try {

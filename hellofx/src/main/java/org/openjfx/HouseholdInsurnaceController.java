@@ -6,6 +6,7 @@ import Insurances.House_Household_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -37,6 +38,19 @@ public class HouseholdInsurnaceController {
     private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply,propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
+                        conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
+
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(yearConstruction);
         handlerFxml.setInputValidation(nrSquareMeters);
@@ -45,8 +59,6 @@ public class HouseholdInsurnaceController {
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(insuranceAmount);
 
-        handlerFxml.enableButton(btn_apply, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
-                conditions, amountForHousehold, yearlyPremium, date, insuranceAmount, insuranceConditions);
 
     }
 

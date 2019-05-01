@@ -23,6 +23,10 @@ import static org.openjfx.HomeInsuranceController.customerSelected;
 public class HomeCustomerController {
 
     private HandlerFxml handlerFxml = new HandlerFxml();
+    FileChooser chooser = new FileChooser();
+
+    private OpenFileChooser openFileChooser = new OpenFileChooser();
+    private FileChooser fc = new FileChooser();
     private Threads thread = new Threads();
 
 
@@ -74,6 +78,7 @@ public class HomeCustomerController {
         handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust,btn_showDamageReport);
         entireScreenCustomer.toFront();
 
+
     }
 
     @FXML
@@ -101,33 +106,7 @@ public class HomeCustomerController {
     @FXML
     private void handleImportClicked(ActionEvent event) {
 
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Import file");
-        chooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv"));
-                new FileChooser.ExtensionFilter("J Object file (*.jobj", "*.jobj");
-        String directory = System.getProperty("user.home");
-        File userDirectory = new File(directory);
-
-        if(!userDirectory.canRead()) {
-            userDirectory = new File("c:/");
-        }
-        chooser.setInitialDirectory(userDirectory);
-
-        // Choose file
-        File file = chooser.showOpenDialog(null);
-
-        //Make sure a file was selected, if not return default
-        String path;
-        if(file != null) {
-            path = file.getPath();
-            ObservableList<Customer> list = CsvReader.read(file);
-            handlerFxml.setCellValue(customerTable, list, customerTable.getColumns());
-
-        } else {
-            //default return value
-            path = null;
-        }
+        openFileChooser.fileChooserImport(entireScreenCustomer);
 
 
 
@@ -136,33 +115,9 @@ public class HomeCustomerController {
     @FXML
     private void handleExportClicked(ActionEvent event) {
 
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Export file");
-        chooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSV files", "*.csv"),
-                new FileChooser.ExtensionFilter("jObj file ", "*.ser"));
-
-        String directory = System.getProperty("user.home");
-        File userDirectory = new File(directory);
-
-        if(!userDirectory.canRead()) {
-            userDirectory = new File("c:/");
-        }
-        chooser.setInitialDirectory(userDirectory);
-
-        Stage stage = new Stage();
-
-        File selectedFile = chooser.showSaveDialog(stage);
-
-        if (selectedFile != null) {
-            try {
-               selectedFile.createNewFile();
+        openFileChooser.fileChooserExport(entireScreenCustomer);
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     @FXML

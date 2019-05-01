@@ -125,15 +125,6 @@ public class HandlerFxml {
 
      // Enabling button only if all of the textfields have text
     public boolean enableButton(JFXButton apply, JFXTextField... textFields) {
-        /*BooleanBinding boolBind;
-        for (JFXTextField field : textFields) {
-            boolBind = field.textProperty().isEmpty();
-            if (boolBind.getValue()) {
-                apply.disableProperty().bind(boolBind);
-            }
-            System.out.println(boolBind);
-
-        }*/
 
         boolean filled = true;
         for (JFXTextField field : textFields) {

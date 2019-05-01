@@ -13,6 +13,7 @@ public class HomeInsuranceController {
 
         HandlerFxml handlerFxml = new HandlerFxml();
         static Customer customerSelected;
+        private OpenFileChooser openFileChooser = new OpenFileChooser();
 
         @FXML
         private BorderPane entireScreenInsurance;
@@ -21,25 +22,7 @@ public class HomeInsuranceController {
         private TableView<Customer> insuranceTable;
 
         @FXML
-        private TableColumn<Customer,String> personalID;
-
-        @FXML
-        private TableColumn<Customer,String> insuranceNr;
-
-        @FXML
-        private TableColumn<Customer,String> name;
-
-        @FXML
-        private TableColumn<Customer,String> phone;
-
-        @FXML
-        private TableColumn<Customer,String> email;
-
-        @FXML
-        private TableColumn<Customer,String> date;
-
-        @FXML
-        private TableColumn<Customer,String> billing;
+        private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
 
         @FXML
         private GridPane pane_Insurance;
@@ -74,6 +57,30 @@ public class HomeInsuranceController {
                 handlerFxml.navigate(entireScreenInsurance, "ALLInsurancesController.fxml");
             }
         }
+
+    @FXML
+    private void handleImportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserImport(entireScreenInsurance);
+
+
+
+    }
+
+    @FXML
+    private void handleExportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserExport(entireScreenInsurance);
+
+
+    }
+
+    @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
+
 
         public static Customer getCustomerSelected() {
             return customerSelected;
