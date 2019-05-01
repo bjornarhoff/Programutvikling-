@@ -8,8 +8,6 @@ import java.nio.Buffer;
 import java.util.Date;
 import java.util.Scanner;
 
-
-
 public class SearchAndReadFromCSV {
 
     // Customer
@@ -143,39 +141,6 @@ public class SearchAndReadFromCSV {
    }
 
 
-
-    public static void readRecordCustomer(String searchTerm, String filepath) {
-
-        boolean found = false;
-
-
-        try {
-            x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
-
-            while (x.hasNext() && !found) {
-                checknextCustomer();
-
-                if (personalID.equals(searchTerm) || name.equals(searchTerm) || age.equals(searchTerm)
-                        || phoneNumber.equals(searchTerm) || email.equals(searchTerm) || date.equals(searchTerm) || billingAddress.equals(searchTerm)
-                        || allCustomerInsurance.equals(searchTerm) || unpaidReplacements.equals(searchTerm)) {
-                    found = true;
-                }
-            }
-
-            if (found) {
-                System.out.println("PersonalID: " + personalID + "Name: " + name + "Age: " + age + "PhoneNumber: " + phoneNumber +
-                        "Email: " + email + "Date: " + date + "BillingAddress: " + billingAddress + "AllCustomerInsurances: "
-                        + allCustomerInsurance + "UnpaidReplacements: " + unpaidReplacements);
-            } else {
-                System.out.println("Search term not found!");
-            }
-        } catch (Exception e) {
-
-        }
-
-    }
-
     public static void deleteCustomerFromCsv(String searchterm) {
 
 
@@ -278,7 +243,6 @@ public class SearchAndReadFromCSV {
         }
 
     }
-
 
     public static void deleteLeisureFromCsv(String searchterm) {
 
@@ -444,17 +408,11 @@ public class SearchAndReadFromCSV {
 
 
     public static void deleteHouseholdFromCsv(String searchterm) {
-
-
         String filepath = System.getProperty("user.home") + "/houseInsurance.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
-
         try {
             FileWriter fw = new FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -462,7 +420,6 @@ public class SearchAndReadFromCSV {
 
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
-
             while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
@@ -478,12 +435,10 @@ public class SearchAndReadFromCSV {
                 insurnceAmountForConstruction = x.next();
                 insurnaceAmountForHousehold = x.next();
 
-
                 if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + propertyOwner + "," +
                             yearOfConstruction + "," + residentialType + "," + constructionMaterial + "," + condition + "," + numberOfSquareMeters + "," + insurnceAmountForConstruction + "," + insurnaceAmountForHousehold);
                 }
-
             }
             x.close();
             pw.flush();
@@ -493,12 +448,8 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-
             JOptionPane.showMessageDialog(null, "Error");
         }
 
     }
-
-
-
 }
