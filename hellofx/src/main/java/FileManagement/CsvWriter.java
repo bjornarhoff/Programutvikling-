@@ -65,7 +65,21 @@ public class CsvWriter {
         return file;
     }
 
+    public static void writeFileToCsv(String path, Customer customer){
 
+        try {
+            fileWriter = new FileWriter(createFileCSV(path), true);
+            fileWriter.append(customer.toCSVString());
+            fileWriter.append(NEW_LINE);
+
+            // If something went wrong while creating file
+        } catch (IOException e) {
+            System.out.println("csv file create error");
+            e.printStackTrace();
+        }
+
+        finallyBlock(fileWriter);
+    }
 
 
     // Method for write customer object to CSV file

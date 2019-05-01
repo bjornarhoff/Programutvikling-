@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
+import FileManagement.OpenFileChooser;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
@@ -23,6 +24,7 @@ public class HomeInsuranceController {
 
         HandlerFxml handlerFxml = new HandlerFxml();
         static Customer customerSelected;
+        private OpenFileChooser openFileChooser = new OpenFileChooser();
 
         @FXML
         private BorderPane entireScreenInsurance;
@@ -66,6 +68,30 @@ public class HomeInsuranceController {
                 handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
             }
         }
+
+    @FXML
+    private void handleImportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserImport(entireScreenInsurance);
+
+
+
+    }
+
+    @FXML
+    private void handleExportClicked(ActionEvent event) {
+
+        openFileChooser.fileChooserExport(entireScreenInsurance);
+
+
+    }
+
+    @FXML
+    private void handleCloseClicked(ActionEvent event) {
+
+        System.exit(1);
+    }
+
 
         public static Customer getCustomerSelected() {
             return customerSelected;

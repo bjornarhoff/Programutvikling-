@@ -19,6 +19,7 @@ import java.util.Date;
 
 public class CreateCustomerController {
     HandlerFxml handlerFxml = new HandlerFxml();
+    HomeCustomerController homeCustomerController = new HomeCustomerController();
 
     @FXML
     private BorderPane popUpCreate;
