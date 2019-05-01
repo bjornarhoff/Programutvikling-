@@ -92,7 +92,7 @@ public class HomeCustomerController {
         customers = CsvReader.read();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         // Enables buttons when marked one customer
-        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showInfoCust,btn_showDamageReport);
+        handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showDamageReport);
         entireScreenCustomer.toFront();
         customerTable.setEditable(true);
         name.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -166,63 +166,36 @@ public class HomeCustomerController {
     /**
      * Search Method that filters through Customer Table view and matches search input
      */
-     * @param keyEvent
-        FilteredList<Customer> filteredData = new FilteredList<>(customers, e -> true);
 
-        searching.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Customer>) customer -> {
 
-                String lowerCaseFilter = newValue.toLowerCase();
 
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-                if(customer.getPersonalID().contains(lowerCaseFilter)){
-                    return true;
-                }
 
-                else if(customer.getName().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
+    public void filter(KeyEvent keyEvent){
 
-                return false;
 
-            });
+        ObservableList<Customer> data=CsvReader.read();
+        searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
+        if(oldValue!=null&&(newValue.length()<oldValue.length())){
+        customerTable.setItems(data);
+        }
+        String value=newValue.toLowerCase();
+        ObservableList<Customer> subentries=FXCollections.observableArrayList();
 
+        long count=customerTable.getColumns().stream().count();
+
+        for(int i=0;i<customerTable.getItems().size();i++){
+        for(int j=0;j<count; j++){
+        String entry=""+customerTable.getColumns().get(j).getCellData(i);
+        if(entry.toLowerCase().contains(value)){
+        subentries.add(customerTable.getItems().get(i));
+        break;
+        }
+
+        }
+        }
+        customerTable.setItems(subentries);
         });
 
-        SortedList<Customer> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(customerTable.comparatorProperty());
-        customerTable.setItems(sortedData);
-    }
-
-     */
-
-    public void filter(KeyEvent keyEvent) {
-
-
-        ObservableList<Customer> data =  CsvReader.read();
-        searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if (oldValue != null && (newValue.length() < oldValue.length())) {
-                customerTable.setItems(data);
-            }
-            String value = newValue.toLowerCase();
-            ObservableList<Customer> subentries = FXCollections.observableArrayList();
-
-            long count = customerTable.getColumns().stream().count();
-
-            for (int i = 0; i < customerTable.getItems().size(); i++) {
-                for (int j = 0; j < count; j++) {
-                    String entry = "" + customerTable.getColumns().get(j).getCellData(i);
-                    if (entry.toLowerCase().contains(value)) {
-                        subentries.add(customerTable.getItems().get(i));
-                        break;
-                    }
-                    
-                }
-            }
-            customerTable.setItems(subentries);
-        });
 
          /*
 
@@ -258,43 +231,43 @@ public class HomeCustomerController {
          */
 
 
-
-    }
-
+        }
 
 
-    public void onEdit(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
-        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+
+
+public void onEdit(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+        Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setName(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-    }
+        }
 
-    public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
-        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+        Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setPhoneNumber(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-    }
+        }
 
-    public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
-        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+        Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setEmail(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-    }
+        }
 
-    public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
-        Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
+public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+        Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setBillingAddress(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-    }
+        }
 
     /*
     public void setTerm(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent ){
@@ -304,4 +277,5 @@ public class HomeCustomerController {
     }
 
      */
-}
+        }
+

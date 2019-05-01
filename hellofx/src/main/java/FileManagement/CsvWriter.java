@@ -162,7 +162,7 @@ public class CsvWriter {
      */
 
         if(createInsurance) {
-            updateAllInsurances(boatInsurance.getCustomer(), boatInsurance);
+            updateAllInsurances(boatInsurance);
         }
 
         try {
@@ -197,7 +197,7 @@ public class CsvWriter {
      */
 
         if(createInsurance == true) {
-            updateAllInsurances(houseInsurance.getCustomer(), houseInsurance);
+            updateAllInsurances(houseInsurance);
         }
 
         try {
@@ -229,7 +229,7 @@ public class CsvWriter {
     public static void writeTravelInsjurance(Travel_Insurance travelInsurance, boolean createInsurnace) {
 
         if(createInsurnace == true) {
-            updateAllInsurances(travelInsurance.getCustomer(), travelInsurance);
+            updateAllInsurances(travelInsurance);
         }
 
         try {
@@ -263,10 +263,9 @@ public class CsvWriter {
      */
     public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace, boolean createInsurnace) {
 
-        updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
 
         if(createInsurnace == true) {
-            updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
+            updateAllInsurances(leisureInsurnace);
         }
 
         try {

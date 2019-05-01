@@ -136,8 +136,6 @@ public class SearchAndReadFromCSV {
    }
 
 
-    }
-
     public static void deleteCustomerFromCsv(String searchterm) {
 
 

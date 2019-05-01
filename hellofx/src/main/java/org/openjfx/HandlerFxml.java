@@ -82,7 +82,6 @@ public class HandlerFxml {
         }).start();
     }
 
-        public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,Integer> t2,
 
      public void restrictionId (TextField textField) {
          // Sets pattern to texfield, 0 - 8 characters allowed
@@ -173,7 +172,7 @@ public class HandlerFxml {
 
 
 
-        public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,String> t2,
+        public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,Integer> t2,
                                          TableColumn<House_Household_Insurance,String> t3, TableColumn<House_Household_Insurance,String> t4,
                                          TableColumn<House_Household_Insurance,String> t5, TableColumn<House_Household_Insurance,String> t6,
                                           TableColumn<House_Household_Insurance,Integer> t7, TableView<House_Household_Insurance> table) {

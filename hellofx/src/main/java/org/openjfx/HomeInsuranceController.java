@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import FileManagement.CsvReader;
 
 public class HomeInsuranceController {
 
@@ -44,7 +45,7 @@ public class HomeInsuranceController {
         @FXML
         private void initialize(){
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
-            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1,btn_deleteInsurance1,btn_showInfoIns1);
+            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1);
             entireScreenInsurance.toFront();
 
 
@@ -64,7 +65,7 @@ public class HomeInsuranceController {
             if(event.getSource() == btn_modfiInsurance1){
                 insuranceTable.getItems();
                 customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
-                handlerFxml.navigate(entireScreenInsurance, "ALLInsurancesController.fxml");
+                handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
             }
         }
 
