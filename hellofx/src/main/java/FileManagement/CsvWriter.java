@@ -98,13 +98,25 @@ public class CsvWriter {
         try {
             fileWriter = new FileWriter(createFileCSV(path), true);
             if (insurance.getClass() == Boat_Insurance.class){
+                fileWriter.append(BOATINSURNACEHEADER);
+                fileWriter.append(NEW_LINE);
                 fileWriter.append(insurance.toCSVStringInsurnce());
+                fileWriter.append(NEW_LINE);
             }else if (insurance.getClass() == House_Household_Insurance.class){
+                fileWriter.append(HOUSEINSURANCEHEADER);
+                fileWriter.append(NEW_LINE);
                 fileWriter.append(insurance.toCSVStringInsurnce());
+                fileWriter.append(NEW_LINE);
             }else if (insurance.getClass() == Leisure_Insurance.class){
+                fileWriter.append(LEISUREINSURANCE);
+                fileWriter.append(NEW_LINE);
                 fileWriter.append(insurance.toCSVStringInsurnce());
+                fileWriter.append(NEW_LINE);
             }else if (insurance.getClass() == Travel_Insurance.class){
+                fileWriter.append(TRAVELINSURANCE);
+                fileWriter.append(NEW_LINE);
                 fileWriter.append(insurance.toCSVStringInsurnce());
+                fileWriter.append(NEW_LINE);
             }
         }catch (IOException e){
             e.printStackTrace();
