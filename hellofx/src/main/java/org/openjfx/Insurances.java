@@ -196,7 +196,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setYearlyInsurancePremium(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> house_household_insuranceStringCellEditEvent) {
@@ -204,7 +204,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceAmount(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editConditions(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
@@ -212,7 +212,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceConditions(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editOwner(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
@@ -220,7 +220,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setPropertyOwner(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editConstructionMaterial(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
@@ -228,7 +228,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setConstructionMaterial(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editHouseCondition(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
@@ -236,7 +236,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setCondition(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
     }
 
     public void editAmountHousehold(TableColumn.CellEditEvent<House_Household_Insurance, Integer> house_household_insuranceStringCellEditEvent) {
@@ -244,7 +244,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceAmountForHousehold(house_household_insuranceStringCellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns);
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
 
     }
 
@@ -256,7 +256,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceArea(editEvent.getNewValue());
-        CsvWriter.writeTravelInsjurance(travelInsurance);
+        CsvWriter.writeTravelInsjurance(travelInsurance, false);
     }
 
     public void editInsuranceAmountTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) {
@@ -264,7 +264,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceAmount(editEvent.getNewValue());
-        CsvWriter.writeTravelInsjurance(travelInsurance);
+        CsvWriter.writeTravelInsjurance(travelInsurance, false);
     }
 
     public void editInsuranceConditions(TableColumn.CellEditEvent<Travel_Insurance, String> editEvent) {
@@ -272,7 +272,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceConditions(editEvent.getNewValue());
-        CsvWriter.writeTravelInsjurance(travelInsurance);
+        CsvWriter.writeTravelInsjurance(travelInsurance, false);
     }
 
     public void editYearlyPremiumTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) {
@@ -280,7 +280,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setYearlyInsurancePremium(String.valueOf(editEvent.getNewValue()));
-        CsvWriter.writeTravelInsjurance(travelInsurance);
+        CsvWriter.writeTravelInsjurance(travelInsurance, false);
 
     }
 
@@ -290,41 +290,41 @@ public class Insurances {
     public void editYearlyPremiumLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getDateOfCreatedInsurance()));
+        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns);
+        CsvWriter.writeLeisureInsurance(leisureIns,false);
     }
 
     public void editInsuranceConditionsLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getDateOfCreatedInsurance()));
+        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns);
+        CsvWriter.writeLeisureInsurance(leisureIns,false);
     }
 
     public void editConstructionMaterialLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getDateOfCreatedInsurance()));
+        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setConstructionMaterial(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns);
+        CsvWriter.writeLeisureInsurance(leisureIns,false);
     }
 
     public void editLeisureConditions(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getDateOfCreatedInsurance()));
+        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setCondition(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns);
+        CsvWriter.writeLeisureInsurance(leisureIns, false);
     }
 
     public void editLeisure(TableColumn.CellEditEvent<Leisure_Insurance, Integer> cellEditEvent) {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getDateOfCreatedInsurance()));
+        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setAmountForHousehold(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns);
+        CsvWriter.writeLeisureInsurance(leisureIns, false);
     }
 
     //boat
@@ -334,7 +334,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setInsuranceAmount(cellEditEvent.getNewValue());
-        CsvWriter.writeBoatInsuranceToCSV(boatIns);
+        CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
     }
 
     public void editOwnerBoat(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) {
@@ -342,7 +342,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setOwner(cellEditEvent.getNewValue());
-        CsvWriter.writeBoatInsuranceToCSV(boatIns);
+        CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
     }
 
     public void editMotor(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) {
@@ -350,7 +350,7 @@ public class Insurances {
 
         SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setMotorTypeAndMotorPower(cellEditEvent.getNewValue());
-        CsvWriter.writeBoatInsuranceToCSV(boatIns);
+        CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
     }
 
 

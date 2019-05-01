@@ -89,7 +89,7 @@ public class HouseholdInsurnaceController {
          InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
           conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
 
-        CsvWriter.writeHouseInsuranceToCSV(h1);
+        CsvWriter.writeHouseInsuranceToCSV(h1, true);
         info.setText(h1.toString());
         clearInput();
 

@@ -94,7 +94,7 @@ public class TravelInsurnaceController {
 
         Travel_Insurance t1 = new Travel_Insurance(customer, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
         insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
-        CsvWriter.writeTravelInsjurance(t1);
+        CsvWriter.writeTravelInsjurance(t1, true);
         info.setText(t1.toString());
 
         clearInput();

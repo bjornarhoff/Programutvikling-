@@ -103,9 +103,11 @@ public class CsvWriter {
     }
 
 
-    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
+    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance, boolean createInsurance) {
 
-        updateAllInsurances(boatInsurance.getCustomer(), boatInsurance);
+        if(createInsurance) {
+            updateAllInsurances(boatInsurance.getCustomer(), boatInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
@@ -132,9 +134,11 @@ public class CsvWriter {
 
 
 
-    public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
+    public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance, boolean createInsurance) {
 
-        updateAllInsurances(houseInsurance.getCustomer(), houseInsurance);
+        if(createInsurance == true) {
+            updateAllInsurances(houseInsurance.getCustomer(), houseInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
@@ -158,9 +162,11 @@ public class CsvWriter {
     }
 
 
-    public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
+    public static void writeTravelInsjurance(Travel_Insurance travelInsurance, boolean createInsurnace) {
 
-        updateAllInsurances(travelInsurance.getCustomer(), travelInsurance);
+        if(createInsurnace == true) {
+            updateAllInsurances(travelInsurance.getCustomer(), travelInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
@@ -187,10 +193,12 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
-    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace) {
+    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace, boolean createInsurnace) {
 
-        updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
 
+        if(createInsurnace == true) {
+            updateAllInsurances(leisureInsurnace.getCustomer(), leisureInsurnace);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);

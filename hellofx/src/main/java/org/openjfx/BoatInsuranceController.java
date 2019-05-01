@@ -90,7 +90,7 @@ public class BoatInsuranceController {
                 InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
                 Integer.parseInt(year.getText()), motorTypePower.getText());
 
-        CsvWriter.writeBoatInsuranceToCSV(b1);
+        CsvWriter.writeBoatInsuranceToCSV(b1, true);
 
         info.setText(b1.toString());
 

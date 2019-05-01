@@ -141,4 +141,5 @@ public class DamageReportController {
         damageModifiable.setContactOfPotentialWitnesses(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
     }
+
 }
