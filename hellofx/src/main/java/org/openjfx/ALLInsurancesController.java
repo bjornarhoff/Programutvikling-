@@ -94,6 +94,11 @@ public class ALLInsurancesController {
        handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel,boatLengthFoot, motorType, tvBoat);
        handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition,leisureNrSquareMeters, amountLeisure, tvLeisure);
 
+       handlerFxml.enableWhenMarked(tvHousehold, modifyHousehold, delHousehold, showHousehold);
+       handlerFxml.enableWhenMarked(tvLeisure, modifyLeisure, delLeisure, showLeisure);
+       handlerFxml.enableWhenMarked(tvTravel, modifyTravel, delTravel, showTravel);
+       handlerFxml.enableWhenMarked(tvBoat, modifyBoat, delBoat, showBoat);
+
     }
 
     @FXML
