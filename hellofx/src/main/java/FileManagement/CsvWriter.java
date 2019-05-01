@@ -65,7 +65,7 @@ public class CsvWriter {
         return file;
     }
 
-    public static void writeFileToCsv(String path, Customer customer){
+    public static void writeFileToCsvCustomer(String path, Customer customer){
 
         try {
             fileWriter = new FileWriter(createFileCSV(path), true);
@@ -78,6 +78,25 @@ public class CsvWriter {
             e.printStackTrace();
         }
 
+        finallyBlock(fileWriter);
+    }
+
+    public static void writeFileToCsvInsurance(String path, Insurance insurance){
+
+        try {
+            fileWriter = new FileWriter(createFileCSV(path), true);
+            if (insurance.getClass() == Boat_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == House_Household_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == Leisure_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }else if (insurance.getClass() == Travel_Insurance.class){
+                fileWriter.append(insurance.toCSVStringInsurnce());
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         finallyBlock(fileWriter);
     }
 
