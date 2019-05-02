@@ -107,7 +107,7 @@ public class SearchAndReadFromCSV {
      * Method that deletes the Damage Report from the csv file with the matching searchterm
      * @param searchterm
      */
-    public static void deleteDamageReportFromCsv(String searchterm) {
+    public static void deleteDamageReportFromCsv(String searchterm) throws IOException {
 
         String filepath = System.getProperty("user.home") + "/damageReport.csv";
         String tempfile = "temp.txt";
@@ -123,7 +123,17 @@ public class SearchAndReadFromCSV {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
+            while (x.hasNextLine()) {
+                String[] damage = x.nextLine().split(",");
+                if (!damage[1].equals(searchterm)) {
+                    pw.println(damage[0] + "," + damage[1] + "," + damage[2] + "," + damage[3] + "," + damage[4] + "," + damage[5] + "," +
+                            damage[6] + "," + damage[7]);
+                }
+            }
+
+            /*while (x.hasNext()) {
+
+
                 personalID = x.next();
                 DateofDamage = x.next();
                 DamageNr = x.next();
@@ -139,7 +149,9 @@ public class SearchAndReadFromCSV {
                             TaxOfDamage + "," + unpaid);
                 }
 
-            }
+             */
+
+
             x.close();
             pw.flush();
             pw.close();
@@ -172,6 +184,15 @@ public class SearchAndReadFromCSV {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
 
+
+            while (x.hasNextLine()) {
+                String[] leisure = x.nextLine().split(",");
+                if (!leisure[5].equals(searchterm)) {
+                    pw.println(leisure[0] + "," + leisure[1] + "," + leisure[2] + "," + leisure[3] + "," + leisure[4] + "," + leisure[5] + "," +
+                            leisure[6] + "," + leisure[7] + "," + leisure[8]+ "," + leisure[9]+ "," + leisure[10]+ "," + leisure[11]+ "," + leisure[12]);
+                }
+            }
+            /*
             while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
@@ -194,7 +215,9 @@ public class SearchAndReadFromCSV {
                             + "," + amountForHousehold);
                 }
 
-            }
+             */
+
+
             x.close();
             pw.flush();
             pw.close();
@@ -228,7 +251,15 @@ public class SearchAndReadFromCSV {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
+            while (x.hasNextLine()) {
+                String[] boat = x.nextLine().split(",");
+                if (!boat[2].equals(searchterm)) {
+                    pw.println(boat[0] + "," + boat[1] + "," + boat[2] + "," + boat[3] + "," + boat[4] + "," + boat[5] + "," +
+                            boat[6] + "," + boat[7] + "," + boat[8]+ "," + boat[9]+ "," + boat[10]);
+                }
+            }
+
+           /* while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
                 dateOfCreatedInsurnace = x.next();
@@ -247,6 +278,8 @@ public class SearchAndReadFromCSV {
                 }
 
             }
+
+            */
 
             x.close();
             pw.flush();
@@ -281,7 +314,14 @@ public class SearchAndReadFromCSV {
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
+            while (x.hasNextLine()) {
+                String[] travel = x.nextLine().split(",");
+                if (!travel[2].equals(searchterm)) {
+                    pw.println(travel[0] + "," + travel[1] + "," + travel[2] + "," + travel[3] + "," + travel[4] + "," + travel[5]);
+                }
+            }
+
+           /* while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
                 dateOfCreatedInsurnace = x.next();
@@ -298,6 +338,8 @@ public class SearchAndReadFromCSV {
                 }
 
             }
+
+            */
             x.close();
             pw.flush();
             pw.close();
@@ -329,7 +371,17 @@ public class SearchAndReadFromCSV {
 
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
-            while (x.hasNext()) {
+
+
+            while (x.hasNextLine()) {
+                String[] house = x.nextLine().split(",");
+                if (!house[2].equals(searchterm)) {
+                    pw.println(house[0] + "," + house[1] + "," + house[2] + "," + house[3] + "," + house[4] + "," + house[5] + "," +
+                            house[6] + "," + house[7] + "," + house[8]+ "," + house[9]+ "," + house[10]+ "," + house[11]+ "," + house[12]);
+                }
+            }
+
+            /*while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
                 dateOfCreatedInsurnace = x.next();
@@ -349,6 +401,8 @@ public class SearchAndReadFromCSV {
                             yearOfConstruction + "," + residentialType + "," + constructionMaterial + "," + condition + "," + numberOfSquareMeters + "," + insurnceAmountForConstruction + "," + insurnaceAmountForHousehold);
                 }
             }
+
+             */
             x.close();
             pw.flush();
             pw.close();

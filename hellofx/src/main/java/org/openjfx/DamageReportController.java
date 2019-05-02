@@ -12,6 +12,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
+
 
 public class DamageReportController {
 
@@ -85,7 +87,7 @@ public class DamageReportController {
      * @param event
      */
     @FXML
-    private void delete(ActionEvent event){
+    private void delete(ActionEvent event) throws IOException {
         if (event.getSource() == btn_delete){
             String customerSelected = damageTableView.getSelectionModel().getSelectedItem().getDateOfDamage();
             SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
@@ -121,7 +123,7 @@ public class DamageReportController {
      * Method that edits the Damage Type in the table view
      * @param damage_reportStringCellEditEvent
      */
-    public void onEditDamageType(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
+    public void onEditDamageType(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
@@ -135,7 +137,7 @@ public class DamageReportController {
      * Method that edits the Damage Description in the table view
      * @param damage_reportStringCellEditEvent
      */
-    public void onEditDamageDesc(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
+    public void onEditDamageDesc(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
@@ -165,7 +167,7 @@ public class DamageReportController {
      * Method that edits the potential Witnesses in the table view
      * @param damage_reportStringCellEditEvent
      */
-    public void onEditWitnesses(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
+    public void onEditWitnesses(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
