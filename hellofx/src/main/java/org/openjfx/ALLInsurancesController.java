@@ -2,6 +2,7 @@ package org.openjfx;
 
 import Damages.Damage_Report;
 import Exceptions.ExceptionHandler;
+import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
@@ -75,13 +76,21 @@ public class ALLInsurancesController {
     private TableColumn<Boat_Insurance, Integer> boatInsAmount;
 
 
+
     /**
      * Method that converts String to Integer and from String to Integer and handles
      */
     private static StringConverter<Integer> converter = new StringConverter<>(){
         @Override
-        public String toString(Integer object) throws NumberFormatException{
-            return Integer.toString(object);
+        public String toString(Integer object) throws NumberFormatException, NullPointerException{
+            try {
+                Integer.toString(object);
+                return Integer.toString(object);
+            }catch(NullPointerException e){
+                return null;
+            }
+
+
         }
 
         @Override
@@ -91,12 +100,12 @@ public class ALLInsurancesController {
                 return Integer.parseInt(string);
 
             }catch(NumberFormatException e){
-                ExceptionHandler.alertBox("Wrong Input Provided", "Please provide only Numbers as input in this textfield", "Text filed Value is restored to 0");
+                ExceptionHandler.alertBox("Wrong Input Provided", "Please provide only Numbers as input in this textfield", "Please change your input to a valid number");
 
             }
-            return 0;
-        }
+            return null;
 
+        }
     };
 
 
@@ -228,14 +237,13 @@ public class ALLInsurancesController {
      * @param CellEditEvent
      */
     public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
+        House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
+        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        householdIns.setInsuranceAmount(CellEditEvent.getNewValue() == null ? CellEditEvent.getOldValue() : CellEditEvent.getNewValue());
+        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
+        tvHousehold.setEditable(false);
+        handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
 
-
-            House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
-            SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-
-            householdIns.setInsuranceAmount(CellEditEvent.getNewValue());
-            CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
-            tvHousehold.setEditable(false);
 
     }
 
@@ -303,14 +311,11 @@ public class ALLInsurancesController {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        try {
-            householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue());
-        }catch(NumberFormatException e){
-            System.out.println("error caught");
-            ExceptionHandler.alertBox("wrong data type", "ladsfj", " please convert to a number");
-        }
+        householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue()  == null ? CellEditEvent.getOldValue() : CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
+        handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
+
 
 
     }
@@ -337,9 +342,11 @@ public class ALLInsurancesController {
         Travel_Insurance travelInsurance = tvTravel.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
-        travelInsurance.setInsuranceAmount(editEvent.getNewValue());
+        travelInsurance.setInsuranceAmount(editEvent.getNewValue()  == null ? editEvent.getOldValue() : editEvent.getNewValue());
         CsvWriter.writeTravelInsjurance(travelInsurance, false);
         tvTravel.setEditable(false);
+        handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
+
 
     }
 
@@ -451,9 +458,11 @@ public class ALLInsurancesController {
         Boat_Insurance boatIns = tvBoat.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
-        boatIns.setInsuranceAmount(cellEditEvent.getNewValue());
+        boatIns.setInsuranceAmount(cellEditEvent.getNewValue() == null ? cellEditEvent.getOldValue() : cellEditEvent.getNewValue());
         CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
         tvBoat.setEditable(false);
+        handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel,boatLengthFoot, motorType, tvBoat);
+
 
     }
 

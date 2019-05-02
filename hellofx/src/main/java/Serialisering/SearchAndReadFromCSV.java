@@ -6,147 +6,74 @@ import java.util.Scanner;
 public class SearchAndReadFromCSV {
 
     // Customer
-    static String personalID = "";
-    static String insuranceNr = "";
-
-    static String name = "";
-    static String age = "";
-    static String phoneNumber = "";
-    static String email = "";
-    static String date = "";
-    static String billingAddress = "";
-    static String allCustomerInsurance = "";
-    static String unpaidReplacements = "";
-
+    private static String personalID = "";
+    private static String insuranceNr = "";
+    private static String name = "";
+    private static String age = "";
+    private static String phoneNumber = "";
+    private static String email = "";
+    private static String date = "";
+    private static String billingAddress = "";
+    private static String allCustomerInsurance = "";
+    private static String unpaidReplacements = "";
 
     // DamageReport
-    static String DateofDamage = "";
-    static String DamageNr = "";
-    static String DamageType = "";
+    private static String DateofDamage = "";
+    private static String DamageNr = "";
+    private static String DamageType = "";
 
-    static String DamageDescription = "";
-    static String ContactOfWitnesses = "";
-    static String TaxOfDamage = "";
-    static String unpaid = "";
+    private static String DamageDescription = "";
+    private static String ContactOfWitnesses = "";
+    private static String TaxOfDamage = "";
+    private static String unpaid = "";
 
     // Overall Insurance
-    static String yearlyInsurnacePremium = "";
-    static String dateOfCreatedInsurnace = "";
-    static String insurnaceAmount = "";
-    static String insurnaceConditions = "";
-
+    private static String yearlyInsurnacePremium = "";
+    private static String dateOfCreatedInsurnace = "";
+    private static String insurnaceAmount = "";
+    private static String insurnaceConditions = "";
 
     // Travel Insurance
-    static String insurnaceArea = "";
-    static String insurnceSum = "";
+    private static String insurnaceArea = "";
+    private static String insurnceSum = "";
 
     // Household Insurance
-    static String propertyOwner = "";
-    static String yearOfConstruction = "";
-    static String residentialType = "";
-    static String constructionMaterial = "";
-    static String condition = "";
-    static String numberOfSquareMeters = "";
-    static String insurnceAmountForConstruction = "";
-    static String insurnaceAmountForHousehold = "";
+    private static String propertyOwner = "";
+    private static String yearOfConstruction = "";
+    private static String residentialType = "";
+    private static String constructionMaterial = "";
+    private static String condition = "";
+    private static String numberOfSquareMeters = "";
+    private static String insurnceAmountForConstruction = "";
+    private static String insurnaceAmountForHousehold = "";
 
     // Boat Insurnace
-    static String owner = "";
-    static String registerNr = "";
-    static String boatTypeAndModel = "";
-    static String lengthInFoot = "";
-    static String year = "";
-    static String motorTypeAndMotorPower = "";
+    private static String owner = "";
+    private static String registerNr = "";
+    private static String boatTypeAndModel = "";
+    private static String lengthInFoot = "";
+    private static String year = "";
+    private static String motorTypeAndMotorPower = "";
 
     // Leisure Insurance
-    static String address_Not_Billing = "";
-    static String constructionYear = "";
-    //static String residentialType = "";
-    //static String constructionMaterial = "";
-    //static String condition = "";
-    static String amountSquareMeters = "";
-    static String amountforConstruction = "";
-    static String amountForHousehold = "";
+    private static String address_Not_Billing = "";
+    private static String constructionYear = "";
+    private static String amountSquareMeters = "";
+    private static String amountforConstruction = "";
+    private static String amountForHousehold = "";
 
     private static Scanner x;
-    private static BufferedReader y;
 
-
-   /* public static void main(String[] args) {
-        String filepath = "trying.txt";
-        String searchTerm = "4444";
-
-        readRecord(searchTerm, filepath);
-
-    }*/
-
-   String filepath = "customer2.csv";
-
-
-   public static void checknextCustomer(){
-       personalID = x.next();
-       name = x.next();
-       phoneNumber = x.next();
-       email = x.next();
-       date = x.next();
-       billingAddress = x.next();
-       allCustomerInsurance = x.next();
-       unpaidReplacements = x.next();
-   }
-
-   public static void editCustomerRecord(String filepath, String editTerm, String newPersonalID, String newName, String newAge, String newPhone, String newEmail,
-                                         String newDate, String newBilling, String newAllInsurance, String newUnpaid){
-       String tempFile = "temp.txt";
-       File oldFile = new File(filepath);
-       File newFile = new File(tempFile);
-
-       try{
-           FileWriter fw = new FileWriter(tempFile, true);
-           BufferedWriter bw = new BufferedWriter(fw);
-           PrintWriter pw = new PrintWriter(bw);
-
-           x = new Scanner(new File(filepath));
-           x.useDelimiter("[,\n]");
-
-           while(x.hasNext()){
-               checknextCustomer();
-
-               if (personalID.equals(editTerm) ) {
-                   pw.println( newPersonalID + ", " + newName + ", " + newAge + "," + newPhone +
-                           "," + newEmail + "," + newDate + "," + newBilling + ","
-                           + newAllInsurance + "," + newUnpaid);
-               }
-               else {
-                   pw.println( personalID + ", " + name + ", " + age + "," + phoneNumber +
-                           "," + email + "," + date + "," + billingAddress + ","
-                           + allCustomerInsurance + "," + unpaidReplacements);
-               }
-           }
-           x.close();
-           pw.flush();
-           pw.close();
-           oldFile.delete();
-           File dump = new File(filepath);
-           newFile.renameTo(dump);
-
-       }
-       catch(Exception e){
-
-       }
-   }
-
-
+    /**
+     * Method that deletes the Customer object from the csv file
+     * @param searchterm
+     */
     public static void deleteCustomerFromCsv(String searchterm) {
-
-
         String filepath = System.getProperty("user.home") + "/customer2.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
 
         try {
             FileWriter fw = new FileWriter(tempfile, true);
@@ -174,7 +101,6 @@ public class SearchAndReadFromCSV {
 
             JOptionPane.showMessageDialog(null, "Error");
         }
-
     }
 
     /**
@@ -183,15 +109,11 @@ public class SearchAndReadFromCSV {
      */
     public static void deleteDamageReportFromCsv(String searchterm) {
 
-
         String filepath = System.getProperty("user.home") + "/damageReport.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
 
         try {
             FileWriter fw = new FileWriter(tempfile, true);
@@ -226,10 +148,8 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-
             System.err.println("customer without insurance ");
         }
-
     }
 
     /**
@@ -238,15 +158,11 @@ public class SearchAndReadFromCSV {
      */
     public static void deleteLeisureFromCsv(String searchterm) {
 
-
         String filepath = System.getProperty("user.home") + "/LeisureInsurnace.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
 
         try {
             FileWriter fw = new FileWriter(tempfile, true);
@@ -290,7 +206,6 @@ public class SearchAndReadFromCSV {
 
             System.err.println("customer without insurance ");
         }
-
     }
 
     /**
@@ -299,15 +214,11 @@ public class SearchAndReadFromCSV {
      */
     public static void deleteBoatFromCsv(String searchterm) {
 
-
         String filepath = System.getProperty("user.home") + "/boatInsurance.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
 
         try {
             FileWriter fw = new FileWriter(tempfile, true);
@@ -330,7 +241,6 @@ public class SearchAndReadFromCSV {
                 year = x.next();
                 motorTypeAndMotorPower = x.next();
 
-
                 if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + owner + "," +
                             registerNr + "," + boatTypeAndModel + "," + lengthInFoot + "," + year + "," + motorTypeAndMotorPower);
@@ -348,7 +258,6 @@ public class SearchAndReadFromCSV {
 
             System.err.println("customer without insurance ");
         }
-
     }
 
     /**
@@ -357,15 +266,11 @@ public class SearchAndReadFromCSV {
      */
     public static void deleteTravelFromCsv(String searchterm) {
 
-
         String filepath = System.getProperty("user.home") + "/travelInsurnace.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
 
         try {
             FileWriter fw = new FileWriter(tempfile, true);
@@ -402,7 +307,6 @@ public class SearchAndReadFromCSV {
         } catch (Exception e) {
             System.err.println("customer without insurance ");
         }
-
     }
 
 
@@ -416,6 +320,7 @@ public class SearchAndReadFromCSV {
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
         boolean found = false;
+
         try {
             FileWriter fw = new FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -451,9 +356,7 @@ public class SearchAndReadFromCSV {
             newfile.renameTo(dump);
 
         } catch (Exception e) {
-
             System.err.println("customer without insurance ");
         }
-
     }
 }
