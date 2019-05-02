@@ -1,5 +1,6 @@
 package org.openjfx;
 
+import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Exceptions.ExceptionHandler;
 import FileManagement.CsvReader;
@@ -18,6 +19,7 @@ import Insurances.Boat_Insurance;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
+
 
 import java.io.Console;
 
@@ -75,6 +77,8 @@ public class ALLInsurancesController {
     @FXML
     private TableColumn<Boat_Insurance, Integer> boatInsAmount;
 
+
+     Customer customerEditable =  HomeInsuranceController.getCustomerSelected();
 
 
     /**
@@ -141,27 +145,32 @@ public class ALLInsurancesController {
             String selectHouse = tvHousehold.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(selectHouse));
             handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
+            Customer.customerInsuranceCounterDeacrease(customerEditable);
 
         }
         if(event.getSource() == delBoat){
             String selectBoat = tvBoat.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(selectBoat));
             handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel,boatLengthFoot, motorType, tvBoat);
+            Customer.customerInsuranceCounterDeacrease(customerEditable);
+
 
         }
         if(event.getSource() == delTravel){
             String selectedTravel = tvTravel.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(selectedTravel));
             handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
+            Customer.customerInsuranceCounterDeacrease(customerEditable);
+
 
         }
         if(event.getSource() == delLeisure){
             String selectLeisure = tvLeisure.getSelectionModel().getSelectedItem().getAddress_Not_Billing();
             SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(selectLeisure));
             handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition,leisureNrSquareMeters, amountLeisure, tvLeisure);
-
-
+            Customer.customerInsuranceCounterDeacrease(customerEditable);
         }
+
         if(event.getSource() == showBoat){
             String boat = tvBoat.getSelectionModel().getSelectedItem().toString();
             info.setText(boat);

@@ -1,5 +1,9 @@
 package CustomerModell;
 
+import FileManagement.CsvReader;
+import FileManagement.CsvWriter;
+import Serialisering.SearchAndReadFromCSV;
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -93,6 +97,15 @@ public class Customer implements Serializable {
         existingInsurances++;
 
         customer.setAllCustomerInsurance(existingInsurances);
+    }
+
+    public static void customerInsuranceCounterDeacrease(Customer customer) {
+        int existingInsurances = customer.getAllCustomerInsurance();
+        existingInsurances--;
+
+        customer.setAllCustomerInsurance(existingInsurances);
+        SearchAndReadFromCSV.deleteCustomerFromCsv(customer.getPersonalID());
+        CsvWriter.writeCustomerToCSV(customer);
     }
 
 

@@ -34,8 +34,7 @@
                </font>
             </JFXTextArea>
             <JFXButton fx:id="btn_cancel" layoutX="377.0" layoutY="644.0" onAction="#cancel" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
-            <JFXButton fx:id="btn_apply" layoutX="923.0" layoutY="644.0" onAction="#apply" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
-            <JFXButton fx:id="btn_ok" layoutX="1025.0" layoutY="644.0" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Ok!" textFill="WHITE" />
+            <JFXButton fx:id="btn_apply" layoutX="1022.0" layoutY="644.0" onAction="#apply" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
             <JFXTextField fx:id="damageNr" focusColor="WHITE" layoutX="16.0" layoutY="531.0" prefHeight="27.0" prefWidth="227.0" promptText="Damage Number" />
             <JFXTextField fx:id="taxAmount" focusColor="WHITE" layoutX="15.0" layoutY="603.0" prefHeight="27.0" prefWidth="228.0" promptText="Taxation amount of damage" />
             <JFXTextField fx:id="unpaidReplacements" focusColor="WHITE" layoutX="16.0" layoutY="666.0" prefHeight="27.0" prefWidth="226.0" promptText="Unpaid Replacements Amount" />
