@@ -149,13 +149,15 @@ public class CsvWriter {
     }
 
 
+    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance, boolean createInsurance) {
     /**
      * a method which writes a boat object object to a csv file
      * @param boatInsurance
      */
-    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance) {
 
-        updateAllInsurances(boatInsurance);
+        if(createInsurance) {
+            updateAllInsurances(boatInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
@@ -174,13 +176,16 @@ public class CsvWriter {
     }
 
 
+
+    public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance, boolean createInsurance) {
     /**
      * a method which writes a House object to a csv file
      * @param houseInsurance
      */
-    public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance) {
 
-        updateAllInsurances(houseInsurance);
+        if(createInsurance == true) {
+            updateAllInsurances(houseInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
@@ -201,9 +206,11 @@ public class CsvWriter {
      * a method which writes a Travel object to a csv file
      * @param travelInsurance
      */
-    public static void writeTravelInsjurance(Travel_Insurance travelInsurance) {
+    public static void writeTravelInsjurance(Travel_Insurance travelInsurance, boolean createInsurnace) {
 
-        updateAllInsurances(travelInsurance);
+        if(createInsurnace == true) {
+            updateAllInsurances(travelInsurance);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
@@ -227,10 +234,12 @@ public class CsvWriter {
      * a method which writes a Leisure object to a csv file
      * @param leisureInsurnace
      */
-    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace) {
+    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace, boolean createInsurnace) {
 
-        updateAllInsurances(leisureInsurnace);
 
+        if(createInsurnace == true) {
+            updateAllInsurances(leisureInsurnace);
+        }
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);

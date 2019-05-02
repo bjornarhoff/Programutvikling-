@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="allInsurancesScreen" prefHeight="807.0" prefWidth="1493.0" style="-fx-background-color: #8C7365;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ALLInsurancesController">
+    <center>
+        <AnchorPane fx:id="anchorPane" prefHeight="633.0" prefWidth="963.0" style="-fx-background-color: #8C7365;">
+            <children>
+                <Pane prefHeight="393.0" prefWidth="963.0" style="-fx-background-color: #8C7365;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+               <children>
+                  <Label layoutX="12.0" layoutY="7.0" prefHeight="23.0" prefWidth="269.0" text="All Insurances for Customer: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="customerSelected" layoutX="272.0" layoutY="6.0" prefHeight="23.0" prefWidth="105.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvHousehold" layoutX="200.0" layoutY="62.0" prefHeight="132.0" prefWidth="864.0">
+                    <columns>
+                      <TableColumn fx:id="HouseyearlyPremium" onEditCommit="#editYearlyPremium" prefWidth="114.51496887207031" text="Yearly Premium" />
+                      <TableColumn fx:id="houseInsAmount" onEditCommit="#editInsurnaceAmount" prefWidth="121.48504638671875" text="Insurance Amount" />
+                        <TableColumn fx:id="houseInsuranceConditions" onEditCommit="#editConditions" prefWidth="117.48507690429688" text="Ins. Conditions" />
+                        <TableColumn fx:id="houseOwner" onEditCommit="#editOwner" prefWidth="113.47906494140625" text="Owner" />
+                        <TableColumn fx:id="houseConstMaterial" onEditCommit="#editConstructionMaterial" prefWidth="127.0" text="Construct. Material" />
+                        <TableColumn fx:id="houseCondition" onEditCommit="#editHouseCondition" prefWidth="125.0" text="House Condition" />
+                        <TableColumn fx:id="amountHousehold" onEditCommit="#editAmountHousehold" prefWidth="144.99993896484375" text="Amount Household" />
+                    </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+                  <TableView fx:id="tvTravel" layoutX="200.0" layoutY="235.0" prefHeight="138.0" prefWidth="859.0">
+                     <columns>
+                        <TableColumn fx:id="travelDate" prefWidth="133.99403381347656" text="Date" />
+                        <TableColumn fx:id="travelInsAmount" onEditCommit="#editInsuranceAmountTravel" prefWidth="173.0059814453125" text="Insurance Amount" />
+                        <TableColumn fx:id="travelYearlyPremium" onEditCommit="#editYearlyPremiumTravel" prefWidth="147.21255493164062" text="Yearly Premium" />
+                        <TableColumn fx:id="travelInsConditions" onEditCommit="#editInsuranceConditions" prefWidth="178.7066650390625" text="Insurnace Conditions" />
+                        <TableColumn fx:id="travelInsArea" onEditCommit="#InsurnaceArea" prefWidth="225.67974853515625" text="Insurance Area" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+                  <TableView fx:id="tvLeisure" layoutX="200.0" layoutY="423.0" prefHeight="127.0" prefWidth="859.0">
+                     <columns>
+                        <TableColumn fx:id="leisureDate" prefWidth="119.0" text="Date" />
+                        <TableColumn fx:id="yearlyPremium" onEditCommit="#editYearlyPremiumLeisure" prefWidth="124.0" text="Yearly Premium" />
+                        <TableColumn fx:id="conditions" onEditCommit="#editInsuranceConditionsLeisure" prefWidth="94.0" text="Conditions" />
+                        <TableColumn fx:id="leisureConstrMaterial" onEditCommit="#editConstructionMaterialLeisure" prefWidth="134.0" text="Construct. Material" />
+                        <TableColumn fx:id="leisureCondition" onEditCommit="#editLeisureConditions" prefWidth="130.0" text="Leisure Condition" />
+                        <TableColumn fx:id="leisureNrSquareMeters" prefWidth="117.0" text="Nr Square Meters" />
+                        <TableColumn fx:id="amountLeisure" onEditCommit="#editLeisure" prefWidth="139.99993896484375" text="Amount Leisure" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+                  <TableView fx:id="tvBoat" layoutX="200.0" layoutY="598.0" prefHeight="143.0" prefWidth="859.0">
+                     <columns>
+                        <TableColumn fx:id="boatDate" prefWidth="122.0" text="Date" />
+                        <TableColumn fx:id="boatInsAmount" onEditCommit="#editInsuranceAmountBoat" prefWidth="124.0" text="Insurnace Amount" />
+                        <TableColumn fx:id="boatOwner" onEditCommit="#editOwnerBoat" prefWidth="94.0" text="Owner" />
+                        <TableColumn fx:id="boatRegisterNr" prefWidth="120.0" text="RegisterNr" />
+                        <TableColumn fx:id="boatTypeModel" prefWidth="155.0" text="Boat Type/Model" />
+                        <TableColumn fx:id="boatLengthFoot" prefWidth="103.0" text="Length in Foot" />
+                        <TableColumn fx:id="motorType" onEditCommit="#editMotor" prefWidth="139.99993896484375" text="MotorType" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+                  <Label alignment="CENTER" layoutX="200.0" layoutY="30.0" prefHeight="32.0" prefWidth="863.0" text="Household Insurances">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="200.0" layoutY="208.0" prefHeight="23.0" prefWidth="861.0" text="Travel Insurances">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="200.0" layoutY="391.0" prefHeight="32.0" prefWidth="860.0" text="Leisure Insurances" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="200.0" layoutY="566.0" prefHeight="32.0" prefWidth="860.0" text="Boat Insurances" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="modifyHousehold" layoutX="10.0" layoutY="69.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Modify Household Ins." textFill="WHITE" />
+                  <JFXButton fx:id="delHousehold" layoutX="10.0" layoutY="115.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Delete Household Ins." textFill="WHITE" />
+                  <JFXButton fx:id="modifyTravel" layoutX="10.0" layoutY="243.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Modify Travel Ins." textFill="WHITE" />
+                  <JFXButton fx:id="delTravel" layoutX="10.0" layoutY="291.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Delete Travel Ins." textFill="WHITE" />
+                  <JFXButton fx:id="modifyLeisure" layoutX="10.0" layoutY="428.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Modify Leisure Ins." textFill="WHITE" />
+                  <JFXButton fx:id="delLeisure" layoutX="10.0" layoutY="473.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Delete Leisure Ins." textFill="WHITE" />
+                  <JFXButton fx:id="modifyBoat" layoutX="10.0" layoutY="609.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Modify Boat Ins." textFill="WHITE" />
+                  <JFXButton fx:id="delBoat" layoutX="10.0" layoutY="654.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Delete Boat Ins." textFill="WHITE" />
+                  <JFXButton fx:id="cancel" layoutX="10.0" layoutY="747.0" onAction="#handleButtonEvents" prefHeight="46.0" prefWidth="69.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
+                  <JFXButton fx:id="showHousehold" layoutX="10.0" layoutY="163.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Household Info" textFill="WHITE" />
+                  <JFXButton fx:id="showTravel" layoutX="10.0" layoutY="336.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Travel info" textFill="WHITE" />
+                  <JFXButton fx:id="showLeisure" layoutX="10.0" layoutY="517.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Leisure Info" textFill="WHITE" />
+                  <JFXButton fx:id="showBoat" layoutX="10.0" layoutY="695.0" onAction="#handleButtonEvents" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Show full Boat Info" textFill="WHITE" />
+                  <JFXTextArea fx:id="info" editable="false" focusColor="WHITE" labelFloat="true" layoutX="1085.0" layoutY="57.0" prefHeight="684.0" prefWidth="376.0" promptText="Info about the Selected Insurance" style="-fx-background-color: white;" unFocusColor="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </JFXTextArea>
+               </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

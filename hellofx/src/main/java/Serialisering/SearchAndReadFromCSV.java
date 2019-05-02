@@ -72,53 +72,70 @@ public class SearchAndReadFromCSV {
     private static BufferedReader y;
 
 
-    /*
-    public static void readRecordCustomer(String searchTerm, String filepath) {
+   /* public static void main(String[] args) {
+        String filepath = "trying.txt";
+        String searchTerm = "4444";
 
-        boolean found = false;
+        readRecord(searchTerm, filepath);
+
+    }*/
+
+   String filepath = "customer2.csv";
 
 
-        try {
-            x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
+   public static void checknextCustomer(){
+       personalID = x.next();
+       name = x.next();
+       phoneNumber = x.next();
+       email = x.next();
+       date = x.next();
+       billingAddress = x.next();
+       allCustomerInsurance = x.next();
+       unpaidReplacements = x.next();
+   }
 
-            while (x.hasNext() && !found) {
-                personalID = x.next();
-                name = x.next();
-                age = x.next();
-                phoneNumber = x.next();
-                email = x.next();
-                date = x.next();
-                billingAddress = x.next();
-                allCustomerInsurance = x.next();
-                unpaidReplacements = x.next();
+   public static void editCustomerRecord(String filepath, String editTerm, String newPersonalID, String newName, String newAge, String newPhone, String newEmail,
+                                         String newDate, String newBilling, String newAllInsurance, String newUnpaid){
+       String tempFile = "temp.txt";
+       File oldFile = new File(filepath);
+       File newFile = new File(tempFile);
 
-                if (personalID.equals(searchTerm) || name.equals(searchTerm) || age.equals(searchTerm)
-                        || phoneNumber.equals(searchTerm) || email.equals(searchTerm) || date.equals(searchTerm) || billingAddress.equals(searchTerm)
-                        || allCustomerInsurance.equals(searchTerm) || unpaidReplacements.equals(searchTerm)) {
-                    found = true;
-                }
-            }
+       try{
+           FileWriter fw = new FileWriter(tempFile, true);
+           BufferedWriter bw = new BufferedWriter(fw);
+           PrintWriter pw = new PrintWriter(bw);
 
-            if (found) {
-                System.out.println("PersonalID: " + personalID + "Name: " + name + "Age: " + age + "PhoneNumber: " + phoneNumber +
-                        "Email: " + email + "Date: " + date + "BillingAddress: " + billingAddress + "AllCustomerInsurances: "
-                        + allCustomerInsurance + "UnpaidReplacements: " + unpaidReplacements);
-            } else {
-                System.out.println("Search term not found!");
-            }
-        } catch (Exception e) {
+           x = new Scanner(new File(filepath));
+           x.useDelimiter("[,\n]");
 
-        }
+           while(x.hasNext()){
+               checknextCustomer();
 
-    }
-    
-     */
+               if (personalID.equals(editTerm) ) {
+                   pw.println( newPersonalID + ", " + newName + ", " + newAge + "," + newPhone +
+                           "," + newEmail + "," + newDate + "," + newBilling + ","
+                           + newAllInsurance + "," + newUnpaid);
+               }
+               else {
+                   pw.println( personalID + ", " + name + ", " + age + "," + phoneNumber +
+                           "," + email + "," + date + "," + billingAddress + ","
+                           + allCustomerInsurance + "," + unpaidReplacements);
+               }
+           }
+           x.close();
+           pw.flush();
+           pw.close();
+           oldFile.delete();
+           File dump = new File(filepath);
+           newFile.renameTo(dump);
 
-    /**
-     * Method that deletes a Customer object from the csv file with the matching searchterm
-     * @param searchterm
-     */
+       }
+       catch(Exception e){
+
+       }
+   }
+
+
     public static void deleteCustomerFromCsv(String searchterm) {
 
 
@@ -394,17 +411,11 @@ public class SearchAndReadFromCSV {
      * @param searchterm
      */
     public static void deleteHouseholdFromCsv(String searchterm) {
-
-
         String filepath = System.getProperty("user.home") + "/houseInsurance.csv";
-
         String tempfile = "temp.txt";
         File oldFile = new File(filepath);
         File newfile = new File(tempfile);
-
         boolean found = false;
-
-
         try {
             FileWriter fw = new FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -412,7 +423,6 @@ public class SearchAndReadFromCSV {
 
             x = new Scanner(new File(filepath));
             x.useDelimiter("[,\n]");
-
             while (x.hasNext()) {
                 personalID = x.next();
                 yearlyInsurnacePremium = x.next();
@@ -428,12 +438,10 @@ public class SearchAndReadFromCSV {
                 insurnceAmountForConstruction = x.next();
                 insurnaceAmountForHousehold = x.next();
 
-
                 if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + propertyOwner + "," +
                             yearOfConstruction + "," + residentialType + "," + constructionMaterial + "," + condition + "," + numberOfSquareMeters + "," + insurnceAmountForConstruction + "," + insurnaceAmountForHousehold);
                 }
-
             }
             x.close();
             pw.flush();
@@ -448,7 +456,4 @@ public class SearchAndReadFromCSV {
         }
 
     }
-
-
-
 }

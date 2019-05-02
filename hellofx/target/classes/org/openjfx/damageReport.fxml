@@ -25,22 +25,25 @@
                </font>
             </Label>
             <JFXButton fx:id="btn_create" layoutX="37.0" layoutY="146.0" onAction="#createDamageReport" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create New Report" textFill="WHITE" />
-            <JFXButton fx:id="btn_edit" layoutX="37.0" layoutY="251.0" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Edit Report" textFill="WHITE" />
+            <JFXButton fx:id="btn_edit" layoutX="37.0" layoutY="251.0" onAction="#editReport" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Edit Report" textFill="WHITE" />
             <JFXButton fx:id="btn_showDescription" layoutX="37.0" layoutY="354.0" onAction="#show" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Description" textFill="WHITE" />
             <JFXButton fx:id="btn_delete" layoutX="37.0" layoutY="459.0" onAction="#delete" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Delete Report" textFill="WHITE" />
             <JFXButton fx:id="btn_goBack" layoutX="66.0" layoutY="562.0" onAction="#goBackPressed" prefHeight="45.0" prefWidth="77.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Go Back" textFill="WHITE" />
-            <JFXTextArea fx:id="desciption" editable="false" layoutX="335.0" layoutY="354.0" prefHeight="285.0" prefWidth="603.0" promptText="Desciption of Damage Report: " style="-fx-background-color: white;" unFocusColor="WHITE">
+            <JFXTextArea fx:id="desciption" editable="false" layoutX="221.0" layoutY="357.0" prefHeight="285.0" prefWidth="795.0" promptText="Desciption of Damage Report: " style="-fx-background-color: white;" unFocusColor="WHITE">
                <effect>
                   <InnerShadow />
                </effect>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </JFXTextArea>
-            <TableView fx:id="damageTableView" layoutX="335.0" layoutY="107.0" prefHeight="230.0" prefWidth="604.0">
+            <TableView fx:id="damageTableView" layoutX="221.0" layoutY="107.0" prefHeight="230.0" prefWidth="793.0">
               <columns>
-                <TableColumn fx:id="dmgType" prefWidth="154.0" text="Damage Type" />
-                <TableColumn fx:id="dmgNr" prefWidth="82.0" text="Damage Nr" />
-                  <TableColumn fx:id="dmgDate" prefWidth="116.0" text="Date of Damage" />
-                  <TableColumn fx:id="tax" prefWidth="94.0" text="Tax Amount" />
-                  <TableColumn fx:id="unpaid" prefWidth="157.0" text="Unpaid Replacements" />
+                <TableColumn fx:id="dmgType" onEditCommit="#onEditDamageType" prefWidth="132.0" text="Damage Type" />
+                <TableColumn fx:id="dmgDescription" onEditCommit="#onEditDamageDesc" prefWidth="183.0" text="Damage Description" />
+                  <TableColumn fx:id="dmgNr" onEditCommit="#onEditDamageNr" prefWidth="141.0" text="Damage Nr" />
+                  <TableColumn fx:id="potentialWitnesses" onEditCommit="#onEditWitnesses" prefWidth="188.0" text="Potential Witnesses" />
+                  <TableColumn fx:id="unpaid" prefWidth="148.0" text="Unpaid Replacements" />
               </columns>
             </TableView>
          </children>
