@@ -59,17 +59,17 @@ public class OpenFileChooser {
         File file = chooser.showSaveDialog(stage);
 
         String s = file.getName().split("\\.")[1];
-/*        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
+        ObservableList<Customer> customers = CsvReader.read();
+        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
         ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureWithCustomer();
         ObservableList<Boat_Insurance> boat = CsvReader.readBoatWithCustomer();
-        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();*/
+        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();
 
         File directory = new File (file.getPath().split("\\.")[0]);
         if (!directory.exists()) {
             directory.mkdir();
         }
         if (s.equals("csv")) {
-            ObservableList<Customer> customers = CsvReader.read();
             ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
             ArrayList<String> boat_insurances = CsvReader.readAllBoat();
             ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
@@ -98,7 +98,7 @@ public class OpenFileChooser {
         }
         if (s.equals("jobj")) {
             String path = file.getPath().split("\\.")[0];
-/*
+
             for (Customer customer : customers) {
                 Serialization.serialiseCustomer(customer,"customers.jobj");
             }
@@ -117,7 +117,7 @@ public class OpenFileChooser {
             }
             for (Boat_Insurance boatIn : boat) {
                 Serialization.serialiseInsurance(boatIn,"boat.jobj");
-            }*/
+            }
         }
     }
 }
