@@ -384,4 +384,16 @@ public class CsvReader {
         }
         return values;
     }
+/*
+    public static ObservableList<Insurance> readInsurnaceJobj(ArrayList<String> insurances, String type){
+        if (type.equals("boat")){
+            ObservableList<Boat_Insurance> boat_insurances = FXCollections.observableArrayList();
+            insurances = readAllBoat();
+            for (String insurance : insurances) {
+                boat_insurances.add(insurance);
+            }
+        }
+    }
+
+ */
 }

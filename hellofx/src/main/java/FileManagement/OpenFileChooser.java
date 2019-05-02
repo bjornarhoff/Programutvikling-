@@ -2,6 +2,11 @@ package FileManagement;
 
 import CustomerModell.Customer;
 import Exceptions.ExceptionHandler;
+import Insurances.Boat_Insurance;
+import Insurances.House_Household_Insurance;
+import Insurances.Leisure_Insurance;
+import Insurances.Travel_Insurance;
+import Serialisering.Serialization;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -55,6 +60,13 @@ public class OpenFileChooser {
 
         String s = file.getName().split("\\.")[1];
         ObservableList<Customer> customers = CsvReader.read();
+
+        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
+        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureWithCustomer();
+        ObservableList<Boat_Insurance> boat = CsvReader.readBoatWithCustomer();
+        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();
+
+
         ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
         ArrayList<String> boat_insurances = CsvReader.readAllBoat();
         ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
@@ -82,8 +94,28 @@ public class OpenFileChooser {
                 CsvWriter.writeFileToCsv(path + "Damage.csv", damage_report);
             }
         }
-        if (s.equals("ser")) {
-            System.out.println("Fuck off");
+        if (s.equals("jobj")) {
+            String path = file.getPath().split("\\.")[0];
+
+            for (Customer customer : customers) {
+                Serialization.serialiseCustomer(customer,"customers.jobj");
+            }
+
+            for (House_Household_Insurance houseIn : house) {
+                Serialization.serialiseInsurance(houseIn,"house.jobj");
+            }
+
+
+            for (Leisure_Insurance leisureIn : leisure) {
+                Serialization.serialiseInsurance(leisureIn,"leisure.jobj");
+            }
+
+            for (Travel_Insurance travelIn : travel) {
+                Serialization.serialiseInsurance(travelIn,"travel.jobj");
+            }
+            for (Boat_Insurance boatIn : boat) {
+                Serialization.serialiseInsurance(boatIn,"boat.jobj");
+            }
         }
     }
 
