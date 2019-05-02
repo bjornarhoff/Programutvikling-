@@ -5,12 +5,12 @@ import Damages.Damage_Report;
 import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
 import java.util.Date;
@@ -28,10 +28,10 @@ public class CreateDamageReportController {
     private Label customerLabel;
 
     @FXML
-    private JFXTextField txt_damageType, damageNr, taxAmount, unpaidReplacements;
+    private JFXTextField txt_damageType, damageNr, taxAmount, unpaidReplacements,txta_DaDescription,txta_potWitnesses;
 
     @FXML
-    private TextArea txta_DaDescription, txta_potWitnesses, txta_info;
+    private JFXTextArea txta_info;
 
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;

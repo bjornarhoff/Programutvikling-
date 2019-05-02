@@ -22,10 +22,7 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <JFXTextField fx:id="txt_damageType" focusColor="BLACK" labelFloat="true" layoutX="15.0" layoutY="126.0" prefHeight="38.0" prefWidth="183.0" promptText="Damage Type" unFocusColor="BLACK" />
-            <JFXTextArea fx:id="txta_DaDescription" focusColor="BLACK" labelFloat="true" layoutX="14.0" layoutY="229.0" prefHeight="90.0" prefWidth="270.0" promptText="Damage Description: " unFocusColor="BLACK" />
-            <JFXTextArea fx:id="txta_potWitnesses" focusColor="BLACK" labelFloat="true" layoutX="14.0" layoutY="370.0" prefHeight="104.0" prefWidth="270.0" promptText="Contact of potenial Witnesses:" unFocusColor="BLACK" />
-            <JFXTextArea fx:id="txta_info" editable="false" layoutX="377.0" layoutY="154.0" prefHeight="473.0" prefWidth="715.0" promptText="Infromation about the Created Customer:" style="-fx-background-color: white;">
+            <JFXTextArea fx:id="txta_info" editable="false" layoutX="363.0" layoutY="126.0" prefHeight="473.0" prefWidth="715.0" promptText="Information about the Created Customer:" style="-fx-background-color: white;">
                <effect>
                   <InnerShadow />
                </effect>
@@ -33,11 +30,14 @@
                   <Font size="18.0" />
                </font>
             </JFXTextArea>
-            <JFXButton fx:id="btn_cancel" layoutX="377.0" layoutY="644.0" onAction="#cancel" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
-            <JFXButton fx:id="btn_apply" layoutX="1022.0" layoutY="644.0" onAction="#apply" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
-            <JFXTextField fx:id="damageNr" focusColor="BLACK" layoutX="16.0" layoutY="531.0" prefHeight="27.0" prefWidth="227.0" promptText="Damage Number" />
-            <JFXTextField fx:id="taxAmount" focusColor="BLACK" layoutX="15.0" layoutY="627.0" prefHeight="27.0" prefWidth="228.0" promptText="Taxation amount of damage" />
-            <JFXTextField fx:id="unpaidReplacements" focusColor="BLACK" layoutX="16.0" layoutY="715.0" prefHeight="27.0" prefWidth="226.0" promptText="Unpaid Replacements Amount" />
+            <JFXButton fx:id="btn_cancel" layoutX="16.0" layoutY="600.0" onAction="#cancel" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel" textFill="WHITE" />
+            <JFXButton fx:id="btn_apply" layoutX="242.0" layoutY="600.0" onAction="#apply" prefHeight="44.0" prefWidth="67.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Apply" textFill="WHITE" />
+            <JFXTextField fx:id="txt_damageType" focusColor="BLACK" labelFloat="true" layoutX="15.0" layoutY="126.0" prefHeight="38.0" prefWidth="183.0" promptText="Damage Type" unFocusColor="BLACK" />
+            <JFXTextField fx:id="txta_DaDescription" focusColor="BLACK" labelFloat="true" layoutX="14.0" layoutY="206.0" prefHeight="37.0" prefWidth="270.0" promptText="Damage Description: " unFocusColor="BLACK" />
+            <JFXTextField fx:id="txta_potWitnesses" focusColor="BLACK" labelFloat="true" layoutX="14.0" layoutY="287.0" prefHeight="38.0" prefWidth="270.0" promptText="Contact of potenial Witnesses:" unFocusColor="BLACK" />
+            <JFXTextField fx:id="damageNr" focusColor="BLACK" layoutX="16.0" layoutY="371.0" prefHeight="27.0" prefWidth="227.0" promptText="Damage Number" />
+            <JFXTextField fx:id="taxAmount" focusColor="BLACK" layoutX="15.0" layoutY="441.0" prefHeight="27.0" prefWidth="228.0" promptText="Taxation amount of damage" />
+            <JFXTextField fx:id="unpaidReplacements" focusColor="BLACK" layoutX="16.0" layoutY="517.0" prefHeight="27.0" prefWidth="226.0" promptText="Unpaid Replacements Amount" />
          </children>
       </AnchorPane>
    </left>
