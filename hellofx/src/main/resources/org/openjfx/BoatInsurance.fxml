@@ -33,8 +33,8 @@
                             </effect></AnchorPane>
                         <AnchorPane style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
                             <children>
-                                <JFXButton fx:id="btn_Household" layoutY="140.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Household Insurnace" />
-                                <JFXButton fx:id="btn_Leisure" layoutY="210.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Leisure Insurancce" />
+                                <JFXButton fx:id="btn_Household" layoutY="140.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Household Insurance" />
+                                <JFXButton fx:id="btn_Leisure" layoutY="210.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Leisure Insurance" />
                                 <JFXButton fx:id="btn_Boat" layoutY="350.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: black;" text="Boat Insurance" textFill="WHITE" />
                                 <JFXButton fx:id="btn_Travel" layoutY="280.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Travel Insurance" />
                             </children>
@@ -44,7 +44,7 @@
                         </AnchorPane>
                         <AnchorPane style="-fx-background-color: #F6E0;" GridPane.columnIndex="2">
                             <children>
-                        <Label layoutX="50.0" layoutY="34.0" prefHeight="50.0" prefWidth="381.0" text="Create boat insurnace for customer: " textFill="#b9b7b7">
+                        <Label layoutX="50.0" layoutY="34.0" prefHeight="50.0" prefWidth="381.0" text="Create boat insurance for customer: " textFill="#b9b7b7">
                            <font>
                               <Font name="Times New Roman" size="26.0" />
                            </font>
