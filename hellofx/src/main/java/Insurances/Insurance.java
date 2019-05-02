@@ -17,6 +17,7 @@ public abstract class Insurance implements Serializable {
 
     /**
      * Default abstract Constructor for Insurances
+     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -37,7 +38,7 @@ public abstract class Insurance implements Serializable {
      */
     @Override
     public String toString() {
-        return  "\nYearlyInsurancePremium: " + yearlyInsurancePremium +
+        return "\nYearlyInsurancePremium: " + yearlyInsurancePremium +
                 "\nDateOfCreatedInsurance: " + dateOfCreatedInsurance +
                 "\ninsuranceAmount: " + insuranceAmount +
                 "\nInsuranceConditions: " + insuranceConditions;
@@ -55,13 +56,6 @@ public abstract class Insurance implements Serializable {
     }
 
     /**
-     * @param yearlyInsurancePremium
-     */
-    public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
-        this.yearlyInsurancePremium = yearlyInsurancePremium;
-    }
-
-    /**
      * @return yearlyInsurancePremium
      */
     public String getYearlyInsurancePremium() {
@@ -69,10 +63,10 @@ public abstract class Insurance implements Serializable {
     }
 
     /**
-     * @param dateOfCreatedInsurance
+     * @param yearlyInsurancePremium
      */
-    public void setDateOfCreatedInsurance(String dateOfCreatedInsurance) {
-        this.dateOfCreatedInsurance = dateOfCreatedInsurance;
+    public void setYearlyInsurancePremium(String yearlyInsurancePremium) {
+        this.yearlyInsurancePremium = yearlyInsurancePremium;
     }
 
     /**
@@ -83,10 +77,10 @@ public abstract class Insurance implements Serializable {
     }
 
     /**
-     * @param insuranceAmount
+     * @param dateOfCreatedInsurance
      */
-    public void setInsuranceAmount(int insuranceAmount) {
-        this.insuranceAmount = insuranceAmount;
+    public void setDateOfCreatedInsurance(String dateOfCreatedInsurance) {
+        this.dateOfCreatedInsurance = dateOfCreatedInsurance;
     }
 
     /**
@@ -97,10 +91,10 @@ public abstract class Insurance implements Serializable {
     }
 
     /**
-     * @param insuranceConditions
+     * @param insuranceAmount
      */
-    public void setInsuranceConditions(String insuranceConditions) {
-        this.insuranceConditions = insuranceConditions;
+    public void setInsuranceAmount(int insuranceAmount) {
+        this.insuranceAmount = insuranceAmount;
     }
 
     /**
@@ -108,6 +102,13 @@ public abstract class Insurance implements Serializable {
      */
     public String getInsuranceConditions() {
         return this.insuranceConditions;
+    }
+
+    /**
+     * @param insuranceConditions
+     */
+    public void setInsuranceConditions(String insuranceConditions) {
+        this.insuranceConditions = insuranceConditions;
     }
 
     /**

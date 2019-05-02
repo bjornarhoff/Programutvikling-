@@ -1,4 +1,5 @@
 package Insurances;
+
 import CustomerModell.Customer;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class House_Household_Insurance extends Insurance {
 
     /**
      * Default Constructor for Household Object
+     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -55,7 +57,7 @@ public class House_Household_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return  "\nHOUSEHOLD INSURANCE" +
+        return "\nHOUSEHOLD INSURANCE" +
                 "\nPropertyOwner: " + propertyOwner +
                 "\nYearOfConstruction: " + yearOfConstruction +
                 "\nResidentialType: " + residentialType +
@@ -70,7 +72,7 @@ public class House_Household_Insurance extends Insurance {
     /**
      * @return Household object in csv String format
      */
-    public String toCSVStringHousehold(){
+    public String toCSVStringHousehold() {
         return super.toCSVStringInsurnce() + "," +
                 propertyOwner + "," +
                 String.valueOf(yearOfConstruction) + "," +
@@ -83,13 +85,6 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param propertyOwner
-     */
-    public void setPropertyOwner(String propertyOwner) {
-        this.propertyOwner = propertyOwner;
-    }
-
-    /**
      * @return propertyOwner
      */
     public String getPropertyOwner() {
@@ -97,10 +92,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param yearOfConstruction
+     * @param propertyOwner
      */
-    public void setYearOfConstruction(int yearOfConstruction) {
-        this.yearOfConstruction = yearOfConstruction;
+    public void setPropertyOwner(String propertyOwner) {
+        this.propertyOwner = propertyOwner;
     }
 
     /**
@@ -111,10 +106,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param residentialType
+     * @param yearOfConstruction
      */
-    public void setResidentialType(String residentialType) {
-        this.residentialType = residentialType;
+    public void setYearOfConstruction(int yearOfConstruction) {
+        this.yearOfConstruction = yearOfConstruction;
     }
 
     /**
@@ -125,10 +120,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param constructionMaterial
+     * @param residentialType
      */
-    public void setConstructionMaterial(String constructionMaterial) {
-        this.constructionMaterial = constructionMaterial;
+    public void setResidentialType(String residentialType) {
+        this.residentialType = residentialType;
     }
 
     /**
@@ -139,10 +134,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param condition
+     * @param constructionMaterial
      */
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setConstructionMaterial(String constructionMaterial) {
+        this.constructionMaterial = constructionMaterial;
     }
 
     /**
@@ -153,10 +148,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param numberOfSquareMeters
+     * @param condition
      */
-    public void setNumberOfSquareMeters(double numberOfSquareMeters) {
-        this.numberOfSquareMeters = numberOfSquareMeters;
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     /**
@@ -167,10 +162,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param insuranceAmountForConstruction
+     * @param numberOfSquareMeters
      */
-    public void setInsuranceAmountForConstruction(int insuranceAmountForConstruction) {
-        this.insuranceAmountForConstruction = insuranceAmountForConstruction;
+    public void setNumberOfSquareMeters(double numberOfSquareMeters) {
+        this.numberOfSquareMeters = numberOfSquareMeters;
     }
 
     /**
@@ -181,10 +176,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @param insuranceAmountForHousehold
+     * @param insuranceAmountForConstruction
      */
-    public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
-        this.insuranceAmountForHousehold = insuranceAmountForHousehold;
+    public void setInsuranceAmountForConstruction(int insuranceAmountForConstruction) {
+        this.insuranceAmountForConstruction = insuranceAmountForConstruction;
     }
 
     /**
@@ -192,6 +187,13 @@ public class House_Household_Insurance extends Insurance {
      */
     public int getInsuranceAmountForHousehold() {
         return this.insuranceAmountForHousehold;
+    }
+
+    /**
+     * @param insuranceAmountForHousehold
+     */
+    public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
+        this.insuranceAmountForHousehold = insuranceAmountForHousehold;
     }
 
 }

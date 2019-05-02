@@ -17,6 +17,7 @@ public class Boat_Insurance extends Insurance {
 
     /**
      * Default Constructor for Boat Object
+     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -48,7 +49,7 @@ public class Boat_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return  "\nBOAT INSURANCE" +
+        return "\nBOAT INSURANCE" +
                 "\nOwner: " + owner +
                 "\nRegisterNr: " + registerNr +
                 "\nBoatTypeAndMOdel: " + boatTypeAndModel +
@@ -60,9 +61,10 @@ public class Boat_Insurance extends Insurance {
 
     /**
      * toString method for csv file
+     *
      * @return Boat object
      */
-    public String toCSVStringBoat(){
+    public String toCSVStringBoat() {
         return super.toCSVStringInsurnce() + "," +
                 owner + "," +
                 String.valueOf(registerNr) + "," +
@@ -74,14 +76,6 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param owner
-     */
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    /**
-     *
      * @return owner
      */
     public String getOwner() {
@@ -89,10 +83,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param registerNr
+     * @param owner
      */
-    public void setRegisterNr(String registerNr) {
-        this.registerNr = registerNr;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     /**
@@ -103,10 +97,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param boatTypeAndModel
+     * @param registerNr
      */
-    public void setBoatTypeAndModel(String boatTypeAndModel) {
-        this.boatTypeAndModel = boatTypeAndModel;
+    public void setRegisterNr(String registerNr) {
+        this.registerNr = registerNr;
     }
 
     /**
@@ -117,10 +111,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param lengthInFoot
+     * @param boatTypeAndModel
      */
-    public void setLengthInFoot(double lengthInFoot) {
-        this.lengthInFoot = lengthInFoot;
+    public void setBoatTypeAndModel(String boatTypeAndModel) {
+        this.boatTypeAndModel = boatTypeAndModel;
     }
 
     /**
@@ -131,10 +125,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param year
+     * @param lengthInFoot
      */
-    public void setYear(int year) {
-        this.year = year;
+    public void setLengthInFoot(double lengthInFoot) {
+        this.lengthInFoot = lengthInFoot;
     }
 
     /**
@@ -145,10 +139,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @param motorTypeAndMotorPower
+     * @param year
      */
-    public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
-        this.motorTypeAndMotorPower = motorTypeAndMotorPower;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     /**
@@ -156,6 +150,13 @@ public class Boat_Insurance extends Insurance {
      */
     public String getMotorTypeAndMotorPower() {
         return this.motorTypeAndMotorPower;
+    }
+
+    /**
+     * @param motorTypeAndMotorPower
+     */
+    public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
+        this.motorTypeAndMotorPower = motorTypeAndMotorPower;
     }
 
 }

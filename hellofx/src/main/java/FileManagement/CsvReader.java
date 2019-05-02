@@ -163,7 +163,7 @@ public class CsvReader {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/damageReport.csv"))) {
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 values.add(line);
             }
         } catch (IOException e) {
@@ -216,7 +216,7 @@ public class CsvReader {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/houseInsurance.csv"))) {
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 values.add(line);
             }
         } catch (IOException e) {
@@ -266,7 +266,7 @@ public class CsvReader {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/travelInsurnace.csv"))) {
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 values.add(line);
             }
         } catch (IOException e) {
@@ -321,7 +321,7 @@ public class CsvReader {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/boatInsurance.csv"))) {
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 values.add(line);
             }
         } catch (IOException e) {
@@ -376,7 +376,7 @@ public class CsvReader {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/LeisureInsurnace.csv"))) {
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 values.add(line);
             }
         } catch (IOException e) {
@@ -384,4 +384,16 @@ public class CsvReader {
         }
         return values;
     }
+/*
+    public static ObservableList<Insurance> readInsurnaceJobj(ArrayList<String> insurances, String type){
+        if (type.equals("boat")){
+            ObservableList<Boat_Insurance> boat_insurances = FXCollections.observableArrayList();
+            insurances = readAllBoat();
+            for (String insurance : insurances) {
+                boat_insurances.add(insurance);
+            }
+        }
+    }
+
+ */
 }

@@ -1,4 +1,5 @@
 package Serialisering;
+
 import javax.swing.*;
 import java.io.*;
 import java.util.Scanner;
@@ -80,60 +81,58 @@ public class SearchAndReadFromCSV {
 
     }*/
 
-   String filepath = "customer2.csv";
+    String filepath = "customer2.csv";
 
 
-   public static void checknextCustomer(){
-       personalID = x.next();
-       name = x.next();
-       phoneNumber = x.next();
-       email = x.next();
-       date = x.next();
-       billingAddress = x.next();
-       allCustomerInsurance = x.next();
-       unpaidReplacements = x.next();
-   }
+    public static void checknextCustomer() {
+        personalID = x.next();
+        name = x.next();
+        phoneNumber = x.next();
+        email = x.next();
+        date = x.next();
+        billingAddress = x.next();
+        allCustomerInsurance = x.next();
+        unpaidReplacements = x.next();
+    }
 
-   public static void editCustomerRecord(String filepath, String editTerm, String newPersonalID, String newName, String newAge, String newPhone, String newEmail,
-                                         String newDate, String newBilling, String newAllInsurance, String newUnpaid){
-       String tempFile = "temp.txt";
-       File oldFile = new File(filepath);
-       File newFile = new File(tempFile);
+    public static void editCustomerRecord(String filepath, String editTerm, String newPersonalID, String newName, String newAge, String newPhone, String newEmail,
+                                          String newDate, String newBilling, String newAllInsurance, String newUnpaid) {
+        String tempFile = "temp.txt";
+        File oldFile = new File(filepath);
+        File newFile = new File(tempFile);
 
-       try{
-           FileWriter fw = new FileWriter(tempFile, true);
-           BufferedWriter bw = new BufferedWriter(fw);
-           PrintWriter pw = new PrintWriter(bw);
+        try {
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
 
-           x = new Scanner(new File(filepath));
-           x.useDelimiter("[,\n]");
+            x = new Scanner(new File(filepath));
+            x.useDelimiter("[,\n]");
 
-           while(x.hasNext()){
-               checknextCustomer();
+            while (x.hasNext()) {
+                checknextCustomer();
 
-               if (personalID.equals(editTerm) ) {
-                   pw.println( newPersonalID + ", " + newName + ", " + newAge + "," + newPhone +
-                           "," + newEmail + "," + newDate + "," + newBilling + ","
-                           + newAllInsurance + "," + newUnpaid);
-               }
-               else {
-                   pw.println( personalID + ", " + name + ", " + age + "," + phoneNumber +
-                           "," + email + "," + date + "," + billingAddress + ","
-                           + allCustomerInsurance + "," + unpaidReplacements);
-               }
-           }
-           x.close();
-           pw.flush();
-           pw.close();
-           oldFile.delete();
-           File dump = new File(filepath);
-           newFile.renameTo(dump);
+                if (personalID.equals(editTerm)) {
+                    pw.println(newPersonalID + ", " + newName + ", " + newAge + "," + newPhone +
+                            "," + newEmail + "," + newDate + "," + newBilling + ","
+                            + newAllInsurance + "," + newUnpaid);
+                } else {
+                    pw.println(personalID + ", " + name + ", " + age + "," + phoneNumber +
+                            "," + email + "," + date + "," + billingAddress + ","
+                            + allCustomerInsurance + "," + unpaidReplacements);
+                }
+            }
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            File dump = new File(filepath);
+            newFile.renameTo(dump);
 
-       }
-       catch(Exception e){
+        } catch (Exception e) {
 
-       }
-   }
+        }
+    }
 
 
     public static void deleteCustomerFromCsv(String searchterm) {
@@ -179,6 +178,7 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Damage Report from the csv file with the matching searchterm
+     *
      * @param searchterm
      */
     public static void deleteDamageReportFromCsv(String searchterm) {
@@ -234,6 +234,7 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deltes the Leisure object from the csv file with the matching searchterm
+     *
      * @param searchterm
      */
     public static void deleteLeisureFromCsv(String searchterm) {
@@ -295,6 +296,7 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Boat object from the csv file with the matching searchterm
+     *
      * @param searchterm
      */
     public static void deleteBoatFromCsv(String searchterm) {
@@ -353,6 +355,7 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Travel object from the csv with the matching searchterm
+     *
      * @param searchterm
      */
     public static void deleteTravelFromCsv(String searchterm) {
@@ -385,7 +388,6 @@ public class SearchAndReadFromCSV {
                 insurnceSum = x.next();
 
 
-
                 if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + insurnaceArea + "," +
                             insurnceSum);
@@ -408,6 +410,7 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes a Household object from the csv file with the matching searchterm
+     *
      * @param searchterm
      */
     public static void deleteHouseholdFromCsv(String searchterm) {
