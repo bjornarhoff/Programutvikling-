@@ -13,7 +13,7 @@
    <center>
       <AnchorPane fx:id="anchorPane" prefHeight="633.0" prefWidth="963.0" style="-fx-background-color: #8C7365;">
          <children>
-            <Pane prefHeight="393.0" prefWidth="594.0" style="-fx-background-color: #8C7365;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane prefHeight="393.0" prefWidth="594.0" style="-fx-background-color: #F0F7FF #F0F7FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <JFXTextField fx:id="name" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="50.0" promptText="Name" unFocusColor="BLACK" />
                   <JFXTextField fx:id="personalID" focusColor="BLACK" labelFloat="true" layoutX="33.0" layoutY="115.0" promptText="Personal ID" unFocusColor="BLACK" />

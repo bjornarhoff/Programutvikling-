@@ -42,32 +42,32 @@
                                 <InnerShadow radius="20.317500000000003" width="62.27" />
                             </effect>
                         </AnchorPane>
-                  <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #6D6875;" GridPane.columnIndex="2">
+                  <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #F6E0;" GridPane.columnIndex="2">
                      <children>
-                         <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="323.0" text="Create insurance for customer:" textFill="WHITE">
+                         <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="435.0" text="Create household insurance for customer:" textFill="#b9b7b7">
+                             <font>
+                                 <Font name="Times New Roman" size="26.0" />
+                             </font>
+                         </Label>
+                         <Label fx:id="customerLabel" layoutX="483.0" layoutY="20.0" prefHeight="53.0" prefWidth="344.0" textFill="#b8b6b6">
                              <font>
                                  <Font size="20.0" />
                              </font>
                          </Label>
-                         <Label fx:id="customerLabel" layoutX="338.0" layoutY="13.0" prefHeight="65.0" prefWidth="323.0" textFill="WHITE">
-                             <font>
-                                 <Font size="20.0" />
-                             </font>
-                         </Label>
-                        <JFXTextField fx:id="propertyOwner" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Property Owner" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="yearConstruction" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Year of Construction" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="residentialType" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Residential Type" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="constMaterial" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="conditions" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="360.0" prefHeight="27.0" prefWidth="340.0" promptText="Condition" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="nrSquareMeters" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="430.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="amountForConstruction" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="521.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="amountForHousehold" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="600.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="yearlyPremium" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="672.0" prefHeight="27.0" prefWidth="340.0" promptText="yearlyPremium" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="InsuranceAmount" focusColor="WHITE" labelFloat="true" layoutX="464.0" layoutY="81.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="InsuranceConditions" focusColor="WHITE" labelFloat="true" layoutX="464.0" layoutY="155.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" unFocusColor="BLACK" />
-                        <JFXTextArea fx:id="info" editable="false" labelFloat="true" layoutX="464.0" layoutY="219.0" prefHeight="575.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #C5D1EB;">
+                        <JFXTextField fx:id="propertyOwner" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Property Owner" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="yearConstruction" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Year of Construction" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="residentialType" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="220.0" prefHeight="27.0" prefWidth="340.0" promptText="Residential Type" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="constMaterial" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="290.0" prefHeight="27.0" prefWidth="340.0" promptText="Construction Material" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="conditions" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="360.0" prefHeight="27.0" prefWidth="340.0" promptText="Condition" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="nrSquareMeters" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="430.0" prefHeight="27.0" prefWidth="340.0" promptText="Number of Square Meters" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="amountForConstruction" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="521.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Construction" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="amountForHousehold" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="600.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Amount for Household" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="yearlyPremium" focusColor="BLACK" labelFloat="true" layoutX="37.0" layoutY="672.0" prefHeight="27.0" prefWidth="340.0" promptText="yearlyPremium" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="InsuranceAmount" focusColor="BLACK" labelFloat="true" layoutX="464.0" layoutY="81.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceAmount" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="InsuranceConditions" focusColor="BLACK" labelFloat="true" layoutX="464.0" layoutY="155.0" prefHeight="27.0" prefWidth="340.0" promptText="InsuranceConditions" unFocusColor="BLACK" />
+                        <JFXTextArea fx:id="info" editable="false" labelFloat="true" layoutX="464.0" layoutY="219.0" prefHeight="575.0" prefWidth="506.0" promptText="Info about Household Insurance" style="-fx-background-color: #F6E0;">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Times New Roman" size="19.0" />
                            </font>
                         </JFXTextArea>
                         <JFXButton fx:id="btn_cancel" layoutX="40.0" layoutY="748.0" onAction="#cancel" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Go Back" textFill="WHITE">
