@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import Damages.Damage_Report;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
@@ -16,6 +17,8 @@ import Insurances.Boat_Insurance;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
+
+import java.io.Console;
 
 
 public class ALLInsurancesController {
@@ -73,25 +76,33 @@ public class ALLInsurancesController {
 
 
     /**
-     * Method that converts String to Integer and from String to Integer
+     * Method that converts String to Integer and from String to Integer and handles
      */
-    private static StringConverter<Integer> converter = new StringConverter<>() {
+    private static StringConverter<Integer> converter = new StringConverter<>(){
         @Override
-        public String toString(Integer object) {
+        public String toString(Integer object) throws NumberFormatException{
             return Integer.toString(object);
         }
 
         @Override
-        public Integer fromString(String string) {
-            return Integer.parseInt(string);
+        public Integer fromString(String string) throws NumberFormatException {
+            try{
+                Integer.parseInt(string);
+                return Integer.parseInt(string);
+
+            }catch(NumberFormatException e){
+                ExceptionHandler.alertBox("Wrong Input Provided", "Please provide only Numbers as input in this textfield", "Text filed Value is restored to 0");
+
+            }
+            return 0;
         }
+
     };
 
 
     /**
      * Initialize Method that starts the page with Table view data and disables buttons before a Table view is marked
      */
-
     @FXML
     private void initialize(){
        customerSelected.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
@@ -218,13 +229,13 @@ public class ALLInsurancesController {
      */
     public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
 
-        House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
-        if(CellEditEvent.getNewValue().equals(CellEditEvent.getNewValue()))
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setInsuranceAmount(CellEditEvent.getNewValue());
-        CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
-        tvHousehold.setEditable(false);
+            House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
+            SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+
+            householdIns.setInsuranceAmount(CellEditEvent.getNewValue());
+            CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
+            tvHousehold.setEditable(false);
 
     }
 
@@ -292,7 +303,12 @@ public class ALLInsurancesController {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue());
+        try {
+            householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue());
+        }catch(NumberFormatException e){
+            System.out.println("error caught");
+            ExceptionHandler.alertBox("wrong data type", "ladsfj", " please convert to a number");
+        }
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 

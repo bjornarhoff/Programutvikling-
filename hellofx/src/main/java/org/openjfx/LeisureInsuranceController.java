@@ -32,7 +32,7 @@ public class LeisureInsuranceController {
 
     @FXML
     private JFXTextField address, yearConstruction, constructionMaterial, residentialType, amountConstruction, nrSquareMeters,
-                        condition, amountHousehold, date, InsuranceConditions, yearlyPremium, InsuranceAmount;
+                        condition, amountHousehold, InsuranceConditions, yearlyPremium, InsuranceAmount;
 
     @FXML
     public JFXTextArea info;
@@ -72,7 +72,7 @@ public class LeisureInsuranceController {
             @Override
             public void handle(long l) {
                 boolean allFilled = handlerFxml.enableButton(btn_apply,address, yearConstruction, constructionMaterial, residentialType, amountConstruction, nrSquareMeters,
-                        condition, amountHousehold, date, InsuranceConditions, yearlyPremium, InsuranceAmount);
+                        condition, amountHousehold, InsuranceConditions, yearlyPremium, InsuranceAmount);
                 if (allFilled){
                     btn_apply.setDisable(false);
                 }else{
@@ -159,7 +159,6 @@ public class LeisureInsuranceController {
         nrSquareMeters.setText("");
         condition.setText("");
         amountHousehold.setText("");
-        date.setText("");
         InsuranceConditions.setText("");
         yearlyPremium.setText("");
         InsuranceAmount.setText("");

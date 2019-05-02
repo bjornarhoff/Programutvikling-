@@ -28,7 +28,7 @@ public class BoatInsuranceController {
     private JFXButton btn_Household, btn_Leisure, btn_Boat, btn_Travel, btn_cancel, btn_apply, btn_ok;
 
     @FXML
-    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions;
+    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions;
 
     @FXML
     private JFXTextArea info;
@@ -73,7 +73,7 @@ public class BoatInsuranceController {
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+                boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions);
                 if (allFilled){
                     btn_apply.setDisable(false);
                 }else{
@@ -132,7 +132,7 @@ public class BoatInsuranceController {
 
             info.setText(b1.toString());
 
-            handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+            handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions);
         }catch(Exception e){
             System.out.println("wrong data type");
         }

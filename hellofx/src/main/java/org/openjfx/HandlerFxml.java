@@ -93,7 +93,7 @@ public class HandlerFxml {
                                          TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table) {
         new Thread(() -> {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

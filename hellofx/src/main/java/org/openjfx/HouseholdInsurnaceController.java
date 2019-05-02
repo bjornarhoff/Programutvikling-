@@ -32,7 +32,7 @@ public class HouseholdInsurnaceController {
 
     @FXML
     private JFXTextField propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
-            conditions, amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions;
+            conditions, amountForHousehold, yearlyPremium, InsuranceAmount, InsuranceConditions;
 
     @FXML
     private JFXTextArea info;
@@ -48,8 +48,8 @@ public class HouseholdInsurnaceController {
         Matcher m2 = p.matcher(amountForHousehold.getText());
         Matcher m3 = p.matcher(InsuranceAmount.getText());
         Matcher m4 = p.matcher(nrSquareMeters.getText());
-        if(m.find() && m.group().equals(amountForConstruction.getText()) && m2.find() && m.group().equals(amountForHousehold.getText()) && m3.find() &&
-                m.group().equals(InsuranceAmount.getText()) && m4.find() && m.group().equals(nrSquareMeters.getText())){
+        if(m.find() && m.group().equals(amountForConstruction.getText()) && m2.find() && m2.group().equals(amountForHousehold.getText()) && m3.find() &&
+                m3.group().equals(InsuranceAmount.getText()) && m4.find() && m4.group().equals(nrSquareMeters.getText())){
             return true;
         }else{
             ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
@@ -69,7 +69,7 @@ public class HouseholdInsurnaceController {
             @Override
             public void handle(long l) {
                 boolean filled = handlerFxml.enableButton(btn_apply,propertyOwner, yearConstruction, residentialType, constMaterial,conditions, amountForConstruction, nrSquareMeters,
-                         amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions);
+                         amountForHousehold, yearlyPremium, InsuranceAmount, InsuranceConditions);
                 if (filled){
                     btn_apply.setDisable(false);
                 }else{
@@ -130,7 +130,7 @@ public class HouseholdInsurnaceController {
 
                 // Clear input
                 handlerFxml.clearInput(propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
-                        conditions, amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions);
+                        conditions, amountForHousehold, yearlyPremium, InsuranceAmount, InsuranceConditions);
             }catch(Exception e){
                 System.out.println("please enter right number");
             }

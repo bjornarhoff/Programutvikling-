@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,7 +27,7 @@ public class CreateDamageReportController {
     private Label customerLabel;
 
     @FXML
-    private JFXTextField txt_date, txt_damageType, damageNr, taxAmount, unpaidReplacements;
+    private JFXTextField txt_damageType, damageNr, taxAmount, unpaidReplacements;
 
     @FXML
     private TextArea txta_DaDescription, txta_potWitnesses, txta_info;
@@ -77,7 +78,7 @@ public class CreateDamageReportController {
         if(validateNumber())
         try {
 
-            Damage_Report damage_report = new Damage_Report(txt_date.getText(), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
+            Damage_Report damage_report = new Damage_Report(String.valueOf(new Date()), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
                     Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
 
             CsvWriter.writeDamageReport(damage_report);

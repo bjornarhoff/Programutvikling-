@@ -27,7 +27,7 @@ public class TravelInsurnaceController {
     private Pane entireScreenTravel;
 
     @FXML
-    private JFXTextField insuranceArea, insuranceSum, YearlyInsurance, date, InsuranceAmount, InsuranceConditions;
+    private JFXTextField insuranceArea, insuranceSum, YearlyInsurance, InsuranceAmount, InsuranceConditions;
 
     @FXML
     private JFXTextArea info;
@@ -67,7 +67,7 @@ public class TravelInsurnaceController {
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(btn_apply,insuranceArea, insuranceSum, YearlyInsurance, date, InsuranceAmount, InsuranceConditions);
+                boolean allFilled = handlerFxml.enableButton(btn_apply,insuranceArea, insuranceSum, YearlyInsurance, InsuranceAmount, InsuranceConditions);
                 if (allFilled){
                     btn_apply.setDisable(false);
                 }else{
@@ -147,7 +147,6 @@ public class TravelInsurnaceController {
         insuranceArea.setText("");
         insuranceSum.setText("");
         YearlyInsurance.setText("");
-        date.setText("");
         InsuranceAmount.setText("");
         InsuranceConditions.setText("");
     }

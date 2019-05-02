@@ -57,9 +57,8 @@
                                 <JFXTextField fx:id="insuranceArea" labelFloat="true" layoutX="40.0" layoutY="80.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Area" />
                                 <JFXTextField fx:id="insuranceSum" labelFloat="true" layoutX="40.0" layoutY="150.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Sum" />
                         <JFXTextField fx:id="YearlyInsurance" labelFloat="true" layoutX="40.0" layoutY="223.0" prefHeight="27.0" prefWidth="340.0" promptText="Yearly Insurance Premium" />
-                        <JFXTextField fx:id="date" labelFloat="true" layoutX="40.0" layoutY="297.0" prefHeight="27.0" prefWidth="340.0" promptText="Date for this Insurance" />
-                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="40.0" layoutY="372.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurnace Amount" />
-                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="40.0" layoutY="446.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
+                        <JFXTextField fx:id="InsuranceAmount" labelFloat="true" layoutX="40.0" layoutY="301.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurnace Amount" />
+                        <JFXTextField fx:id="InsuranceConditions" labelFloat="true" layoutX="40.0" layoutY="387.0" prefHeight="27.0" prefWidth="340.0" promptText="Insurance Conditions" />
                                 <JFXTextArea fx:id="info" editable="false" labelFloat="true" layoutX="460.0" layoutY="46.0" prefHeight="745.0" prefWidth="506.0" promptText="Info about Travel Insurance" style="-fx-background-color: #EDE8F7; -fx-background-radius: 15;">
                                     <font>
                                         <Font size="17.0" />
