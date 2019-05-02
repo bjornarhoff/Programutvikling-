@@ -17,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import FileManagement.CsvReader;
 
+import java.io.IOException;
+
 public class HomeInsuranceController {
 
 
@@ -91,7 +93,7 @@ public class HomeInsuranceController {
      * @param event
      */
     @FXML
-    private void handleExportClicked(ActionEvent event) {
+    private void handleExportClicked(ActionEvent event) throws IOException {
         openFileChooser.fileChooserExport(entireScreenInsurance);
     }
 
@@ -120,7 +122,7 @@ public class HomeInsuranceController {
      * Method that filters through the customer table view and shows the matching results
      * @param keyEvent
      */
-    public void search(KeyEvent keyEvent) {
+    public void search(KeyEvent keyEvent) throws IOException {
 
 
         ObservableList<Customer> data =  CsvReader.read();

@@ -26,6 +26,7 @@ import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -65,8 +66,13 @@ public class HandlerFxml {
                              TableColumn<Customer,String> t7, TableView<Customer> table){
         new Thread(() -> {
 
-        ObservableList<Customer> customers = CsvReader.read();
-        t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+            ObservableList<Customer> customers = null;
+            try {
+                customers = CsvReader.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
         t3.setCellValueFactory(new PropertyValueFactory<>("name"));
         t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
@@ -100,8 +106,13 @@ public class HandlerFxml {
             }
 
              */
-            ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
-        t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
+            ObservableList<Damage_Report> damageReport = null;
+            try {
+                damageReport = CsvReader.readDamageReport();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
         t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
         t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
         t4.setCellValueFactory(new PropertyValueFactory<>("contactOfPotentialWitnesses"));
@@ -171,7 +182,7 @@ public class HandlerFxml {
     public void loadFileThread () {
         Task task = new Task<Void>() {
             @Override
-            public Void call() {
+            public Void call() throws IOException {
                 int max = 1000000;
                 for (int i = 1; i <= max; i = i + 10) {
                     if (isCancelled()) {
@@ -252,7 +263,14 @@ public class HandlerFxml {
 
              */
 
-            ObservableList<House_Household_Insurance> householdInsurnace = CsvReader.readHousehold();
+            ObservableList<House_Household_Insurance> householdInsurnace = null;
+            try {
+                householdInsurnace = CsvReader.readHousehold();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             t1.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
             t3.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
@@ -287,8 +305,15 @@ public class HandlerFxml {
              */
 
 
-            ObservableList<Travel_Insurance> travelInsurnce = CsvReader.readTravel();
-        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+            ObservableList<Travel_Insurance> travelInsurnce = null;
+            try {
+                travelInsurnce = CsvReader.readTravel();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
         t3.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
         t4.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
@@ -322,8 +347,15 @@ public class HandlerFxml {
 
              */
 
-            ObservableList<Leisure_Insurance> leisureInsurnace = CsvReader.readLeisure();
-        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+            ObservableList<Leisure_Insurance> leisureInsurnace = null;
+            try {
+                leisureInsurnace = CsvReader.readLeisure();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
         t3.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
         t4.setCellValueFactory(new PropertyValueFactory<>("constructionMaterial"));
@@ -362,8 +394,15 @@ public class HandlerFxml {
              */
 
 
-            ObservableList<Boat_Insurance> boatInsurance = CsvReader.readBoat();
-        t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
+            ObservableList<Boat_Insurance> boatInsurance = null;
+            try {
+                boatInsurance = CsvReader.readBoat();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
         t3.setCellValueFactory(new PropertyValueFactory<>("owner"));
         t4.setCellValueFactory(new PropertyValueFactory<>("registerNr"));

@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import java.io.IOException;
 import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
@@ -89,7 +90,7 @@ public class HomeCustomerController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws IOException {
         customers = CsvReader.read();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         // Enables buttons when marked one customer
@@ -131,7 +132,7 @@ public class HomeCustomerController {
     }
 
     @FXML
-    private void handleExportClicked(ActionEvent event) {
+    private void handleExportClicked(ActionEvent event) throws IOException {
 
         openFileChooser.fileChooserExport(entireScreenCustomer);
 
@@ -169,7 +170,7 @@ public class HomeCustomerController {
 
 
 
-    public void filter(KeyEvent keyEvent){
+    public void filter(KeyEvent keyEvent) throws IOException {
         ObservableList<Customer> data=CsvReader.read();
         searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
         if(oldValue!=null&&(newValue.length()<oldValue.length())){

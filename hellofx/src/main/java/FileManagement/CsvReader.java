@@ -20,7 +20,7 @@ public class CsvReader {
      * a method which reads the customer csv file
      * @return an ObservableList containing all the customers in the csv file
      */
-    public static ObservableList<Customer> read () {
+    public static ObservableList<Customer> read () throws IOException, FileNotFoundException {
 
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
@@ -38,8 +38,9 @@ public class CsvReader {
                 aCustomer.setAllCustomerInsurance(Integer.parseInt(values[8]));
                 customersFromCsv.add(aCustomer);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("file");
         }
         return customersFromCsv;
     }
@@ -85,7 +86,7 @@ public class CsvReader {
      * @param searchterm to specify what to search for in the Customer csv file in this case PersonalId
      * @return an ObservableList which contains all the items which matched the searchtearm
      */
-    public static ObservableList<Damage_Report> findDamageReport(String searchterm) {
+    public static ObservableList<Damage_Report> findDamageReport(String searchterm) throws IOException, FileNotFoundException {
        Customer customer;
        Damage_Report damageReport;
        String line;
@@ -111,8 +112,7 @@ public class CsvReader {
                    damageReports.add(damageReport);
                }
            }
-       } catch (IOException e) {
-           e.printStackTrace();
+       } catch (FileNotFoundException e) {
        }
        return damageReports;
     }
@@ -122,7 +122,7 @@ public class CsvReader {
      * a method which reads a damageReport csv file
      * @return an ObservableList which contains Damage Report
      */
-    public static ObservableList<Damage_Report> readDamageReport () {
+    public static ObservableList<Damage_Report> readDamageReport () throws IOException, FileNotFoundException {
         ObservableList<Damage_Report> damageReports;
         Customer customer = CsvReader.findCustomer(String.valueOf(HomeCustomerController.getCustomerSelected().getPersonalID()));
         damageReports = findDamageReport(customer.getPersonalID());
@@ -165,7 +165,7 @@ public class CsvReader {
      * @return an ObservableList with all the matching House Insurances
      */
 
-        public static ObservableList<House_Household_Insurance> findHouseInsurnace (String searchterm){
+        public static ObservableList<House_Household_Insurance> findHouseInsurnace (String searchterm) throws IOException, FileNotFoundException{
             Customer customer = null;
             House_Household_Insurance household = null;
             ObservableList<House_Household_Insurance> households = FXCollections.observableArrayList();
@@ -187,13 +187,13 @@ public class CsvReader {
                         households.add(household);
                     }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException e) {
             }
+
             return households;
         }
 
-        public static ObservableList<House_Household_Insurance> readHousehold () {
+        public static ObservableList<House_Household_Insurance> readHousehold () throws IOException, FileNotFoundException {
             ObservableList<House_Household_Insurance> household;
             Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
             household = findHouseInsurnace(customer.getPersonalID());
@@ -205,7 +205,7 @@ public class CsvReader {
      * @param searchterm to specify what to search for in the Customer csv file in this case PersonalID
      * @return an ObservableList with all the matching Travel Insurances
      */
-    public static ObservableList<Travel_Insurance> findTravelInsurnace (String searchterm){
+    public static ObservableList<Travel_Insurance> findTravelInsurnace (String searchterm) throws IOException, FileNotFoundException{
             Customer customer = null;
             ObservableList<Travel_Insurance> travelInsurnaces = FXCollections.observableArrayList();
             Travel_Insurance travelInsurance = null;
@@ -225,14 +225,13 @@ public class CsvReader {
                         travelInsurnaces.add(travelInsurance);
                     }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException e) {
             }
             return travelInsurnaces;
         }
 
 
-        public static ObservableList<Travel_Insurance> readTravel () {
+        public static ObservableList<Travel_Insurance> readTravel () throws IOException, FileNotFoundException {
             ObservableList<Travel_Insurance> travelInsurnces ;
             Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
             travelInsurnces = findTravelInsurnace(customer.getPersonalID());
@@ -244,7 +243,7 @@ public class CsvReader {
      * @param searchterm to specify what to search for in Boat csv file
      * @return a ObservableList with all the found Boat Insurances to the search
      */
-    public static ObservableList<Boat_Insurance> findBoatInsurnace (String searchterm){
+    public static ObservableList<Boat_Insurance> findBoatInsurnace (String searchterm) throws IOException, FileNotFoundException{
             Customer customer = null;
             Boat_Insurance boatInsurnace = null;
             ObservableList<Boat_Insurance> boatInsurnaces = FXCollections.observableArrayList();
@@ -270,13 +269,12 @@ public class CsvReader {
 
                 }
 
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException e) {
             }
             return boatInsurnaces;
         }
 
-        public static ObservableList<Boat_Insurance> readBoat () {
+        public static ObservableList<Boat_Insurance> readBoat () throws IOException, FileNotFoundException {
             ObservableList<Boat_Insurance> boatInsurnace;
             Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
             boatInsurnace = findBoatInsurnace(customer.getPersonalID());
@@ -289,7 +287,7 @@ public class CsvReader {
      * @param searchterm to specify what to search for in leisure csv file
      * @return a ObservableList with all the found Leisure Insurances to the search
      */
-    public static ObservableList<Leisure_Insurance> findLeisureInsurnace (String searchterm){
+    public static ObservableList<Leisure_Insurance> findLeisureInsurnace (String searchterm) throws IOException, FileNotFoundException{
             Customer customer = null;
             Leisure_Insurance leisureInsurnace = null;
             ObservableList<Leisure_Insurance> leisureInsurnaces = FXCollections.observableArrayList();
@@ -314,13 +312,12 @@ public class CsvReader {
 
                 }
 
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException e) {
             }
             return leisureInsurnaces;
         }
 
-        public static ObservableList<Leisure_Insurance> readLeisure () {
+        public static ObservableList<Leisure_Insurance> readLeisure () throws FileNotFoundException, IOException {
         ObservableList<Leisure_Insurance> leisureInsurnces;
         Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
         leisureInsurnces = findLeisureInsurnace(customer.getPersonalID());

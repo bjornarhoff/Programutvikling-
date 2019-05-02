@@ -13,6 +13,7 @@ import org.openjfx.HandlerFxml;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -52,7 +53,7 @@ public class OpenFileChooser {
     }
 
 
-    public void fileChooserExport (BorderPane borderPane) {
+    public void fileChooserExport (BorderPane borderPane) throws IOException {
         fileChooser("Export file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
         // Choose file
