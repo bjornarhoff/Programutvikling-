@@ -36,16 +36,16 @@ public class CreateDamageReportController {
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;
 
-    private boolean validateNumber(){
+    private boolean validateNumber() {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(damageNr.getText());
         Matcher m2 = p.matcher(taxAmount.getText());
         Matcher m3 = p.matcher(unpaidReplacements.getText());
 
-        if(m.find() && m.group().equals(damageNr.getText()) && m2.find() && m2.group().equals(taxAmount.getText()) && m3.find() &&
-                m3.group().equals(unpaidReplacements.getText())){
+        if (m.find() && m.group().equals(damageNr.getText()) && m2.find() && m2.group().equals(taxAmount.getText()) && m3.find() &&
+                m3.group().equals(unpaidReplacements.getText())) {
             return true;
-        }else{
+        } else {
             ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
             return false;
         }
@@ -55,7 +55,7 @@ public class CreateDamageReportController {
      * Initialize Method that gets Customer selected PersonalID
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
         handlerFxml.setInputValidation(damageNr);
         handlerFxml.setInputValidation(taxAmount);
@@ -64,10 +64,10 @@ public class CreateDamageReportController {
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(btn_apply,txt_damageType, damageNr, taxAmount, unpaidReplacements);
-                if (allFilled){
+                boolean allFilled = handlerFxml.enableButton(btn_apply, txt_damageType, damageNr, taxAmount, unpaidReplacements);
+                if (allFilled) {
                     btn_apply.setDisable(false);
-                }else{
+                } else {
                     btn_apply.setDisable(true);
                 }
             }
@@ -76,34 +76,36 @@ public class CreateDamageReportController {
 
     /**
      * Method that returns to the Damage Report page
+     *
      * @param event
      */
     @FXML
-    private void cancel(ActionEvent event){
+    private void cancel(ActionEvent event) {
         handlerFxml.navigate(createDamageReport, "damageReport.fxml");
     }
 
     /**
      * Method where a Damage Report is created for the selected Customer and text fields are reset
+     *
      * @param event
      */
     @FXML
-    private void apply(ActionEvent event){
+    private void apply(ActionEvent event) {
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
-        if(validateNumber())
-        try {
+        if (validateNumber())
+            try {
 
-            Damage_Report damage_report = new Damage_Report(String.valueOf(new Date()), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
-                    Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
+                Damage_Report damage_report = new Damage_Report(String.valueOf(new Date()), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
+                        Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
 
-            CsvWriter.writeDamageReport(damage_report);
-            txta_info.setText(damage_report.toString());
+                CsvWriter.writeDamageReport(damage_report);
+                txta_info.setText(damage_report.toString());
 
-            handlerFxml.clearInput();
-        }catch(Exception e){
-            System.out.println("wrong input provided");
-        }
+                handlerFxml.clearInput();
+            } catch (Exception e) {
+                System.out.println("wrong input provided");
+            }
 
     }
 

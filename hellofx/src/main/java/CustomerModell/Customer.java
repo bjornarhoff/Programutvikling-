@@ -27,6 +27,7 @@ public class Customer implements Serializable {
 
     /**
      * Default Constructor for Customer object
+     *
      * @param PersonalID
      * @param Name
      * @param phoneNumber
@@ -34,7 +35,7 @@ public class Customer implements Serializable {
      * @param Date
      * @param BillingAddress
      */
-    public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress){
+    public Customer(String PersonalID, String Name, String phoneNumber, String email, String Date, String BillingAddress) {
 
         this.personalID = PersonalID;
         this.name = Name;
@@ -50,7 +51,7 @@ public class Customer implements Serializable {
      */
     @Override
     public String toString() {
-        return  "PersonalID: " + personalID +
+        return "PersonalID: " + personalID +
                 "\nInsuranceNr: " + insuranceNr +
                 "\nName: " + name +
                 "\nPhone: " + phoneNumber +
@@ -60,12 +61,12 @@ public class Customer implements Serializable {
                 "\nAll Insurance " + allCustomerInsurance;
     }
 
-    public String toCSVString(){
+    public String toCSVString() {
         return personalID + "," +
                 String.valueOf(insuranceNr) + "," +
                 name + "," +
-                phoneNumber +"," +
-                email + ","  +
+                phoneNumber + "," +
+                email + "," +
                 date + "," +
                 billingAddress + "," +
                 String.valueOf(unpaidReplacements) + "," +
@@ -84,13 +85,13 @@ public class Customer implements Serializable {
         Random r = new Random();
         this.insuranceNr = r.nextInt((max - min) + 1);
     }
-    
+
 
     /**
      * We first get all the excisitng ALLInsurancesController the customer has and then increase the number of Insurnaces
      * then we set the existing number of ALLInsurancesController to the customer.
-     * @param customer object
      *
+     * @param customer object
      */
     public void customerInsuranceCounter(Customer customer) {
         int existingInsurances = customer.getAllCustomerInsurance();
@@ -111,13 +112,6 @@ public class Customer implements Serializable {
 
 
     /**
-     * @param PersonalID
-    */
-    public void setPersonalID(String PersonalID) {
-        this.personalID = PersonalID;
-    }
-
-    /**
      * @return pernalID
      */
     public String getPersonalID() {
@@ -125,10 +119,10 @@ public class Customer implements Serializable {
     }
 
     /**
-     * @param date
+     * @param PersonalID
      */
-    public void setDate(String date) {
-        this.date = date;
+    public void setPersonalID(String PersonalID) {
+        this.personalID = PersonalID;
     }
 
     /**
@@ -138,12 +132,11 @@ public class Customer implements Serializable {
         return this.date;
     }
 
-
     /**
-     * @param name
+     * @param date
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     /**
@@ -155,6 +148,12 @@ public class Customer implements Serializable {
         return this.name;
     }
 
+    /**
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -173,25 +172,17 @@ public class Customer implements Serializable {
     }
 
     /**
-     * @param billingAddress
-     */
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
-    /**
      * @return billingAddress
      */
     public String getBillingAddress() {
         return this.billingAddress;
     }
 
-
     /**
-     * @param insuranceNr
+     * @param billingAddress
      */
-    public void setInsuranceNr(int insuranceNr) {
-        this.insuranceNr = insuranceNr;
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     /**
@@ -201,12 +192,11 @@ public class Customer implements Serializable {
         return this.insuranceNr;
     }
 
-
     /**
-     * @param allCustomerInsurance
+     * @param insuranceNr
      */
-    public void setAllCustomerInsurance(int allCustomerInsurance) {
-        this.allCustomerInsurance = allCustomerInsurance;
+    public void setInsuranceNr(int insuranceNr) {
+        this.insuranceNr = insuranceNr;
     }
 
     /**
@@ -216,12 +206,11 @@ public class Customer implements Serializable {
         return this.allCustomerInsurance;
     }
 
-
     /**
-     * @param unpaidReplacements
+     * @param allCustomerInsurance
      */
-    public void setUnpaidReplacements(double unpaidReplacements) {
-        this.unpaidReplacements = unpaidReplacements;
+    public void setAllCustomerInsurance(int allCustomerInsurance) {
+        this.allCustomerInsurance = allCustomerInsurance;
     }
 
     /**
@@ -229,6 +218,13 @@ public class Customer implements Serializable {
      */
     public double getUnpaidReplacements() {
         return this.unpaidReplacements;
+    }
+
+    /**
+     * @param unpaidReplacements
+     */
+    public void setUnpaidReplacements(double unpaidReplacements) {
+        this.unpaidReplacements = unpaidReplacements;
     }
 
 }

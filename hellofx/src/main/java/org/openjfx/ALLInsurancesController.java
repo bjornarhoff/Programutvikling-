@@ -26,54 +26,61 @@ import java.io.Console;
 
 public class ALLInsurancesController {
 
-    HandlerFxml handlerFxml = new HandlerFxml();
+    /**
+     * Method that converts String to Integer and from String to Integer and handles
+     */
+    private static StringConverter<Integer> converter = new StringConverter<>() {
+        @Override
+        public String toString(Integer object) throws NumberFormatException {
+            return Integer.toString(object);
+        }
 
+        @Override
+        public Integer fromString(String string) throws NumberFormatException {
+            try {
+                Integer.parseInt(string);
+                return Integer.parseInt(string);
+
+            } catch (NumberFormatException e) {
+                ExceptionHandler.alertBox("Wrong Input Provided", "Please provide only Numbers as input in this textfield", "Text filed Value is restored to 0");
+
+            }
+            return 0;
+        }
+
+    };
+    HandlerFxml handlerFxml = new HandlerFxml();
     @FXML
     private BorderPane allInsurancesScreen;
-
     @FXML
     private Label customerSelected;
-
     @FXML
     private JFXButton modifyHousehold, delHousehold, modifyTravel, delTravel, modifyLeisure, modifyBoat, delBoat, cancel,
-    showHousehold, showTravel, showLeisure, showBoat, delLeisure;
-
+            showHousehold, showTravel, showLeisure, showBoat, delLeisure;
     @FXML
     private JFXTextArea info;
-
     @FXML
     private TableView<House_Household_Insurance> tvHousehold;
-
     @FXML
     private TableView<Travel_Insurance> tvTravel;
-
     @FXML
     private TableView<Leisure_Insurance> tvLeisure;
-
     @FXML
     private TableView<Boat_Insurance> tvBoat;
-
     @FXML
     private TableColumn<House_Household_Insurance, String> HouseyearlyPremium, houseOwner, houseInsuranceConditions, houseConstMaterial, houseCondition;
-
     @FXML
-    private TableColumn<House_Household_Insurance, Integer>  houseInsAmount, amountHousehold;
-
+    private TableColumn<House_Household_Insurance, Integer> houseInsAmount, amountHousehold;
     @FXML
     private TableColumn<Travel_Insurance, String> travelDate, travelInsConditions, travelInsArea, travelYearlyPremium;
-
     @FXML
     private TableColumn<Travel_Insurance, Integer> travelInsAmount;
-
     @FXML
-    private TableColumn<Leisure_Insurance, String> leisureDate, conditions, leisureCondition, leisureConstrMaterial, leisureNrSquareMeters, yearlyPremium ;
-
+    private TableColumn<Leisure_Insurance, String> leisureDate, conditions, leisureCondition, leisureConstrMaterial, leisureNrSquareMeters, yearlyPremium;
     @FXML
     private TableColumn<Leisure_Insurance, Integer> amountLeisure;
-
     @FXML
     private TableColumn<Boat_Insurance, String> boatDate, boatOwner, boatRegisterNr, boatTypeModel, boatLengthFoot, motorType;
-
     @FXML
     private TableColumn<Boat_Insurance, Integer> boatInsAmount;
 
@@ -117,38 +124,39 @@ public class ALLInsurancesController {
      * Initialize Method that starts the page with Table view data and disables buttons before a Table view is marked
      */
     @FXML
-    private void initialize(){
-       customerSelected.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+    private void initialize() {
+        customerSelected.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
-       handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
-       handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
-       handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel,boatLengthFoot, motorType, tvBoat);
-       handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition,leisureNrSquareMeters, amountLeisure, tvLeisure);
+        handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
+        handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea, tvTravel);
+        handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel, boatLengthFoot, motorType, tvBoat);
+        handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition, leisureNrSquareMeters, amountLeisure, tvLeisure);
 
-       handlerFxml.enableWhenMarked(tvHousehold, modifyHousehold, delHousehold, showHousehold);
-       handlerFxml.enableWhenMarked(tvLeisure, modifyLeisure, delLeisure, showLeisure);
-       handlerFxml.enableWhenMarked(tvTravel, modifyTravel, delTravel, showTravel);
-       handlerFxml.enableWhenMarked(tvBoat, modifyBoat, delBoat, showBoat);
+        handlerFxml.enableWhenMarked(tvHousehold, modifyHousehold, delHousehold, showHousehold);
+        handlerFxml.enableWhenMarked(tvLeisure, modifyLeisure, delLeisure, showLeisure);
+        handlerFxml.enableWhenMarked(tvTravel, modifyTravel, delTravel, showTravel);
+        handlerFxml.enableWhenMarked(tvBoat, modifyBoat, delBoat, showBoat);
 
     }
 
     /**
      * Method to hadndle button events like Delete Insurances, show full info and Modify Insurances
+     *
      * @param event
      */
     @FXML
     public void handleButtonEvents(javafx.event.ActionEvent event) {
-        if(event.getSource() == cancel){
+        if (event.getSource() == cancel) {
             handlerFxml.navigate(allInsurancesScreen, "homeInsurance.fxml");
         }
-        if(event.getSource() == delHousehold){
+        if (event.getSource() == delHousehold) {
             String selectHouse = tvHousehold.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(selectHouse));
             handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
             Customer.customerInsuranceCounterDeacrease(customerEditable);
 
         }
-        if(event.getSource() == delBoat){
+        if (event.getSource() == delBoat) {
             String selectBoat = tvBoat.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(selectBoat));
             handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel,boatLengthFoot, motorType, tvBoat);
@@ -156,7 +164,7 @@ public class ALLInsurancesController {
 
 
         }
-        if(event.getSource() == delTravel){
+        if (event.getSource() == delTravel) {
             String selectedTravel = tvTravel.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
             SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(selectedTravel));
             handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
@@ -164,7 +172,7 @@ public class ALLInsurancesController {
 
 
         }
-        if(event.getSource() == delLeisure){
+        if (event.getSource() == delLeisure) {
             String selectLeisure = tvLeisure.getSelectionModel().getSelectedItem().getAddress_Not_Billing();
             SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(selectLeisure));
             handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition,leisureNrSquareMeters, amountLeisure, tvLeisure);
@@ -175,21 +183,21 @@ public class ALLInsurancesController {
             String boat = tvBoat.getSelectionModel().getSelectedItem().toString();
             info.setText(boat);
         }
-        if(event.getSource() == showHousehold){
+        if (event.getSource() == showHousehold) {
             String house = tvHousehold.getSelectionModel().getSelectedItem().toString();
             info.setText(house);
         }
-        if(event.getSource() == showLeisure){
+        if (event.getSource() == showLeisure) {
             String leisure = tvLeisure.getSelectionModel().getSelectedItem().toString();
             info.setText(leisure);
         }
-        if(event.getSource() == showTravel){
+        if (event.getSource() == showTravel) {
             String travel = tvTravel.getSelectionModel().getSelectedItem().toString();
             info.setText(travel);
         }
 
 
-        if(event.getSource() == modifyHousehold){
+        if (event.getSource() == modifyHousehold) {
             tvHousehold.setEditable(true);
             HouseyearlyPremium.setCellFactory(TextFieldTableCell.forTableColumn());
             houseInsAmount.setCellFactory(TextFieldTableCell.forTableColumn(converter));
@@ -201,7 +209,7 @@ public class ALLInsurancesController {
             ExceptionHandler.modifyAlertbox("Modify Household Insurance");
         }
 
-        if(event.getSource() == modifyTravel){
+        if (event.getSource() == modifyTravel) {
             tvTravel.setEditable(true);
             travelInsAmount.setCellFactory(TextFieldTableCell.forTableColumn(converter));
             travelYearlyPremium.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -211,7 +219,7 @@ public class ALLInsurancesController {
 
         }
 
-        if(event.getSource() == modifyLeisure){
+        if (event.getSource() == modifyLeisure) {
             tvLeisure.setEditable(true);
             leisureDate.setCellFactory(TextFieldTableCell.forTableColumn());
             yearlyPremium.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -222,7 +230,7 @@ public class ALLInsurancesController {
             ExceptionHandler.modifyAlertbox("Modify Leisure Insurance");
 
         }
-        if(event.getSource() == modifyBoat){
+        if (event.getSource() == modifyBoat) {
             tvBoat.setEditable(true);
             boatDate.setCellFactory(TextFieldTableCell.forTableColumn());
             boatInsAmount.setCellFactory(TextFieldTableCell.forTableColumn(converter));
@@ -236,6 +244,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Yearly premium in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editYearlyPremium(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
@@ -250,6 +259,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Amount in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
@@ -265,6 +275,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance conditions in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editConditions(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
@@ -279,6 +290,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Property Owner in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editOwner(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
@@ -293,6 +305,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Construction Material in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editConstructionMaterial(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
@@ -307,6 +320,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits the House Condition in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editHouseCondition(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
@@ -321,6 +335,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Household Amount in the Household table and replaces the edited term in the csv file
+     *
      * @param CellEditEvent
      */
     public void editAmountHousehold(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
@@ -338,6 +353,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Area in the Travel table and replaces the edited term in the csv file
+     *
      * @param editEvent
      */
     public void InsurnaceArea(TableColumn.CellEditEvent<Travel_Insurance, String> editEvent) {
@@ -352,6 +368,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Amount in the Travel table and replaces the edited term in the csv file
+     *
      * @param editEvent
      */
     public void editInsuranceAmountTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) {
@@ -368,6 +385,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Conditions in the Travel table and replaces the edited term in the csv file
+     *
      * @param editEvent
      */
     public void editInsuranceConditions(TableColumn.CellEditEvent<Travel_Insurance, String> editEvent) {
@@ -382,6 +400,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Yearly Premium in the Travel table and replaces the edited term in the csv file
+     *
      * @param editEvent
      */
     public void editYearlyPremiumTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) {
@@ -397,6 +416,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Yearly Premium in the Leisure table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editYearlyPremiumLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
@@ -404,13 +424,14 @@ public class ALLInsurancesController {
 
         SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns,false);
+        CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
 
     }
 
     /**
      * Method that edits Insurance Condition in the Leisure table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editInsuranceConditionsLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
@@ -418,7 +439,7 @@ public class ALLInsurancesController {
 
         SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns,false);
+        CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
 
 
@@ -426,6 +447,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Construction Material in the Leisure table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editConstructionMaterialLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
@@ -433,13 +455,14 @@ public class ALLInsurancesController {
 
         SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setConstructionMaterial(cellEditEvent.getNewValue());
-        CsvWriter.writeLeisureInsurance(leisureIns,false);
+        CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
 
     }
 
     /**
      * Method that edits Insurance Condition in the Leisure table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editLeisureConditions(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) {
@@ -454,6 +477,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Amount in the Leisure table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editLeisure(TableColumn.CellEditEvent<Leisure_Insurance, Integer> cellEditEvent) {
@@ -471,6 +495,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Amount in the Boat table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editInsuranceAmountBoat(TableColumn.CellEditEvent<Boat_Insurance, Integer> cellEditEvent) {
@@ -487,6 +512,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Owner in the Boat table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editOwnerBoat(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) {
@@ -501,6 +527,7 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Boat Motor in the Boat table and replaces the edited term in the csv file
+     *
      * @param cellEditEvent
      */
     public void editMotor(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) {
@@ -512,7 +539,6 @@ public class ALLInsurancesController {
         tvBoat.setEditable(false);
 
     }
-
 
 
 }
