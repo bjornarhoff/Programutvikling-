@@ -3,7 +3,6 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.OpenFileChooser;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,7 +53,7 @@ public class HomeInsuranceController {
      */
     @FXML
     private void initialize() {
-        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+        handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
         handlerFxml.enableWhenMarked(insuranceTable, btn_createInsurance1, btn_modfiInsurance1);
         entireScreenInsurance.toFront();
 

@@ -50,68 +50,6 @@ public class HandlerFxml {
     }
 
     /**
-     * Method that sets table view column values for customer object
-     *
-     * @param t1
-     * @param t2
-     * @param t3
-     * @param t4
-     * @param t5
-     * @param t6
-     * @param t7
-     * @param table
-     */
-    public void setCellValue(TableColumn<Customer, String> t1, TableColumn<Customer, String> t2,
-                             TableColumn<Customer, String> t3, TableColumn<Customer, String> t4,
-                             TableColumn<Customer, String> t5, TableColumn<Customer, String> t6,
-                             TableColumn<Customer, String> t7, TableView<Customer> table) {
-        new Thread(() -> {
-
-            ObservableList<Customer> customers = CsvReader.read();
-            t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-            t3.setCellValueFactory(new PropertyValueFactory<>("name"));
-            t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-            t5.setCellValueFactory(new PropertyValueFactory<>("email"));
-            t6.setCellValueFactory(new PropertyValueFactory<>("date"));
-            t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-            table.setItems(customers);
-        }).start();
-
-
-    }
-
-    /**
-     * Method that sets table view columns values for Damage Report object
-     *
-     * @param t1
-     * @param t2
-     * @param t3
-     * @param t4
-     * @param t5
-     * @param table
-     */
-    public void setCellValueDamageReport(TableColumn<Damage_Report, String> t1, TableColumn<Damage_Report, String> t2,
-                                         TableColumn<Damage_Report, Integer> t3, TableColumn<Damage_Report, String> t4,
-                                         TableColumn<Damage_Report, String> t5, TableView<Damage_Report> table) {
-        new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
-            t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
-            t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
-            t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
-            t4.setCellValueFactory(new PropertyValueFactory<>("contactOfPotentialWitnesses"));
-            t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
-            table.setItems(damageReport);
-        }).start();
-    }
-
-
-    /**
      * Method that restricts a user to write a PersonalId longer than 8 digits
      *
      * @param textField
@@ -232,6 +170,67 @@ public class HandlerFxml {
 
         textField.getValidators().add(numvalidator);
         numvalidator.setMessage("Only numbers are supported!");
+    }
+
+    /**
+     * Method that sets table view column values for customer object
+     *
+     * @param t1
+     * @param t2
+     * @param t3
+     * @param t4
+     * @param t5
+     * @param t6
+     * @param t7
+     * @param table
+     */
+    public void setCellValueCustomers(TableColumn<Customer, String> t1, TableColumn<Customer, String> t2,
+                                      TableColumn<Customer, String> t3, TableColumn<Customer, String> t4,
+                                      TableColumn<Customer, String> t5, TableColumn<Customer, String> t6,
+                                      TableColumn<Customer, String> t7, TableView<Customer> table) {
+        new Thread(() -> {
+
+            ObservableList<Customer> customers = CsvReader.read();
+            t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("name"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("email"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("date"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+            table.setItems(customers);
+        }).start();
+
+
+    }
+
+    /**
+     * Method that sets table view columns values for Damage Report object
+     *
+     * @param t1
+     * @param t2
+     * @param t3
+     * @param t4
+     * @param t5
+     * @param table
+     */
+    public void setCellValueDamageReport(TableColumn<Damage_Report, String> t1, TableColumn<Damage_Report, String> t2,
+                                         TableColumn<Damage_Report, Integer> t3, TableColumn<Damage_Report, String> t4,
+                                         TableColumn<Damage_Report, String> t5, TableView<Damage_Report> table) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
+            t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("contactOfPotentialWitnesses"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
+            table.setItems(damageReport);
+        }).start();
     }
 
 

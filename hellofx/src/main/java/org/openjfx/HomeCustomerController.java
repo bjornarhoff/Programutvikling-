@@ -7,13 +7,9 @@ import FileManagement.OpenFileChooser;
 import Serialisering.SearchAndReadFromCSV;
 import Threads.Threads;
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -21,10 +17,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
-import java.io.File;
-import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
 
@@ -73,7 +65,7 @@ public class HomeCustomerController {
     @FXML
     private void initialize() {
         customers = CsvReader.read();
-        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+        handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         // Enables buttons when marked one customer
         handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer, btn_editCustomer, btn_showDamageReport);
         entireScreenCustomer.toFront();
@@ -99,7 +91,7 @@ public class HomeCustomerController {
             SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
             SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
 
-            handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
+            handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         }
     }
 

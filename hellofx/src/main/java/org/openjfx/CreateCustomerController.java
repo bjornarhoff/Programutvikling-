@@ -1,17 +1,15 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
 import java.util.Date;
 
 public class CreateCustomerController {
@@ -22,22 +20,8 @@ public class CreateCustomerController {
     @FXML
     public JFXButton cancel, apply;
     HandlerFxml handlerFxml = new HandlerFxml();
-    HomeCustomerController homeCustomerController = new HomeCustomerController();
     @FXML
     private BorderPane popUpCreate;
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXMLHomeController"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            System.out.println("error while loading");
-        }
-
-    }
 
 
     /**
@@ -48,13 +32,13 @@ public class CreateCustomerController {
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
-        Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
-        aCustomer.generateInsuranceNr();
-        CsvWriter.writeCustomerToCSV(aCustomer);
-        info.setText(aCustomer.toString());
-
-
-        handlerFxml.clearInput(personalID, name, billing, phone, email);
+        if (ExceptionHandler.personalIDValidator(personalID) && ExceptionHandler.phoneValidator(phone) && ExceptionHandler.emailValidator(email)){
+            Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
+            aCustomer.generateInsuranceNr();
+            CsvWriter.writeCustomerToCSV(aCustomer);
+            info.setText(aCustomer.toString());
+            handlerFxml.clearInput(personalID, name, billing, phone, email);
+        }
     }
 
 
