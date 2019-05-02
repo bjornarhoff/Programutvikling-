@@ -67,6 +67,11 @@ public class LeisureInsuranceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+        handlerFxml.setInputValidation(yearConstruction);
+        handlerFxml.setInputValidation(amountConstruction);
+        handlerFxml.setInputValidation(nrSquareMeters);
+        handlerFxml.setInputValidation(amountHousehold);
+        handlerFxml.setInputValidation(InsuranceAmount);
 
         new AnimationTimer() {
             @Override
@@ -81,17 +86,7 @@ public class LeisureInsuranceController {
             }
         }.start();
 
-        NumberValidator numvalidator = new NumberValidator();
-
-        yearConstruction.getValidators().add(numvalidator);
-        amountConstruction.getValidators().add(numvalidator);
-        nrSquareMeters.getValidators().add(numvalidator);
-        amountHousehold.getValidators().add(numvalidator);
-        InsuranceAmount.getValidators().add(numvalidator);
-
-        numvalidator.setMessage("Only numbers are supported!");
-
-        setValidationInput();
+        //setValidationInput();
     }
 
 
@@ -164,7 +159,7 @@ public class LeisureInsuranceController {
         InsuranceAmount.setText("");
     }
 
-    public void setValidationInput(){
+   /* public void setValidationInput(){
         yearConstruction.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -219,5 +214,5 @@ public class LeisureInsuranceController {
             }
         });
 
-    }
+    } */
 }

@@ -63,6 +63,12 @@ public class HouseholdInsurnaceController {
     @FXML
     private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+        handlerFxml.setInputValidation(amountForConstruction);
+        handlerFxml.setInputValidation(yearConstruction);
+        handlerFxml.setInputValidation(nrSquareMeters);
+        handlerFxml.setInputValidation(amountForHousehold);
+        handlerFxml.setInputValidation(amountForConstruction);
+        handlerFxml.setInputValidation(InsuranceAmount);
 
 
         new AnimationTimer() {
@@ -78,12 +84,6 @@ public class HouseholdInsurnaceController {
             }
         }.start();
 
-        handlerFxml.setInputValidation(amountForConstruction);
-        handlerFxml.setInputValidation(yearConstruction);
-        handlerFxml.setInputValidation(nrSquareMeters);
-        handlerFxml.setInputValidation(amountForHousehold);
-        handlerFxml.setInputValidation(amountForConstruction);
-        handlerFxml.setInputValidation(InsuranceAmount);
     }
 
 
