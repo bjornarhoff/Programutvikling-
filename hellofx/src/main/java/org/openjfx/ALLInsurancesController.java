@@ -454,7 +454,8 @@ public class ALLInsurancesController {
         leisureIns.setAmountForHousehold(cellEditEvent.getNewValue() == null ? cellEditEvent.getOldValue() : cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
-        handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
+        handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition,leisureNrSquareMeters, amountLeisure, tvLeisure);
+
 
 
     }

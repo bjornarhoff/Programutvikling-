@@ -16,17 +16,17 @@
     <center>
         <AnchorPane fx:id="anchorPane" prefHeight="633.0" prefWidth="963.0" style="-fx-background-color: #8C7365;">
             <children>
-                <Pane prefHeight="393.0" prefWidth="963.0" style="-fx-background-color: #8C7365;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Pane prefHeight="393.0" prefWidth="963.0" style="-fx-background-color: #2B2D42;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <effect>
                         <InnerShadow />
                     </effect>
                <children>
-                  <Label layoutX="12.0" layoutY="7.0" prefHeight="23.0" prefWidth="269.0" text="All Insurances for Customer: ">
+                  <Label layoutX="12.0" layoutY="7.0" prefHeight="23.0" prefWidth="269.0" text="All Insurances for Customer: " textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="customerSelected" layoutX="272.0" layoutY="6.0" prefHeight="23.0" prefWidth="105.0">
+                  <Label fx:id="customerSelected" layoutX="272.0" layoutY="6.0" prefHeight="23.0" prefWidth="105.0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

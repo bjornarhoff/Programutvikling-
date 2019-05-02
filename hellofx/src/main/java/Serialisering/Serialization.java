@@ -16,6 +16,7 @@ public class Serialization {
                 ObjectOutputStream out = new ObjectOutputStream(fos);
         ) {
             out.writeObject(customer);
+            out.flush();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -29,16 +30,29 @@ public class Serialization {
                 ObjectOutputStream out = new ObjectOutputStream(fos)
         ) {
             out.writeObject(insurance);
+            out.flush();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    public static void writeToFile(Customer customer, String filepath) throws IOException {
+    public static void writeToFileCustomer(Customer customer, String filepath) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath));
         oos.writeObject(customer);
+        oos.flush();
+        oos.close();
     }
+
+    public static void writeToFileInsurnace(Insurance insurance, String filepath) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath));
+        oos.writeObject(insurance);
+        oos.flush();
+        oos.close();
+    }
+
+
 
     public static void readFile(Customer acustomer ,String filepath) throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));

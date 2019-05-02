@@ -43,10 +43,10 @@
                         <InnerShadow radius="20.317500000000003" width="62.27" />
                      </effect>
                   </AnchorPane>
-                  <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #8C7365;" GridPane.columnIndex="2">
+                  <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #4B3B47;" GridPane.columnIndex="2">
                      <children>
-                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" />
-                        <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" />
+                        <JFXButton fx:id="btn_createInsurance1" layoutX="3.0" layoutY="143.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Create Insurance" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="btn_modfiInsurance1" layoutX="3.0" layoutY="198.0" onAction="#handleButtonActions" prefHeight="48.0" prefWidth="151.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Modify Insurance" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <TextField fx:id="searching" layoutX="15.0" layoutY="82.0" onKeyReleased="#search" prefHeight="27.0" prefWidth="126.0" promptText="Search" />
                      </children>
                      <effect>

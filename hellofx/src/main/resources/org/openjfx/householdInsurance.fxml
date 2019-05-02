@@ -33,16 +33,16 @@
                             </effect></AnchorPane>
                         <AnchorPane prefHeight="575.0" prefWidth="135.0" style="-fx-background-color: #F0F7FF;" GridPane.columnIndex="1">
                             <children>
-                                <JFXButton fx:id="btn_houshold" layoutY="140.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: black;" text="Household Insurnace" textFill="WHITE" />
-                                <JFXButton fx:id="btn_leisure" layoutY="210.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Leisure Insurancce" />
-                        <JFXButton fx:id="btn_boat" layoutY="350.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Boat Insurance" />
-                        <JFXButton fx:id="btn_travel" layoutY="280.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Travel Insurance" />
+                                <JFXButton fx:id="btn_houshold" layoutY="140.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: black;" text="Household Insurnace" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                <JFXButton fx:id="btn_leisure" layoutY="210.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Leisure Insurancce" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="btn_boat" layoutY="350.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Boat Insurance" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="btn_travel" layoutY="280.0" onAction="#handleButtonActions" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: grey;" text="Travel Insurance" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                             </children>
                             <effect>
                                 <InnerShadow radius="20.317500000000003" width="62.27" />
                             </effect>
                         </AnchorPane>
-                  <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #92AFD7;" GridPane.columnIndex="2">
+                  <AnchorPane prefHeight="860.0" prefWidth="285.0" style="-fx-background-color: #F0F3BD;" GridPane.columnIndex="2">
                      <children>
                          <Label layoutX="37.0" layoutY="20.0" prefHeight="50.0" prefWidth="323.0" text="Create insurance for customer:">
                              <font>
