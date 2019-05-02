@@ -60,46 +60,39 @@ public class OpenFileChooser {
 
         String s = file.getName().split("\\.")[1];
         ObservableList<Customer> customers = CsvReader.read();
-
-        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
-        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureWithCustomer();
-        ObservableList<Boat_Insurance> boat = CsvReader.readBoatWithCustomer();
-        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();
-
-
         ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
         ArrayList<String> boat_insurances = CsvReader.readAllBoat();
         ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
         ArrayList<String> leisure_insurances = CsvReader.readAllLeisure();
         ArrayList<String> travel_insurances = CsvReader.readAllTravel();
 
+        File directory = new File (file.getPath().split("\\.")[0]);
+        if (!directory.exists()) {
+            directory.mkdir();
+        }
         if (s.equals("csv")) {
             String path = file.getPath().split("\\.")[0];
             for (Customer customer : customers) {
-                CsvWriter.writeFileToCsvCustomer(file.getPath(), customer);
+                CsvWriter.writeFileToCsvCustomer(path + "/Customer.csv", customer);
             }
             for (String boat_insurance : boat_insurances) {
-                CsvWriter.writeFileToCsv(path + "Boat.csv", boat_insurance);
+                CsvWriter.writeFileToCsv(path + "/Boat.csv", boat_insurance);
             }
             for (String house_household_insurance : house_household_insurances) {
-                CsvWriter.writeFileToCsv(path + "House.csv", house_household_insurance);
+                CsvWriter.writeFileToCsv(path + "/House.csv", house_household_insurance);
             }
             for (String leisure_insurance : leisure_insurances) {
-                CsvWriter.writeFileToCsv(path + "Leisure.csv", leisure_insurance);
+                CsvWriter.writeFileToCsv(path + "/Leisure.csv", leisure_insurance);
             }
             for (String travel_insurance : travel_insurances) {
-                CsvWriter.writeFileToCsv(path + "Travel.csv", travel_insurance);
+                CsvWriter.writeFileToCsv(path + "/Travel.csv", travel_insurance);
             }
             for (String damage_report : damage_reports) {
-                CsvWriter.writeFileToCsv(path + "Damage.csv", damage_report);
+                CsvWriter.writeFileToCsv(path + "/Damage.csv", damage_report);
             }
         }
         if (s.equals("jobj")) {
-            String path = file.getPath().split("\\.")[0];
-
-            for (Customer customer : customers) {
-                Serialization.serialiseCustomer(customer,"customers.jobj");
-            }
+            System.out.println("Fuck off");
         }
     }
 }
