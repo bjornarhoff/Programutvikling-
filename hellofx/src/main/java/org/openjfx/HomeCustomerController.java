@@ -101,18 +101,19 @@ public class HomeCustomerController {
     }
 
     @FXML
-    private void handleButtonActions(ActionEvent event) {
+    private void handleButtonActions(ActionEvent event) throws IOException {
         if(event.getSource() == button_Insurance){
             handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
         }
 
         if (event.getSource() == btn_deleteCustomer) {
-            String customerSelected = customerTable.getSelectionModel().getSelectedItem().getPersonalID();
+            String customerSelected = String.valueOf(customerTable.getSelectionModel().getSelectedItem().getPersonalID());
             SearchAndReadFromCSV.deleteCustomerFromCsv(customerSelected);
             SearchAndReadFromCSV.deleteTravelFromCsv(customerSelected);
             SearchAndReadFromCSV.deleteHouseholdFromCsv(customerSelected);
             SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
             SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
+            SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
 
             handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         }

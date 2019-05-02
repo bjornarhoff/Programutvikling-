@@ -129,6 +129,11 @@ public class SearchAndReadFromCSV {
                     pw.println(damage[0] + "," + damage[1] + "," + damage[2] + "," + damage[3] + "," + damage[4] + "," + damage[5] + "," +
                             damage[6] + "," + damage[7]);
                 }
+               /* if(!damage[0].equals(searchterm)) {
+                    pw.println(damage[0] + "," + damage[1] + "," + damage[2] + "," + damage[3] + "," + damage[4] + "," + damage[5] + "," +
+                            damage[6] + "," + damage[7]);}
+
+                */
             }
 
             /*while (x.hasNext()) {
