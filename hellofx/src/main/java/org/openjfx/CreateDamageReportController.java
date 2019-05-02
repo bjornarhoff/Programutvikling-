@@ -6,6 +6,7 @@ import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -56,6 +57,21 @@ public class CreateDamageReportController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+        handlerFxml.setInputValidation(damageNr);
+        handlerFxml.setInputValidation(taxAmount);
+        handlerFxml.setInputValidation(unpaidReplacements);
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                boolean allFilled = handlerFxml.enableButton(btn_apply,txt_damageType, damageNr, taxAmount, unpaidReplacements);
+                if (allFilled){
+                    btn_apply.setDisable(false);
+                }else{
+                    btn_apply.setDisable(true);
+                }
+            }
+        }.start();
     }
 
     /**

@@ -63,6 +63,8 @@ public class TravelInsurnaceController {
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
+        handlerFxml.setInputValidation(insuranceSum);
+        handlerFxml.setInputValidation(InsuranceAmount);
 
         new AnimationTimer() {
             @Override
@@ -76,16 +78,8 @@ public class TravelInsurnaceController {
             }
         }.start();
 
-        NumberValidator numvalidator = new NumberValidator();
 
-        insuranceSum.getValidators().add(numvalidator);
-        InsuranceAmount.getValidators().add(numvalidator);
-
-
-
-        numvalidator.setMessage("Only numbers are supported!");
-
-        setInputValidation();
+        //setInputValidation();
     }
 
     /**
@@ -150,7 +144,7 @@ public class TravelInsurnaceController {
         InsuranceAmount.setText("");
         InsuranceConditions.setText("");
     }
-
+  /*
     public void setInputValidation(){
         insuranceSum.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -178,6 +172,6 @@ public class TravelInsurnaceController {
                 }
             }
         });
-    }
+    }*/
 
 }
