@@ -4,10 +4,10 @@ import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Insurances.*;
 import Serialisering.SearchAndReadFromCSV;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class CsvWriter {
@@ -45,6 +45,20 @@ public class CsvWriter {
         }
     }
 
+    public static void makeHeader(String header){
+        try {
+            if (!fileExists) {
+                // Write to header
+                fileWriter.append(header);
+
+                // New line after header
+                fileWriter.append(NEW_LINE);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * method for creating a CSV file
@@ -69,17 +83,23 @@ public class CsvWriter {
         return file;
     }
 
+    public static void writeFileToCsv(String path, String values){
+
+        try {
+            fileWriter = new FileWriter(createFileCSV(path), true);
+            fileWriter.append(values);
+            fileWriter.append(NEW_LINE);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        finallyBlock(fileWriter);
+    }
+
     public static void writeFileToCsvCustomer(String path, Customer customer){
 
         try {
             fileWriter = new FileWriter(createFileCSV(path), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(CUSTOMERHEADER);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
+            makeHeader(CUSTOMERHEADER);
             fileWriter.append(customer.toCSVString());
             fileWriter.append(NEW_LINE);
 
@@ -93,51 +113,13 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
-    public static void writeFileToCsvInsurance(String path, Insurance insurance){
-
-        try {
-            fileWriter = new FileWriter(createFileCSV(path), true);
-            if (insurance.getClass() == Boat_Insurance.class){
-                fileWriter.append(BOATINSURNACEHEADER);
-                fileWriter.append(NEW_LINE);
-                fileWriter.append(insurance.toCSVStringInsurnce());
-                fileWriter.append(NEW_LINE);
-            }else if (insurance.getClass() == House_Household_Insurance.class){
-                fileWriter.append(HOUSEINSURANCEHEADER);
-                fileWriter.append(NEW_LINE);
-                fileWriter.append(insurance.toCSVStringInsurnce());
-                fileWriter.append(NEW_LINE);
-            }else if (insurance.getClass() == Leisure_Insurance.class){
-                fileWriter.append(LEISUREINSURANCE);
-                fileWriter.append(NEW_LINE);
-                fileWriter.append(insurance.toCSVStringInsurnce());
-                fileWriter.append(NEW_LINE);
-            }else if (insurance.getClass() == Travel_Insurance.class){
-                fileWriter.append(TRAVELINSURANCE);
-                fileWriter.append(NEW_LINE);
-                fileWriter.append(insurance.toCSVStringInsurnce());
-                fileWriter.append(NEW_LINE);
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        finallyBlock(fileWriter);
-    }
-
 
     // Method for write customer object to CSV file
     public static void writeCustomerToCSV(Customer aCustomer) {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/customer2.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(CUSTOMERHEADER);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
+            makeHeader(CUSTOMERHEADER);
             fileWriter.append(aCustomer.toCSVString());
             fileWriter.append(NEW_LINE);
 
@@ -177,13 +159,8 @@ public class CsvWriter {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/boatInsurance.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(BOATINSURNACEHEADER);
+            makeHeader(BOATINSURNACEHEADER);
 
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
 
             fileWriter.append(boatInsurance.toCSVStringBoat());
             fileWriter.append(NEW_LINE);
@@ -193,8 +170,6 @@ public class CsvWriter {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
-
-
         finallyBlock(fileWriter);
     }
 
@@ -209,14 +184,7 @@ public class CsvWriter {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/houseInsurance.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(HOUSEINSURANCEHEADER);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
+            makeHeader(HOUSEINSURANCEHEADER);
             fileWriter.append(houseInsurance.toCSVStringHousehold());
             fileWriter.append(NEW_LINE);
 
@@ -239,14 +207,7 @@ public class CsvWriter {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/travelInsurnace.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(TRAVELINSURANCE);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
+            makeHeader(TRAVELINSURANCE);
             fileWriter.append(travelInsurance.toCSVStringTravel());
             fileWriter.append(NEW_LINE);
 
@@ -273,26 +234,14 @@ public class CsvWriter {
 
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/LeisureInsurnace.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(LEISUREINSURANCE);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
+            makeHeader(LEISUREINSURANCE);
             fileWriter.append(leisureInsurnace.toCSVStringLeisure());
             fileWriter.append(NEW_LINE);
-
-
-
             // If something went wrong while creating file
         } catch (IOException e) {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
-
-
         finallyBlock(fileWriter);
     }
 
@@ -302,39 +251,18 @@ public class CsvWriter {
      * @param damage_report
      */
     public static void writeDamageReport(Damage_Report damage_report) {
-
-        Customer aCustomer = damage_report.getCustomer();
-        String personID = aCustomer.getPersonalID();
-        int totalt = aCustomer.getAllCustomerInsurance();
-
-        Customer registrert = CsvReader.findCustomer(personID);
-
-        //CsvWriter.delete(registrert);
-
         try {
             fileWriter = new FileWriter(createFileCSV(System.getProperty("user.home") + "/damageReport.csv"), true);
-            if (!fileExists) {
-                // Write to header
-                fileWriter.append(DAMAGEREPORT);
-
-                // New line after header
-                fileWriter.append(NEW_LINE);
-            }
-
+            makeHeader(DAMAGEREPORT);
             fileWriter.append(damage_report.toCSVStringDamageReport());
             fileWriter.append(NEW_LINE);
-
-
-
             // If something went wrong while creating file
         } catch (IOException e) {
             System.out.println("csv file create error");
             e.printStackTrace();
         }
-
-
         finallyBlock(fileWriter);
     }
 
-    
+
 }

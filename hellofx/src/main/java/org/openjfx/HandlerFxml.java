@@ -25,7 +25,7 @@ import Insurances.Leisure_Insurance;
 import Insurances.House_Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
-import java.io.File;
+
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -177,7 +177,7 @@ public class HandlerFxml {
         public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,String> t2,
                                          TableColumn<House_Household_Insurance,String> t3, TableColumn<House_Household_Insurance,String> t4,
                                          TableColumn<House_Household_Insurance,String> t5, TableColumn<House_Household_Insurance,String> t6, TableView<House_Household_Insurance> table) {
-            ObservableList<House_Household_Insurance> householdInsurnace = CsvReader.readHousehold();
+            ObservableList<House_Household_Insurance> householdInsurnace = CsvReader.readHouseholdWithCustomer();
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
             t3.setCellValueFactory(new PropertyValueFactory<>("propertyOwner"));
@@ -190,7 +190,7 @@ public class HandlerFxml {
         public void setCellValueTravel(TableColumn<Travel_Insurance,String> t1, TableColumn<Travel_Insurance,String> t2,
                                          TableColumn<Travel_Insurance,String> t3, TableColumn<Travel_Insurance,String> t4,
                                          TableColumn<Travel_Insurance,String> t5, TableView<Travel_Insurance> table){
-        ObservableList<Travel_Insurance> travelInsurnce = CsvReader.readTravel();
+        ObservableList<Travel_Insurance> travelInsurnce = CsvReader.readTravelWithCustomer();
         t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
         t3.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
@@ -204,7 +204,7 @@ public class HandlerFxml {
     public void setCellValueLeisure(TableColumn<Leisure_Insurance,String> t1, TableColumn<Leisure_Insurance,String> t2,
                                          TableColumn<Leisure_Insurance,String> t3, TableColumn<Leisure_Insurance,String> t4,
                                          TableColumn<Leisure_Insurance,String> t5, TableColumn<Leisure_Insurance,String> t6, TableView<Leisure_Insurance> table){
-        ObservableList<Leisure_Insurance> leisureInsurnace = CsvReader.readLeisure();
+        ObservableList<Leisure_Insurance> leisureInsurnace = CsvReader.readLeisureWithCustomer();
         t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
         t3.setCellValueFactory(new PropertyValueFactory<>("constructionYear"));
@@ -220,7 +220,7 @@ public class HandlerFxml {
     public void setCellValueBoat(TableColumn<Boat_Insurance,String> t1, TableColumn<Boat_Insurance,String> t2,
                                          TableColumn<Boat_Insurance,String> t3, TableColumn<Boat_Insurance,String> t4,
                                          TableColumn<Boat_Insurance,String> t5, TableColumn<Boat_Insurance,String> t6,TableView<Boat_Insurance> table){
-        ObservableList<Boat_Insurance> boatInsurance = CsvReader.readBoat();
+        ObservableList<Boat_Insurance> boatInsurance = CsvReader.readBoatWithCustomer();
         t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
         t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
         t3.setCellValueFactory(new PropertyValueFactory<>("owner"));
