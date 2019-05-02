@@ -7,14 +7,13 @@ public class ObjectWriter extends FileWriter {
 
     /**
      * a method which writes an object to file
-     *
      * @param obj
      */
-    public void writeToFile(Object obj) {
+    public void writeToFile (Object obj) {
 
         try {
 
-            FileOutputStream fous = new FileOutputStream(System.getProperty("user.home") + "/obj");
+            FileOutputStream fous = new FileOutputStream(System.getProperty("user.home")+"/obj");
             ObjectOutputStream oos = new ObjectOutputStream(fous);
             oos.writeObject(obj);
             oos.close();

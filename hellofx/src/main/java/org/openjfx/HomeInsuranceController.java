@@ -3,6 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import FileManagement.OpenFileChooser;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,8 +22,8 @@ import java.io.IOException;
 public class HomeInsuranceController {
 
 
-    static Customer customerSelected;
     HandlerFxml handlerFxml = new HandlerFxml();
+    static Customer customerSelected;
     private OpenFileChooser openFileChooser = new OpenFileChooser();
 
     @FXML
@@ -32,7 +33,7 @@ public class HomeInsuranceController {
     private TableView<Customer> insuranceTable;
 
     @FXML
-    private TableColumn<Customer, String> personalID, insuranceNr, name, phone, email, date, billing;
+    private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
 
     @FXML
     private GridPane pane_Insurance;
@@ -43,20 +44,14 @@ public class HomeInsuranceController {
     @FXML
     private JFXButton button_Customer, btn_createInsurance1, btn_modfiInsurance1, btn_deleteInsurance1, btn_showInfoIns1;
 
-    /**
-     * @return customer selected
-     */
-    public static Customer getCustomerSelected() {
-        return customerSelected;
-    }
 
     /**
      * Initialize Method that sets the data for the table view and enables when marked buttons
      */
     @FXML
-    private void initialize() {
-        handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
-        handlerFxml.enableWhenMarked(insuranceTable, btn_createInsurance1, btn_modfiInsurance1);
+    private void initialize(){
+        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+        handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1);
         entireScreenInsurance.toFront();
 
 
@@ -64,7 +59,6 @@ public class HomeInsuranceController {
 
     /**
      * Method that handle button clicked events
-     *
      * @param event
      */
     @FXML
@@ -78,7 +72,7 @@ public class HomeInsuranceController {
             customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
             handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
         }
-        if (event.getSource() == btn_modfiInsurance1) {
+        if(event.getSource() == btn_modfiInsurance1){
             insuranceTable.getItems();
             customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
             handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
@@ -87,7 +81,6 @@ public class HomeInsuranceController {
 
     /**
      * Method that handle Import files
-     *
      * @param event
      */
     @FXML
@@ -97,7 +90,6 @@ public class HomeInsuranceController {
 
     /**
      * Method that handles export files
-     *
      * @param event
      */
     @FXML
@@ -107,7 +99,6 @@ public class HomeInsuranceController {
 
     /**
      * Method that handles exit window
-     *
      * @param event
      */
     @FXML
@@ -115,20 +106,26 @@ public class HomeInsuranceController {
         System.exit(1);
     }
 
+    /**
+     * @return customer selected
+     */
+    public static Customer getCustomerSelected() {
+        return customerSelected;
+    }
+
     @FXML
-    private void addInsurancePressed() {
+    private void addInsurancePressed(){
         handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
     }
 
     /**
      * Method that filters through the customer table view and shows the matching results
-     *
      * @param keyEvent
      */
     public void search(KeyEvent keyEvent) throws IOException {
 
 
-        ObservableList<Customer> data = CsvReader.read();
+        ObservableList<Customer> data =  CsvReader.read();
         searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (oldValue != null && (newValue.length() < oldValue.length())) {
                 insuranceTable.setItems(data);
@@ -150,6 +147,7 @@ public class HomeInsuranceController {
             }
             insuranceTable.setItems(subentries);
         });
+
 
 
     }

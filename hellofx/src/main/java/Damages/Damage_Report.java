@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Damage_Report implements Serializable {
 
 
+
     /**
      * Instance variables for the Damage_Report class
      */
@@ -22,7 +23,6 @@ public class Damage_Report implements Serializable {
 
     /**
      * Default constructor for Damage_report class
-     *
      * @param dateOfDamage
      * @param damageNr
      * @param damageType
@@ -46,12 +46,11 @@ public class Damage_Report implements Serializable {
 
     /**
      * Method to write Damage Report to String format
-     *
      * @return Damage Report to String format
      */
     @Override
     public String toString() {
-        return "DAMAGE REPORT" +
+        return  "DAMAGE REPORT" +
                 "\nDateOfDamage: " + dateOfDamage +
                 "\nDamageNr: " + damageNr +
                 "\nDamageType: " + damageType +
@@ -63,19 +62,18 @@ public class Damage_Report implements Serializable {
 
     /**
      * Method to write Damage Report to csv String format
-     *
      * @return Damage Report
      */
-    public String toCSVStringDamageReport() {
+    public String toCSVStringDamageReport(){
         return
                 customer.getPersonalID() + "," +
-                        dateOfDamage + "," +
-                        String.valueOf(damageNr) + "," +
-                        damageType + "," +
-                        damageDescription + "," +
-                        contactOfPotentialWitnesses + "," +
-                        String.valueOf(taxationAmountOfDamage) + "," +
-                        String.valueOf(unpaidReplacementAmount);
+                dateOfDamage + "," +
+                String.valueOf(damageNr) + "," +
+                damageType + "," +
+                damageDescription + "," +
+                contactOfPotentialWitnesses + "," +
+                String.valueOf(taxationAmountOfDamage) + "," +
+                String.valueOf(unpaidReplacementAmount);
     }
 
     /**
@@ -91,14 +89,6 @@ public class Damage_Report implements Serializable {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
-    /**
-     * @return dateOfDamage
-     */
-    public String getDateOfDamage() {
-        return dateOfDamage;
-    }
-
     /**
      * @param dateOfDamage
      */
@@ -107,11 +97,12 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return damageNr
+     * @return dateOfDamage
      */
-    public int getDamageNr() {
-        return damageNr;
+    public String getDateOfDamage() {
+        return dateOfDamage;
     }
+
 
     /**
      * @param damageNr
@@ -121,11 +112,12 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return damageType
+     * @return damageNr
      */
-    public String getDamageType() {
-        return damageType;
+    public int getDamageNr() {
+        return damageNr;
     }
+
 
     /**
      * @param damageType
@@ -135,11 +127,12 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return damageDescription
+     * @return damageType
      */
-    public String getDamageDescription() {
-        return damageDescription;
+    public String getDamageType() {
+        return damageType;
     }
+
 
     /**
      * @param damageDescription
@@ -149,11 +142,12 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return contactOfPotentialWitnesses
+     * @return damageDescription
      */
-    public String getContactOfPotentialWitnesses() {
-        return contactOfPotentialWitnesses;
+    public String getDamageDescription() {
+        return damageDescription;
     }
+
 
     /**
      * @param contactOfPotentialWitnesses
@@ -163,11 +157,12 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return taxationAmountOfDamage
+     * @return contactOfPotentialWitnesses
      */
-    public double getTaxationAmountOfDamage() {
-        return taxationAmountOfDamage;
+    public String getContactOfPotentialWitnesses() {
+        return contactOfPotentialWitnesses;
     }
+
 
     /**
      * @param taxationAmountOfDamage
@@ -177,17 +172,25 @@ public class Damage_Report implements Serializable {
     }
 
     /**
-     * @return unpaidReplacementAmount
+     * @return taxationAmountOfDamage
      */
-    public int getUnpaidReplacementAmount() {
-        return unpaidReplacementAmount;
+    public double getTaxationAmountOfDamage() {
+        return taxationAmountOfDamage;
     }
+
 
     /**
      * @param unpaidReplacementAmount
      */
     public void setUnpaidReplacementAmount(int unpaidReplacementAmount) {
         this.unpaidReplacementAmount = unpaidReplacementAmount;
+    }
+
+    /**
+     * @return unpaidReplacementAmount
+     */
+    public int getUnpaidReplacementAmount() {
+        return unpaidReplacementAmount;
     }
 }
 

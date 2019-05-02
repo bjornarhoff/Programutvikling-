@@ -17,7 +17,6 @@ public class Boat_Insurance extends Insurance {
 
     /**
      * Default Constructor for Boat Object
-     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -49,7 +48,7 @@ public class Boat_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return "\nBOAT INSURANCE" +
+        return  "\nBOAT INSURANCE" +
                 "\nOwner: " + owner +
                 "\nRegisterNr: " + registerNr +
                 "\nBoatTypeAndMOdel: " + boatTypeAndModel +
@@ -61,10 +60,9 @@ public class Boat_Insurance extends Insurance {
 
     /**
      * toString method for csv file
-     *
      * @return Boat object
      */
-    public String toCSVStringBoat() {
+    public String toCSVStringBoat(){
         return super.toCSVStringInsurnce() + "," +
                 owner + "," +
                 String.valueOf(registerNr) + "," +
@@ -76,13 +74,6 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return owner
-     */
-    public String getOwner() {
-        return this.owner;
-    }
-
-    /**
      * @param owner
      */
     public void setOwner(String owner) {
@@ -90,10 +81,11 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return registerNr
+     *
+     * @return owner
      */
-    public String getRegisterNr() {
-        return this.registerNr;
+    public String getOwner() {
+        return this.owner;
     }
 
     /**
@@ -104,10 +96,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return boatTypeAndModel
+     * @return registerNr
      */
-    public String getBoatTypeAndModel() {
-        return this.boatTypeAndModel;
+    public String getRegisterNr() {
+        return this.registerNr;
     }
 
     /**
@@ -118,10 +110,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return lengthInFoot
+     * @return boatTypeAndModel
      */
-    public double getLengthInFoot() {
-        return this.lengthInFoot;
+    public String getBoatTypeAndModel() {
+        return this.boatTypeAndModel;
     }
 
     /**
@@ -132,10 +124,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return year
+     * @return lengthInFoot
      */
-    public int getYear() {
-        return this.year;
+    public double getLengthInFoot() {
+        return this.lengthInFoot;
     }
 
     /**
@@ -146,10 +138,10 @@ public class Boat_Insurance extends Insurance {
     }
 
     /**
-     * @return motorTypeAndPower
+     * @return year
      */
-    public String getMotorTypeAndMotorPower() {
-        return this.motorTypeAndMotorPower;
+    public int getYear() {
+        return this.year;
     }
 
     /**
@@ -157,6 +149,13 @@ public class Boat_Insurance extends Insurance {
      */
     public void setMotorTypeAndMotorPower(String motorTypeAndMotorPower) {
         this.motorTypeAndMotorPower = motorTypeAndMotorPower;
+    }
+
+    /**
+     * @return motorTypeAndPower
+     */
+    public String getMotorTypeAndMotorPower() {
+        return this.motorTypeAndMotorPower;
     }
 
 }

@@ -1,5 +1,4 @@
 package Serialisering;
-
 import javax.swing.*;
 import java.io.*;
 import java.util.Scanner;
@@ -106,7 +105,6 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Damage Report from the csv file with the matching searchterm
-     *
      * @param searchterm
      */
     public static void deleteDamageReportFromCsv(String searchterm) throws IOException {
@@ -173,7 +171,6 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deltes the Leisure object from the csv file with the matching searchterm
-     *
      * @param searchterm
      */
     public static void deleteLeisureFromCsv(String searchterm) {
@@ -241,7 +238,6 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Boat object from the csv file with the matching searchterm
-     *
      * @param searchterm
      */
     public static void deleteBoatFromCsv(String searchterm) {
@@ -305,7 +301,6 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes the Travel object from the csv with the matching searchterm
-     *
      * @param searchterm
      */
     public static void deleteTravelFromCsv(String searchterm) {
@@ -341,6 +336,7 @@ public class SearchAndReadFromCSV {
                 insurnceSum = x.next();
 
 
+
                 if (!dateOfCreatedInsurnace.equals(searchterm)) {
                     pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + insurnaceArea + "," +
                             insurnceSum);
@@ -364,7 +360,6 @@ public class SearchAndReadFromCSV {
 
     /**
      * Method that deletes a Household object from the csv file with the matching searchterm
-     *
      * @param searchterm
      */
     public static void deleteHouseholdFromCsv(String searchterm) {

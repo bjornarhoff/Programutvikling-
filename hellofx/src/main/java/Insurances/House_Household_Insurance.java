@@ -1,5 +1,4 @@
 package Insurances;
-
 import CustomerModell.Customer;
 
 import java.util.Date;
@@ -18,7 +17,6 @@ public class House_Household_Insurance extends Insurance {
 
     /**
      * Default Constructor for Household Object
-     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -57,7 +55,7 @@ public class House_Household_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return "\nHOUSEHOLD INSURANCE" +
+        return  "\nHOUSEHOLD INSURANCE" +
                 "\nPropertyOwner: " + propertyOwner +
                 "\nYearOfConstruction: " + yearOfConstruction +
                 "\nResidentialType: " + residentialType +
@@ -72,7 +70,7 @@ public class House_Household_Insurance extends Insurance {
     /**
      * @return Household object in csv String format
      */
-    public String toCSVStringHousehold() {
+    public String toCSVStringHousehold(){
         return super.toCSVStringInsurnce() + "," +
                 propertyOwner + "," +
                 String.valueOf(yearOfConstruction) + "," +
@@ -85,13 +83,6 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return propertyOwner
-     */
-    public String getPropertyOwner() {
-        return this.propertyOwner;
-    }
-
-    /**
      * @param propertyOwner
      */
     public void setPropertyOwner(String propertyOwner) {
@@ -99,10 +90,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return yearOfConstruction
+     * @return propertyOwner
      */
-    public int getYearOfConstruction() {
-        return this.yearOfConstruction;
+    public String getPropertyOwner() {
+        return this.propertyOwner;
     }
 
     /**
@@ -113,10 +104,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return residentialType
+     * @return yearOfConstruction
      */
-    public String getResidentialType() {
-        return this.residentialType;
+    public int getYearOfConstruction() {
+        return this.yearOfConstruction;
     }
 
     /**
@@ -127,10 +118,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return constructionMaterial
+     * @return residentialType
      */
-    public String getConstructionMaterial() {
-        return this.constructionMaterial;
+    public String getResidentialType() {
+        return this.residentialType;
     }
 
     /**
@@ -141,10 +132,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return condition
+     * @return constructionMaterial
      */
-    public String getCondition() {
-        return this.condition;
+    public String getConstructionMaterial() {
+        return this.constructionMaterial;
     }
 
     /**
@@ -155,10 +146,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return numberOfSquareMeters
+     * @return condition
      */
-    public double getNumberOfSquareMeters() {
-        return this.numberOfSquareMeters;
+    public String getCondition() {
+        return this.condition;
     }
 
     /**
@@ -169,10 +160,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return insuranceAmountForConstruction
+     * @return numberOfSquareMeters
      */
-    public int getInsuranceAmountForConstruction() {
-        return this.insuranceAmountForConstruction;
+    public double getNumberOfSquareMeters() {
+        return this.numberOfSquareMeters;
     }
 
     /**
@@ -183,10 +174,10 @@ public class House_Household_Insurance extends Insurance {
     }
 
     /**
-     * @return insuranceAmountForHousehold
+     * @return insuranceAmountForConstruction
      */
-    public int getInsuranceAmountForHousehold() {
-        return this.insuranceAmountForHousehold;
+    public int getInsuranceAmountForConstruction() {
+        return this.insuranceAmountForConstruction;
     }
 
     /**
@@ -194,6 +185,13 @@ public class House_Household_Insurance extends Insurance {
      */
     public void setInsuranceAmountForHousehold(int insuranceAmountForHousehold) {
         this.insuranceAmountForHousehold = insuranceAmountForHousehold;
+    }
+
+    /**
+     * @return insuranceAmountForHousehold
+     */
+    public int getInsuranceAmountForHousehold() {
+        return this.insuranceAmountForHousehold;
     }
 
 }

@@ -19,13 +19,17 @@ import java.util.regex.Pattern;
 
 public class BoatInsuranceController {
 
-    @FXML
-    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions;
     private HandlerFxml handlerFxml = new HandlerFxml();
+
     @FXML
     private Pane entireScreenBoat;
+
     @FXML
     private JFXButton btn_Household, btn_Leisure, btn_Boat, btn_Travel, btn_cancel, btn_apply, btn_ok;
+
+    @FXML
+    public JFXTextField Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions;
+
     @FXML
     private JFXTextArea info;
 
@@ -35,19 +39,18 @@ public class BoatInsuranceController {
 
     /**
      * Method that validates input for text fields so a user has to enter a Integer input
-     *
      * @return true if entered Integer and false if not
      */
-    private boolean validateNumber() {
+    private boolean validateNumber(){
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(length.getText());
         Matcher m2 = p.matcher(year.getText());
         Matcher m3 = p.matcher(insuranceAmount.getText());
 
-        if (m.find() && m.group().equals(length.getText()) && m2.find() && m2.group().equals(year.getText()) && m3.find() &&
-                m3.group().equals(insuranceAmount.getText())) {
+        if(m.find() && m.group().equals(length.getText()) && m2.find() && m2.group().equals(year.getText()) && m3.find() &&
+                m3.group().equals(insuranceAmount.getText())){
             return true;
-        } else {
+        }else{
             ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
             return false;
         }
@@ -57,7 +60,7 @@ public class BoatInsuranceController {
      * Initialize Method where load page and set Animation Timer and Input validation
      */
     @FXML
-    private void initialize() {
+    private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
 
@@ -71,9 +74,9 @@ public class BoatInsuranceController {
             @Override
             public void handle(long l) {
                 boolean allFilled = handlerFxml.enableButton(btn_apply, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions);
-                if (allFilled) {
+                if (allFilled){
                     btn_apply.setDisable(false);
-                } else {
+                }else{
                     btn_apply.setDisable(true);
                 }
             }
@@ -83,20 +86,22 @@ public class BoatInsuranceController {
 
     /**
      * Handles our button interactions
-     *
      * @param event
      */
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
-        if (event.getSource() == btn_Household) {
-            handlerFxml.navigate(entireScreenBoat, "householdInsurance.fxml");
-        } else if (event.getSource() == btn_Leisure) {
-            handlerFxml.navigate(entireScreenBoat, "LeisureInsurance.fxml");
-        } else if (event.getSource() == btn_Travel) {
-            handlerFxml.navigate(entireScreenBoat, "TravelInsurance.fxml");
-        } else if (event.getSource() == btn_Boat) {
-            handlerFxml.navigate(entireScreenBoat, "BoatInsurance.fxml");
+        if(event.getSource() == btn_Household){
+            handlerFxml.navigate(entireScreenBoat,"householdInsurance.fxml");
+        }
+        else if(event.getSource() == btn_Leisure){
+            handlerFxml.navigate(entireScreenBoat,"LeisureInsurance.fxml");
+        }
+        else if(event.getSource() == btn_Travel){
+            handlerFxml.navigate(entireScreenBoat,"TravelInsurance.fxml");
+        }
+        else if(event.getSource() == btn_Boat){
+            handlerFxml.navigate(entireScreenBoat,"BoatInsurance.fxml");
         }
     }
 
@@ -112,24 +117,24 @@ public class BoatInsuranceController {
      * Adds Boat object to selected Customer and clears text fields
      */
     @FXML
-    public void apply() {
+    public void apply(){
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
-        if (validateNumber())
-            try {
+        if(validateNumber())
+        try {
 
-                Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
-                        InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
-                        Integer.parseInt(year.getText()), motorTypePower.getText());
+            Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
+                    InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
+                    Integer.parseInt(year.getText()), motorTypePower.getText());
 
-                CsvWriter.writeBoatInsuranceToCSV(b1, true);
+            CsvWriter.writeBoatInsuranceToCSV(b1, true);
 
-                info.setText(b1.toString());
+            info.setText(b1.toString());
 
-                handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions);
-            } catch (Exception e) {
-                System.out.println("wrong data type");
-            }
+            handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, insuranceAmount, InsuranceConditions);
+        }catch(Exception e){
+            System.out.println("wrong data type");
+        }
     }
 }
