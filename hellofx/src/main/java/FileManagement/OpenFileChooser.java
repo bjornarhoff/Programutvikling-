@@ -100,23 +100,6 @@ public class OpenFileChooser {
             for (Customer customer : customers) {
                 Serialization.serialiseCustomer(customer,"customers.jobj");
             }
-
-            for (House_Household_Insurance houseIn : house) {
-                Serialization.serialiseInsurance(houseIn,"house.jobj");
-            }
-
-
-            for (Leisure_Insurance leisureIn : leisure) {
-                Serialization.serialiseInsurance(leisureIn,"leisure.jobj");
-            }
-
-            for (Travel_Insurance travelIn : travel) {
-                Serialization.serialiseInsurance(travelIn,"travel.jobj");
-            }
-            for (Boat_Insurance boatIn : boat) {
-                Serialization.serialiseInsurance(boatIn,"boat.jobj");
-            }
         }
     }
-
 }
