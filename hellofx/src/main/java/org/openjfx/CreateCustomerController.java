@@ -10,36 +10,30 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+
 import java.io.IOException;
 import java.util.Date;
 
 public class CreateCustomerController {
-    HandlerFxml handlerFxml = new HandlerFxml();
-    HomeCustomerController homeCustomerController = new HomeCustomerController();
-
-    @FXML
-    private BorderPane popUpCreate;
-
     @FXML
     public TextArea info;
-
     @FXML
-    public JFXTextField personalID, name,billing,phone,email;
-
+    public JFXTextField personalID, name, billing, phone, email;
     @FXML
-    public JFXButton cancel,apply;
-
-
+    public JFXButton cancel, apply;
+    HandlerFxml handlerFxml = new HandlerFxml();
+    HomeCustomerController homeCustomerController = new HomeCustomerController();
+    @FXML
+    private BorderPane popUpCreate;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXMLHomeController"));
-        try{
+        try {
             loader.load();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("error while loading");
         }
 
@@ -50,7 +44,7 @@ public class CreateCustomerController {
      * Method for creating a Customer and clearing text fields
      */
     @FXML
-    public void apply(){
+    public void apply() {
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
@@ -60,17 +54,17 @@ public class CreateCustomerController {
         info.setText(aCustomer.toString());
 
 
-        handlerFxml.clearInput(personalID, name,billing,phone,email);
+        handlerFxml.clearInput(personalID, name, billing, phone, email);
     }
 
 
     /**
      * method to get back to home Customer page
      */
-   @FXML
+    @FXML
     public void cancel() {
         handlerFxml.navigate(popUpCreate, "homeCustomer.fxml");
-   }
+    }
 
     /**
      * Method were everything for the page is being initialize
@@ -85,10 +79,10 @@ public class CreateCustomerController {
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(apply, name,personalID,phone,email,billing);
-                if (allFilled){
+                boolean allFilled = handlerFxml.enableButton(apply, name, personalID, phone, email, billing);
+                if (allFilled) {
                     apply.setDisable(false);
-                }else{
+                } else {
                     apply.setDisable(true);
                 }
                 // Sets restriction for personal ID and phone number, 0-11 characters & 0-8 characters
