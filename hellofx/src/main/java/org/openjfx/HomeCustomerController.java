@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import FileManagement.OpenFileChooser;
@@ -94,11 +95,7 @@ public class HomeCustomerController {
         // Enables buttons when marked one customer
         handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer,btn_editCustomer,btn_showDamageReport);
         entireScreenCustomer.toFront();
-        customerTable.setEditable(true);
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
-        phone.setCellFactory(TextFieldTableCell.forTableColumn());
-        email.setCellFactory(TextFieldTableCell.forTableColumn());
-        billing.setCellFactory(TextFieldTableCell.forTableColumn());
+
 
     }
 
@@ -166,6 +163,8 @@ public class HomeCustomerController {
     /**
      * Search Method that filters through Customer Table view and matches search input
      */
+
+
 
 
 
@@ -281,6 +280,15 @@ public class HomeCustomerController {
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setBillingAddress(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
+    }
+
+    public void editCustomer(ActionEvent event) {
+        customerTable.setEditable(true);
+        name.setCellFactory(TextFieldTableCell.forTableColumn());
+        phone.setCellFactory(TextFieldTableCell.forTableColumn());
+        email.setCellFactory(TextFieldTableCell.forTableColumn());
+        billing.setCellFactory(TextFieldTableCell.forTableColumn());
+        ExceptionHandler.modifyAlertbox("Modify Customers");
     }
 
     /*

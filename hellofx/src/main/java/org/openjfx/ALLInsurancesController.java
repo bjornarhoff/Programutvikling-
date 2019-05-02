@@ -189,6 +189,7 @@ public class ALLInsurancesController {
             houseConstMaterial.setCellFactory(TextFieldTableCell.forTableColumn());
             houseCondition.setCellFactory(TextFieldTableCell.forTableColumn());
             amountHousehold.setCellFactory(TextFieldTableCell.forTableColumn(converter));
+            ExceptionHandler.modifyAlertbox("Modify Household Insurance");
         }
 
         if(event.getSource() == modifyTravel){
@@ -197,6 +198,8 @@ public class ALLInsurancesController {
             travelYearlyPremium.setCellFactory(TextFieldTableCell.forTableColumn());
             travelInsConditions.setCellFactory(TextFieldTableCell.forTableColumn());
             travelInsArea.setCellFactory(TextFieldTableCell.forTableColumn());
+            ExceptionHandler.modifyAlertbox("Modify Travel Insurance");
+
         }
 
         if(event.getSource() == modifyLeisure){
@@ -207,6 +210,8 @@ public class ALLInsurancesController {
             leisureConstrMaterial.setCellFactory(TextFieldTableCell.forTableColumn());
             leisureCondition.setCellFactory(TextFieldTableCell.forTableColumn());
             amountLeisure.setCellFactory(TextFieldTableCell.forTableColumn(converter));
+            ExceptionHandler.modifyAlertbox("Modify Leisure Insurance");
+
         }
         if(event.getSource() == modifyBoat){
             tvBoat.setEditable(true);
@@ -215,6 +220,8 @@ public class ALLInsurancesController {
             boatOwner.setCellFactory(TextFieldTableCell.forTableColumn());
             boatTypeModel.setCellFactory(TextFieldTableCell.forTableColumn());
             motorType.setCellFactory(TextFieldTableCell.forTableColumn());
+            ExceptionHandler.modifyAlertbox("Modify Boat Insurance");
+
         }
     }
 
@@ -444,9 +451,11 @@ public class ALLInsurancesController {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
-        leisureIns.setAmountForHousehold(cellEditEvent.getNewValue());
+        leisureIns.setAmountForHousehold(cellEditEvent.getNewValue() == null ? cellEditEvent.getOldValue() : cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
+        handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea,tvTravel);
+
 
     }
 

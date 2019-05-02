@@ -41,7 +41,7 @@
               <columns>
                 <TableColumn fx:id="dmgType" onEditCommit="#onEditDamageType" prefWidth="132.0" text="Damage Type" />
                 <TableColumn fx:id="dmgDescription" onEditCommit="#onEditDamageDesc" prefWidth="183.0" text="Damage Description" />
-                  <TableColumn fx:id="dmgNr" onEditCommit="#onEditDamageNr" prefWidth="141.0" text="Damage Nr" />
+                  <TableColumn fx:id="dmgNr" prefWidth="141.0" text="Damage Nr" />
                   <TableColumn fx:id="potentialWitnesses" onEditCommit="#onEditWitnesses" prefWidth="188.0" text="Potential Witnesses" />
                   <TableColumn fx:id="unpaid" prefWidth="148.0" text="Unpaid Replacements" />
               </columns>

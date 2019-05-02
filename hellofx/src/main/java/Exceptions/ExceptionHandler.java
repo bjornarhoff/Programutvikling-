@@ -13,4 +13,7 @@ public class ExceptionHandler {
         return alert;
     }
 
+    public static void modifyAlertbox(String title) {
+        ExceptionHandler.alertBox(title, "You are now able to modify text in the table view", "There are specific Items that" +
+            " you can now edit by double clicking the desired box. Not all Items are editable");}
 }

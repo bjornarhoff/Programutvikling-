@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import Damages.Damage_Report;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
@@ -143,10 +144,12 @@ public class DamageReportController {
         damageTableView.setEditable(false);
     }
 
+
     /**
      * Method that edits the Damage number in the table view
      * @param damage_reportStringCellEditEvent
      */
+    /*
     public void onEditDamageNr(TableColumn.CellEditEvent<Damage_Report, Integer> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
@@ -155,6 +158,8 @@ public class DamageReportController {
         CsvWriter.writeDamageReport(damageModifiable);
         damageTableView.setEditable(false);
     }
+
+     */
 
     /**
      * Method that edits the potential Witnesses in the table view
@@ -177,7 +182,7 @@ public class DamageReportController {
         damageTableView.setEditable(true);
         dmgType.setCellFactory(TextFieldTableCell.forTableColumn());
         dmgDescription.setCellFactory(TextFieldTableCell.forTableColumn());
-        dmgNr.setCellFactory(TextFieldTableCell.forTableColumn(converter));
         potentialWitnesses.setCellFactory(TextFieldTableCell.forTableColumn());
+        ExceptionHandler.modifyAlertbox("Modify Damage Report");
     }
 }
