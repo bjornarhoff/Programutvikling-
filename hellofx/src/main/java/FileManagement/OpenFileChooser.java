@@ -59,18 +59,23 @@ public class OpenFileChooser {
         File file = chooser.showSaveDialog(stage);
 
         String s = file.getName().split("\\.")[1];
-        ObservableList<Customer> customers = CsvReader.read();
-        ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
-        ArrayList<String> boat_insurances = CsvReader.readAllBoat();
-        ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
-        ArrayList<String> leisure_insurances = CsvReader.readAllLeisure();
-        ArrayList<String> travel_insurances = CsvReader.readAllTravel();
+/*        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
+        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureWithCustomer();
+        ObservableList<Boat_Insurance> boat = CsvReader.readBoatWithCustomer();
+        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();*/
 
         File directory = new File (file.getPath().split("\\.")[0]);
         if (!directory.exists()) {
             directory.mkdir();
         }
         if (s.equals("csv")) {
+            ObservableList<Customer> customers = CsvReader.read();
+            ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
+            ArrayList<String> boat_insurances = CsvReader.readAllBoat();
+            ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
+            ArrayList<String> leisure_insurances = CsvReader.readAllLeisure();
+            ArrayList<String> travel_insurances = CsvReader.readAllTravel();
+
             String path = file.getPath().split("\\.")[0];
             for (Customer customer : customers) {
                 CsvWriter.writeFileToCsvCustomer(path + "/Customer.csv", customer);
@@ -92,7 +97,27 @@ public class OpenFileChooser {
             }
         }
         if (s.equals("jobj")) {
-            System.out.println("Fuck off");
+            String path = file.getPath().split("\\.")[0];
+/*
+            for (Customer customer : customers) {
+                Serialization.serialiseCustomer(customer,"customers.jobj");
+            }
+
+            for (House_Household_Insurance houseIn : house) {
+                Serialization.serialiseInsurance(houseIn,"house.jobj");
+            }
+
+
+            for (Leisure_Insurance leisureIn : leisure) {
+                Serialization.serialiseInsurance(leisureIn,"leisure.jobj");
+            }
+
+            for (Travel_Insurance travelIn : travel) {
+                Serialization.serialiseInsurance(travelIn,"travel.jobj");
+            }
+            for (Boat_Insurance boatIn : boat) {
+                Serialization.serialiseInsurance(boatIn,"boat.jobj");
+            }*/
         }
     }
 }
