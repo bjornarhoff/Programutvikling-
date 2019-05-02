@@ -108,13 +108,18 @@ public class DamageReportController {
     }
 
 
+    /**
+     * @return Damage Report selcted
+     */
     public static Damage_Report getDamageReport() {
         return damageReportSelected;
     }
 
 
-
-
+    /**
+     * Method that edits the Damage Type in the table view
+     * @param damage_reportStringCellEditEvent
+     */
     public void onEditDamageType(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
@@ -125,6 +130,10 @@ public class DamageReportController {
 
     }
 
+    /**
+     * Method that edits the Damage Description in the table view
+     * @param damage_reportStringCellEditEvent
+     */
     public void onEditDamageDesc(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
@@ -134,6 +143,10 @@ public class DamageReportController {
         damageTableView.setEditable(false);
     }
 
+    /**
+     * Method that edits the Damage number in the table view
+     * @param damage_reportStringCellEditEvent
+     */
     public void onEditDamageNr(TableColumn.CellEditEvent<Damage_Report, Integer> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
@@ -143,6 +156,10 @@ public class DamageReportController {
         damageTableView.setEditable(false);
     }
 
+    /**
+     * Method that edits the potential Witnesses in the table view
+     * @param damage_reportStringCellEditEvent
+     */
     public void onEditWitnesses(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
@@ -152,6 +169,10 @@ public class DamageReportController {
         damageTableView.setEditable(false);
     }
 
+    /**
+     * Method that enables editing in the table view
+     * @param event
+     */
     public void editReport(ActionEvent event) {
         damageTableView.setEditable(true);
         dmgType.setCellFactory(TextFieldTableCell.forTableColumn());

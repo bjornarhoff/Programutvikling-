@@ -2,6 +2,7 @@ package org.openjfx;
 
 import CustomerModell.Customer;
 import Damages.Damage_Report;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -10,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateDamageReportController {
 
@@ -29,6 +33,21 @@ public class CreateDamageReportController {
 
     @FXML
     private JFXButton btn_cancel, btn_apply, btn_ok;
+
+    private boolean validateNumber(){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(damageNr.getText());
+        Matcher m2 = p.matcher(taxAmount.getText());
+        Matcher m3 = p.matcher(unpaidReplacements.getText());
+
+        if(m.find() && m.group().equals(damageNr.getText()) && m2.find() && m2.group().equals(taxAmount.getText()) && m3.find() &&
+                m3.group().equals(unpaidReplacements.getText())){
+            return true;
+        }else{
+            ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
+            return false;
+        }
+    }
 
     /**
      * Initialize Method that gets Customer selected PersonalID
@@ -55,14 +74,19 @@ public class CreateDamageReportController {
     private void apply(ActionEvent event){
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
+        if(validateNumber())
+        try {
 
-        Damage_Report damage_report = new Damage_Report(txt_date.getText(), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
-                Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
+            Damage_Report damage_report = new Damage_Report(txt_date.getText(), Integer.parseInt(damageNr.getText()), txt_damageType.getText(), txta_DaDescription.getText(), txta_potWitnesses.getText(),
+                    Double.parseDouble(taxAmount.getText()), Integer.parseInt(unpaidReplacements.getText()), customer);
 
-        CsvWriter.writeDamageReport(damage_report);
-        txta_info.setText(damage_report.toString());
+            CsvWriter.writeDamageReport(damage_report);
+            txta_info.setText(damage_report.toString());
 
-        handlerFxml.clearInput();
+            handlerFxml.clearInput();
+        }catch(Exception e){
+            System.out.println("wrong input provided");
+        }
 
     }
 

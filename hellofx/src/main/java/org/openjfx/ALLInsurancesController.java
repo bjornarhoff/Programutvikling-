@@ -72,7 +72,10 @@ public class ALLInsurancesController {
     private TableColumn<Boat_Insurance, Integer> boatInsAmount;
 
 
-    private static StringConverter<Integer> converter = new StringConverter<Integer>() {
+    /**
+     * Method that converts String to Integer and from String to Integer
+     */
+    private static StringConverter<Integer> converter = new StringConverter<>() {
         @Override
         public String toString(Integer object) {
             return Integer.toString(object);
@@ -84,6 +87,10 @@ public class ALLInsurancesController {
         }
     };
 
+
+    /**
+     * Initialize Method that starts the page with Table view data and disables buttons before a Table view is marked
+     */
 
     @FXML
     private void initialize(){
@@ -101,6 +108,10 @@ public class ALLInsurancesController {
 
     }
 
+    /**
+     * Method to hadndle button events like Delete Insurances, show full info and Modify Insurances
+     * @param event
+     */
     @FXML
     public void handleButtonEvents(javafx.event.ActionEvent event) {
         if(event.getSource() == cancel){
@@ -189,13 +200,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Yearly premium in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editYearlyPremium(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
+    public void editYearlyPremium(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setYearlyInsurancePremium(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setYearlyInsurancePremium(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -203,13 +214,15 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance Amount in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> house_household_insuranceStringCellEditEvent) {
+    public void editInsurnaceAmount(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
+
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
+        if(CellEditEvent.getNewValue().equals(CellEditEvent.getNewValue()))
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setInsuranceAmount(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setInsuranceAmount(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -217,13 +230,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Insurance conditions in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editConditions(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
+    public void editConditions(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setInsuranceConditions(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setInsuranceConditions(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -231,13 +244,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Property Owner in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editOwner(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
+    public void editOwner(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setPropertyOwner(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setPropertyOwner(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -245,13 +258,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Construction Material in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editConstructionMaterial(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
+    public void editConstructionMaterial(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setConstructionMaterial(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setConstructionMaterial(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -259,13 +272,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits the House Condition in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editHouseCondition(TableColumn.CellEditEvent<House_Household_Insurance, String> house_household_insuranceStringCellEditEvent) {
+    public void editHouseCondition(TableColumn.CellEditEvent<House_Household_Insurance, String> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setCondition(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setCondition(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 
@@ -273,13 +286,13 @@ public class ALLInsurancesController {
 
     /**
      * Method that edits Household Amount in the Household table and replaces the edited term in the csv file
-     * @param house_household_insuranceStringCellEditEvent
+     * @param CellEditEvent
      */
-    public void editAmountHousehold(TableColumn.CellEditEvent<House_Household_Insurance, Integer> house_household_insuranceStringCellEditEvent) {
+    public void editAmountHousehold(TableColumn.CellEditEvent<House_Household_Insurance, Integer> CellEditEvent) {
         House_Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
-        householdIns.setInsuranceAmountForHousehold(house_household_insuranceStringCellEditEvent.getNewValue());
+        householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
 

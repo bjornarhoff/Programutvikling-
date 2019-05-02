@@ -23,8 +23,14 @@ public class Damage_Report implements Serializable {
 
     /**
      * Default constructor for Damage_report class
-     *
-     * @param variables which are used for the constructor
+     * @param dateOfDamage
+     * @param damageNr
+     * @param damageType
+     * @param damageDescription
+     * @param contactOfPotentialWitnesses
+     * @param taxationAmountOfDamage
+     * @param unpaidReplacementAmount
+     * @param customer
      */
     public Damage_Report(String dateOfDamage, int damageNr, String damageType, String damageDescription,
                          String contactOfPotentialWitnesses, double taxationAmountOfDamage, int unpaidReplacementAmount, Customer customer) {
@@ -38,6 +44,10 @@ public class Damage_Report implements Serializable {
         this.unpaidReplacementAmount = unpaidReplacementAmount;
     }
 
+    /**
+     * Method to write Damage Report to String format
+     * @return Damage Report to String format
+     */
     @Override
     public String toString() {
         return  "DAMAGE REPORT" +
@@ -50,6 +60,10 @@ public class Damage_Report implements Serializable {
                 "\nUnpaidReplacementAmount: " + unpaidReplacementAmount;
     }
 
+    /**
+     * Method to write Damage Report to csv String format
+     * @return Damage Report
+     */
     public String toCSVStringDamageReport(){
         return
                 customer.getPersonalID() + "," +
@@ -62,10 +76,16 @@ public class Damage_Report implements Serializable {
                 String.valueOf(unpaidReplacementAmount);
     }
 
+    /**
+     * @return customer
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * @param customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import Insurances.Travel_Insurance;
 import com.jfoenix.controls.JFXButton;
@@ -15,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TravelInsurnaceController {
 
@@ -35,7 +38,28 @@ public class TravelInsurnaceController {
     @FXML
     private Label customerLabel;
 
+    /**
+     * Method that validates number input and matches it with the user input
+     * @return true if matching and false with alert box if not matching
+     */
+    private boolean validateNumber(){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(insuranceSum.getText());
+        Matcher m2 = p.matcher(InsuranceAmount.getText());
 
+        if(m.find() && m.group().equals(insuranceSum.getText()) && m2.find() && m2.group().equals(InsuranceAmount.getText())){
+            return true;
+        }
+        else{
+            ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
+            return false;
+        }
+    }
+
+
+    /**
+     * Initialize Method that starts Animation timer and sets number validation
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
@@ -55,7 +79,6 @@ public class TravelInsurnaceController {
         NumberValidator numvalidator = new NumberValidator();
 
         insuranceSum.getValidators().add(numvalidator);
-        YearlyInsurance.getValidators().add(numvalidator);
         InsuranceAmount.getValidators().add(numvalidator);
 
 
@@ -65,6 +88,10 @@ public class TravelInsurnaceController {
         setInputValidation();
     }
 
+    /**
+     * Method that handles button events for switching between Insurnace screens
+     * @param event
+     */
     @FXML
     private void handleButtonActions(ActionEvent event) {
         if(event.getSource() == btn_household){
@@ -82,26 +109,40 @@ public class TravelInsurnaceController {
     }
 
 
+    /**
+     * Method that takes you back to home Insurance screen
+     */
     @FXML
     public void cancel() {
         handlerFxml.navigate(entireScreenTravel, "homeInsurance.fxml");
     }
 
 
+    /**
+     * Method that checks for correct input and if true creates a Travel Insurance
+     */
     @FXML
     public void apply(){
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
-        Travel_Insurance t1 = new Travel_Insurance(customer, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
-        insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
-        CsvWriter.writeTravelInsjurance(t1, true);
-        info.setText(t1.toString());
+        if(validateNumber())
+        try {
+            Travel_Insurance t1 = new Travel_Insurance(customer, YearlyInsurance.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()), InsuranceConditions.getText(),
+                    insuranceArea.getText(), Integer.parseInt(insuranceSum.getText()));
+            CsvWriter.writeTravelInsjurance(t1, true);
+            info.setText(t1.toString());
 
-        clearInput();
+            clearInput();
+        }catch(Exception e){
+            System.out.println("wrong data type");
+        }
 
     }
 
+    /**
+     * Method that clears input
+     */
     public void clearInput(){
         insuranceArea.setText("");
         insuranceSum.setText("");

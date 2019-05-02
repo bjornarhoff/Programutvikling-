@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import Insurances.House_Household_Insurance;
 import com.jfoenix.controls.JFXButton;
@@ -13,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HouseholdInsurnaceController {
 
@@ -34,16 +37,40 @@ public class HouseholdInsurnaceController {
     @FXML
     private JFXTextArea info;
 
+
+    /**
+     * Method that validates input for text fields so a user has to enter a Integer input
+     * @return true if entered Integer and false if not
+     */
+    private boolean validateNumber(){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(amountForConstruction.getText());
+        Matcher m2 = p.matcher(amountForHousehold.getText());
+        Matcher m3 = p.matcher(InsuranceAmount.getText());
+        Matcher m4 = p.matcher(nrSquareMeters.getText());
+        if(m.find() && m.group().equals(amountForConstruction.getText()) && m2.find() && m.group().equals(amountForHousehold.getText()) && m3.find() &&
+                m.group().equals(InsuranceAmount.getText()) && m4.find() && m.group().equals(nrSquareMeters.getText())){
+            return true;
+        }else{
+            ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
+            return false;
+        }
+    }
+
+    /**
+     * Initialize Method
+     */
     @FXML
     private void initialize() {
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
 
+
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                boolean allFilled = handlerFxml.enableButton(btn_apply,propertyOwner, yearConstruction, residentialType, constMaterial,conditions, amountForConstruction, nrSquareMeters,
+                boolean filled = handlerFxml.enableButton(btn_apply,propertyOwner, yearConstruction, residentialType, constMaterial,conditions, amountForConstruction, nrSquareMeters,
                          amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions);
-                if (allFilled){
+                if (filled){
                     btn_apply.setDisable(false);
                 }else{
                     btn_apply.setDisable(true);
@@ -51,22 +78,19 @@ public class HouseholdInsurnaceController {
             }
         }.start();
 
-
-
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(yearConstruction);
         handlerFxml.setInputValidation(nrSquareMeters);
         handlerFxml.setInputValidation(amountForHousehold);
-        handlerFxml.setInputValidation(yearlyPremium);
         handlerFxml.setInputValidation(amountForConstruction);
         handlerFxml.setInputValidation(InsuranceAmount);
-
-
-
-
     }
 
 
+    /**
+     * Method that hanldes button events for switching between Insurance screens
+     * @param event
+     */
     @FXML
     private void handleButtonActions(ActionEvent event) {
 
@@ -81,27 +105,36 @@ public class HouseholdInsurnaceController {
         }
     }
 
+    /**
+     * Method that takes you back to home Insurance screen
+     */
     @FXML
     public void cancel() {
         handlerFxml.navigate(entireScreenHousehold, "homeInsurance.fxml");
     }
 
+    /**
+     * Method that checks if all input is valid and if true creates a new Household Insurance
+     */
     @FXML
     public void apply() {
-
         Customer customer = HomeInsuranceController.getCustomerSelected();
+        if(validateNumber()) {
+            try {
+                House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
+                        InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
+                        conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
 
-        House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
-                InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
-                conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
+                CsvWriter.writeHouseInsuranceToCSV(h1, true);
+                info.setText(h1.toString());
 
-        CsvWriter.writeHouseInsuranceToCSV(h1, true);
-        info.setText(h1.toString());
-
-        // Clear input
-        handlerFxml.clearInput(propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
-        conditions, amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions);
-
+                // Clear input
+                handlerFxml.clearInput(propertyOwner, yearConstruction, constMaterial, residentialType, amountForConstruction, nrSquareMeters,
+                        conditions, amountForHousehold, yearlyPremium, date, InsuranceAmount, InsuranceConditions);
+            }catch(Exception e){
+                System.out.println("please enter right number");
+            }
+        }
     }
 
     /*public void setInputValidaiton(){

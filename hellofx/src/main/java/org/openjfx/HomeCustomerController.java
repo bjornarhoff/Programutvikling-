@@ -171,8 +171,6 @@ public class HomeCustomerController {
 
 
     public void filter(KeyEvent keyEvent){
-
-
         ObservableList<Customer> data=CsvReader.read();
         searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
         if(oldValue!=null&&(newValue.length()<oldValue.length())){
@@ -230,44 +228,60 @@ public class HomeCustomerController {
 
          */
 
-
         }
 
 
-
-
-public void onEdit(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    /**
+     * Method that edits name from customer table view
+     * @param customerStringCellEditEvent
+     */
+    public void onEdit(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
         Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setName(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-        }
 
-public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    }
+
+    /**
+     * Method that edits phone number for the customer in the table view
+     * @param customerStringCellEditEvent
+     */
+    public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
         Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setPhoneNumber(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-        }
+    }
 
-public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    /**
+     * Method that edits email for the customer in the table view
+     * @param customerStringCellEditEvent
+     */
+    public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
         Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setEmail(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-        }
 
-public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    }
+
+
+    /**
+     * Method that edits billing address for the customer in the Table view
+     * @param customerStringCellEditEvent
+     */
+    public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
         Customer customerModifiable=customerTable.getSelectionModel().getSelectedItem();
 
         SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setBillingAddress(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
-        }
+    }
 
     /*
     public void setTerm(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent ){

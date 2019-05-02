@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import CustomerModell.Customer;
+import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
 import Insurances.Boat_Insurance;
 import com.jfoenix.controls.JFXButton;
@@ -13,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BoatInsuranceController {
 
@@ -34,7 +37,28 @@ public class BoatInsuranceController {
     private Label customerLabel;
 
 
+    /**
+     * Method that validates input for text fields so a user has to enter a Integer input
+     * @return true if entered Integer and false if not
+     */
+    private boolean validateNumber(){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(length.getText());
+        Matcher m2 = p.matcher(year.getText());
+        Matcher m3 = p.matcher(insuranceAmount.getText());
 
+        if(m.find() && m.group().equals(length.getText()) && m2.find() && m2.group().equals(year.getText()) && m3.find() &&
+                m3.group().equals(insuranceAmount.getText())){
+            return true;
+        }else{
+            ExceptionHandler.alertBox("Wrong Input Data Type", "Check red highleted boxes", "Convert Leters into numbers");
+            return false;
+        }
+    }
+
+    /**
+     * Initialize Method where load page and set Animation Timer and Input validation
+     */
     @FXML
     private void initialize(){
         customerLabel.setText(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
@@ -43,7 +67,6 @@ public class BoatInsuranceController {
         handlerFxml.setInputValidation(registerNr);
         handlerFxml.setInputValidation(length);
         handlerFxml.setInputValidation(year);
-        handlerFxml.setInputValidation(yearlyPremium);
         handlerFxml.setInputValidation(insuranceAmount);
 
 
@@ -98,16 +121,20 @@ public class BoatInsuranceController {
 
         Customer customer = HomeInsuranceController.getCustomerSelected();
 
+        if(validateNumber())
+        try {
 
-        Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
-                InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
-                Integer.parseInt(year.getText()), motorTypePower.getText());
+            Boat_Insurance b1 = new Boat_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(insuranceAmount.getText()),
+                    InsuranceConditions.getText(), Owner.getText(), registerNr.getText(), boatTypeModel.getText(), Double.parseDouble(length.getText()),
+                    Integer.parseInt(year.getText()), motorTypePower.getText());
 
-        CsvWriter.writeBoatInsuranceToCSV(b1, true);
+            CsvWriter.writeBoatInsuranceToCSV(b1, true);
 
-        info.setText(b1.toString());
+            info.setText(b1.toString());
 
-        handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
-
+            handlerFxml.clearInput(Owner, registerNr, length, boatTypeModel, motorTypePower, year, yearlyPremium, date, insuranceAmount, InsuranceConditions);
+        }catch(Exception e){
+            System.out.println("wrong data type");
+        }
     }
 }

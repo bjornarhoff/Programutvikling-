@@ -19,90 +19,109 @@ import FileManagement.CsvReader;
 
 public class HomeInsuranceController {
 
-        HandlerFxml handlerFxml = new HandlerFxml();
-        static Customer customerSelected;
-        private OpenFileChooser openFileChooser = new OpenFileChooser();
 
-        @FXML
-        private BorderPane entireScreenInsurance;
+    HandlerFxml handlerFxml = new HandlerFxml();
+    static Customer customerSelected;
+    private OpenFileChooser openFileChooser = new OpenFileChooser();
 
-        @FXML
-        private TableView<Customer> insuranceTable;
+    @FXML
+    private BorderPane entireScreenInsurance;
 
-        @FXML
-        private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
+    @FXML
+    private TableView<Customer> insuranceTable;
 
-        @FXML
-        private GridPane pane_Insurance;
+    @FXML
+    private TableColumn<Customer,String> personalID,insuranceNr,name,phone, email,date,billing;
 
-        @FXML
-        private TextField searching;
+    @FXML
+    private GridPane pane_Insurance;
 
-        @FXML
-        private JFXButton button_Customer, btn_createInsurance1, btn_modfiInsurance1, btn_deleteInsurance1, btn_showInfoIns1;
+    @FXML
+    private TextField searching;
 
-
-        @FXML
-        private void initialize(){
-            handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
-            handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1);
-            entireScreenInsurance.toFront();
+    @FXML
+    private JFXButton button_Customer, btn_createInsurance1, btn_modfiInsurance1, btn_deleteInsurance1, btn_showInfoIns1;
 
 
+    /**
+     * Initialize Method that sets the data for the table view and enables when marked buttons
+     */
+    @FXML
+    private void initialize(){
+        handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, insuranceTable);
+        handlerFxml.enableWhenMarked(insuranceTable,btn_createInsurance1,btn_modfiInsurance1);
+        entireScreenInsurance.toFront();
+
+
+    }
+
+    /**
+     * Method that handle button clicked events
+     * @param event
+     */
+    @FXML
+    private void handleButtonActions(ActionEvent event) {
+        if (event.getSource() == button_Customer) {
+            handlerFxml.navigate(entireScreenInsurance, "homeCustomer.fxml");
         }
 
-        @FXML
-        private void handleButtonActions(ActionEvent event) {
-            if (event.getSource() == button_Customer) {
-                handlerFxml.navigate(entireScreenInsurance, "homeCustomer.fxml");
-            }
-
-            if (event.getSource() == btn_createInsurance1) {
-                insuranceTable.getItems();
-                customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
-                handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
-            }
-            if(event.getSource() == btn_modfiInsurance1){
-                insuranceTable.getItems();
-                customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
-                handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
-            }
+        if (event.getSource() == btn_createInsurance1) {
+            insuranceTable.getItems();
+            customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
+            handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
         }
+        if(event.getSource() == btn_modfiInsurance1){
+            insuranceTable.getItems();
+            customerSelected = insuranceTable.getSelectionModel().getSelectedItem();
+            handlerFxml.navigate(entireScreenInsurance, "Insurances.fxml");
+        }
+    }
 
+    /**
+     * Method that handle Import files
+     * @param event
+     */
     @FXML
     private void handleImportClicked(ActionEvent event) {
-
         openFileChooser.fileChooserImport(entireScreenInsurance);
-
-
-
     }
 
+    /**
+     * Method that handles export files
+     * @param event
+     */
     @FXML
     private void handleExportClicked(ActionEvent event) {
-
         openFileChooser.fileChooserExport(entireScreenInsurance);
-
-
     }
 
+    /**
+     * Method that handles exit window
+     * @param event
+     */
     @FXML
     private void handleCloseClicked(ActionEvent event) {
-
         System.exit(1);
     }
 
-
-        public static Customer getCustomerSelected() {
-            return customerSelected;
-        }
-
-        @FXML
-        private void addInsurancePressed(){
-            handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
+    /**
+     * @return customer selected
+     */
+    public static Customer getCustomerSelected() {
+        return customerSelected;
     }
 
+    @FXML
+    private void addInsurancePressed(){
+        handlerFxml.navigate(entireScreenInsurance, "householdInsurance.fxml");
+    }
+
+    /**
+     * Method that filters through the customer table view and shows the matching results
+     * @param keyEvent
+     */
     public void search(KeyEvent keyEvent) {
+
 
         ObservableList<Customer> data =  CsvReader.read();
         searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
@@ -127,5 +146,8 @@ public class HomeInsuranceController {
             insuranceTable.setItems(subentries);
         });
 
+
+
     }
+
 }
