@@ -8,6 +8,11 @@ import java.io.*;
 public class Serialization {
 
 
+    /**
+     * Method for seralization of customer object
+     * @param customer
+     * @param filepath
+     */
     public static void serialiseCustomer(Customer customer, String filepath) {
         try (
                 FileOutputStream fos = new FileOutputStream(filepath);
@@ -21,6 +26,11 @@ public class Serialization {
         }
     }
 
+    /**
+     * Method for seralization of any Insurance object
+     * @param insurance
+     * @param filepath
+     */
     public static void serialiseInsurance(Insurance insurance, String filepath) {
 
         try (
@@ -36,20 +46,14 @@ public class Serialization {
 
     }
 
-    public static void writeToFileCustomer(Customer customer, String filepath) throws IOException {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath));
-        oos.writeObject(customer);
-        oos.flush();
-        oos.close();
-    }
 
-    public static void writeToFileInsurnace(Insurance insurance, String filepath) throws IOException {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath));
-        oos.writeObject(insurance);
-        oos.flush();
-        oos.close();
-    }
-
+    /**
+     * Method for reading a jobj file is used when importing
+     * @param acustomer
+     * @param filepath
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void readFile(Customer acustomer ,String filepath) throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));
 
@@ -57,6 +61,13 @@ public class Serialization {
         System.out.println(acustomer);
     }
 
+    /**
+     * Method for reading a jobj is used when importing
+     * @param insurnace
+     * @param filepath
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void readFileInsurance(Insurance insurnace, String filepath) throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));
 

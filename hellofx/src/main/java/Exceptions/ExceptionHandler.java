@@ -13,6 +13,12 @@ import java.util.regex.Pattern;
 
 public class ExceptionHandler {
 
+    /**
+     * Method for creating an Alertbox
+     * @param title user input for title
+     * @param header user input for header
+     * @param contet user input for content
+     */
     public static void alertBox(String title, String header, String contet){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -21,9 +27,22 @@ public class ExceptionHandler {
         alert.showAndWait();
     }
 
+
+    /**
+     * Method for Alertbox when modifying a table view
+     * @param title user input for title
+     */
     public static void modifyAlertbox(String title) {
         ExceptionHandler.alertBox(title, "You are now able to modify text in the table view", "There are specific Items that" +
-            " you can now edit by double clicking the desired box. Not all Items are editable");}
+            " you can now edit by double clicking the desired box. Not all Items are editable");
+    }
+
+    /**
+     * Method for personalID verification validation
+     * @param ID textfield
+     * @return false if length is not equal to 11 digits or if a customer already has this personalId and true if correct
+     * @throws FileNotFoundException
+     */
     public static boolean personalIDValidator(JFXTextField ID) throws FileNotFoundException {
         String personalID = ID.getText();
         if (CsvReader.findCustomer(personalID) != null || personalID.length() != 11){
@@ -34,6 +53,14 @@ public class ExceptionHandler {
             return true;
         }
     }
+
+    /**
+     * Method for phone verification validation
+     * @param phoneNumber textfield for phone number
+     * @return false if length is not equal to 8 digits or if a customer already has this phone number and true if correct
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
     public static boolean phoneValidator(JFXTextField phoneNumber) throws IOException, FileNotFoundException {
         String phone = phoneNumber.getText();
         ObservableList<Customer> customers = CsvReader.readAllCustomers();
@@ -46,6 +73,14 @@ public class ExceptionHandler {
         }
         return true;
     }
+
+    /**
+     * Method for email verification validation
+     * @param email textfield for phone number
+     * @return false if input is not valid or email is already registered and true if correct
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
     public static boolean emailValidator(JFXTextField email) throws IOException, FileNotFoundException {
         String mail = email.getText();
         Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);

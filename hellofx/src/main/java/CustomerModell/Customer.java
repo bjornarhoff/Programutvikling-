@@ -47,7 +47,7 @@ public class Customer implements Serializable {
 
 
     /**
-     * @return a string that contains all data in the instance variables for class Customer
+     * @return a string that contains all data of the instance variables for class Customer
      */
     @Override
     public String toString() {
@@ -61,6 +61,9 @@ public class Customer implements Serializable {
                 "\nAll Insurance " + allCustomerInsurance;
     }
 
+    /**
+     * @return a string that contains all data
+     */
     public String toCSVString() {
         return personalID + "," +
                 String.valueOf(insuranceNr) + "," +
@@ -100,6 +103,10 @@ public class Customer implements Serializable {
         customer.setAllCustomerInsurance(existingInsurances);
     }
 
+    /**
+     * Method for decreasing number of Insurances when deleting an Insurance for a Customer
+     * @param customer
+     */
     public static void customerInsuranceCounterDeacrease(Customer customer) {
         int existingInsurances = customer.getAllCustomerInsurance();
         existingInsurances--;
