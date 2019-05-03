@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +24,7 @@ public class ExceptionHandler {
     public static void modifyAlertbox(String title) {
         ExceptionHandler.alertBox(title, "You are now able to modify text in the table view", "There are specific Items that" +
             " you can now edit by double clicking the desired box. Not all Items are editable");}
-    public static boolean personalIDValidator(JFXTextField ID){
+    public static boolean personalIDValidator(JFXTextField ID) throws FileNotFoundException {
         String personalID = ID.getText();
         if (CsvReader.findCustomer(personalID) != null || personalID.length() != 11){
             alertBox("Error", "Error in personalID", "A customer with this personal id " +
@@ -32,7 +34,7 @@ public class ExceptionHandler {
             return true;
         }
     }
-    public static boolean phoneValidator(JFXTextField phoneNumber){
+    public static boolean phoneValidator(JFXTextField phoneNumber) throws IOException, FileNotFoundException {
         String phone = phoneNumber.getText();
         ObservableList<Customer> customers = CsvReader.readAllCustomers();
         for (Customer customer : customers) {
@@ -44,7 +46,7 @@ public class ExceptionHandler {
         }
         return true;
     }
-    public static boolean emailValidator(JFXTextField email){
+    public static boolean emailValidator(JFXTextField email) throws IOException, FileNotFoundException {
         String mail = email.getText();
         Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(mail);

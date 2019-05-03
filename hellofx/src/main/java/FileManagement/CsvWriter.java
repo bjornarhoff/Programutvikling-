@@ -6,6 +6,7 @@ import Insurances.*;
 import Serialisering.SearchAndReadFromCSV;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -132,7 +133,7 @@ public class CsvWriter {
      *
      * @param insurance
      */
-    public static void updateAllInsurances(Insurance insurance) {
+    public static void updateAllInsurances(Insurance insurance) throws FileNotFoundException {
         Customer customer = insurance.getCustomer();
         String personID = customer.getPersonalID();
         int allCustomerInsurance = customer.getAllCustomerInsurance();
@@ -145,7 +146,7 @@ public class CsvWriter {
     }
 
 
-    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance, boolean createInsurance) {
+    public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance, boolean createInsurance) throws FileNotFoundException {
         /**
          * a method which writes a boat object object to a csv file
          * @param boatInsurance
@@ -172,7 +173,7 @@ public class CsvWriter {
     }
 
 
-    public static void writeHouseInsuranceToCSV(Household_Insurance houseInsurance, boolean createInsurance) {
+    public static void writeHouseInsuranceToCSV(Household_Insurance houseInsurance, boolean createInsurance) throws FileNotFoundException {
         /**
          * a method which writes a House object to a csv file
          * @param houseInsurance
@@ -202,7 +203,7 @@ public class CsvWriter {
      *
      * @param travelInsurance
      */
-    public static void writeTravelInsjurance(Travel_Insurance travelInsurance, boolean createInsurnace) {
+    public static void writeTravelInsjurance(Travel_Insurance travelInsurance, boolean createInsurnace) throws FileNotFoundException {
 
         if (createInsurnace == true) {
             updateAllInsurances(travelInsurance);
@@ -230,7 +231,7 @@ public class CsvWriter {
      *
      * @param leisureInsurnace
      */
-    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace, boolean createInsurnace) {
+    public static void writeLeisureInsurance(Leisure_Insurance leisureInsurnace, boolean createInsurnace) throws FileNotFoundException {
 
 
         if (createInsurnace == true) {

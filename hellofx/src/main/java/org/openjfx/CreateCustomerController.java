@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 
 public class CreateCustomerController {
@@ -28,7 +30,7 @@ public class CreateCustomerController {
      * Method for creating a Customer and clearing text fields
      */
     @FXML
-    public void apply() {
+    public void apply() throws IOException {
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */

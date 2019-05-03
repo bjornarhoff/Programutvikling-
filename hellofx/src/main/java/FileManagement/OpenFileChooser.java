@@ -14,10 +14,7 @@ import javafx.stage.Stage;
 import org.openjfx.HandlerFxml;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class OpenFileChooser {

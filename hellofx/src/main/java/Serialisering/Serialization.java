@@ -50,16 +50,11 @@ public class Serialization {
         oos.close();
     }
 
-
-
     public static void readFile(Customer acustomer ,String filepath) throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));
 
-            insurance = (Insurance) ois.readObject();
-            System.out.println(insurance);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        acustomer = (Customer) ois.readObject();
+        System.out.println(acustomer);
     }
 
     public static void readFileInsurance(Insurance insurnace, String filepath) throws IOException, ClassNotFoundException {

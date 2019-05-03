@@ -6,7 +6,6 @@ import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import FileManagement.OpenFileChooser;
 import Serialisering.SearchAndReadFromCSV;
-import Threads.Threads;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,10 +17,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import java.io.File;
+
 import java.io.IOException;
-import java.util.function.Predicate;
 
 import static org.openjfx.HomeInsuranceController.customerSelected;
 
@@ -32,7 +29,6 @@ public class HomeCustomerController {
     private HandlerFxml handlerFxml = new HandlerFxml();
     private OpenFileChooser openFileChooser = new OpenFileChooser();
     private FileChooser fc = new FileChooser();
-    private Threads thread = new Threads();
     @FXML
     private BorderPane entireScreenCustomer;
     @FXML
@@ -69,7 +65,7 @@ public class HomeCustomerController {
 
     @FXML
     private void initialize() throws IOException {
-        customers = CsvReader.read();
+        customers = CsvReader.readAllCustomers();
         handlerFxml.setCellValue(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         // Enables buttons when marked one customer
         handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer, btn_editCustomer, btn_showDamageReport);
@@ -140,27 +136,24 @@ public class HomeCustomerController {
      */
 
 
-    public void filter(KeyEvent keyEvent) {
-        ObservableList<Customer> data = CsvReader.readAllCustomers();
-        searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if (oldValue != null && (newValue.length() < oldValue.length())) {
+    public void filter(KeyEvent keyEvent) throws IOException {
+        ObservableList<Customer> data=CsvReader.readAllCustomers();
+        searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
+            if(oldValue!=null&&(newValue.length()<oldValue.length())){
                 customerTable.setItems(data);
             }
-            String value = newValue.toLowerCase();
-            ObservableList<Customer> subentries = FXCollections.observableArrayList();
+            String value=newValue.toLowerCase();
+            ObservableList<Customer> subentries=FXCollections.observableArrayList();
 
-            long count = customerTable.getColumns().stream().count();
+            long count=customerTable.getColumns().stream().count();
 
-
-
-    public void filter(KeyEvent keyEvent) throws IOException {
-        ObservableList<Customer> data=CsvReader.read();
-        searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
-        if(oldValue!=null&&(newValue.length()<oldValue.length())){
-        customerTable.setItems(data);
-        }
-        String value=newValue.toLowerCase();
-        ObservableList<Customer> subentries=FXCollections.observableArrayList();
+            for(int i=0;i<customerTable.getItems().size();i++){
+                for(int j=0;j<count; j++){
+                    String entry=""+customerTable.getColumns().get(j).getCellData(i);
+                    if(entry.toLowerCase().contains(value)){
+                        subentries.add(customerTable.getItems().get(i));
+                        break;
+                    }
 
                 }
             }

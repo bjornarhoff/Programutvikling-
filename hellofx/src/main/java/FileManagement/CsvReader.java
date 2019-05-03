@@ -21,7 +21,7 @@ public class CsvReader {
      *
      * @return an ObservableList containing all the customers in the csv file
      */
-    public static ObservableList<Customer> read () throws IOException, FileNotFoundException {
+    public static ObservableList<Customer> readAllCustomers() throws IOException, FileNotFoundException {
 
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
@@ -176,34 +176,33 @@ public class CsvReader {
      * @return an ObservableList with all the matching House Insurances
      */
 
-        public static ObservableList<House_Household_Insurance> findHouseInsurnace (String searchterm) throws IOException, FileNotFoundException{
+        public static ObservableList<Household_Insurance> findHouseInsurnace (String searchterm) throws IOException, FileNotFoundException {
             Customer customer = null;
-            House_Household_Insurance household = null;
-            ObservableList<House_Household_Insurance> households = FXCollections.observableArrayList();
+            Household_Insurance household = null;
+            ObservableList<Household_Insurance> households = FXCollections.observableArrayList();
             String line;
             int iteration = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/houseInsurance.csv"))) {
-            while ((line = br.readLine()) != null) {
-                if (iteration == 0) {
-                    iteration++;
-                    continue;
-                }
-                String[] values = line.split(",");
-                if (searchterm.equals(values[0])) {
+            try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/houseInsurance.csv"))) {
+                while ((line = br.readLine()) != null) {
+                    if (iteration == 0) {
+                        iteration++;
+                        continue;
+                    }
+                    String[] values = line.split(",");
+                    if (searchterm.equals(values[0])) {
 
-                    customer = findCustomer(values[0]);
-                    household = new Household_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5],
-                            Integer.parseInt(values[6]), values[7], values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]), Integer.parseInt(values[12]));
-                    households.add(household);
+                        customer = findCustomer(values[0]);
+                        household = new Household_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5],
+                                Integer.parseInt(values[6]), values[7], values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]), Integer.parseInt(values[12]));
+                        households.add(household);
+                    }
                 }
             } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-
             return households;
         }
-        return households;
-    }
 
     public static ObservableList<Household_Insurance> readHouseholdWithCustomer() throws IOException, FileNotFoundException {
         ObservableList<Household_Insurance> household;
@@ -225,7 +224,7 @@ public class CsvReader {
         return values;
     }
 
-    public static ObservableList<Household_Insurance> readHouseHoldInsuranceToJobj(){
+    public static ObservableList<Household_Insurance> readHouseHoldInsuranceToJobj() throws IOException {
         ObservableList<Customer> customers = readAllCustomers();
         ObservableList<Household_Insurance> HouseholdInsurances = null;
         for (Customer customer : customers) {
@@ -285,7 +284,7 @@ public class CsvReader {
         return values;
     }
 
-    public static ObservableList<Travel_Insurance> readTravelInsuranceToJobj(){
+    public static ObservableList<Travel_Insurance> readTravelInsuranceToJobj() throws IOException {
         ObservableList<Customer> customers = readAllCustomers();
         ObservableList<Travel_Insurance> travelInsurances = null;
         for (Customer customer : customers) {
@@ -337,7 +336,7 @@ public class CsvReader {
         return boatInsurnace;
     }
 
-    public static ArrayList<String> readAllBoat() {
+    public static ArrayList<String> readAllBoat() throws IOException {
         String line;
         ArrayList<String> values = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/boatInsurance.csv"))) {
@@ -350,7 +349,7 @@ public class CsvReader {
         return values;
     }
 
-    public static ObservableList<Boat_Insurance> readBoatInsuranceToJobj(){
+    public static ObservableList<Boat_Insurance> readBoatInsuranceToJobj() throws IOException {
         ObservableList<Customer> customers = readAllCustomers();
         ObservableList<Boat_Insurance> boat_insurances = null;
         for (Customer customer : customers) {
@@ -394,8 +393,6 @@ public class CsvReader {
             }
             return leisureInsurnaces;
         }
-        return leisureInsurnaces;
-    }
 
         public static ObservableList<Leisure_Insurance> readLeisureWithCustomer () throws FileNotFoundException, IOException {
         ObservableList<Leisure_Insurance> leisureInsurnces;
@@ -417,7 +414,7 @@ public class CsvReader {
         return values;
     }
 
-    public static ObservableList<Leisure_Insurance> readLeisureInsuranceToJobj(){
+    public static ObservableList<Leisure_Insurance> readLeisureInsuranceToJobj() throws IOException {
         ObservableList<Customer> customers = readAllCustomers();
         ObservableList<Leisure_Insurance> leisure_insurances = null;
         for (Customer customer : customers) {

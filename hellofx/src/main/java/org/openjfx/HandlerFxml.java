@@ -25,7 +25,6 @@ import Insurances.Leisure_Insurance;
 import Insurances.Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
@@ -69,7 +68,7 @@ public class HandlerFxml {
 
             ObservableList<Customer> customers = null;
             try {
-                customers = CsvReader.read();
+                customers = CsvReader.readAllCustomers();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,18 +94,18 @@ public class HandlerFxml {
      * @param t5
      * @param table
      */
-    public void setCellValueDamageReport(TableColumn<Damage_Report,String> t1, TableColumn<Damage_Report,String> t2,
+/*    public void setCellValueDamageReport(TableColumn<Damage_Report,String> t1, TableColumn<Damage_Report,String> t2,
                                          TableColumn<Damage_Report,Integer> t3, TableColumn<Damage_Report,String> t4,
                                          TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table) {
         new Thread(() -> {
 
-            /*try {
+            *//*try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-             */
+             *//*
             ObservableList<Damage_Report> damageReport = null;
             try {
                 damageReport = CsvReader.readDamageReport();
@@ -120,7 +119,7 @@ public class HandlerFxml {
         t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
         table.setItems(damageReport);
         }).start();
-    }
+    }*/
 
 
     /**
@@ -264,7 +263,12 @@ public class HandlerFxml {
                                       TableColumn<Customer, String> t7, TableView<Customer> table) {
         new Thread(() -> {
 
-            ObservableList<Customer> customers = CsvReader.readAllCustomers();
+            ObservableList<Customer> customers = null;
+            try {
+                customers = CsvReader.readAllCustomers();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
             t3.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -292,7 +296,12 @@ public class HandlerFxml {
                                          TableColumn<Damage_Report, Integer> t3, TableColumn<Damage_Report, String> t4,
                                          TableColumn<Damage_Report, String> t5, TableView<Damage_Report> table) {
         new Thread(() -> {
-            ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
+            ObservableList<Damage_Report> damageReport = null;
+            try {
+                damageReport = CsvReader.readDamageReport();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
             t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
             t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
@@ -328,7 +337,7 @@ public class HandlerFxml {
 
              */
 
-            ObservableList<House_Household_Insurance> householdInsurnace = null;
+            ObservableList<Household_Insurance> householdInsurnace = null;
             try {
                 householdInsurnace = CsvReader.readHouseholdWithCustomer();
             } catch (FileNotFoundException e) {
@@ -416,7 +425,7 @@ public class HandlerFxml {
 
             ObservableList<Leisure_Insurance> leisureInsurnace = null;
             try {
-                leisureInsurnace = CsvReader.readLeisure();
+                leisureInsurnace = CsvReader.readLeisureWithCustomer();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -464,7 +473,7 @@ public class HandlerFxml {
 
             ObservableList<Boat_Insurance> boatInsurance = null;
             try {
-                boatInsurance = CsvReader.readBoat();
+                boatInsurance = CsvReader.readBoatWithCustomer();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
