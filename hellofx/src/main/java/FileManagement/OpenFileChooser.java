@@ -15,9 +15,9 @@ import javafx.stage.Stage;
 import org.openjfx.DamageReportController;
 import org.openjfx.HandlerFxml;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpenFileChooser {
     private FileChooser chooser = new FileChooser();
@@ -44,13 +44,51 @@ public class OpenFileChooser {
         fileChooser("Import file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
         // Choose file
-        File file = chooser.showOpenDialog(stage);
-        if (file.getName().equals("customer2.csv")) {
-            ExceptionHandler.alertBox("Error", "File allready loaded", "Please choose a file " +
-                    "with a different name, or rename your file");
-        } else {
-            CsvReader.readAllCustomers(file);
-            handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+        List<File> files = chooser.showOpenMultipleDialog(stage);
+
+        for (File file : files) {
+
+            if (file.getName().equals("customer2.csv") ||
+                    file.getName().equals("boatInsurance.csv") ||
+                    file.getName().equals("travelInsurance.csv") ||
+                    file.getName().equals("houseInsurance.csv") ||
+                    file.getName().equals("LeisureInsurnace.csv")) {
+                ExceptionHandler.alertBox("Error", "File already loaded", "Please choose a file " +
+                        "with a different name, or rename your file");
+                break;
+            }
+            String line;
+            String[] header = new String[0];
+            if (file != null) {
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                    while ((line = br.readLine()) != null) {
+                        header = line.split(",");
+                        break;
+                    }
+                    if (header[2].equals("Name")) {
+                        CsvReader.readAllCustomers(file);
+                        handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+                    } else if (header[2].equals("DamageNr")) {
+                        CsvReader.readAllDamagereportImport(file);
+                    } else if (header[5].equals("insuranceArea")) {
+                        CsvReader.readAllTravelImport(file);
+                    } else if (header[7].equals("Boat type")) {
+                        CsvReader.readAllBoatImport(file);
+                    } else if (header[7].equals("residentalType")) {
+                        CsvReader.readAllLeisureImport(file);
+                    } else if (header[7].equals("ResidentialType")) {
+                        CsvReader.readAllHouseImport(file);
+                    }
+
+                } catch (FileNotFoundException e) {
+                    System.out.println("File is not yet created, just registrer anything");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (IndexOutOfBoundsException ie) {
+                    ie.printStackTrace();
+                }
+
+            }
         }
     }
 
