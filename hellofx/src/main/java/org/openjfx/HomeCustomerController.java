@@ -64,7 +64,7 @@ public class HomeCustomerController {
 
     @FXML
     private void initialize() {
-        customers = CsvReader.read();
+        customers = CsvReader.readAllCustomers();
         handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         // Enables buttons when marked one customer
         handlerFxml.enableWhenMarked(customerTable, btn_deleteCustomer, btn_editCustomer, btn_showDamageReport);
@@ -139,7 +139,7 @@ public class HomeCustomerController {
 
 
     public void filter(KeyEvent keyEvent) {
-        ObservableList<Customer> data = CsvReader.read();
+        ObservableList<Customer> data = CsvReader.readAllCustomers();
         searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (oldValue != null && (newValue.length() < oldValue.length())) {
                 customerTable.setItems(data);

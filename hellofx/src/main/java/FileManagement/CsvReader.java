@@ -4,7 +4,6 @@ package FileManagement;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Insurances.*;
-import Damages.Damage_Report;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.openjfx.HomeCustomerController;
@@ -22,7 +21,7 @@ public class CsvReader {
      *
      * @return an ObservableList containing all the customers in the csv file
      */
-    public static ObservableList<Customer> read() {
+    public static ObservableList<Customer> readAllCustomers() {
 
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
@@ -50,7 +49,7 @@ public class CsvReader {
      * @param file
      * @return
      */
-    public static ObservableList<Customer> read(File file) {
+    public static ObservableList<Customer> readAllCustomers(File file) {
 
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
@@ -177,10 +176,10 @@ public class CsvReader {
      * @return an ObservableList with all the matching House Insurances
      */
 
-    public static ObservableList<House_Household_Insurance> findHouseInsurnace(String searchterm) {
+    public static ObservableList<Household_Insurance> findHouseInsurnace(String searchterm) {
         Customer customer = null;
-        House_Household_Insurance household = null;
-        ObservableList<House_Household_Insurance> households = FXCollections.observableArrayList();
+        Household_Insurance household = null;
+        ObservableList<Household_Insurance> households = FXCollections.observableArrayList();
         String line;
         int iteration = 0;
 
@@ -194,7 +193,7 @@ public class CsvReader {
                 if (searchterm.equals(values[0])) {
 
                     customer = findCustomer(values[0]);
-                    household = new House_Household_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5],
+                    household = new Household_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5],
                             Integer.parseInt(values[6]), values[7], values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]), Integer.parseInt(values[12]));
                     households.add(household);
                 }
@@ -205,8 +204,8 @@ public class CsvReader {
         return households;
     }
 
-    public static ObservableList<House_Household_Insurance> readHouseholdWithCustomer() {
-        ObservableList<House_Household_Insurance> household;
+    public static ObservableList<Household_Insurance> readHouseholdWithCustomer() {
+        ObservableList<Household_Insurance> household;
         Customer customer = CsvReader.findCustomer(String.valueOf(HomeInsuranceController.getCustomerSelected().getPersonalID()));
         household = findHouseInsurnace(customer.getPersonalID());
         return household;
@@ -223,6 +222,16 @@ public class CsvReader {
             e.printStackTrace();
         }
         return values;
+    }
+
+    public static ObservableList<Household_Insurance> readHouseHoldInsuranceToJobj(){
+        ObservableList<Customer> customers = readAllCustomers();
+        ObservableList<Household_Insurance> HouseholdInsurances = null;
+        for (Customer customer : customers) {
+            Customer aCustomer = findCustomer(customer.getPersonalID());
+            HouseholdInsurances = findHouseInsurnace(aCustomer.getPersonalID());
+        }
+        return HouseholdInsurances;
     }
 
     /**
@@ -273,6 +282,16 @@ public class CsvReader {
             e.printStackTrace();
         }
         return values;
+    }
+
+    public static ObservableList<Travel_Insurance> readTravelInsuranceToJobj(){
+        ObservableList<Customer> customers = readAllCustomers();
+        ObservableList<Travel_Insurance> travelInsurances = null;
+        for (Customer customer : customers) {
+            Customer aCustomer = findCustomer(customer.getPersonalID());
+            travelInsurances = findTravelInsurnace(aCustomer.getPersonalID());
+        }
+        return travelInsurances;
     }
 
     /**
@@ -330,6 +349,16 @@ public class CsvReader {
         return values;
     }
 
+    public static ObservableList<Boat_Insurance> readBoatInsuranceToJobj(){
+        ObservableList<Customer> customers = readAllCustomers();
+        ObservableList<Boat_Insurance> boat_insurances = null;
+        for (Customer customer : customers) {
+            Customer aCustomer = findCustomer(customer.getPersonalID());
+            boat_insurances = findBoatInsurnace(aCustomer.getPersonalID());
+        }
+        return boat_insurances;
+    }
+
 
     /**
      * @param searchterm to specify what to search for in leisure csv file
@@ -384,16 +413,14 @@ public class CsvReader {
         }
         return values;
     }
-/*
-    public static ObservableList<Insurance> readInsurnaceJobj(ArrayList<String> insurances, String type){
-        if (type.equals("boat")){
-            ObservableList<Boat_Insurance> boat_insurances = FXCollections.observableArrayList();
-            insurances = readAllBoat();
-            for (String insurance : insurances) {
-                boat_insurances.add(insurance);
-            }
-        }
-    }
 
- */
+    public static ObservableList<Leisure_Insurance> readLeisureInsuranceToJobj(){
+        ObservableList<Customer> customers = readAllCustomers();
+        ObservableList<Leisure_Insurance> leisure_insurances = null;
+        for (Customer customer : customers) {
+            Customer aCustomer = findCustomer(customer.getPersonalID());
+            leisure_insurances = findLeisureInsurnace(aCustomer.getPersonalID());
+        }
+        return leisure_insurances;
+    }
 }

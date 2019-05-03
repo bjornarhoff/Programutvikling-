@@ -2,7 +2,6 @@ package Exceptions;
 
 import CustomerModell.Customer;
 import FileManagement.CsvReader;
-import FileManagement.CsvWriter;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -31,7 +30,7 @@ public class ExceptionHandler {
     }
     public static boolean phoneValidator(JFXTextField phoneNumber){
         String phone = phoneNumber.getText();
-        ObservableList<Customer> customers = CsvReader.read();
+        ObservableList<Customer> customers = CsvReader.readAllCustomers();
         for (Customer customer : customers) {
             if (customer.getPhoneNumber().equals(phone) || phone.length() != 8){
                 alertBox("Error", "Error in phonenumber", "A customer with this phonenumber " +
@@ -45,7 +44,7 @@ public class ExceptionHandler {
         String mail = email.getText();
         Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(mail);
-        ObservableList<Customer> customers = CsvReader.read();
+        ObservableList<Customer> customers = CsvReader.readAllCustomers();
         for (Customer customer : customers) {
             if (customer.getEmail().equals(mail) || !matcher.matches()){
                 alertBox("Error", "Error in email", "A customer with this email already exists," +

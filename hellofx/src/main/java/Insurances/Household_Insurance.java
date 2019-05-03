@@ -4,7 +4,7 @@ import CustomerModell.Customer;
 
 import java.util.Date;
 
-public class House_Household_Insurance extends Insurance {
+public class Household_Insurance extends Insurance {
 
     private String propertyOwner;
     private int yearOfConstruction;
@@ -33,11 +33,11 @@ public class House_Household_Insurance extends Insurance {
      * @param insuranceAmountForConstruction
      * @param insuranceAmountForHousehold
      */
-    public House_Household_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
-                                     String insuranceConditions, String propertyOwner, int yearOfConstruction,
-                                     String residentialType, String constructionMaterial, String condition,
-                                     double numberOfSquareMeters, int insuranceAmountForConstruction,
-                                     int insuranceAmountForHousehold) {
+    public Household_Insurance(Customer customer, String yearlyInsurancePremium, String dateOfCreatedInsurance, int insuranceAmount,
+                               String insuranceConditions, String propertyOwner, int yearOfConstruction,
+                               String residentialType, String constructionMaterial, String condition,
+                               double numberOfSquareMeters, int insuranceAmountForConstruction,
+                               int insuranceAmountForHousehold) {
 
         super(customer, yearlyInsurancePremium, dateOfCreatedInsurance, insuranceAmount, insuranceConditions);
         this.propertyOwner = propertyOwner;

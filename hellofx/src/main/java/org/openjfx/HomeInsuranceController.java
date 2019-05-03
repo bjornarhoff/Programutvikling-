@@ -126,7 +126,7 @@ public class HomeInsuranceController {
     public void search(KeyEvent keyEvent) {
 
 
-        ObservableList<Customer> data = CsvReader.read();
+        ObservableList<Customer> data = CsvReader.readAllCustomers();
         searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (oldValue != null && (newValue.length() < oldValue.length())) {
                 insuranceTable.setItems(data);

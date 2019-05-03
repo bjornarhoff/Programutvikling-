@@ -8,7 +8,6 @@ import Serialisering.SearchAndReadFromCSV;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class CsvWriter {
@@ -173,7 +172,7 @@ public class CsvWriter {
     }
 
 
-    public static void writeHouseInsuranceToCSV(House_Household_Insurance houseInsurance, boolean createInsurance) {
+    public static void writeHouseInsuranceToCSV(Household_Insurance houseInsurance, boolean createInsurance) {
         /**
          * a method which writes a House object to a csv file
          * @param houseInsurance

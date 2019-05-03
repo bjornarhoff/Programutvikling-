@@ -3,7 +3,7 @@ package FileManagement;
 import CustomerModell.Customer;
 import Exceptions.ExceptionHandler;
 import Insurances.Boat_Insurance;
-import Insurances.House_Household_Insurance;
+import Insurances.Household_Insurance;
 import Insurances.Leisure_Insurance;
 import Insurances.Travel_Insurance;
 import Serialisering.Serialization;
@@ -46,7 +46,7 @@ public class OpenFileChooser {
             ExceptionHandler.alertBox("Error", "File allready loaded", "Please choose a file " +
                     "with a different name, or rename your file");
         } else {
-            CsvReader.read(file);
+            CsvReader.readAllCustomers(file);
             handlerFxml.navigate(borderPane, "homeCustomer.fxml");
         }
     }
@@ -59,11 +59,11 @@ public class OpenFileChooser {
         File file = chooser.showSaveDialog(stage);
 
         String s = file.getName().split("\\.")[1];
-        ObservableList<Customer> customers = CsvReader.read();
-        ObservableList<House_Household_Insurance> house = CsvReader.readHouseholdWithCustomer();
-        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureWithCustomer();
-        ObservableList<Boat_Insurance> boat = CsvReader.readBoatWithCustomer();
-        ObservableList<Travel_Insurance> travel = CsvReader.readTravelWithCustomer();
+        ObservableList<Customer> customers = CsvReader.readAllCustomers();
+        ObservableList<Boat_Insurance> boat = CsvReader.readBoatInsuranceToJobj();
+        ObservableList<Household_Insurance> house = CsvReader.readHouseHoldInsuranceToJobj();
+        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureInsuranceToJobj();
+        ObservableList<Travel_Insurance> travel = CsvReader.readTravelInsuranceToJobj();
 
         File directory = new File (file.getPath().split("\\.")[0]);
         if (!directory.exists()) {
@@ -72,7 +72,7 @@ public class OpenFileChooser {
         if (s.equals("csv")) {
             ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
             ArrayList<String> boat_insurances = CsvReader.readAllBoat();
-            ArrayList<String> house_household_insurances = CsvReader.readAllHouse();
+            ArrayList<String> household_insurances = CsvReader.readAllHouse();
             ArrayList<String> leisure_insurances = CsvReader.readAllLeisure();
             ArrayList<String> travel_insurances = CsvReader.readAllTravel();
 
@@ -83,8 +83,8 @@ public class OpenFileChooser {
             for (String boat_insurance : boat_insurances) {
                 CsvWriter.writeFileToCsv(path + "/Boat.csv", boat_insurance);
             }
-            for (String house_household_insurance : house_household_insurances) {
-                CsvWriter.writeFileToCsv(path + "/House.csv", house_household_insurance);
+            for (String household_insurance : household_insurances) {
+                CsvWriter.writeFileToCsv(path + "/House.csv", household_insurance);
             }
             for (String leisure_insurance : leisure_insurances) {
                 CsvWriter.writeFileToCsv(path + "/Leisure.csv", leisure_insurance);
@@ -102,16 +102,12 @@ public class OpenFileChooser {
             for (Customer customer : customers) {
                 Serialization.serialiseCustomer(customer,"customers.jobj");
             }
-
-            for (House_Household_Insurance houseIn : house) {
+            for (Household_Insurance houseIn : house) {
                 Serialization.serialiseInsurance(houseIn,"house.jobj");
             }
-
-
             for (Leisure_Insurance leisureIn : leisure) {
                 Serialization.serialiseInsurance(leisureIn,"leisure.jobj");
             }
-
             for (Travel_Insurance travelIn : travel) {
                 Serialization.serialiseInsurance(travelIn,"travel.jobj");
             }

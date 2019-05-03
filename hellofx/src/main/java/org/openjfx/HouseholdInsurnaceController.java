@@ -3,7 +3,7 @@ package org.openjfx;
 import CustomerModell.Customer;
 import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
-import Insurances.House_Household_Insurance;
+import Insurances.Household_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -123,7 +123,7 @@ public class HouseholdInsurnaceController {
         Customer customer = HomeInsuranceController.getCustomerSelected();
         if (validateNumber()) {
             try {
-                House_Household_Insurance h1 = new House_Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
+                Household_Insurance h1 = new Household_Insurance(customer, yearlyPremium.getText(), String.valueOf(new Date()), Integer.parseInt(InsuranceAmount.getText()),
                         InsuranceConditions.getText(), propertyOwner.getText(), Integer.parseInt(yearConstruction.getText()), residentialType.getText(), constMaterial.getText(),
                         conditions.getText(), Double.parseDouble(nrSquareMeters.getText()), Integer.parseInt(amountForConstruction.getText()), Integer.parseInt(amountForHousehold.getText()));
 

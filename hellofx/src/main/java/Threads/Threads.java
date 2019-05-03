@@ -18,8 +18,8 @@ public class Threads extends Task<Void> {
 
         try {
             java.lang.Thread.sleep(3000);
-            CsvReader.read();
-            System.out.println(CsvReader.read());
+            CsvReader.readAllCustomers();
+            System.out.println(CsvReader.readAllCustomers());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

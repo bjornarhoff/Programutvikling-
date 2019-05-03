@@ -22,7 +22,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import Insurances.Leisure_Insurance;
-import Insurances.House_Household_Insurance;
+import Insurances.Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
 
@@ -120,7 +120,7 @@ public class HandlerFxml {
                         break;
                     }
                     updateProgress(i, max);
-                    CsvReader.read();
+                    CsvReader.readAllCustomers();
                 }
                 return null;
             }
@@ -190,7 +190,7 @@ public class HandlerFxml {
                                       TableColumn<Customer, String> t7, TableView<Customer> table) {
         new Thread(() -> {
 
-            ObservableList<Customer> customers = CsvReader.read();
+            ObservableList<Customer> customers = CsvReader.readAllCustomers();
             t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
             t3.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -218,11 +218,6 @@ public class HandlerFxml {
                                          TableColumn<Damage_Report, Integer> t3, TableColumn<Damage_Report, String> t4,
                                          TableColumn<Damage_Report, String> t5, TableView<Damage_Report> table) {
         new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
             t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
             t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
@@ -246,18 +241,12 @@ public class HandlerFxml {
      * @param t7
      * @param table
      */
-    public void setCellValueHousehold(TableColumn<House_Household_Insurance, String> t1, TableColumn<House_Household_Insurance, Integer> t2,
-                                      TableColumn<House_Household_Insurance, String> t3, TableColumn<House_Household_Insurance, String> t4,
-                                      TableColumn<House_Household_Insurance, String> t5, TableColumn<House_Household_Insurance, String> t6,
-                                      TableColumn<House_Household_Insurance, Integer> t7, TableView<House_Household_Insurance> table) {
+    public void setCellValueHousehold(TableColumn<Household_Insurance, String> t1, TableColumn<Household_Insurance, Integer> t2,
+                                      TableColumn<Household_Insurance, String> t3, TableColumn<Household_Insurance, String> t4,
+                                      TableColumn<Household_Insurance, String> t5, TableColumn<Household_Insurance, String> t6,
+                                      TableColumn<Household_Insurance, Integer> t7, TableView<Household_Insurance> table) {
         new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            ObservableList<House_Household_Insurance> householdInsurnace = CsvReader.readHouseholdWithCustomer();
+            ObservableList<Household_Insurance> householdInsurnace = CsvReader.readHouseholdWithCustomer();
             t1.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
             t3.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
@@ -284,13 +273,6 @@ public class HandlerFxml {
                                    TableColumn<Travel_Insurance, String> t3, TableColumn<Travel_Insurance, String> t4,
                                    TableColumn<Travel_Insurance, String> t5, TableView<Travel_Insurance> table) {
         new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
             ObservableList<Travel_Insurance> travelInsurnce = CsvReader.readTravelWithCustomer();
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
@@ -319,12 +301,6 @@ public class HandlerFxml {
                                     TableColumn<Leisure_Insurance, String> t3, TableColumn<Leisure_Insurance, String> t4,
                                     TableColumn<Leisure_Insurance, String> t5, TableColumn<Leisure_Insurance, String> t6, TableColumn<Leisure_Insurance, Integer> t7, TableView<Leisure_Insurance> table) {
         new Thread(() -> {
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             ObservableList<Leisure_Insurance> leisureInsurnace = CsvReader.readLeisureWithCustomer();
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
             t2.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
@@ -357,11 +333,6 @@ public class HandlerFxml {
                                  TableColumn<Boat_Insurance, String> t5, TableColumn<Boat_Insurance, String> t6,
                                  TableColumn<Boat_Insurance, String> t7, TableView<Boat_Insurance> table) {
         new Thread(() -> {
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             ObservableList<Boat_Insurance> boatInsurance = CsvReader.readBoatWithCustomer();
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
             t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
