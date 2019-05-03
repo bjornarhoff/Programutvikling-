@@ -22,7 +22,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import Insurances.Leisure_Insurance;
-import Insurances.House_Household_Insurance;
+import Insurances.Household_Insurance;
 import Insurances.Travel_Insurance;
 import Insurances.Boat_Insurance;
 
@@ -36,17 +36,18 @@ public class HandlerFxml {
 
     /**
      * Method that navigates through fmxl files
+     *
      * @param current
      * @param path
      */
-    public void navigate(Pane current, String path){
-       try{
-           Parent root = FXMLLoader.load(getClass().getResource(path));
-           Stage stg = (Stage)current.getScene().getWindow();
-           stg.setScene(new Scene(root));
-       }catch (IOException e){
-           e.printStackTrace();
-       }
+    public void navigate(Pane current, String path) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(path));
+            Stage stg = (Stage) current.getScene().getWindow();
+            stg.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -124,23 +125,25 @@ public class HandlerFxml {
 
     /**
      * Method that restricts a user to write a PersonalId longer than 8 digits
+     *
      * @param textField
      */
-     public void restrictionId (TextField textField) {
-         // Sets pattern to texfield, 0 - 8 characters allowed
-         Pattern pattern = Pattern.compile(".{0,11}");
-         TextFormatter formatter = new TextFormatter
-                 ((UnaryOperator<TextFormatter.Change>) change -> {
-                     return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-                 });
-         textField.setTextFormatter(formatter);
-     }
+    public void restrictionId(TextField textField) {
+        // Sets pattern to texfield, 0 - 8 characters allowed
+        Pattern pattern = Pattern.compile(".{0,11}");
+        TextFormatter formatter = new TextFormatter
+                ((UnaryOperator<TextFormatter.Change>) change -> {
+                    return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+                });
+        textField.setTextFormatter(formatter);
+    }
 
     /**
      * Method that restricts a user to write the phone number longer than 8 digits
+     *
      * @param textField
      */
-    public void restrictionPhone (TextField textField) {
+    public void restrictionPhone(TextField textField) {
         // Sets pattern to texfield, 0 - 8 characters allowed
         Pattern pattern = Pattern.compile(".{0,8}");
         TextFormatter formatter = new TextFormatter
@@ -152,10 +155,11 @@ public class HandlerFxml {
 
     /**
      * Method that enables a button when a row in the table view is selected
+     *
      * @param tableView
      * @param button
      */
-    public void enableWhenMarked (TableView tableView, JFXButton ... button) {
+    public void enableWhenMarked(TableView tableView, JFXButton... button) {
         for (JFXButton buttons : button) {
             buttons.disableProperty().bind(Bindings.isEmpty(tableView.getSelectionModel().getSelectedItems()));
         }
@@ -163,6 +167,7 @@ public class HandlerFxml {
 
     /**
      * Method that enables buttons only if all the textfields are filled out
+     *
      * @param apply
      * @param textFields
      * @return
@@ -171,7 +176,7 @@ public class HandlerFxml {
 
         boolean filled = true;
         for (JFXTextField field : textFields) {
-            if (field.textProperty().isEmpty().get()){
+            if (field.textProperty().isEmpty().get()) {
                 filled = false;
             }
         }
@@ -179,7 +184,7 @@ public class HandlerFxml {
 
     }
 
-    public void loadFileThread () {
+    public void loadFileThread() {
         Task task = new Task<Void>() {
             @Override
             public Void call() throws IOException {
@@ -189,7 +194,7 @@ public class HandlerFxml {
                         break;
                     }
                     updateProgress(i, max);
-                    CsvReader.read();
+                    CsvReader.readAllCustomers();
                 }
                 return null;
             }
@@ -200,6 +205,7 @@ public class HandlerFxml {
 
     /**
      * Method that clears input from textfields
+     *
      * @param fields
      */
     public void clearInput(JFXTextField... fields) {
@@ -212,6 +218,7 @@ public class HandlerFxml {
 
     /**
      * Method that sets input validation for a textfields
+     *
      * @param textField
      */
     public void setInputValidation(JFXTextField textField) {
@@ -229,18 +236,19 @@ public class HandlerFxml {
 
     /**
      * Method that gets input validation for the textfields
+     *
      * @param textField
      */
-    public void getValidators (JFXTextField textField) {
+    public void getValidators(JFXTextField textField) {
         NumberValidator numvalidator = new NumberValidator();
 
         textField.getValidators().add(numvalidator);
         numvalidator.setMessage("Only numbers are supported!");
     }
 
-
     /**
-     * Method that displays the information about the Household Insurance in the columns of the Household table view and does so in a thread
+     * Method that sets table view column values for customer object
+     *
      * @param t1
      * @param t2
      * @param t3
@@ -250,10 +258,67 @@ public class HandlerFxml {
      * @param t7
      * @param table
      */
-    public void setCellValueHousehold(TableColumn<House_Household_Insurance,String> t1, TableColumn<House_Household_Insurance,Integer> t2,
-                                         TableColumn<House_Household_Insurance,String> t3, TableColumn<House_Household_Insurance,String> t4,
-                                         TableColumn<House_Household_Insurance,String> t5, TableColumn<House_Household_Insurance,String> t6,
-                                          TableColumn<House_Household_Insurance,Integer> t7, TableView<House_Household_Insurance> table) {
+    public void setCellValueCustomers(TableColumn<Customer, String> t1, TableColumn<Customer, String> t2,
+                                      TableColumn<Customer, String> t3, TableColumn<Customer, String> t4,
+                                      TableColumn<Customer, String> t5, TableColumn<Customer, String> t6,
+                                      TableColumn<Customer, String> t7, TableView<Customer> table) {
+        new Thread(() -> {
+
+            ObservableList<Customer> customers = CsvReader.readAllCustomers();
+            t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("name"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("email"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("date"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+            table.setItems(customers);
+        }).start();
+
+
+    }
+
+    /**
+     * Method that sets table view columns values for Damage Report object
+     *
+     * @param t1
+     * @param t2
+     * @param t3
+     * @param t4
+     * @param t5
+     * @param table
+     */
+    public void setCellValueDamageReport(TableColumn<Damage_Report, String> t1, TableColumn<Damage_Report, String> t2,
+                                         TableColumn<Damage_Report, Integer> t3, TableColumn<Damage_Report, String> t4,
+                                         TableColumn<Damage_Report, String> t5, TableView<Damage_Report> table) {
+        new Thread(() -> {
+            ObservableList<Damage_Report> damageReport = CsvReader.readDamageReport();
+            t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("contactOfPotentialWitnesses"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
+            table.setItems(damageReport);
+        }).start();
+    }
+
+
+    /**
+     * Method that displays the information about the Household Insurance in the columns of the Household table view and does so in a thread
+     *
+     * @param t1
+     * @param t2
+     * @param t3
+     * @param t4
+     * @param t5
+     * @param t6
+     * @param t7
+     * @param table
+     */
+    public void setCellValueHousehold(TableColumn<Household_Insurance, String> t1, TableColumn<Household_Insurance, Integer> t2,
+                                      TableColumn<Household_Insurance, String> t3, TableColumn<Household_Insurance, String> t4,
+                                      TableColumn<Household_Insurance, String> t5, TableColumn<Household_Insurance, String> t6,
+                                      TableColumn<Household_Insurance, Integer> t7, TableView<Household_Insurance> table) {
         new Thread(() -> {
             /*try {
                 Thread.sleep(2000);
@@ -265,7 +330,7 @@ public class HandlerFxml {
 
             ObservableList<House_Household_Insurance> householdInsurnace = null;
             try {
-                householdInsurnace = CsvReader.readHousehold();
+                householdInsurnace = CsvReader.readHouseholdWithCustomer();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -281,10 +346,11 @@ public class HandlerFxml {
             table.setItems(householdInsurnace);
         }).start();
 
-        }
+    }
 
     /**
      * Method that displays the information about the Travel Insurance in the columns of the Travel table view and does so in a thread
+     *
      * @param t1
      * @param t2
      * @param t3
@@ -292,9 +358,9 @@ public class HandlerFxml {
      * @param t5
      * @param table
      */
-        public void setCellValueTravel(TableColumn<Travel_Insurance,String> t1, TableColumn<Travel_Insurance,Integer> t2,
-                                         TableColumn<Travel_Insurance,String> t3, TableColumn<Travel_Insurance,String> t4,
-                                         TableColumn<Travel_Insurance,String> t5, TableView<Travel_Insurance> table){
+    public void setCellValueTravel(TableColumn<Travel_Insurance, String> t1, TableColumn<Travel_Insurance, Integer> t2,
+                                   TableColumn<Travel_Insurance, String> t3, TableColumn<Travel_Insurance, String> t4,
+                                   TableColumn<Travel_Insurance, String> t5, TableView<Travel_Insurance> table) {
         new Thread(() -> {
             /*try {
                 Thread.sleep(2000);
@@ -307,7 +373,7 @@ public class HandlerFxml {
 
             ObservableList<Travel_Insurance> travelInsurnce = null;
             try {
-                travelInsurnce = CsvReader.readTravel();
+                travelInsurnce = CsvReader.readTravelWithCustomer();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -326,6 +392,7 @@ public class HandlerFxml {
 
     /**
      * Method that displays the information about the Leisure Insurance in the columns of the Leisure table view and does so in a thread
+     *
      * @param t1
      * @param t2
      * @param t3
@@ -335,9 +402,9 @@ public class HandlerFxml {
      * @param t7
      * @param table
      */
-    public void setCellValueLeisure(TableColumn<Leisure_Insurance,String> t1, TableColumn<Leisure_Insurance,String> t2,
-                                         TableColumn<Leisure_Insurance,String> t3, TableColumn<Leisure_Insurance,String> t4,
-                                         TableColumn<Leisure_Insurance,String> t5, TableColumn<Leisure_Insurance,String> t6,TableColumn<Leisure_Insurance,Integer> t7, TableView<Leisure_Insurance> table){
+    public void setCellValueLeisure(TableColumn<Leisure_Insurance, String> t1, TableColumn<Leisure_Insurance, String> t2,
+                                    TableColumn<Leisure_Insurance, String> t3, TableColumn<Leisure_Insurance, String> t4,
+                                    TableColumn<Leisure_Insurance, String> t5, TableColumn<Leisure_Insurance, String> t6, TableColumn<Leisure_Insurance, Integer> t7, TableView<Leisure_Insurance> table) {
         new Thread(() -> {
             /*try {
                 Thread.sleep(5000);
@@ -371,6 +438,7 @@ public class HandlerFxml {
 
     /**
      * Method that displays the information about the Boat Insurance in the columns of boat table view and does so in a thread
+     *
      * @param t1
      * @param t2
      * @param t3
@@ -380,10 +448,10 @@ public class HandlerFxml {
      * @param t7
      * @param table
      */
-    public void setCellValueBoat(TableColumn<Boat_Insurance,String> t1, TableColumn<Boat_Insurance,Integer> t2,
-                                         TableColumn<Boat_Insurance,String> t3, TableColumn<Boat_Insurance,String> t4,
-                                         TableColumn<Boat_Insurance,String> t5, TableColumn<Boat_Insurance,String> t6,
-                                 TableColumn<Boat_Insurance,String> t7,TableView<Boat_Insurance> table){
+    public void setCellValueBoat(TableColumn<Boat_Insurance, String> t1, TableColumn<Boat_Insurance, Integer> t2,
+                                 TableColumn<Boat_Insurance, String> t3, TableColumn<Boat_Insurance, String> t4,
+                                 TableColumn<Boat_Insurance, String> t5, TableColumn<Boat_Insurance, String> t6,
+                                 TableColumn<Boat_Insurance, String> t7, TableView<Boat_Insurance> table) {
         new Thread(() -> {
             /*try {
                 Thread.sleep(5000);
