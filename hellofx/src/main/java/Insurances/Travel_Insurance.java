@@ -1,4 +1,5 @@
 package Insurances;
+
 import CustomerModell.Customer;
 
 public class Travel_Insurance extends Insurance {
@@ -10,6 +11,7 @@ public class Travel_Insurance extends Insurance {
 
     /**
      * Default Constructor for Travel object
+     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -32,7 +34,7 @@ public class Travel_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return  "\nTRAVEL INSURANCE" +
+        return "\nTRAVEL INSURANCE" +
                 "\nInsuranceArea: " + insuranceArea +
                 "\nInsuranceSum: " + insuranceSum +
                 "\n\nOVERALL FOR TRAVEL INSURANCE" + super.toString();
@@ -41,17 +43,10 @@ public class Travel_Insurance extends Insurance {
     /**
      * @return Travel object in csv String format
      */
-    public String   toCSVStringTravel() {
+    public String toCSVStringTravel() {
         return super.toCSVStringInsurnce() + "," +
                 insuranceArea + "," +
                 String.valueOf(insuranceSum);
-    }
-
-    /**
-     * @param insuranceArea
-     */
-    public void setInsuranceArea(String insuranceArea) {
-        this.insuranceArea = insuranceArea;
     }
 
     /**
@@ -62,10 +57,10 @@ public class Travel_Insurance extends Insurance {
     }
 
     /**
-     * @param insuranceSum
+     * @param insuranceArea
      */
-    public void setInsuranceSum(int insuranceSum) {
-        this.insuranceSum = insuranceSum;
+    public void setInsuranceArea(String insuranceArea) {
+        this.insuranceArea = insuranceArea;
     }
 
     /**
@@ -73,5 +68,12 @@ public class Travel_Insurance extends Insurance {
      */
     public int getInsuranceSum() {
         return this.insuranceSum;
+    }
+
+    /**
+     * @param insuranceSum
+     */
+    public void setInsuranceSum(int insuranceSum) {
+        this.insuranceSum = insuranceSum;
     }
 }

@@ -18,6 +18,7 @@ public class Leisure_Insurance extends Insurance {
 
     /**
      * Default Constructor for Leisure object
+     *
      * @param customer
      * @param yearlyInsurancePremium
      * @param dateOfCreatedInsurance
@@ -54,7 +55,7 @@ public class Leisure_Insurance extends Insurance {
      */
     @Override
     public String toString() {
-        return  "\nLEISURE INSURANCE" +
+        return "\nLEISURE INSURANCE" +
                 "\nAddress_Not_Billing: " + address_Not_Billing +
                 "\nConstructionYear: " + constructionYear +
                 "\nResidentalType: " + residentalType +
@@ -77,8 +78,15 @@ public class Leisure_Insurance extends Insurance {
                 constructionMaterial + "," +
                 condition + "," +
                 String.valueOf(amountSquareMeters) + "," +
-                String.valueOf(amountforConstruction) +  "," +
+                String.valueOf(amountforConstruction) + "," +
                 String.valueOf(amountForHousehold);
+    }
+
+    /**
+     * @return address_Not_Billing
+     */
+    public String getAddress_Not_Billing() {
+        return this.address_Not_Billing;
     }
 
     /**
@@ -89,11 +97,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-
-     * @return address_Not_Billing
+     * @return constructionYear
      */
-    public String getAddress_Not_Billing() {
-        return this.address_Not_Billing;
+    public int getConstructionYear() {
+        return this.constructionYear;
     }
 
     /**
@@ -104,10 +111,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return constructionYear
+     * @return residentalType
      */
-    public int getConstructionYear() {
-        return this.constructionYear;
+    public String getResidentalType() {
+        return this.residentalType;
     }
 
     /**
@@ -118,10 +125,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return residentalType
+     * @return constructionMaterial
      */
-    public String getResidentalType() {
-        return this.residentalType;
+    public String getConstructionMaterial() {
+        return this.constructionMaterial;
     }
 
     /**
@@ -132,10 +139,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return constructionMaterial
+     * @return condition
      */
-    public String getConstructionMaterial() {
-        return this.constructionMaterial;
+    public String getCondition() {
+        return this.condition;
     }
 
     /**
@@ -146,10 +153,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return condition
+     * @return amountSquareMeters
      */
-    public String getCondition() {
-        return this.condition;
+    public double getAmountSquareMeters() {
+        return this.amountSquareMeters;
     }
 
     /**
@@ -160,10 +167,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return amountSquareMeters
+     * @return amountforConstruction
      */
-    public double getAmountSquareMeters() {
-        return this.amountSquareMeters;
+    public int getAmountforConstruction() {
+        return this.amountforConstruction;
     }
 
     /**
@@ -174,10 +181,10 @@ public class Leisure_Insurance extends Insurance {
     }
 
     /**
-     * @return amountforConstruction
+     * @return amountForHousehold
      */
-    public int getAmountforConstruction() {
-        return this.amountforConstruction;
+    public int getAmountForHousehold() {
+        return this.amountForHousehold;
     }
 
     /**
@@ -185,13 +192,6 @@ public class Leisure_Insurance extends Insurance {
      */
     public void setAmountForHousehold(int amountForHousehold) {
         this.amountForHousehold = amountForHousehold;
-    }
-
-    /**
-     * @return amountForHousehold
-     */
-    public int getAmountForHousehold() {
-        return this.amountForHousehold;
     }
 
 }

@@ -2,6 +2,11 @@ package FileManagement;
 
 import CustomerModell.Customer;
 import Exceptions.ExceptionHandler;
+import Insurances.Boat_Insurance;
+import Insurances.House_Household_Insurance;
+import Insurances.Leisure_Insurance;
+import Insurances.Travel_Insurance;
+import Serialisering.Serialization;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -81,32 +86,29 @@ public class OpenFileChooser {
         if (!directory.exists()) {
             directory.mkdir();
         }
-            if (s.equals("csv")) {
-                String path = file.getPath().split("\\.")[0];
-                for (Customer customer : customers) {
-                    CsvWriter.writeFileToCsvCustomer(path + "/Customer.csv", customer);
-                }
-                for (String boat_insurance : boat_insurances) {
-                    CsvWriter.writeFileToCsv(path + "/Boat.csv", boat_insurance);
-                }
-                for (String house_household_insurance : house_household_insurances) {
-                    CsvWriter.writeFileToCsv(path + "/House.csv", house_household_insurance);
-                }
-                for (String leisure_insurance : leisure_insurances) {
-                    CsvWriter.writeFileToCsv(path + "/Leisure.csv", leisure_insurance);
-                }
-                for (String travel_insurance : travel_insurances) {
-                    CsvWriter.writeFileToCsv(path + "/Travel.csv", travel_insurance);
-                }
-                for (String damage_report : damage_reports) {
-                    CsvWriter.writeFileToCsv(path + "/Damage.csv", damage_report);
-                }
+        if (s.equals("csv")) {
+            String path = file.getPath().split("\\.")[0];
+            for (Customer customer : customers) {
+                CsvWriter.writeFileToCsvCustomer(path + "/Customer.csv", customer);
             }
-            if (s.equals("ser")) {
-                System.out.println("Fuck off");
+            for (String boat_insurance : boat_insurances) {
+                CsvWriter.writeFileToCsv(path + "/Boat.csv", boat_insurance);
             }
-
-
+            for (String house_household_insurance : house_household_insurances) {
+                CsvWriter.writeFileToCsv(path + "/House.csv", house_household_insurance);
+            }
+            for (String leisure_insurance : leisure_insurances) {
+                CsvWriter.writeFileToCsv(path + "/Leisure.csv", leisure_insurance);
+            }
+            for (String travel_insurance : travel_insurances) {
+                CsvWriter.writeFileToCsv(path + "/Travel.csv", travel_insurance);
+            }
+            for (String damage_report : damage_reports) {
+                CsvWriter.writeFileToCsv(path + "/Damage.csv", damage_report);
+            }
+        }
+        if (s.equals("jobj")) {
+            System.out.println("Fuck off");
+        }
     }
-
 }
