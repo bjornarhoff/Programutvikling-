@@ -11,6 +11,7 @@ import org.openjfx.HomeCustomerController;
 import org.openjfx.HomeInsuranceController;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class CsvReader {
@@ -44,6 +45,8 @@ public class CsvReader {
         }
         return customersFromCsv;
     }
+
+
 
     /**
      *
@@ -157,6 +160,19 @@ public class CsvReader {
             e.printStackTrace();
         }
         return customersFromCsv;
+    }
+    public static ArrayList<String> readAllLeisure2(File file) {
+        String line;
+        ArrayList<String> values = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                values.add(line);
+                //CsvWriter.writeHouseInsuranceToCSV();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return values;
     }
 
     /**

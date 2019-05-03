@@ -58,6 +58,7 @@ public class Serialization {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));
 
         acustomer = (Customer) ois.readObject();
+        ois.close();
         System.out.println(acustomer);
     }
 
@@ -65,6 +66,7 @@ public class Serialization {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath));
 
         insurnace = (Insurance) ois.readObject();
+        ois.close();
         System.out.println(insurnace);
     }
 }
