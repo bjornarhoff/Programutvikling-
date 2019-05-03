@@ -9,7 +9,10 @@ import javafx.stage.Stage;
 import org.openjfx.HandlerFxml;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpenFileChooser {
     private FileChooser chooser = new FileChooser();
@@ -36,13 +39,26 @@ public class OpenFileChooser {
         fileChooser("Import file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
         // Choose file
-        File file = chooser.showOpenDialog(stage);
-        if (file.getName().equals("customer2.csv")) {
-            ExceptionHandler.alertBox("Error", "File allready loaded", "Please choose a file " +
-                    "with a different name, or rename your file");
-        } else {
-            CsvReader.read(file);
-            handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+        List<File> files = chooser.showOpenMultipleDialog(stage);
+
+        for (File file : files) {
+
+            if (file.getName().equals("customer2.csv") ||
+                            file.getName().equals("boatInsurance.csv") ||
+                            file.getName().equals("travelInsurance.csv") ||
+                            file.getName().equals("houseInsurance.csv") ||
+                            file.getName().equals("LeisureInsurnace.csv")) {
+                ExceptionHandler.alertBox("Error", "File already loaded", "Please choose a file " +
+                        "with a different name, or rename your file");
+                break;
+            }
+
+            if (file != null) {
+                CsvReader.read(file);
+                CsvReader.readAllBoat();
+                handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+                }
+
         }
     }
 

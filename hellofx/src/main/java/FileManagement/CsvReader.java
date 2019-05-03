@@ -75,6 +75,27 @@ public class CsvReader {
         return customersFromCsv;
     }
 
+    /*public static ObservableList<Boat_Insurance> readAllBoat(File file) {
+        String line;
+        ObservableList<Boat_Insurance> boatins = FXCollections.observableArrayList();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null){
+                String[] values = line.split(",");
+                Customer customer = CsvReader.findCustomer(String.v)
+                Boat_Insurance boatInsurnace = new Boat_Insurance(customer, values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], values[6], values[7], Double.parseDouble(values[8]), Integer.parseInt(values[9]), values[10]);
+
+            }
+
+            CsvWriter.writeBoatInsuranceToCSV();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return values;
+    } */ 
+
+
+
+
     /**
      * @param searchterm to specify what to search for in Customer csv file in this case PersonalId
      * @return the specific searched customer
@@ -329,6 +350,8 @@ public class CsvReader {
         }
         return values;
     }
+
+
 
 
     /**
