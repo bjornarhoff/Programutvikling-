@@ -12,7 +12,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -76,8 +78,8 @@ public class HomeCustomerController {
 
     @FXML
     private void handleButtonActions(ActionEvent event) throws IOException {
-        if(event.getSource() == button_Insurance){
-            handlerFxml.navigate(entireScreenCustomer,"homeInsurance.fxml");
+        if (event.getSource() == button_Insurance) {
+            handlerFxml.navigate(entireScreenCustomer, "homeInsurance.fxml");
         }
 
         if (event.getSource() == btn_deleteCustomer) {
@@ -95,7 +97,6 @@ public class HomeCustomerController {
 
     @FXML
     private void handleImportClicked(ActionEvent event) {
-
         openFileChooser.fileChooserImport(entireScreenCustomer);
 
 
@@ -137,20 +138,20 @@ public class HomeCustomerController {
 
 
     public void filter(KeyEvent keyEvent) throws IOException {
-        ObservableList<Customer> data=CsvReader.readAllCustomers();
-        searching.textProperty().addListener((ObservableValue<?extends String> observable,String oldValue,String newValue)->{
-            if(oldValue!=null&&(newValue.length()<oldValue.length())){
+        ObservableList<Customer> data = CsvReader.readAllCustomers();
+        searching.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (oldValue != null && (newValue.length() < oldValue.length())) {
                 customerTable.setItems(data);
             }
-            String value=newValue.toLowerCase();
-            ObservableList<Customer> subentries=FXCollections.observableArrayList();
+            String value = newValue.toLowerCase();
+            ObservableList<Customer> subentries = FXCollections.observableArrayList();
 
-            long count=customerTable.getColumns().stream().count();
+            long count = customerTable.getColumns().stream().count();
 
-            for(int i=0;i<customerTable.getItems().size();i++){
-                for(int j=0;j<count; j++){
-                    String entry=""+customerTable.getColumns().get(j).getCellData(i);
-                    if(entry.toLowerCase().contains(value)){
+            for (int i = 0; i < customerTable.getItems().size(); i++) {
+                for (int j = 0; j < count; j++) {
+                    String entry = "" + customerTable.getColumns().get(j).getCellData(i);
+                    if (entry.toLowerCase().contains(value)) {
                         subentries.add(customerTable.getItems().get(i));
                         break;
                     }
@@ -159,41 +160,6 @@ public class HomeCustomerController {
             }
             customerTable.setItems(subentries);
         });
-
-
-         /*
-
-        ObservableList<Customer> data =  customerTable.getItems();
-
-        searching.textProperty().addListener(new InvalidationListener() {
-
-            @Override
-            public void invalidated(Observable observable) {
-                if(searching.textProperty().get().isEmpty()) {
-                    customerTable.setItems(data);
-                    return;
-                }
-                ObservableList<Customer> tableItems = FXCollections.observableArrayList();
-                ObservableList<TableColumn<Customer, ?>> cols = customerTable.getColumns();
-                for(int i=0; i<data.size(); i++) {
-
-                    for(int j=0; j<cols.size(); j++) {
-                        TableColumn col = cols.get(j);
-                        String cellValue = col.getCellData(data.get(i)).toString();
-                        cellValue = cellValue.toLowerCase();
-                        if(cellValue.contains(searching.textProperty().get().toLowerCase())) {
-                            tableItems.add(data.get(i));
-                            break;
-                        }
-                    }
-                }
-                customerTable.setItems(tableItems);
-
-            }
-        });
-
-         */
-
     }
 
 
@@ -261,14 +227,5 @@ public class HomeCustomerController {
         billing.setCellFactory(TextFieldTableCell.forTableColumn());
         ExceptionHandler.modifyAlertbox("Modify Customers");
     }
-
-    /*
-    public void setTerm(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent ){
-        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customer.getPersonalID()));
-        customer.(customerStringCellEditEvent.getNewValue());
-        CsvWriter.writeCustomerToCSV(customer);
-    }
-
-     */
 }
 

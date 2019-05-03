@@ -7,7 +7,10 @@ import Serialisering.SearchAndReadFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
@@ -87,7 +90,7 @@ public class DamageReportController {
      */
     @FXML
     private void delete(ActionEvent event) throws IOException {
-        if (event.getSource() == btn_delete){
+        if (event.getSource() == btn_delete) {
             String customerSelected = damageTableView.getSelectionModel().getSelectedItem().getDateOfDamage();
             SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
 
@@ -139,23 +142,6 @@ public class DamageReportController {
         damageTableView.setEditable(false);
     }
 
-
-    /**
-     * Method that edits the Damage number in the table view
-     *
-     * @param damage_reportStringCellEditEvent
-     */
-    /*
-    public void onEditDamageNr(TableColumn.CellEditEvent<Damage_Report, Integer> damage_reportStringCellEditEvent) {
-        Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
-
-        SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
-        damageModifiable.setDamageNr(damage_reportStringCellEditEvent.getNewValue());
-        CsvWriter.writeDamageReport(damageModifiable);
-        damageTableView.setEditable(false);
-    }
-
-     */
 
     /**
      * Method that edits the potential Witnesses in the table view

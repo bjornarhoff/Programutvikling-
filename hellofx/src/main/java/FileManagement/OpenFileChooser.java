@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.openjfx.DamageReportController;
 import org.openjfx.HandlerFxml;
 
 import java.io.*;
@@ -93,7 +92,8 @@ public class OpenFileChooser {
     }
 
 
-    public void fileChooserExport (BorderPane borderPane) throws IOException {
+    public void fileChooserExport(BorderPane borderPane) throws IOException {
+       try{
         fileChooser("Export file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
         // Choose file
@@ -101,7 +101,7 @@ public class OpenFileChooser {
 
         String s = file.getName().split("\\.")[1];
         ObservableList<Customer> customers = CsvReader.readAllCustomers();
-        File directory = new File (file.getPath().split("\\.")[0]);
+        File directory = new File(file.getPath().split("\\.")[0]);
 
         if (!directory.exists()) {
             directory.mkdir();
@@ -142,23 +142,26 @@ public class OpenFileChooser {
             ObservableList<Damage_Report> damage_reports = CsvReader.readDamageReportToObj();
 
             for (Customer customer : customers) {
-                Serialization.serialiseCustomer(customer,path +"/customers.jobj");
+                Serialization.serialiseCustomer(customer, path + "/customers.jobj");
             }
             for (Household_Insurance houseIn : house) {
-                Serialization.serialiseInsurance(houseIn,path + "/house.jobj");
+                Serialization.serialiseInsurance(houseIn, path + "/house.jobj");
             }
             for (Leisure_Insurance leisureIn : leisure) {
-                Serialization.serialiseInsurance(leisureIn,path + "/leisure.jobj");
+                Serialization.serialiseInsurance(leisureIn, path + "/leisure.jobj");
             }
             for (Travel_Insurance travelIn : travel) {
-                Serialization.serialiseInsurance(travelIn,path + "/travel.jobj");
+                Serialization.serialiseInsurance(travelIn, path + "/travel.jobj");
             }
             for (Boat_Insurance boatIn : boat) {
-                Serialization.serialiseInsurance(boatIn,path + "/boat.jobj");
+                Serialization.serialiseInsurance(boatIn, path + "/boat.jobj");
             }
             for (Damage_Report damage_report : damage_reports) {
                 Serialization.serialiseDamageReport(damage_report, path + "/damage.jobj");
             }
         }
+    }catch (Exception e){
+           System.out.println("Aborted");
+       }
     }
 }

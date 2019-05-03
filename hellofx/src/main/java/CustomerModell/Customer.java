@@ -1,6 +1,5 @@
 package CustomerModell;
 
-import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import Serialisering.SearchAndReadFromCSV;
 

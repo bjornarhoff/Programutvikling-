@@ -3,28 +3,29 @@ package org.openjfx;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import FileManagement.CsvReader;
+import Insurances.Boat_Insurance;
+import Insurances.Household_Insurance;
+import Insurances.Leisure_Insurance;
+import Insurances.Travel_Insurance;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import com.jfoenix.controls.JFXButton;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import Insurances.Leisure_Insurance;
-import Insurances.Household_Insurance;
-import Insurances.Travel_Insurance;
-import Insurances.Boat_Insurance;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
@@ -51,6 +52,7 @@ public class HandlerFxml {
 
     /**
      * Method that sets table view column values for customer object
+     *
      * @param t1
      * @param t2
      * @param t3
@@ -60,10 +62,10 @@ public class HandlerFxml {
      * @param t7
      * @param table
      */
-    public void setCellValue(TableColumn<Customer,String> t1, TableColumn<Customer,String> t2,
-                             TableColumn<Customer,String> t3, TableColumn<Customer,String> t4,
-                             TableColumn<Customer,String> t5, TableColumn<Customer,String> t6,
-                             TableColumn<Customer,String> t7, TableView<Customer> table){
+    public void setCellValue(TableColumn<Customer, String> t1, TableColumn<Customer, String> t2,
+                             TableColumn<Customer, String> t3, TableColumn<Customer, String> t4,
+                             TableColumn<Customer, String> t5, TableColumn<Customer, String> t6,
+                             TableColumn<Customer, String> t7, TableView<Customer> table) {
         new Thread(() -> {
 
             ObservableList<Customer> customers = null;
@@ -73,55 +75,17 @@ public class HandlerFxml {
                 e.printStackTrace();
             }
             t1.setCellValueFactory(new PropertyValueFactory<>("personalID"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("name"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("email"));
-        t6.setCellValueFactory(new PropertyValueFactory<>("date"));
-        t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
-        table.setItems(customers);
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceNr"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("name"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("email"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("date"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("billingAddress"));
+            table.setItems(customers);
         }).start();
 
 
     }
-
-    /**
-     * Method that sets table view columns values for Damage Report object
-     * @param t1
-     * @param t2
-     * @param t3
-     * @param t4
-     * @param t5
-     * @param table
-     */
-/*    public void setCellValueDamageReport(TableColumn<Damage_Report,String> t1, TableColumn<Damage_Report,String> t2,
-                                         TableColumn<Damage_Report,Integer> t3, TableColumn<Damage_Report,String> t4,
-                                         TableColumn<Damage_Report,String> t5, TableView<Damage_Report> table) {
-        new Thread(() -> {
-
-            *//*try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-             *//*
-            ObservableList<Damage_Report> damageReport = null;
-            try {
-                damageReport = CsvReader.readDamageReport();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            t1.setCellValueFactory(new PropertyValueFactory<>("damageType"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("damageDescription"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("damageNr"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("contactOfPotentialWitnesses"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("unpaidReplacementAmount"));
-        table.setItems(damageReport);
-        }).start();
-    }*/
-
-
     /**
      * Method that restricts a user to write a PersonalId longer than 8 digits
      *
@@ -389,11 +353,11 @@ public class HandlerFxml {
                 e.printStackTrace();
             }
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("insuranceArea"));
-        table.setItems(travelInsurnce);
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("insuranceArea"));
+            table.setItems(travelInsurnce);
         }).start();
 
 
@@ -432,14 +396,14 @@ public class HandlerFxml {
                 e.printStackTrace();
             }
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("constructionMaterial"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("condition"));
-        t6.setCellValueFactory(new PropertyValueFactory<>("amountSquareMeters"));
-        t7.setCellValueFactory(new PropertyValueFactory<>("amountForHousehold"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("yearlyInsurancePremium"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("insuranceConditions"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("constructionMaterial"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("condition"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("amountSquareMeters"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("amountForHousehold"));
 
-        table.setItems(leisureInsurnace);
+            table.setItems(leisureInsurnace);
         }).start();
 
 
@@ -480,14 +444,14 @@ public class HandlerFxml {
                 e.printStackTrace();
             }
             t1.setCellValueFactory(new PropertyValueFactory<>("dateOfCreatedInsurance"));
-        t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
-        t3.setCellValueFactory(new PropertyValueFactory<>("owner"));
-        t4.setCellValueFactory(new PropertyValueFactory<>("registerNr"));
-        t5.setCellValueFactory(new PropertyValueFactory<>("boatTypeAndModel"));
-        t6.setCellValueFactory(new PropertyValueFactory<>("lengthInFoot"));
-        t7.setCellValueFactory(new PropertyValueFactory<>("motorTypeAndMotorPower"));
+            t2.setCellValueFactory(new PropertyValueFactory<>("insuranceAmount"));
+            t3.setCellValueFactory(new PropertyValueFactory<>("owner"));
+            t4.setCellValueFactory(new PropertyValueFactory<>("registerNr"));
+            t5.setCellValueFactory(new PropertyValueFactory<>("boatTypeAndModel"));
+            t6.setCellValueFactory(new PropertyValueFactory<>("lengthInFoot"));
+            t7.setCellValueFactory(new PropertyValueFactory<>("motorTypeAndMotorPower"));
 
-        table.setItems(boatInsurance);
+            table.setItems(boatInsurance);
         }).start();
 
 

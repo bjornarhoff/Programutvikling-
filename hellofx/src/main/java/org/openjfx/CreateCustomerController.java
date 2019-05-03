@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 
@@ -34,7 +33,7 @@ public class CreateCustomerController {
         /*
         Skriv lagret data til fil. Så må dette leses inn igjen slik at tableview på forsiden bli oppdatert.
          */
-        if (ExceptionHandler.personalIDValidator(personalID) && ExceptionHandler.phoneValidator(phone) && ExceptionHandler.emailValidator(email)){
+        if (ExceptionHandler.personalIDValidator(personalID) && ExceptionHandler.phoneValidator(phone) && ExceptionHandler.emailValidator(email)) {
             Customer aCustomer = new Customer(personalID.getText(), name.getText(), phone.getText(), email.getText(), String.valueOf(new Date()), billing.getText());
             aCustomer.generateInsuranceNr();
             CsvWriter.writeCustomerToCSV(aCustomer);

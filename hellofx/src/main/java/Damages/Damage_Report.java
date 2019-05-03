@@ -1,7 +1,6 @@
 package Damages;
 
 import CustomerModell.Customer;
-import org.openjfx.HomeCustomerController;
 
 import java.io.Serializable;
 

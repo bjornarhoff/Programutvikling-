@@ -1,12 +1,10 @@
 package FileManagement;
 
-import CustomerModell.Customer;
-
 public abstract class FileWriter {
 
+    /**
+     * We could not manage to implement this abstract class due to lack of time.
+     */
 
-    public void writeToFile(Object obj) {
-
-    }
 
 }

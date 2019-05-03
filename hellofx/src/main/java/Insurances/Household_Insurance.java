@@ -2,8 +2,6 @@ package Insurances;
 
 import CustomerModell.Customer;
 
-import java.util.Date;
-
 public class Household_Insurance extends Insurance {
 
     private String propertyOwner;

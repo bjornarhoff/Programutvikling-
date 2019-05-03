@@ -267,29 +267,6 @@ public class SearchAndReadFromCSV {
                             boat[6] + "," + boat[7] + "," + boat[8]+ "," + boat[9]+ "," + boat[10]);
                 }
             }
-
-           /* while (x.hasNext()) {
-                personalID = x.next();
-                yearlyInsurnacePremium = x.next();
-                dateOfCreatedInsurnace = x.next();
-                insurnaceAmount = x.next();
-                insurnaceConditions = x.next();
-                owner = x.next();
-                registerNr = x.next();
-                boatTypeAndModel = x.next();
-                lengthInFoot = x.next();
-                year = x.next();
-                motorTypeAndMotorPower = x.next();
-
-                if (!dateOfCreatedInsurnace.equals(searchterm)) {
-                    pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + owner + "," +
-                            registerNr + "," + boatTypeAndModel + "," + lengthInFoot + "," + year + "," + motorTypeAndMotorPower);
-                }
-
-            }
-
-            */
-
             x.close();
             pw.flush();
             pw.close();
@@ -330,25 +307,6 @@ public class SearchAndReadFromCSV {
                     pw.println(travel[0] + "," + travel[1] + "," + travel[2] + "," + travel[3] + "," + travel[4] + "," + travel[5]);
                 }
             }
-
-           /* while (x.hasNext()) {
-                personalID = x.next();
-                yearlyInsurnacePremium = x.next();
-                dateOfCreatedInsurnace = x.next();
-                insurnaceAmount = x.next();
-                insurnaceConditions = x.next();
-                insurnaceArea = x.next();
-                insurnceSum = x.next();
-
-
-                if (!dateOfCreatedInsurnace.equals(searchterm)) {
-                    pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + insurnaceArea + "," +
-                            insurnceSum);
-                }
-
-            }
-
-            */
             x.close();
             pw.flush();
             pw.close();
@@ -390,29 +348,6 @@ public class SearchAndReadFromCSV {
                             house[6] + "," + house[7] + "," + house[8]+ "," + house[9]+ "," + house[10]+ "," + house[11]+ "," + house[12]);
                 }
             }
-
-            /*while (x.hasNext()) {
-                personalID = x.next();
-                yearlyInsurnacePremium = x.next();
-                dateOfCreatedInsurnace = x.next();
-                insurnaceAmount = x.next();
-                insurnaceConditions = x.next();
-                propertyOwner = x.next();
-                yearOfConstruction = x.next();
-                residentialType = x.next();
-                constructionMaterial = x.next();
-                condition = x.next();
-                numberOfSquareMeters = x.next();
-                insurnceAmountForConstruction = x.next();
-                insurnaceAmountForHousehold = x.next();
-
-                if (!dateOfCreatedInsurnace.equals(searchterm)) {
-                    pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + propertyOwner + "," +
-                            yearOfConstruction + "," + residentialType + "," + constructionMaterial + "," + condition + "," + numberOfSquareMeters + "," + insurnceAmountForConstruction + "," + insurnaceAmountForHousehold);
-                }
-            }
-
-             */
             x.close();
             pw.flush();
             pw.close();

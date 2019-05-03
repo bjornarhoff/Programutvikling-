@@ -7,10 +7,7 @@ import Insurances.Travel_Insurance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -143,34 +140,4 @@ public class TravelInsurnaceController {
         InsuranceAmount.setText("");
         InsuranceConditions.setText("");
     }
-  /*
-    public void setInputValidation(){
-        insuranceSum.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    insuranceSum.validate();
-                }
-            }
-        });
-
-        YearlyInsurance.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    YearlyInsurance.validate();
-                }
-            }
-        });
-
-        InsuranceAmount.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    InsuranceAmount.validate();
-                }
-            }
-        });
-    }*/
-
 }

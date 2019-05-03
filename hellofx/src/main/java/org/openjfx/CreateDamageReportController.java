@@ -28,7 +28,7 @@ public class CreateDamageReportController {
     private Label customerLabel;
 
     @FXML
-    private JFXTextField txt_damageType, damageNr, taxAmount, unpaidReplacements,txta_DaDescription,txta_potWitnesses;
+    private JFXTextField txt_damageType, damageNr, taxAmount, unpaidReplacements, txta_DaDescription, txta_potWitnesses;
 
     @FXML
     private JFXTextArea txta_info;
