@@ -17,7 +17,10 @@ import org.openjfx.HandlerFxml;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpenFileChooser {
     private FileChooser chooser = new FileChooser();
@@ -40,17 +43,57 @@ public class OpenFileChooser {
         chooser.setInitialDirectory(userDirectory);
     }
 
+
+
     public void fileChooserImport(BorderPane borderPane) {
         fileChooser("Import file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
         // Choose file
-        File file = chooser.showOpenDialog(stage);
-        if (file.getName().equals("customer2.csv")) {
-            ExceptionHandler.alertBox("Error", "File allready loaded", "Please choose a file " +
-                    "with a different name, or rename your file");
-        } else {
-            CsvReader.readAllCustomers(file);
-            handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+        List<File> files = chooser.showOpenMultipleDialog(stage);
+
+        for (File file : files) {
+
+            if (file.getName().equals("customer2.csv") ||
+                    file.getName().equals("boatInsurance.csv") ||
+                    file.getName().equals("travelInsurance.csv") ||
+                    file.getName().equals("houseInsurance.csv") ||
+                    file.getName().equals("LeisureInsurnace.csv")) {
+                ExceptionHandler.alertBox("Error", "File already loaded", "Please choose a file " +
+                        "with a different name, or rename your file");
+                break;
+            }
+            String line;
+            String[] header = new String[0];
+            if (file != null) {
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                    while ((line = br.readLine()) != null) {
+                        header = line.split(",");
+                        break;
+                    }
+                    if (header[2].equals("Name")) {
+                        CsvReader.read(file);
+                        handlerFxml.navigate(borderPane, "homeCustomer.fxml");
+                    } else if (header[2].equals("DamageNr")) {
+                        CsvReader.readAllDamagereport(file);
+                    } else if (header[5].equals("insuranceArea")) {
+                        CsvReader.readAllTravel(file);
+                    } else if (header[7].equals("Boat type")) {
+                        CsvReader.readAllBoat(file);
+                    } else if (header[7].equals("residentalType")) {
+                        CsvReader.readAllLeisure(file);
+                    } else if (header[7].equals("ResidentialType")) {
+                        CsvReader.readAllHousehold(file);
+                    }
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (IndexOutOfBoundsException ie) {
+                    ie.printStackTrace();
+                }
+
+            }
         }
     }
 

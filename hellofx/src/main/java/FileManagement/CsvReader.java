@@ -55,6 +55,7 @@ public class CsvReader {
         String line;
         ObservableList<Customer> customersFromCsv = FXCollections.observableArrayList();
         int iteration = 0;
+
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             while ((line = br.readLine()) != null) {
                 if (iteration == 0) {
@@ -74,6 +75,132 @@ public class CsvReader {
         }
         return customersFromCsv;
     }
+
+
+    public static void readAllBoat(File file) {
+        String line;
+        ObservableList<Boat_Insurance> boatins = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0) {
+                    iteration++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                Boat_Insurance boatInsurance = new Boat_Insurance(CsvReader.findCustomer(values[0]), values[1], values[2], Integer.parseInt(values[3]),
+                        values[4], values[5], values[6], values[7], Double.parseDouble(values[8]), Integer.parseInt(values[9]), values[10]);
+                boatins.add(boatInsurance);
+            }
+            for (Boat_Insurance boatin : boatins) {
+                CsvWriter.writeBoatInsuranceToCSV(boatin, false);
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void readAllLeisure(File file) {
+        String line;
+        ObservableList<Leisure_Insurance> leisure = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0) {
+                    iteration++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                Leisure_Insurance leisureInsurance = new Leisure_Insurance(CsvReader.findCustomer(values[0]), values[1], values[2], Integer.parseInt(values[3]),
+                        values[4], values[5], Integer.parseInt(values[6]), values[7],values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]),Integer.parseInt(values[12]));
+                leisure.add(leisureInsurance);
+            }
+            for (Leisure_Insurance leisures : leisure) {
+                CsvWriter.writeLeisureInsurance(leisures, false);
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void readAllHousehold(File file) {
+        String line;
+        ObservableList<House_Household_Insurance> house = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0) {
+                    iteration++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                House_Household_Insurance household = new House_Household_Insurance(CsvReader.findCustomer(values[0]), values[1], values[2], Integer.parseInt(values[3]),
+                        values[4], values[5], Integer.parseInt(values[6]), values[7],values[8], values[9], Double.parseDouble(values[10]), Integer.parseInt(values[11]),Integer.parseInt(values[12]));
+                house.add(household);
+            }
+            for (House_Household_Insurance households : house) {
+                CsvWriter.writeHouseInsuranceToCSV(households, false);
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void readAllTravel(File file) {
+        String line;
+        ObservableList<Travel_Insurance> travel_insurances = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0) {
+                    iteration++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                Travel_Insurance travel = new Travel_Insurance(CsvReader.findCustomer(values[0]), values[1], values[2], Integer.parseInt(values[3]),
+                        values[4], values[5], Integer.parseInt(values[6]));
+                travel_insurances.add(travel);
+            }
+            for (Travel_Insurance travels : travel_insurances) {
+                CsvWriter.writeTravelInsjurance(travels, false);
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void readAllDamagereport(File file) {
+        String line;
+        ObservableList<Damage_Report> damage_reports = FXCollections.observableArrayList();
+        int iteration = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while ((line = br.readLine()) != null) {
+                if (iteration == 0) {
+                    iteration++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                Damage_Report damage = new Damage_Report (values[1], Integer.parseInt(values[2]), values[3], values[4],
+                        values[5], Double.parseDouble(values[6]), Integer.parseInt(values[7]),CsvReader.findCustomer(values[0]));
+                damage_reports.add(damage);
+            }
+            for (Damage_Report damage_report : damage_reports) {
+                CsvWriter.writeDamageReport(damage_report);
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
 
     /**
      * @param searchterm to specify what to search for in Customer csv file in this case PersonalId
@@ -369,6 +496,8 @@ public class CsvReader {
         }
         return damage_reports;
     }
+
+
 
 
     /**
