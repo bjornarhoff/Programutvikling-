@@ -180,6 +180,10 @@ public class CsvReader {
         return values;
     }
 
+    /**
+     * Method for reading a damage report for a specific file
+     * @param file which file chosen
+     */
     public static void readAllDamagereportImport(File file) {
         String line;
         ObservableList<Damage_Report> damage_reports = FXCollections.observableArrayList();
@@ -269,6 +273,10 @@ public class CsvReader {
         return values;
     }
 
+    /**
+     * Method for reading all house Insurances for a specific file
+     * @param file which file chosen
+     */
     public static void readAllHouseImport(File file) {
         String line;
         ObservableList<Household_Insurance> house = FXCollections.observableArrayList();
@@ -371,6 +379,10 @@ public class CsvReader {
         return values;
     }
 
+    /**
+     * Method for reading all travel Insurances for a specific file
+     * @param file filepath
+     */
     public static void readAllTravelImport(File file) {
         String line;
         ObservableList<Travel_Insurance> travel_insurances = FXCollections.observableArrayList();
@@ -479,6 +491,10 @@ public class CsvReader {
         return values;
     }
 
+    /**
+     * Method for reading a boat csv file for a  specific file
+     * @param file filepath
+     */
     public static void readAllBoatImport(File file) {
         String line;
         ObservableList<Boat_Insurance> boatins = FXCollections.observableArrayList();

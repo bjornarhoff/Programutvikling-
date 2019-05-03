@@ -23,6 +23,10 @@ public class OpenFileChooser {
     private HandlerFxml handlerFxml = new HandlerFxml();
 
 
+    /**
+     * Method for filechoser box
+     * @param title of the box
+     */
     public void fileChooser(String title) {
         chooser.setTitle(title);
         chooser.getExtensionFilters().addAll(
@@ -39,6 +43,10 @@ public class OpenFileChooser {
         chooser.setInitialDirectory(userDirectory);
     }
 
+    /**
+     * This is out file Import method where the user desides to import a csv file or jobj
+     * @param borderPane is the window
+     */
     public void fileChooserImport(BorderPane borderPane) {
         fileChooser("Import file");
         Stage stage = (Stage) borderPane.getScene().getWindow();
@@ -91,7 +99,11 @@ public class OpenFileChooser {
         }
     }
 
-
+    /**
+     * Method for exporting data to either csv or jobj file
+     * @param borderPane is the window
+     * @throws IOException
+     */
     public void fileChooserExport(BorderPane borderPane) throws IOException {
        try{
         fileChooser("Export file");
@@ -107,9 +119,16 @@ public class OpenFileChooser {
             directory.mkdir();
         }
         if (s.equals("csv")) {
-            ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
-            ArrayList<String> boat_insurances = CsvReader.readAllBoat();
-            ArrayList<String> household_insurances = CsvReader.readAllHouse();
+            new Thread(() -> {
+
+                ArrayList<String> damage_reports = CsvReader.readAllDamageReports();
+                ArrayList<String> boat_insurances = null;
+                try {
+                    boat_insurances = CsvReader.readAllBoat();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ArrayList<String> household_insurances = CsvReader.readAllHouse();
             ArrayList<String> leisure_insurances = CsvReader.readAllLeisure();
             ArrayList<String> travel_insurances = CsvReader.readAllTravel();
 
@@ -132,6 +151,7 @@ public class OpenFileChooser {
             for (String damage_report : damage_reports) {
                 CsvWriter.writeFileToCsv(path + "/Damage.csv", damage_report);
             }
+            }).start();
         }
         if (s.equals("jobj")) {
             String path = file.getPath().split("\\.")[0];

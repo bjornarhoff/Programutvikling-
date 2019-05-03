@@ -293,13 +293,13 @@ public class HandlerFxml {
                                       TableColumn<Household_Insurance, String> t5, TableColumn<Household_Insurance, String> t6,
                                       TableColumn<Household_Insurance, Integer> t7, TableView<Household_Insurance> table) {
         new Thread(() -> {
-            /*try {
-                Thread.sleep(2000);
+            try {
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-             */
+
 
             ObservableList<Household_Insurance> householdInsurnace = null;
             try {
@@ -335,13 +335,13 @@ public class HandlerFxml {
                                    TableColumn<Travel_Insurance, String> t3, TableColumn<Travel_Insurance, String> t4,
                                    TableColumn<Travel_Insurance, String> t5, TableView<Travel_Insurance> table) {
         new Thread(() -> {
-            /*try {
-                Thread.sleep(2000);
+            try {
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-             */
+
 
 
             ObservableList<Travel_Insurance> travelInsurnce = null;
@@ -379,13 +379,13 @@ public class HandlerFxml {
                                     TableColumn<Leisure_Insurance, String> t3, TableColumn<Leisure_Insurance, String> t4,
                                     TableColumn<Leisure_Insurance, String> t5, TableColumn<Leisure_Insurance, String> t6, TableColumn<Leisure_Insurance, Integer> t7, TableView<Leisure_Insurance> table) {
         new Thread(() -> {
-            /*try {
-                Thread.sleep(5000);
+            try {
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-             */
+
 
             ObservableList<Leisure_Insurance> leisureInsurnace = null;
             try {
@@ -426,13 +426,13 @@ public class HandlerFxml {
                                  TableColumn<Boat_Insurance, String> t5, TableColumn<Boat_Insurance, String> t6,
                                  TableColumn<Boat_Insurance, String> t7, TableView<Boat_Insurance> table) {
         new Thread(() -> {
-            /*try {
-                Thread.sleep(5000);
+            try {
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-             */
+
 
 
             ObservableList<Boat_Insurance> boatInsurance = null;

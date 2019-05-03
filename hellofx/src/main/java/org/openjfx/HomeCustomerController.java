@@ -5,7 +5,7 @@ import Exceptions.ExceptionHandler;
 import FileManagement.CsvReader;
 import FileManagement.CsvWriter;
 import FileManagement.OpenFileChooser;
-import Serialisering.SearchAndReadFromCSV;
+import FileManagement.DeleteFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -84,12 +84,12 @@ public class HomeCustomerController {
 
         if (event.getSource() == btn_deleteCustomer) {
             String customerSelected = String.valueOf(customerTable.getSelectionModel().getSelectedItem().getPersonalID());
-            SearchAndReadFromCSV.deleteCustomerFromCsv(customerSelected);
-            SearchAndReadFromCSV.deleteTravelFromCsv(customerSelected);
-            SearchAndReadFromCSV.deleteHouseholdFromCsv(customerSelected);
-            SearchAndReadFromCSV.deleteBoatFromCsv(customerSelected);
-            SearchAndReadFromCSV.deleteLeisureFromCsv(customerSelected);
-            SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
+            DeleteFromCSV.deleteCustomerFromCsv(customerSelected);
+            DeleteFromCSV.deleteTravelFromCsv(customerSelected);
+            DeleteFromCSV.deleteHouseholdFromCsv(customerSelected);
+            DeleteFromCSV.deleteBoatFromCsv(customerSelected);
+            DeleteFromCSV.deleteLeisureFromCsv(customerSelected);
+            DeleteFromCSV.deleteDamageReportFromCsv(customerSelected);
 
             handlerFxml.setCellValueCustomers(personalID, insuranceNr, name, phone, email, date, billing, customerTable);
         }
@@ -172,7 +172,7 @@ public class HomeCustomerController {
         Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
 
 
-        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        DeleteFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setName(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
 
@@ -186,7 +186,7 @@ public class HomeCustomerController {
     public void onEditPhone(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        DeleteFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setPhoneNumber(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
     }
@@ -199,7 +199,7 @@ public class HomeCustomerController {
     public void onEditEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        DeleteFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setEmail(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
 
@@ -214,7 +214,7 @@ public class HomeCustomerController {
     public void onEditBilling(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         Customer customerModifiable = customerTable.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
+        DeleteFromCSV.deleteCustomerFromCsv(String.valueOf(customerModifiable.getPersonalID()));
         customerModifiable.setBillingAddress(customerStringCellEditEvent.getNewValue());
         CsvWriter.writeCustomerToCSV(customerModifiable);
     }

@@ -3,7 +3,7 @@ package org.openjfx;
 import Damages.Damage_Report;
 import Exceptions.ExceptionHandler;
 import FileManagement.CsvWriter;
-import Serialisering.SearchAndReadFromCSV;
+import FileManagement.DeleteFromCSV;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -92,7 +92,7 @@ public class DamageReportController {
     private void delete(ActionEvent event) throws IOException {
         if (event.getSource() == btn_delete) {
             String customerSelected = damageTableView.getSelectionModel().getSelectedItem().getDateOfDamage();
-            SearchAndReadFromCSV.deleteDamageReportFromCsv(customerSelected);
+            DeleteFromCSV.deleteDamageReportFromCsv(customerSelected);
 
             handlerFxml.setCellValueDamageReport(dmgType, dmgDescription, dmgNr, potentialWitnesses, unpaid, damageTableView);
 
@@ -121,7 +121,7 @@ public class DamageReportController {
     public void onEditDamageType(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
+        DeleteFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setDamageType(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
         damageTableView.setEditable(false);
@@ -136,7 +136,7 @@ public class DamageReportController {
     public void onEditDamageDesc(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
+        DeleteFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setDamageDescription(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
         damageTableView.setEditable(false);
@@ -151,7 +151,7 @@ public class DamageReportController {
     public void onEditWitnesses(TableColumn.CellEditEvent<Damage_Report, String> damage_reportStringCellEditEvent) throws IOException {
         Damage_Report damageModifiable = damageTableView.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
+        DeleteFromCSV.deleteDamageReportFromCsv(String.valueOf(damageModifiable.getDateOfDamage()));
         damageModifiable.setContactOfPotentialWitnesses(damage_reportStringCellEditEvent.getNewValue());
         CsvWriter.writeDamageReport(damageModifiable);
         damageTableView.setEditable(false);

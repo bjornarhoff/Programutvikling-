@@ -7,7 +7,7 @@ import Insurances.Boat_Insurance;
 import Insurances.Household_Insurance;
 import Insurances.Leisure_Insurance;
 import Insurances.Travel_Insurance;
-import Serialisering.SearchAndReadFromCSV;
+import FileManagement.DeleteFromCSV;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
@@ -120,14 +120,14 @@ public class ALLInsurancesController {
         }
         if (event.getSource() == delHousehold) {
             String selectHouse = tvHousehold.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
-            SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(selectHouse));
+            DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(selectHouse));
             handlerFxml.setCellValueHousehold(HouseyearlyPremium, houseInsAmount, houseInsuranceConditions, houseOwner, houseConstMaterial, houseCondition, amountHousehold, tvHousehold);
             Customer.customerInsuranceCounterDeacrease(customerEditable);
 
         }
         if (event.getSource() == delBoat) {
             String selectBoat = tvBoat.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
-            SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(selectBoat));
+            DeleteFromCSV.deleteBoatFromCsv(String.valueOf(selectBoat));
             handlerFxml.setCellValueBoat(boatDate, boatInsAmount, boatOwner, boatRegisterNr, boatTypeModel, boatLengthFoot, motorType, tvBoat);
             Customer.customerInsuranceCounterDeacrease(customerEditable);
 
@@ -135,7 +135,7 @@ public class ALLInsurancesController {
         }
         if (event.getSource() == delTravel) {
             String selectedTravel = tvTravel.getSelectionModel().getSelectedItem().getDateOfCreatedInsurance();
-            SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(selectedTravel));
+            DeleteFromCSV.deleteTravelFromCsv(String.valueOf(selectedTravel));
             handlerFxml.setCellValueTravel(travelDate, travelInsAmount, travelYearlyPremium, travelInsConditions, travelInsArea, tvTravel);
             Customer.customerInsuranceCounterDeacrease(customerEditable);
 
@@ -143,7 +143,7 @@ public class ALLInsurancesController {
         }
         if (event.getSource() == delLeisure) {
             String selectLeisure = tvLeisure.getSelectionModel().getSelectedItem().getAddress_Not_Billing();
-            SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(selectLeisure));
+            DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(selectLeisure));
             handlerFxml.setCellValueLeisure(leisureDate, yearlyPremium, conditions, leisureConstrMaterial, leisureCondition, leisureNrSquareMeters, amountLeisure, tvLeisure);
             Customer.customerInsuranceCounterDeacrease(customerEditable);
         }
@@ -219,7 +219,7 @@ public class ALLInsurancesController {
     public void editYearlyPremium(TableColumn.CellEditEvent<Household_Insurance, String> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setYearlyInsurancePremium(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -233,7 +233,7 @@ public class ALLInsurancesController {
      */
     public void editInsurnaceAmount(TableColumn.CellEditEvent<Household_Insurance, Integer> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceAmount(CellEditEvent.getNewValue() == null ? CellEditEvent.getOldValue() : CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -250,7 +250,7 @@ public class ALLInsurancesController {
     public void editConditions(TableColumn.CellEditEvent<Household_Insurance, String> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceConditions(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -265,7 +265,7 @@ public class ALLInsurancesController {
     public void editOwner(TableColumn.CellEditEvent<Household_Insurance, String> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setPropertyOwner(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -280,7 +280,7 @@ public class ALLInsurancesController {
     public void editConstructionMaterial(TableColumn.CellEditEvent<Household_Insurance, String> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setConstructionMaterial(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -295,7 +295,7 @@ public class ALLInsurancesController {
     public void editHouseCondition(TableColumn.CellEditEvent<Household_Insurance, String> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setCondition(CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -310,7 +310,7 @@ public class ALLInsurancesController {
     public void editAmountHousehold(TableColumn.CellEditEvent<Household_Insurance, Integer> CellEditEvent) throws FileNotFoundException {
         Household_Insurance householdIns = tvHousehold.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteHouseholdFromCsv(String.valueOf(householdIns.getDateOfCreatedInsurance()));
         householdIns.setInsuranceAmountForHousehold(CellEditEvent.getNewValue() == null ? CellEditEvent.getOldValue() : CellEditEvent.getNewValue());
         CsvWriter.writeHouseInsuranceToCSV(householdIns, false);
         tvHousehold.setEditable(false);
@@ -327,7 +327,7 @@ public class ALLInsurancesController {
     public void InsurnaceArea(TableColumn.CellEditEvent<Travel_Insurance, String> editEvent) throws FileNotFoundException {
         Travel_Insurance travelInsurance = tvTravel.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceArea(editEvent.getNewValue());
         CsvWriter.writeTravelInsjurance(travelInsurance, false);
         tvTravel.setEditable(false);
@@ -342,7 +342,7 @@ public class ALLInsurancesController {
     public void editInsuranceAmountTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) throws FileNotFoundException {
         Travel_Insurance travelInsurance = tvTravel.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceAmount(editEvent.getNewValue() == null ? editEvent.getOldValue() : editEvent.getNewValue());
         CsvWriter.writeTravelInsjurance(travelInsurance, false);
         tvTravel.setEditable(false);
@@ -359,7 +359,7 @@ public class ALLInsurancesController {
     public void editInsuranceConditions(TableColumn.CellEditEvent<Travel_Insurance, String> editEvent) throws FileNotFoundException {
         Travel_Insurance travelInsurance = tvTravel.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setInsuranceConditions(editEvent.getNewValue());
         CsvWriter.writeTravelInsjurance(travelInsurance, false);
         tvTravel.setEditable(false);
@@ -374,7 +374,7 @@ public class ALLInsurancesController {
     public void editYearlyPremiumTravel(TableColumn.CellEditEvent<Travel_Insurance, Integer> editEvent) throws FileNotFoundException {
         Travel_Insurance travelInsurance = tvTravel.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteTravelFromCsv(String.valueOf(travelInsurance.getDateOfCreatedInsurance()));
         travelInsurance.setYearlyInsurancePremium(String.valueOf(editEvent.getNewValue()));
         CsvWriter.writeTravelInsjurance(travelInsurance, false);
         tvTravel.setEditable(false);
@@ -390,7 +390,7 @@ public class ALLInsurancesController {
     public void editYearlyPremiumLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
+        DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
@@ -405,7 +405,7 @@ public class ALLInsurancesController {
     public void editInsuranceConditionsLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
+        DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setInsuranceConditions(cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
@@ -421,7 +421,7 @@ public class ALLInsurancesController {
     public void editConstructionMaterialLeisure(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
+        DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setConstructionMaterial(cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
@@ -436,7 +436,7 @@ public class ALLInsurancesController {
     public void editLeisureConditions(TableColumn.CellEditEvent<Leisure_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
+        DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setCondition(cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
@@ -451,7 +451,7 @@ public class ALLInsurancesController {
     public void editLeisure(TableColumn.CellEditEvent<Leisure_Insurance, Integer> cellEditEvent) throws FileNotFoundException {
         Leisure_Insurance leisureIns = tvLeisure.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
+        DeleteFromCSV.deleteLeisureFromCsv(String.valueOf(leisureIns.getAddress_Not_Billing()));
         leisureIns.setAmountForHousehold(cellEditEvent.getNewValue() == null ? cellEditEvent.getOldValue() : cellEditEvent.getNewValue());
         CsvWriter.writeLeisureInsurance(leisureIns, false);
         tvLeisure.setEditable(false);
@@ -468,7 +468,7 @@ public class ALLInsurancesController {
     public void editInsuranceAmountBoat(TableColumn.CellEditEvent<Boat_Insurance, Integer> cellEditEvent) throws FileNotFoundException {
         Boat_Insurance boatIns = tvBoat.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setInsuranceAmount(cellEditEvent.getNewValue() == null ? cellEditEvent.getOldValue() : cellEditEvent.getNewValue());
         CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
         tvBoat.setEditable(false);
@@ -485,7 +485,7 @@ public class ALLInsurancesController {
     public void editOwnerBoat(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Boat_Insurance boatIns = tvBoat.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setOwner(cellEditEvent.getNewValue());
         CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
         tvBoat.setEditable(false);
@@ -500,7 +500,7 @@ public class ALLInsurancesController {
     public void editMotor(TableColumn.CellEditEvent<Boat_Insurance, String> cellEditEvent) throws FileNotFoundException {
         Boat_Insurance boatIns = tvBoat.getSelectionModel().getSelectedItem();
 
-        SearchAndReadFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
+        DeleteFromCSV.deleteBoatFromCsv(String.valueOf(boatIns.getDateOfCreatedInsurance()));
         boatIns.setMotorTypeAndMotorPower(cellEditEvent.getNewValue());
         CsvWriter.writeBoatInsuranceToCSV(boatIns, false);
         tvBoat.setEditable(false);

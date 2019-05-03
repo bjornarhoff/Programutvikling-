@@ -1,10 +1,11 @@
-package Serialisering;
+package FileManagement;
 
 import javax.swing.*;
 import java.io.*;
+import java.io.FileWriter;
 import java.util.Scanner;
 
-public class SearchAndReadFromCSV {
+public class DeleteFromCSV {
 
     // Customer
     private static String personalID = "";
@@ -77,7 +78,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new java.io.FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -118,7 +119,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new java.io.FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -131,32 +132,10 @@ public class SearchAndReadFromCSV {
                     pw.println(damage[0] + "," + damage[1] + "," + damage[2] + "," + damage[3] + "," + damage[4] + "," + damage[5] + "," +
                             damage[6] + "," + damage[7]);
                 }
-               /* if(!damage[0].equals(searchterm)) {
-                    pw.println(damage[0] + "," + damage[1] + "," + damage[2] + "," + damage[3] + "," + damage[4] + "," + damage[5] + "," +
-                            damage[6] + "," + damage[7]);}
 
-                */
             }
 
-            /*while (x.hasNext()) {
 
-
-                personalID = x.next();
-                DateofDamage = x.next();
-                DamageNr = x.next();
-                DamageType = x.next();
-                DamageDescription = x.next();
-                ContactOfWitnesses = x.next();
-                TaxOfDamage = x.next();
-                unpaid = x.next();
-
-
-                if (!DateofDamage.equals(searchterm)) {
-                    pw.println(personalID + "," + DateofDamage + "," + DamageNr + "," + DamageType + "," + DamageDescription + "," + ContactOfWitnesses + "," +
-                            TaxOfDamage + "," + unpaid);
-                }
-
-             */
 
 
             x.close();
@@ -185,7 +164,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new java.io.FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -200,30 +179,7 @@ public class SearchAndReadFromCSV {
                             leisure[6] + "," + leisure[7] + "," + leisure[8]+ "," + leisure[9]+ "," + leisure[10]+ "," + leisure[11]+ "," + leisure[12]);
                 }
             }
-            /*
-            while (x.hasNext()) {
-                personalID = x.next();
-                yearlyInsurnacePremium = x.next();
-                dateOfCreatedInsurnace = x.next();
-                insurnaceAmount = x.next();
-                insurnaceConditions = x.next();
-                address_Not_Billing = x.next();
-                constructionYear = x.next();
-                residentialType = x.next();
-                constructionMaterial = x.next();
-                condition = x.next();
-                amountSquareMeters = x.next();
-                amountforConstruction = x.next();
-                amountForHousehold = x.next();
 
-
-                if (!address_Not_Billing.equals(searchterm)) {
-                    pw.println(personalID + "," + yearlyInsurnacePremium + "," + dateOfCreatedInsurnace + "," + insurnaceAmount + "," + insurnaceConditions + "," + address_Not_Billing + "," +
-                            constructionYear + "," + residentialType + "," + constructionMaterial + "," + condition + "," + amountSquareMeters + "," + amountforConstruction
-                            + "," + amountForHousehold);
-                }
-
-             */
 
 
             x.close();
@@ -253,7 +209,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new java.io.FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -294,7 +250,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new java.io.FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -333,7 +289,7 @@ public class SearchAndReadFromCSV {
         boolean found = false;
 
         try {
-            FileWriter fw = new FileWriter(tempfile, true);
+            java.io.FileWriter fw = new FileWriter(tempfile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 

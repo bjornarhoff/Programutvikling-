@@ -1,7 +1,7 @@
 package CustomerModell;
 
 import FileManagement.CsvWriter;
-import Serialisering.SearchAndReadFromCSV;
+import FileManagement.DeleteFromCSV;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -111,7 +111,7 @@ public class Customer implements Serializable {
         existingInsurances--;
 
         customer.setAllCustomerInsurance(existingInsurances);
-        SearchAndReadFromCSV.deleteCustomerFromCsv(customer.getPersonalID());
+        DeleteFromCSV.deleteCustomerFromCsv(customer.getPersonalID());
         CsvWriter.writeCustomerToCSV(customer);
     }
 

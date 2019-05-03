@@ -3,7 +3,6 @@ package FileManagement;
 import CustomerModell.Customer;
 import Damages.Damage_Report;
 import Insurances.*;
-import Serialisering.SearchAndReadFromCSV;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,6 +39,10 @@ public class CsvWriter {
         }
     }
 
+    /**
+     * Method to make a header
+     * @param header input for head
+     */
     public static void makeHeader(String header) {
         try {
             if (!fileExists) {
@@ -79,6 +82,11 @@ public class CsvWriter {
         return file;
     }
 
+    /**
+     * Method for writing file to csv
+     * @param path filepath
+     * @param values what to add
+     */
     public static void writeFileToCsv(String path, String values) {
 
         try {
@@ -91,6 +99,11 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
+    /**
+     * Method for writing a file to csv Customer
+     * @param path creation path
+     * @param customer object
+     */
     public static void writeFileToCsvCustomer(String path, Customer customer) {
 
         try {
@@ -110,7 +123,10 @@ public class CsvWriter {
     }
 
 
-    // Method for write customer object to CSV file
+    /**
+     * Method for writing customer object to csv file
+     * @param aCustomer object
+     */
     public static void writeCustomerToCSV(Customer aCustomer) {
 
         try {
@@ -139,18 +155,18 @@ public class CsvWriter {
         int allCustomerInsurance = customer.getAllCustomerInsurance();
 
         Customer existing = CsvReader.findCustomer(personID);
-        SearchAndReadFromCSV.deleteCustomerFromCsv(existing.getPersonalID());
+        DeleteFromCSV.deleteCustomerFromCsv(existing.getPersonalID());
 
         existing.setAllCustomerInsurance(allCustomerInsurance);
         CsvWriter.writeCustomerToCSV(existing);
     }
 
 
+    /**
+     * a method which writes a boat object object to a csv file
+     * @param boatInsurance object
+     */
     public static void writeBoatInsuranceToCSV(Boat_Insurance boatInsurance, boolean createInsurance) throws FileNotFoundException {
-        /**
-         * a method which writes a boat object object to a csv file
-         * @param boatInsurance
-         */
 
         if (createInsurance) {
             updateAllInsurances(boatInsurance);
@@ -172,12 +188,12 @@ public class CsvWriter {
         finallyBlock(fileWriter);
     }
 
+    /**
+     * a method which writes a House object to a csv file
+     * @param houseInsurance
+     */
 
     public static void writeHouseInsuranceToCSV(Household_Insurance houseInsurance, boolean createInsurance) throws FileNotFoundException {
-        /**
-         * a method which writes a House object to a csv file
-         * @param houseInsurance
-         */
 
         if (createInsurance == true) {
             updateAllInsurances(houseInsurance);
@@ -253,7 +269,7 @@ public class CsvWriter {
 
 
     /**
-     * e method which write a damage report to a csv file
+     * a method which write a damage report to a csv file
      *
      * @param damage_report
      */
