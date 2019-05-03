@@ -1,6 +1,7 @@
 package Serialisering;
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import Insurances.Insurance;
 
 import java.io.*;
@@ -46,6 +47,27 @@ public class Serialization {
 
     }
 
+    public static void serialiseDamageReport(Damage_Report damage_report, String filepath) {
+
+        try (
+                FileOutputStream fos = new FileOutputStream(filepath);
+                ObjectOutputStream out = new ObjectOutputStream(fos)
+        ) {
+            out.writeObject(damage_report);
+            out.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void writeToFileCustomer(Customer customer, String filepath) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath));
+        oos.writeObject(customer);
+        oos.flush();
+        oos.close();
+    }
 
     /**
      * Method for reading a jobj file is used when importing

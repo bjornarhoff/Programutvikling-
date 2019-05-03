@@ -410,6 +410,16 @@ public class CsvReader {
         return boat_insurances;
     }
 
+    public static ObservableList<Damage_Report> readDamageReportToObj() throws IOException{
+        ObservableList<Customer> customers = readAllCustomers();
+        ObservableList<Damage_Report> damage_reports = null;
+        for (Customer customer : customers) {
+            Customer aCustomer = findCustomer(customer.getPersonalID());
+            damage_reports = findDamageReport(aCustomer.getPersonalID());
+        }
+        return damage_reports;
+    }
+
 
     /**
      * @param searchterm to specify what to search for in leisure csv file
