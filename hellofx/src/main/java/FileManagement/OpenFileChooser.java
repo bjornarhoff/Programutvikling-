@@ -101,19 +101,19 @@ public class OpenFileChooser {
             String path = file.getPath().split("\\.")[0];
 
             for (Customer customer : customers) {
-                Serialization.serialiseCustomer(customer,"customers.jobj");
+                Serialization.serialiseCustomer(customer,path +"/customers.jobj");
             }
             for (Household_Insurance houseIn : house) {
-                Serialization.serialiseInsurance(houseIn,"house.jobj");
+                Serialization.serialiseInsurance(houseIn,path + "/house.jobj");
             }
             for (Leisure_Insurance leisureIn : leisure) {
-                Serialization.serialiseInsurance(leisureIn,"leisure.jobj");
+                Serialization.serialiseInsurance(leisureIn,path + "/leisure.jobj");
             }
             for (Travel_Insurance travelIn : travel) {
-                Serialization.serialiseInsurance(travelIn,"travel.jobj");
+                Serialization.serialiseInsurance(travelIn,path + "/travel.jobj");
             }
             for (Boat_Insurance boatIn : boat) {
-                Serialization.serialiseInsurance(boatIn,"boat.jobj");
+                Serialization.serialiseInsurance(boatIn,path + "/boat.jobj");
             }
         }
     }

@@ -41,7 +41,7 @@ public class CsvReader {
             }
         }
         catch (FileNotFoundException e){
-            System.out.println("file");
+            System.out.println("File is not yet created, just registrer anything");
         }
         return customersFromCsv;
     }
@@ -105,7 +105,7 @@ public class CsvReader {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("File is not yet created, just registrer anything");
         }
         return customer;
     }
@@ -199,7 +199,7 @@ public class CsvReader {
                     }
                 }
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("File is not yet created, just registrer anything");
             }
             return households;
         }
@@ -259,7 +259,7 @@ public class CsvReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File is not yet created, just registrer anything");
         }
         return travelInsurnaces;
     }
@@ -324,7 +324,7 @@ public class CsvReader {
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File is not yet created, just registrer anything");
         }
         return boatInsurnaces;
     }
@@ -344,7 +344,7 @@ public class CsvReader {
                 values.add(line);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File is not yet created, just registrer anything");
         }
         return values;
     }
