@@ -1,0 +1,4 @@
+PersonalID,DateofDamage,DamageNr,DamageType,DamageDescription,ContactOfWitnesses,TaxOfDamage,UnpaidReplacements
+54838388388,Fri May 03 16:40:16 CEST 2019,12,crash,horrible,Mike,100.0,0
+46647378282,Fri May 03 16:40:49 CEST 2019,11,Car Accident,Window Broken,No body,200.0,100
+12345678911,Fri May 03 16:41:32 CEST 2019,55,Bike Crash,broken bike,micheal,290.0,40

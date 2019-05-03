@@ -1,0 +1,4 @@
+PersonalId,yearlyInsurancePremium,dateofCreatedInsurance,insuranceAmount,insuranceConditions,insuranceArea
+12345678911,100,Fri May 03 16:42:48 CEST 2019,120000,cannot travel to spain more than 3 times a year,Spain
+54838388388,3000,Fri May 03 16:44:39 CEST 2019,16000,no conditions,Switzerland
+46647378282,120,Fri May 03 16:46:17 CEST 2019,12120,no conditions,Portugal

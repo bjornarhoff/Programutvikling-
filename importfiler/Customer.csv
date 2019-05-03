@@ -1,0 +1,4 @@
+PersonalId,InsuranceNumber,Name,Phonenumber,Email,Date,Adress,Unpaid,Total
+12345678911,873956,Sven Daneel,98765432,sven@gmail.com,Fri May 03 16:39:04 CEST 2019,Trudvangkroken 8,0.0,2
+54838388388,120196,Bjornar,22219929,bjornar@gmail.com,Fri May 03 16:39:50 CEST 2019,haraldsvei,0.0,3
+46647378282,559933,Cato,84847463,cato@gmail.com,Fri May 03 16:39:24 CEST 2019,fleischervei,0.0,2
