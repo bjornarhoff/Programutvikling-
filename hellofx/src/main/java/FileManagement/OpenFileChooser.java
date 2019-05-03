@@ -1,6 +1,7 @@
 package FileManagement;
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import Exceptions.ExceptionHandler;
 import Insurances.Boat_Insurance;
 import Insurances.Household_Insurance;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.openjfx.DamageReportController;
 import org.openjfx.HandlerFxml;
 
 import java.io.File;
@@ -61,12 +63,8 @@ public class OpenFileChooser {
 
         String s = file.getName().split("\\.")[1];
         ObservableList<Customer> customers = CsvReader.readAllCustomers();
-        ObservableList<Boat_Insurance> boat = CsvReader.readBoatInsuranceToJobj();
-        ObservableList<Household_Insurance> house = CsvReader.readHouseHoldInsuranceToJobj();
-        ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureInsuranceToJobj();
-        ObservableList<Travel_Insurance> travel = CsvReader.readTravelInsuranceToJobj();
-
         File directory = new File (file.getPath().split("\\.")[0]);
+
         if (!directory.exists()) {
             directory.mkdir();
         }
@@ -99,6 +97,11 @@ public class OpenFileChooser {
         }
         if (s.equals("jobj")) {
             String path = file.getPath().split("\\.")[0];
+            ObservableList<Boat_Insurance> boat = CsvReader.readBoatInsuranceToJobj();
+            ObservableList<Household_Insurance> house = CsvReader.readHouseHoldInsuranceToJobj();
+            ObservableList<Leisure_Insurance> leisure = CsvReader.readLeisureInsuranceToJobj();
+            ObservableList<Travel_Insurance> travel = CsvReader.readTravelInsuranceToJobj();
+            ObservableList<Damage_Report> damage_reports = CsvReader.readDamageReportToObj();
 
             for (Customer customer : customers) {
                 Serialization.serialiseCustomer(customer,path +"/customers.jobj");
@@ -114,6 +117,9 @@ public class OpenFileChooser {
             }
             for (Boat_Insurance boatIn : boat) {
                 Serialization.serialiseInsurance(boatIn,path + "/boat.jobj");
+            }
+            for (Damage_Report damage_report : damage_reports) {
+                Serialization.serialiseDamageReport(damage_report, path + "/damage.jobj");
             }
         }
     }

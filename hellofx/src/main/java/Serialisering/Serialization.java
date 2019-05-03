@@ -1,6 +1,7 @@
 package Serialisering;
 
 import CustomerModell.Customer;
+import Damages.Damage_Report;
 import Insurances.Insurance;
 
 import java.io.*;
@@ -28,6 +29,21 @@ public class Serialization {
                 ObjectOutputStream out = new ObjectOutputStream(fos)
         ) {
             out.writeObject(insurance);
+            out.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void serialiseDamageReport(Damage_Report damage_report, String filepath) {
+
+        try (
+                FileOutputStream fos = new FileOutputStream(filepath);
+                ObjectOutputStream out = new ObjectOutputStream(fos)
+        ) {
+            out.writeObject(damage_report);
             out.flush();
         }
         catch (IOException e) {
